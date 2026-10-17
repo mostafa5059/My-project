@@ -34,6 +34,34 @@
   header h1{font-size:28px;font-weight:700;margin-bottom:10px; letter-spacing: 0.5px; position: relative; z-index: 1;}
   header p { font-size: 16px; opacity: 0.9; position: relative; z-index: 1; font-weight: 400;}
   
+  .lang-buttons {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+    flex-wrap: wrap;
+  }
+  .lang-btn {
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.4);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    transition: all 0.2s;
+    backdrop-filter: blur(10px);
+    font-family: 'Cairo', sans-serif;
+    white-space: nowrap;
+  }
+  .lang-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+  }
+  
   .container{max-width:1150px;margin:0 auto;padding:30px 20px;}
   
   .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px; justify-content: center;}
@@ -79,14 +107,8 @@
     transform-origin: right;
     transition: transform 0.3s ease;
   }
-  .card:hover::before {
-    transform: scaleX(1);
-  }
-  .card:hover{ 
-    transform: translateY(-6px); 
-    box-shadow:var(--shadow-xl); 
-    border-right-color: var(--primary-light); 
-  }
+  .card:hover::before { transform: scaleX(1); }
+  .card:hover{ transform: translateY(-6px); box-shadow:var(--shadow-xl); border-right-color: var(--primary-light); }
   .card:active { transform: translateY(-2px) scale(0.98); }
   
   .card.noun { border-right-color: var(--accent); } 
@@ -166,24 +188,10 @@
     opacity: 0;
     transition: opacity 0.2s;
   }
-  .conj-item:hover { 
-    background: #f8fafc; 
-    border-color: var(--primary-light); 
-    transform: translateX(-4px); 
-  }
+  .conj-item:hover { background: #f8fafc; border-color: var(--primary-light); transform: translateX(-4px); }
   .conj-item:hover::before { opacity: 1; }
-  .conj-item .pron {
-    color: var(--primary-dark);
-    font-weight: 700;
-    min-width: 80px;
-    direction: rtl;
-  }
-  .conj-item span:not(.pron) {
-    direction: ltr;
-    text-align: left;
-    font-weight: 700;
-    color: var(--text-main);
-  }
+  .conj-item .pron { color: var(--primary-dark); font-weight: 700; min-width: 80px; direction: rtl; }
+  .conj-item span:not(.pron) { direction: ltr; text-align: left; font-weight: 700; color: var(--text-main); }
   
   .meta{background:#eff6ff;padding:16px;border-radius:12px;margin-top:10px;font-size:15px; border: 1px solid #bfdbfe; font-weight: 600;}
   .info-block { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
@@ -214,14 +222,7 @@
     box-shadow: 0 4px 12px rgba(16,185,129,0.08);
     position: relative;
   }
-  .example-box::before {
-    content: '💬';
-    position: absolute;
-    top: 12px;
-    left: 18px;
-    font-size: 22px;
-    opacity: 0.7;
-  }
+  .example-box::before { content: '💬'; position: absolute; top: 12px; left: 18px; font-size: 22px; opacity: 0.7; }
   .example-box strong { color: #047857; font-weight: 800;}
   table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 25px 0; font-size: 15px; box-shadow: var(--shadow-md); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color);}
   th, td { border-bottom: 1px solid var(--border-color); padding: 14px; text-align: center; }
@@ -248,9 +249,11 @@
   @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
   @media (max-width: 768px) {
-    header { padding: 25px 15px; }
+    header { padding: 25px 15px; padding-top: 80px; }
     header h1 { font-size: 20px; }
     header p { font-size: 13px; }
+    .lang-buttons { top: 15px; left: 15px; right: 15px; justify-content: center; }
+    .lang-btn { padding: 6px 12px; font-size: 12px; }
     .container { padding: 15px 12px; }
     .tabs { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding-bottom: 12px; gap: 8px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .tabs::-webkit-scrollbar { display: none; }
@@ -302,6 +305,10 @@
 </head>
 <body>
 <header>
+  <div class="lang-buttons">
+    <button id="langSwitchBtn" class="lang-btn" onclick="switchLanguage()">Deutsch 🇩🇪</button>
+    <button id="translationToggleBtn" class="lang-btn" onclick="toggleTranslation()">إخفاء الترجمة 👁️‍🗨️</button>
+  </div>
   <h1>🇩🇪 الأفعال والمفردات الألمانية A1 - A2.2</h1>
   <p>منصة شاملة للمذاكرة والتحضير للامتحانات</p>
 </header>
@@ -451,6 +458,7 @@
 <script src="listening.js"></script>
 <script src="dialogues.js"></script>
 <script src="progress.js"></script>
+<script src="i18n.js"></script>
 
 <script>
 const pronouns = ["ich","du","er/sie/es","wir","ihr","sie/Sie"];
@@ -480,6 +488,7 @@ function renderVerbs() {
   const list = document.getElementById("verbList");
   list.innerHTML = filtered.map(v => '<div class="card" data-index="' + VERBS.indexOf(v) + '"><button class="audio-btn" onclick="event.stopPropagation(); speak(\'' + v.de.replace(/ \(.*\)/, '') + '\')">🔊</button><div class="de">' + v.de + '</div><div class="ar">' + v.ar + '</div></div>').join("");
   list.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => openVerb(+c.getAttribute("data-index"))));
+  applyTranslationVisibility();
 }
 
 function renderNouns() {
@@ -488,6 +497,7 @@ function renderNouns() {
   const list = document.getElementById("nounList");
   list.innerHTML = filtered.map(n => '<div class="card noun" data-index="' + NOUNS.indexOf(n) + '"><button class="audio-btn" onclick="event.stopPropagation(); speak(\'' + n.de.replace('der ','').replace('die ','').replace('das ','') + '\')">🔊</button><div class="de">' + n.de + '</div><div class="ar">' + n.ar + '</div></div>').join("");
   list.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => openNoun(+c.getAttribute("data-index"))));
+  applyTranslationVisibility();
 }
 
 function renderAdjectives() {
@@ -496,6 +506,7 @@ function renderAdjectives() {
   const list = document.getElementById("adjList");
   list.innerHTML = filtered.map(a => '<div class="card adj" data-index="' + ADJECTIVES.indexOf(a) + '"><button class="audio-btn" onclick="event.stopPropagation(); speak(\'' + a.de + '\')">🔊</button><div class="de">' + a.de + '</div><div class="ar">' + a.ar + '</div></div>').join("");
   list.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => openAdjective(+c.getAttribute("data-index"))));
+  applyTranslationVisibility();
 }
 
 function openVerb(index) {
@@ -524,7 +535,7 @@ function openVerb(index) {
     '<div style="text-align:center; margin-bottom:20px;">' +
       '<h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + v.de + '</h2>' +
       ' <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + v.de.replace(/ \(.*\)/, '') + '\')">🔊</button>' +
-      '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + v.ar + '</div>' +
+      (translationHidden ? '' : '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + v.ar + '</div>') +
       '<div style="margin-top:15px;">' + badges + '</div>' +
     '</div>' +
     (hint ? '<div class="rule-hint">' + hint + '</div>' : '') +
@@ -553,13 +564,13 @@ function openVerb(index) {
 
 function openNoun(index) {
   const n = NOUNS[index];
-  document.getElementById("modalContent").innerHTML = '<button class="close-btn" onclick="closeModal()">✕</button><div style="text-align:center; margin-bottom:20px;"><h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + n.de + '</h2> <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + n.de + '\')">🔊</button><div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + n.ar + '</div></div><div class="section-title">📦 الجمع</div><div class="conj-item" style="margin-bottom:10px;"><span class="pron">Plural</span><span>' + n.plural + '</span><button class="audio-btn" style="position:static; width:30px; height:30px; font-size:14px; margin-right:auto;" onclick="speak(\'' + n.plural + '\')">🔊</button></div><div class="section-title">📐 الحالات الإعرابية</div><div class="info-block"><div class="info-item"><strong>Nominativ</strong>' + n.de + '</div><div class="info-item"><strong>Akkusativ</strong>' + n.akk + '</div><div class="info-item"><strong>Dativ</strong>' + n.dat + '</div></div>';
+  document.getElementById("modalContent").innerHTML = '<button class="close-btn" onclick="closeModal()">✕</button><div style="text-align:center; margin-bottom:20px;"><h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + n.de + '</h2> <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + n.de + '\')">🔊</button>' + (translationHidden ? '' : '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + n.ar + '</div>') + '</div><div class="section-title">📦 الجمع</div><div class="conj-item" style="margin-bottom:10px;"><span class="pron">Plural</span><span>' + n.plural + '</span><button class="audio-btn" style="position:static; width:30px; height:30px; font-size:14px; margin-right:auto;" onclick="speak(\'' + n.plural + '\')">🔊</button></div><div class="section-title">📐 الحالات الإعرابية</div><div class="info-block"><div class="info-item"><strong>Nominativ</strong>' + n.de + '</div><div class="info-item"><strong>Akkusativ</strong>' + n.akk + '</div><div class="info-item"><strong>Dativ</strong>' + n.dat + '</div></div>';
   document.getElementById("modal").classList.add("active");
 }
 
 function openAdjective(index) {
   const a = ADJECTIVES[index];
-  document.getElementById("modalContent").innerHTML = '<button class="close-btn" onclick="closeModal()">✕</button><div style="text-align:center; margin-bottom:20px;"><h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + a.de + '</h2> <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + a.de + '\')">🔊</button><div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + a.ar + '</div></div><div class="rule-hint">الصفات تُصرَّف حسب الحالة والجنس والعدد عند استخدامها قبل الاسم، وتبقى بدون تصريف عند استخدامها كخبر.</div>';
+  document.getElementById("modalContent").innerHTML = '<button class="close-btn" onclick="closeModal()">✕</button><div style="text-align:center; margin-bottom:20px;"><h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + a.de + '</h2> <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + a.de + '\')">🔊</button>' + (translationHidden ? '' : '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + a.ar + '</div>') + '</div><div class="rule-hint">الصفات تُصرَّف حسب الحالة والجنس والعدد عند استخدامها قبل الاسم، وتبقى بدون تصريف عند استخدامها كخبر.</div>';
   document.getElementById("modal").classList.add("active");
 }
 
@@ -688,6 +699,8 @@ document.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click"
 }));
 document.getElementById("search").addEventListener("input", e => { currentSearch = e.target.value; renderCurrent(); });
 renderVerbs();
+applyLanguage();
+applyTranslationVisibility();
 </script>
 </body>
 </html>
