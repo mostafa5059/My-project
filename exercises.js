@@ -1,71 +1,108 @@
-  /* ============ 50 تمريناً إضافياً ============ */
-  
-  // ===== الحالات الإعرابية (مختلطة) =====
-  { question: "Der Mann gibt ___ Kind einen Apfel.", questionAr: "الرجل يعطي الطفل تفاحة.", options: ["das", "dem", "den", "der"], answer: 1, explanation: "الفعل geben يأخذ Dativ للشخص (Kind محايد → dem) و Akkusativ للشيء (einen Apfel)." },
-  { question: "Ich zeige ___ Frau das Foto.", questionAr: "أُري المرأة الصورة.", options: ["die", "der", "den", "dem"], answer: 1, explanation: "zeigen يأخذ Dativ للشخص (Frau مؤنث → der) و Akkusativ للشيء (das Foto)." },
-  { question: "Wir schenken ___ Eltern ein Geschenk.", questionAr: "نهدي الوالدين هدية.", options: ["die", "der", "den", "dem"], answer: 2, explanation: "schenken يأخذ Dativ للشخص (Eltern جمع → den + n) و Akkusativ للشيء." },
-  { question: "Er kauft ___ Schwester ein Buch.", questionAr: "يشتري لأخته كتاباً.", options: ["die", "der", "den", "dem"], answer: 1, explanation: "kaufen + Dativ للشخص المستفيد (Schwester مؤنث → der)." },
-  { question: "Das ist das Auto ___ Mannes.", questionAr: "هذه سيارة الرجل (Genitiv).", options: ["der", "den", "des", "dem"], answer: 2, explanation: "Genitiv للمذكر = des + s (Mannes)." },
-
-  // ===== الضمائر في الحالات =====
-  { question: "Ich danke ___ für die Hilfe.", questionAr: "أشكرك على المساعدة.", options: ["du", "dich", "dir", "dein"], answer: 2, explanation: "danken يأخذ Dativ، و du في Dativ = dir." },
-  { question: "Ich sehe ___ jeden Tag.", questionAr: "أراه كل يوم.", options: ["er", "ihn", "ihm", "sein"], answer: 1, explanation: "sehen يأخذ Akkusativ، و er في Akkusativ = ihn." },
-  { question: "Wir helfen ___ immer.", questionAr: "نساعدها دائماً.", options: ["sie", "ihr", "ihn", "ihm"], answer: 1, explanation: "helfen يأخذ Dativ، و sie (هي) في Dativ = ihr." },
-  { question: "Er gibt ___ das Buch.", questionAr: "هو يعطينا الكتاب.", options: ["wir", "uns", "unser", "euch"], answer: 1, explanation: "geben + Dativ للشخص، و wir في Dativ = uns." },
-  { question: "Kannst du ___ bitte helfen?", questionAr: "هل يمكنك مساعدتهم؟", options: ["sie", "ihnen", "ihr", "sich"], answer: 1, explanation: "helfen يأخذ Dativ، و sie (هم) في Dativ = ihnen." },
-
-  // ===== تصريف الأفعال في المضارع =====
-  { question: "Er ___ jeden Tag zur Arbeit.", questionAr: "هو يذهب كل يوم إلى العمل.", options: ["gehe", "gehst", "geht", "gehen"], answer: 2, explanation: "gehen مع er/sie/es = geht." },
-  { question: "Du ___ sehr gut Deutsch.", questionAr: "أنت تتحدث الألمانية جيداً جداً.", options: ["spreche", "sprichst", "spricht", "sprechen"], answer: 1, explanation: "sprechen مع du = sprichst (تغيّر حرف العلة e→i)." },
+const EXERCISES = [
+  { question: "Ich helfe ___ Mann.", questionAr: "أساعد الرجل.", options: ["den", "dem", "der", "das"], answer: 1, explanation: "helfen يأخذ Dativ. Mann مذكر → dem." },
+  { question: "Ich danke ___ Frau.", questionAr: "أشكر المرأة.", options: ["die", "der", "den", "dem"], answer: 1, explanation: "danken يأخذ Dativ. Frau مؤنث → der." },
+  { question: "Das Buch gehört ___ Kind.", questionAr: "الكتاب ينتمي للطفل.", options: ["das", "dem", "den", "der"], answer: 1, explanation: "gehören يأخذ Dativ. Kind محايد → dem." },
+  { question: "Ich kaufe ___ Apfel.", questionAr: "أشتري التفاحة.", options: ["der", "den", "dem", "die"], answer: 1, explanation: "kaufen يأخذ Akkusativ. Apfel مذكر → den." },
+  { question: "Ich sehe ___ Frau.", questionAr: "أرى المرأة.", options: ["die", "der", "den", "dem"], answer: 0, explanation: "sehen يأخذ Akkusativ. Frau مؤنث → die." },
+  { question: "Ich ___ um 7 Uhr ___.", questionAr: "أستيقظ الساعة 7.", options: ["stehe ... auf", "aufstehe", "stehe ... an", "gehe ... auf"], answer: 0, explanation: "aufstehen فعل منفصل. البادئة auf في النهاية." },
+  { question: "Er ___ seine Mutter ___.", questionAr: "هو يتصل بأمه.", options: ["rufe ... an", "ruft ... an", "anruft", "rufe ... auf"], answer: 1, explanation: "anrufen فعل منفصل. مع er = ruft an." },
+  { question: "Ich freue ___ auf den Urlaub.", questionAr: "أنا متحمس للإجازة.", options: ["mich", "dich", "sich", "mir"], answer: 0, explanation: "sich freuen انعكاسي. مع ich = mich." },
+  { question: "Du wäschst ___ jeden Morgen.", questionAr: "أنت تغتسل كل صباح.", options: ["mich", "dich", "sich", "dir"], answer: 1, explanation: "sich waschen انعكاسي. مع du = dich." },
+  { question: "Ich ___ nach Berlin gefahren.", questionAr: "سافرت إلى برلين.", options: ["habe", "bin", "ist", "hat"], answer: 1, explanation: "fahren يأخذ sein. مع ich = bin." },
+  { question: "Er ___ nach Hause gegangen.", questionAr: "هو ذهب إلى المنزل.", options: ["hat", "ist", "bin", "sind"], answer: 1, explanation: "gehen يأخذ sein. مع er = ist." },
+  { question: "Ich fahre mit ___ Bus.", questionAr: "أسافر بالحافلة.", options: ["der", "den", "dem", "die"], answer: 2, explanation: "mit يأخذ Dativ. Bus مذكر → dem." },
+  { question: "Sie kommt aus ___ Schweiz.", questionAr: "هي من سويسرا.", options: ["die", "der", "den", "dem"], answer: 1, explanation: "aus يأخذ Dativ. Schweiz مؤنث → der." },
+  { question: "Das Geschenk ist für ___.", questionAr: "الهدية لك.", options: ["du", "dich", "dir", "dein"], answer: 1, explanation: "für يأخذ Akkusativ. du → dich." },
+  { question: "Ich bleibe zu Hause, ___ es regnet.", questionAr: "أبقى في المنزل لأنها تمطر.", options: ["und", "aber", "weil", "oder"], answer: 2, explanation: "weil (لأن) ترسل الفعل إلى النهاية." },
+  { question: "Ich lerne Deutsch, ___ ich wohne in Berlin.", questionAr: "أتعلم الألمانية وأسكن في برلين.", options: ["weil", "dass", "und", "denn"], answer: 2, explanation: "und (و) لا تغير الترتيب." },
+  { question: "Ich ___ gut schwimmen.", questionAr: "أستطيع السباحة جيداً.", options: ["kann", "kannst", "können", "könnt"], answer: 0, explanation: "können مع ich = kann." },
+  { question: "Du ___ mehr lernen.", questionAr: "يجب أن تدرس أكثر.", options: ["muss", "musst", "müssen", "müsst"], answer: 1, explanation: "müssen مع du = musst." },
+  { question: "___ du Zeit?", questionAr: "هل لديك وقت؟", options: ["Hast", "Habt", "Hat", "Habe"], answer: 0, explanation: "haben مع du = hast." },
+  { question: "___ ihr Deutsch?", questionAr: "هل تتحدثون الألمانية؟", options: ["Sprichst", "Sprecht", "Spricht", "Sprechen"], answer: 1, explanation: "sprechen مع ihr = sprecht." },
+  { question: "Ich liebe ___.", questionAr: "أحبك.", options: ["du", "dich", "dir", "dein"], answer: 1, explanation: "lieben يأخذ Akkusativ. du → dich." },
+  { question: "Ich helfe ___.", questionAr: "أساعدك.", options: ["du", "dich", "dir", "dein"], answer: 2, explanation: "helfen يأخذ Dativ. du → dir." },
+  { question: "Er sieht ___.", questionAr: "هو يراني.", options: ["ich", "mich", "mir", "mein"], answer: 1, explanation: "sehen يأخذ Akkusativ. ich → mich." },
   { question: "Wir ___ nach Berlin.", questionAr: "نسافر إلى برلين.", options: ["fahre", "fährst", "fährt", "fahren"], answer: 3, explanation: "fahren مع wir = fahren." },
   { question: "Ihr ___ zu viel.", questionAr: "أنتم تأكلون كثيراً.", options: ["esse", "isst", "esst", "essen"], answer: 2, explanation: "essen مع ihr = esst." },
-  { question: "Sie (هم) ___ Bücher.", questionAr: "هم يقرؤون كتباً.", options: ["lese", "liest", "lest", "lesen"], answer: 3, explanation: "lesen مع sie (هم) = lesen." },
-
-  // ===== الماضي البسيط (Präteritum) =====
   { question: "Ich ___ gestern krank.", questionAr: "كنت مريضاً أمس.", options: ["bin", "war", "warst", "waren"], answer: 1, explanation: "sein في Präteritum مع ich = war." },
   { question: "Er ___ keine Zeit.", questionAr: "لم يكن لديه وقت.", options: ["hat", "hatte", "hattest", "hatten"], answer: 1, explanation: "haben في Präteritum مع er = hatte." },
-  { question: "Sie (هي) ___ nach Hause.", questionAr: "هي ذهبت إلى المنزل.", options: ["geht", "ging", "gingst", "gingen"], answer: 1, explanation: "gehen في Präteritum مع sie = ging." },
-  { question: "Wir ___ das Buch.", questionAr: "قرأنا الكتاب.", options: ["lesen", "las", "lasen", "lest"], answer: 2, explanation: "lesen في Präteritum مع wir = lasen." },
-  { question: "Ihr ___ viel.", questionAr: "أنتم شربتم كثيراً.", options: ["trinken", "trank", "trankt", "tranken"], answer: 2, explanation: "trinken في Präteritum مع ihr = trankt." },
-
-  // ===== الماضي التام (Perfekt) =====
+  { question: "Sie ___ nach Hause.", questionAr: "هي ذهبت إلى المنزل.", options: ["geht", "ging", "gingst", "gingen"], answer: 1, explanation: "gehen في Präteritum مع sie = ging." },
   { question: "Ich ___ einen Film gesehen.", questionAr: "شاهدت فيلماً.", options: ["habe", "bin", "ist", "hat"], answer: 0, explanation: "sehen يأخذ haben. مع ich = habe." },
-  { question: "Er ___ nach Berlin gefahren.", questionAr: "سافر إلى برلين.", options: ["hat", "ist", "bin", "sind"], answer: 1, explanation: "fahren فعل حركة، لذا يأخذ sein. مع er = ist." },
-  { question: "Wir ___ im Supermarkt eingekauft.", questionAr: "تسوقنا في السوبر ماركت.", options: ["haben", "sind", "seid", "hat"], answer: 0, explanation: "einkaufen يأخذ haben. مع wir = haben." },
-  { question: "Sie (هي) ___ um 7 Uhr aufgestanden.", questionAr: "هي استيقظت الساعة 7.", options: ["hat", "ist", "sind", "bin"], answer: 1, explanation: "aufstehen فعل تغير حالة، لذا يأخذ sein. مع sie = ist." },
-  { question: "Ihr ___ das Buch gelesen.", questionAr: "أنتم قرأتم الكتاب.", options: ["habt", "seid", "sind", "hat"], answer: 0, explanation: "lesen يأخذ haben. مع ihr = habt." },
-  { question: "Die Kinder ___ im Garten gespielt.", questionAr: "الأطفال لعبوا في الحديقة.", options: ["haben", "sind", "seid", "hat"], answer: 0, explanation: "spielen يأخذ haben. مع sie (جمع) = haben." },
+  { question: "Er ___ nach Berlin gefahren.", questionAr: "سافر إلى برلين.", options: ["hat", "ist", "bin", "sind"], answer: 1, explanation: "fahren فعل حركة، يأخذ sein. مع er = ist." },
+  { question: "Ich gehe ___ die Schule.", questionAr: "أذهب إلى المدرسة (حركة).", options: ["in", "an", "auf", "zu"], answer: 0, explanation: "in + Akkusativ للحركة إلى داخل مكان." },
+  { question: "Ich bin ___ der Schule.", questionAr: "أنا في المدرسة (سكون).", options: ["in", "an", "auf", "zu"], answer: 0, explanation: "in + Dativ للسكون داخل مكان." },
+  { question: "Ich lerne Deutsch, ___ ich in Deutschland arbeiten möchte.", questionAr: "أتعلم الألمانية لأنني أريد العمل في ألمانيا.", options: ["denn", "weil", "aber", "und"], answer: 1, explanation: "weil ترسل الفعل إلى النهاية." },
+  { question: "Ich bin müde, ___ ich gehe ins Bett.", questionAr: "أنا متعب، لذلك أذهب للنوم.", options: ["weil", "deshalb", "dass", "wenn"], answer: 1, explanation: "deshalb (لذلك) تحتل المركز الأول." },
+  { question: "___ ich Zeit habe, lese ich.", questionAr: "عندما يكون لدي وقت، أقرأ.", options: ["Weil", "Dass", "Wenn", "Denn"], answer: 2, explanation: "wenn (عندما/إذا) ترسل الفعل إلى النهاية." },
+  { question: "___ heißt du?", questionAr: "ما اسمك؟", options: ["Was", "Wie", "Wo", "Wer"], answer: 1, explanation: "Wie heißt du? = ما اسمك؟" },
+  { question: "___ kommst du?", questionAr: "من أين أنت؟", options: ["Wo", "Woher", "Wohin", "Wann"], answer: 1, explanation: "Woher = من أين." },
+  { question: "___ wohnst du?", questionAr: "أين تسكن؟", options: ["Wo", "Woher", "Wohin", "Wann"], answer: 0, explanation: "Wo = أين." },
+  { question: "___ alt bist du?", questionAr: "كم عمرك؟", options: ["Wie", "Was", "Wo", "Wer"], answer: 0, explanation: "Wie alt = كم العمر." },
+  { question: "___ kostet das?", questionAr: "كم يكلف هذا؟", options: ["Wie viel", "Wann", "Wo", "Wer"], answer: 0, explanation: "Wie viel kostet = كم يكلف." }
+];
 
-  // ===== الأفعال المساعدة (Modalverben) =====
-  { question: "Ich ___ heute nicht kommen.", questionAr: "لا أستطيع المجيء اليوم.", options: ["kann", "kannst", "können", "könnt"], answer: 0, explanation: "können مع ich = kann." },
-  { question: "Du ___ mehr Wasser trinken.", questionAr: "يجب أن تشرب ماءً أكثر.", options: ["muss", "musst", "müssen", "müsst"], answer: 1, explanation: "müssen مع du = musst." },
-  { question: "Er ___ ein neues Auto kaufen.", questionAr: "يريد شراء سيارة جديدة.", options: ["will", "willst", "wollen", "wollt"], answer: 0, explanation: "wollen مع er = will." },
-  { question: "___ ich hier parken?", questionAr: "هل يُسمح لي بالوقوف هنا؟", options: ["Darf", "Darfst", "Dürfen", "Dürft"], answer: 0, explanation: "dürfen مع ich = darf." },
-  { question: "Sie (هي) ___ mehr schlafen.", questionAr: "ينبغي أن تنام أكثر.", options: ["soll", "sollst", "sollen", "sollt"], answer: 0, explanation: "sollen مع sie (هي) = soll." },
-  { question: "Wir ___ ins Kino gehen.", questionAr: "نريد الذهاب إلى السينما.", options: ["will", "wollt", "wollen", "wollen"], answer: 2, explanation: "wollen مع wir = wollen." },
+let currentExercise = 0;
+let exerciseAnswered = false;
+let exerciseScore = 0;
 
-  // ===== حروف الجر =====
-  { question: "Ich gehe ___ die Schule.", questionAr: "أذهب إلى المدرسة (حركة).", options: ["in", "an", "auf", "zu"], answer: 0, explanation: "in + Akkusativ للتعبير عن الحركة إلى داخل مكان." },
-  { question: "Ich bin ___ der Schule.", questionAr: "أنا في المدرسة (سكون).", options: ["in", "an", "auf", "zu"], answer: 0, explanation: "in + Dativ للتعبير عن السكون داخل مكان." },
-  { question: "Das Buch liegt ___ dem Tisch.", questionAr: "الكتاب موضوع على الطاولة (سكون).", options: ["in", "an", "auf", "über"], answer: 2, explanation: "auf + Dativ للتعبير عن السكون على سطح أفقي." },
-  { question: "Ich hänge das Bild ___ die Wand.", questionAr: "أعلق الصورة على الحائط (حركة).", options: ["in", "an", "auf", "über"], answer: 1, explanation: "an + Akkusativ للتعبير عن الحركة إلى جانب أو على سطح رأسي." },
-  { question: "Wir treffen uns ___ dem Bahnhof.", questionAr: "نتقابل عند محطة القطار.", options: ["in", "an", "auf", "vor"], answer: 3, explanation: "vor + Dativ = أمام (نستخدم vor dem Bahnhof = أمام المحطة)." },
+function startExercises() {
+  currentExercise = 0;
+  exerciseScore = 0;
+  exerciseAnswered = false;
+  loadExercise();
+}
 
-  // ===== الروابط =====
-  { question: "Ich lerne Deutsch, ___ ich in Deutschland arbeiten möchte.", questionAr: "أتعلم الألمانية لأنني أريد العمل في ألمانيا.", options: ["denn", "weil", "aber", "und"], answer: 1, explanation: "weil (لأن) ترسل الفعل إلى نهاية الجملة. (denn أيضاً تعني لأن لكن لا تغير الترتيب)." },
-  { question: "Ich bin müde, ___ ich gehe ins Bett.", questionAr: "أنا متعب، لذلك أذهب للنوم.", options: ["weil", "deshalb", "dass", "wenn"], answer: 1, explanation: "deshalb (لذلك) تحتل المركز الأول، والفعل بعدها مباشرة." },
-  { question: "___ ich Zeit habe, lese ich.", questionAr: "عندما يكون لدي وقت، أقرأ.", options: ["Weil", "Dass", "Wenn", "Denn"], answer: 2, explanation: "wenn (عندما/إذا) ترسل الفعل إلى نهاية الجملة." },
-  { question: "Ich weiß, ___ er morgen kommt.", questionAr: "أعرف أنه سيأتي غداً.", options: ["weil", "dass", "wenn", "denn"], answer: 1, explanation: "dass (أن) ترسل الفعل إلى نهاية الجملة." },
-  { question: "Ich bleibe zu Hause, ___ es regnet.", questionAr: "أبقى في المنزل لأنها تمطر.", options: ["denn", "weil", "aber", "oder"], answer: 0, explanation: "denn (لأن) لا تغير ترتيب الجملة (الفعل في المركز الثاني)." },
+function loadExercise() {
+  const ex = EXERCISES[currentExercise];
+  document.getElementById("exerciseProgress").innerText = 'السؤال ' + (currentExercise + 1) + ' من ' + EXERCISES.length + ' (النتيجة: ' + exerciseScore + ')';
+  document.getElementById("exerciseQuestion").innerText = ex.question;
+  document.getElementById("exerciseQuestionAr").innerText = ex.questionAr;
+  
+  const optsBox = document.getElementById("exerciseOptions");
+  optsBox.innerHTML = '';
+  ex.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.innerText = opt;
+    btn.style.cssText = 'padding:14px 20px; background:#f8fafc; border:2px solid #e2e8f0; border-radius:12px; cursor:pointer; font-size:16px; font-weight:600; font-family:Cairo,sans-serif; transition:all 0.2s; color:#1e293b;';
+    btn.onmouseover = () => { if (!exerciseAnswered) btn.style.background = '#eff6ff'; };
+    btn.onmouseout = () => { if (!exerciseAnswered) btn.style.background = '#f8fafc'; };
+    btn.onclick = () => checkExercise(idx, btn);
+    optsBox.appendChild(btn);
+  });
+  
+  document.getElementById("exerciseFeedback").style.display = 'none';
+  document.getElementById("exerciseNextBtn").style.display = 'none';
+  exerciseAnswered = false;
+}
 
-  // ===== أسئلة متنوعة =====
-  { question: "___ heißt du?", questionAr: "ما اسمك؟", options: ["Was", "Wie", "Wo", "Wer"], answer: 1, explanation: "Wie heißt du? = ما اسمك؟ (حرفياً: كيف تُسمى؟)" },
-  { question: "___ kommst du?", questionAr: "من أين أنت؟", options: ["Wo", "Woher", "Wohin", "Wann"], answer: 1, explanation: "Woher = من أين (المصدر)." },
-  { question: "___ wohnst du?", questionAr: "أين تسكن؟", options: ["Wo", "Woher", "Wohin", "Wann"], answer: 0, explanation: "Wo = أين (المكان)." },
-  { question: "___ alt bist du?", questionAr: "كم عمرك؟", options: ["Wie", "Was", "Wo", "Wer"], answer: 0, explanation: "Wie alt = كم عمر." },
-  { question: "___ ist das?", questionAr: "من هذا؟", options: ["Was", "Wie", "Wo", "Wer"], answer: 3, explanation: "Wer = من (للأشخاص)." },
-  { question: "___ Uhr ist es?", questionAr: "كم الساعة؟", options: ["Wie viel", "Wann", "Wo", "Wie"], answer: 0, explanation: "Wie viel Uhr = كم الساعة." },
-  { question: "___ kostet das?", questionAr: "كم يكلف هذا؟", options: ["Wie viel", "Wann", "Wo", "Wer"], answer: 0, explanation: "Wie viel kostet = كم يكلف." },
-  { question: "___ beginnt der Film?", questionAr: "متى يبدأ الفيلم؟", options: ["Wie viel", "Wann", "Wo", "Wer"], answer: 1, explanation: "Wann = متى." },
-  { question: "___ machst du am Wochenende?", questionAr: "ماذا تفعل في عطلة نهاية الأسبوع؟", options: ["Was", "Wie", "Wo", "Wer"], answer: 0, explanation: "Was = ماذا." },
-  { question: "___ ist dein Lieblingsfach?", questionAr: "ما هو موضوعك المفضل؟", options: ["Was", "Wie", "Wo", "Wer"], answer: 0, explanation: "Was = ما (للأشياء)." }
+function checkExercise(selectedIdx, btnEl) {
+  if (exerciseAnswered) return;
+  exerciseAnswered = true;
+  if (typeof trackActivity === 'function') trackActivity('exercises', 1);
+  
+  const ex = EXERCISES[currentExercise];
+  const allBtns = document.getElementById("exerciseOptions").querySelectorAll('button');
+  const feedback = document.getElementById("exerciseFeedback");
+  
+  if (selectedIdx === ex.answer) {
+    btnEl.style.background = '#dcfce7'; btnEl.style.borderColor = '#16a34a'; btnEl.style.color = '#166534';
+    exerciseScore++;
+    feedback.innerHTML = '✅ <strong>إجابة صحيحة!</strong><br><span style="font-size:14px;">' + ex.explanation + '</span>';
+    feedback.style.background = '#f0fdf4'; feedback.style.borderRight = '4px solid #16a34a'; feedback.style.color = '#166534';
+  } else {
+    btnEl.style.background = '#fee2e2'; btnEl.style.borderColor = '#dc2626'; btnEl.style.color = '#991b1b';
+    allBtns[ex.answer].style.background = '#dcfce7'; allBtns[ex.answer].style.borderColor = '#16a34a'; allBtns[ex.answer].style.color = '#166534';
+    feedback.innerHTML = '❌ <strong>إجابة خاطئة.</strong> الإجابة الصحيحة: <strong>' + ex.options[ex.answer] + '</strong><br><span style="font-size:14px;">' + ex.explanation + '</span>';
+    feedback.style.background = '#fef2f2'; feedback.style.borderRight = '4px solid #dc2626'; feedback.style.color = '#991b1b';
+  }
+  
+  feedback.style.display = 'block';
+  document.getElementById("exerciseNextBtn").style.display = 'inline-block';
+  document.getElementById("exerciseNextBtn").innerText = (currentExercise === EXERCISES.length - 1) ? 'إعادة من البداية 🔄' : 'السؤال التالي ➡️';
+}
+
+function nextExercise() {
+  currentExercise = (currentExercise + 1) % EXERCISES.length;
+  if (currentExercise === 0) exerciseScore = 0;
+  loadExercise();
+}
