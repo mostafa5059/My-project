@@ -165,6 +165,8 @@ function openDialogue(index) {
   currentDialogue = index;
   currentLine = 0;
   renderDialogueView();
+  // تسجيل النشاط عند فتح محادثة
+  if (typeof trackActivity === 'function') trackActivity('dialogues', 1);
 }
 
 function renderDialogueView() {
@@ -228,6 +230,8 @@ function nextDialogueLine() {
     currentLine++;
     renderDialogueView();
     playDialogueLine();
+    // تسجيل النشاط
+    if (typeof trackActivity === 'function') trackActivity('dialogues', 1);
   }
 }
 
