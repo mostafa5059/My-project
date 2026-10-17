@@ -1,3 +1,4 @@
+/* ============ تدريب الكتابة (Writing Practice) - متوافق مع progress ============ */
 const WRITING_DATA = [
   { ar: "أنا طالب.", de: "Ich bin Student.", level: "A1" },
   { ar: "أنا من مصر.", de: "Ich komme aus Ägypten.", level: "A1" },
@@ -141,6 +142,9 @@ function checkWriting() {
     feedback.style.borderRight = '4px solid #f59e0b';
     return;
   }
+  
+  // تسجيل النشاط في لوحة التقدم
+  if (typeof trackActivity === 'function') trackActivity('writing', 1);
   
   const userNorm = normalizeText(input);
   const correctNorm = normalizeText(item.de);
