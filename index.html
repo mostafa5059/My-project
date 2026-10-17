@@ -29,7 +29,6 @@
   *{box-sizing:border-box;margin:0;padding:0; font-family: 'Cairo', Tahoma, sans-serif;}
   body{background:var(--bg-color);color:var(--text-main);line-height:1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased;}
   
-  /* Header */
   header{background:linear-gradient(135deg, #1e1b4b, #4f46e5);color:#fff;padding:40px 20px;text-align:center; box-shadow: 0 10px 30px rgba(79,70,229,0.2); border-bottom-left-radius: var(--radius-xl); border-bottom-right-radius: var(--radius-xl); animation: fadeInDown 0.8s ease-out; position: relative; overflow: hidden;}
   header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%); transform: rotate(30deg); pointer-events: none;}
   header h1{font-size:28px;font-weight:700;margin-bottom:10px; letter-spacing: 0.5px; position: relative; z-index: 1;}
@@ -37,25 +36,21 @@
   
   .container{max-width:1150px;margin:0 auto;padding:30px 20px;}
   
-  /* Tabs */
   .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px; justify-content: center;}
   .tab{padding:12px 24px;border:none;background:var(--card-bg);color:var(--text-muted);border-radius:30px;cursor:pointer;font-size:15px;font-weight:600; transition: var(--transition); box-shadow: var(--shadow-sm); border: 1px solid var(--border-color);}
   .tab:hover{ background: #f8fafc; transform: translateY(-2px); box-shadow: var(--shadow-md); color: var(--primary); }
   .tab.active{background:var(--primary);color:#fff; box-shadow: 0 4px 15px rgba(79,70,229,0.3); transform: translateY(-2px); border-color: var(--primary);}
   
-  /* Controls */
   .controls{margin-bottom:25px; position: relative; max-width: 600px; margin-left: auto; margin-right: auto;}
   .controls input{width:100%;padding:16px 24px;border:2px solid var(--border-color);border-radius:20px;font-size:16px;outline:none; transition: var(--transition); background: var(--card-bg); box-shadow: var(--shadow-sm); color: var(--text-main);}
   .controls input:focus{border-color:var(--primary-light); box-shadow: 0 0 0 4px rgba(79,70,229,0.1);}
   .controls input::placeholder { color: #94a3b8; }
   
-  /* Filter Buttons */
   .filter-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px; justify-content: center;}
   .filter-btn{padding:8px 18px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-muted);border-radius:20px;cursor:pointer;font-size:14px; font-weight: 600; transition: var(--transition); box-shadow: var(--shadow-sm);}
   .filter-btn:hover{ background: #f8fafc; color: var(--primary); }
   .filter-btn.active{background:var(--primary-dark);color:#fff;border-color:var(--primary-dark); box-shadow: 0 4px 10px rgba(55,48,163,0.25);}
   
-  /* Card Grid & Animation */
   .list-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px; animation: fadeIn 0.6s ease-out;}
   .card{background:var(--card-bg);padding:20px;border-radius:var(--radius-lg);cursor:pointer;border-right:6px solid var(--primary);box-shadow:var(--shadow-sm);position:relative; transition: var(--transition); animation: slideUp 0.5s ease-out; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); border-left: 1px solid var(--border-color);}
   .card:hover{ transform: translateY(-5px); box-shadow:var(--shadow-xl); border-right-color: var(--primary-light); }
@@ -69,14 +64,12 @@
   .card.noun .de { color: #047857; } 
   .card.adj .de { color: #b45309; }
   
-  /* Audio Button */
   .audio-btn{position:absolute; top:16px; left:16px; background:#f1f5f9; border:none; border-radius:50%; width:36px; height:36px; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; transition: var(--transition); color: var(--primary);}
   .audio-btn:hover{background:#e2e8f0; transform: scale(1.15); box-shadow: var(--shadow-sm);}
   .audio-btn:active{ transform: scale(0.9); }
   
   .hidden{display:none!important}
   
-  /* Modal */
   .modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:100;padding:20px;overflow-y:auto; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);}
   .modal.active{display:flex;align-items:center;justify-content:center; animation: fadeIn 0.3s ease-out;}
   .modal-content{background:var(--card-bg);border-radius:var(--radius-xl);max-width:680px;width:100%;padding:35px;position:relative; box-shadow: var(--shadow-xl); animation: zoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid var(--border-color);}
@@ -86,7 +79,6 @@
   
   .modal-content h2{color:var(--primary-dark);margin-bottom:10px;padding-left:50px;display:inline-block; font-size:28px; font-weight: 700;}
   
-  /* Badges */
   .badge{display:inline-block;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700;margin:6px 6px 15px 0; animation: fadeIn 0.5s ease-out; letter-spacing: 0.3px;}
   .badge.trennbar{background:#dbeafe;color:#1e40af} 
   .badge.reflexiv{background:#fce7f3;color:#9d174d}
@@ -95,7 +87,6 @@
   
   .rule-hint{background:#fffbeb;border-right:4px solid #f59e0b;padding:14px 18px;border-radius:10px;font-size:14px;color:#92400e;margin-bottom:20px; animation: slideInRight 0.4s ease-out; font-weight: 600;}
   
-  /* Conjugation Grid */
   .section-title{font-size:16px;font-weight:700;color:var(--primary);margin:25px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--border-color); display: flex; align-items: center; gap: 8px;}
   .conj-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px; animation: fadeIn 0.5s ease-out;}
   .conj-item{background:#f8fafc;padding:12px 16px;border-radius:10px;font-size:15px;display:flex; justify-content:space-between; align-items:center; border: 1px solid var(--border-color); transition: var(--transition); font-weight: 600;}
@@ -107,7 +98,6 @@
   .info-item { background: #f0fdf4; padding: 14px 18px; border-radius: 12px; font-size: 15px; border-right: 5px solid var(--accent); font-weight: 600; }
   .info-item strong { color: #065f46; display: block; font-size: 13px; margin-bottom: 6px; opacity: 0.8;}
   
-  /* Rules Styles */
   .rules-container{background:var(--card-bg);padding:35px;border-radius:var(--radius-xl);box-shadow:var(--shadow-md); animation: fadeIn 0.5s ease-out; border: 1px solid var(--border-color);}
   .rule-section { border-bottom: 1px solid var(--border-color); padding-bottom: 25px; margin-bottom: 25px; }
   .rule-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
@@ -129,7 +119,6 @@
   tr:last-child td { border-bottom: none; }
   tr:hover td { background: #f8fafc; }
 
-  /* Flashcard */
   .flashcard-container { max-width: 550px; margin: 40px auto; perspective: 1000px; }
   .flashcard { background: var(--card-bg); border-radius: var(--radius-xl); padding: 60px 30px; cursor: pointer; box-shadow: var(--shadow-lg); min-height: 280px; display: flex; align-items: center; justify-content: center; flex-direction: column; transition: var(--transition); border: 2px solid var(--border-color); }
   .flashcard:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-xl); border-color: var(--primary-light); }
@@ -141,7 +130,6 @@
   .btn-next:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(79,70,229,0.4); }
   .btn-next:active { transform: translateY(0); }
 
-  /* Animations */
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -149,40 +137,31 @@
   @keyframes slideInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
   @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-  /* Responsive (Mobile) */
   @media (max-width: 768px) {
     header { padding: 25px 15px; }
     header h1 { font-size: 20px; }
     header p { font-size: 13px; }
-    
     .container { padding: 15px 12px; }
-    
     .tabs { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding-bottom: 12px; gap: 8px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .tabs::-webkit-scrollbar { display: none; }
     .tab { padding: 10px 16px; font-size: 13px; white-space: nowrap; flex-shrink: 0; }
-    
     .controls input { padding: 12px 18px; font-size: 15px; }
-    
     .filter-btns { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding-bottom: 10px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .filter-btns::-webkit-scrollbar { display: none; }
     .filter-btn { padding: 7px 14px; font-size: 13px; white-space: nowrap; flex-shrink: 0; }
-    
     .list-grid { grid-template-columns: 1fr; gap: 12px; }
     .card { padding: 16px; }
     .card .de { font-size: 17px; padding-left: 38px; }
     .card .ar { font-size: 14px; }
     .audio-btn { width: 32px; height: 32px; font-size: 16px; }
-    
     .modal { padding: 10px; }
     .modal-content { padding: 20px 15px; border-radius: 16px; max-height: 90vh; overflow-y: auto; }
     .modal-content h2 { font-size: 22px; padding-left: 40px; }
     .close-btn { width: 32px; height: 32px; font-size: 16px; top: 12px; left: 12px; }
-    
     .conj-grid { grid-template-columns: 1fr; gap: 8px; }
     .conj-item { padding: 10px 14px; font-size: 14px; }
     .section-title { font-size: 14px; }
     .meta { font-size: 14px; padding: 12px; }
-    
     .rules-container { padding: 20px 15px; border-radius: 16px; }
     .rule-section h3 { font-size: 15px; padding: 14px 10px; }
     .rule-content { padding: 15px; }
@@ -191,19 +170,15 @@
     .example-box { padding: 15px; font-size: 14px; }
     table { font-size: 13px; }
     th, td { padding: 8px 5px; }
-    
     .flashcard { padding: 40px 20px; min-height: 220px; }
     .flashcard-front, .flashcard-back { font-size: 24px; }
     .flashcard-hint { font-size: 13px; margin-top: 15px; }
     .btn-next { padding: 14px 30px; font-size: 16px; margin: 25px auto; }
-    
     #exerciseOptions button { font-size: 14px !important; padding: 12px 15px !important; }
     #exerciseQuestion { font-size: 18px !important; }
-    
     #shadowDe, #challengeQ { font-size: 22px !important; }
     #shadowAr, #challengeQAr { font-size: 16px !important; }
     #challengeA { font-size: 18px !important; }
-    
     #resourcesGrid { grid-template-columns: 1fr !important; }
   }
   
@@ -230,6 +205,7 @@
     <button class="tab" data-tab="exercises">📝 التمارين</button>
     <button class="tab" data-tab="writing">✍️ تدريب الكتابة</button>
     <button class="tab" data-tab="listening">🎧 تدريب الاستماع</button>
+    <button class="tab" data-tab="dialogues">💬 المحادثات</button>
     <button class="tab" data-tab="review">🎯 المراجعة اليومية</button>
     <button class="tab" data-tab="rules">📖 القواعد</button>
     <button class="tab" data-tab="resources">📚 المصادر</button>
@@ -332,6 +308,10 @@
     <div id="listeningContent"></div>
   </div>
 
+  <div id="tab-dialogues" class="hidden">
+    <div id="dialoguesContent"></div>
+  </div>
+
   <div id="tab-review" class="hidden">
     <div id="reviewContent"></div>
   </div>
@@ -354,6 +334,7 @@
 <script src="review.js"></script>
 <script src="writing.js"></script>
 <script src="listening.js"></script>
+<script src="dialogues.js"></script>
 
 <script>
 const pronouns = ["ich","du","er/sie/es","wir","ihr","sie/Sie"];
@@ -446,6 +427,7 @@ function switchTab(name) {
   else if (name === "exercises") { startExercises(); }
   else if (name === "writing") { initWritingTab(); }
   else if (name === "listening") { initListeningTab(); }
+  else if (name === "dialogues") { initDialoguesTab(); }
   else if (name === "resources") { renderResources(); }
   else if (name === "review") { initReviewTab(); }
 }
@@ -528,7 +510,6 @@ function nextChallenge() {
   loadChallenge();
 }
 
-/* ============ كود التمارين ============ */
 let currentExercise = 0;
 let exerciseAnswered = false;
 let exerciseScore = 0;
@@ -593,7 +574,6 @@ function nextExercise() {
   loadExercise();
 }
 
-/* ============ كود المصادر ============ */
 function renderResources() {
   const container = document.getElementById('resourcesGrid');
   container.innerHTML = RESOURCES.map(r => 
