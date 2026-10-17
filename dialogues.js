@@ -1,8 +1,5 @@
 const DIALOGUES = [
-  {
-    title: "في المطعم (Im Restaurant)",
-    icon: "🍽️",
-    level: "A1",
+  { title: "في المطعم (Im Restaurant)", icon: "🍽️", level: "A1",
     lines: [
       { speaker: "A", de: "Guten Tag! Einen Tisch für zwei, bitte.", ar: "نهارك سعيد! طاولة لشخصين، من فضلك." },
       { speaker: "B", de: "Natürlich! Hier entlang, bitte.", ar: "بالتأكيد! من هنا، من فضلك." },
@@ -21,10 +18,7 @@ const DIALOGUES = [
       { q: "كم كان المجموع؟", options: ["15 يورو", "20 يورو", "25 يورو", "30 يورو"], answer: 2 }
     ]
   },
-  {
-    title: "في المطار (Am Flughafen)",
-    icon: "✈️",
-    level: "A1",
+  { title: "في المطار (Am Flughafen)", icon: "✈️", level: "A1",
     lines: [
       { speaker: "A", de: "Entschuldigung, wo ist der Check-in-Schalter?", ar: "عذراً، أين مكتب تسجيل الوصول؟" },
       { speaker: "B", de: "Gehen Sie geradeaus, dann links.", ar: "امشِ مباشرة، ثم يساراً." },
@@ -41,10 +35,7 @@ const DIALOGUES = [
       { q: "أين البوابة؟", options: ["الطابق الأرضي", "الطابق الأول", "الطابق الثاني", "خارج المطار"], answer: 1 }
     ]
   },
-  {
-    title: "عند الطبيب (Beim Arzt)",
-    icon: "🏥",
-    level: "A2",
+  { title: "عند الطبيب (Beim Arzt)", icon: "🏥", level: "A2",
     lines: [
       { speaker: "A", de: "Guten Tag, ich habe einen Termin um 10 Uhr.", ar: "نهارك سعيد، لدي موعد الساعة 10." },
       { speaker: "B", de: "Wie heißen Sie, bitte?", ar: "ما اسمك، من فضلك؟" },
@@ -63,10 +54,7 @@ const DIALOGUES = [
       { q: "كم مرة يأخذ الدواء؟", options: ["مرة", "مرتين", "ثلاث مرات", "أربع مرات"], answer: 2 }
     ]
   },
-  {
-    title: "في السوبر ماركت (Im Supermarkt)",
-    icon: "🛒",
-    level: "A1",
+  { title: "في السوبر ماركت (Im Supermarkt)", icon: "🛒", level: "A1",
     lines: [
       { speaker: "A", de: "Entschuldigung, wo finde ich die Milch?", ar: "عذراً، أين أجد الحليب؟" },
       { speaker: "B", de: "Die Milch ist im dritten Gang, links.", ar: "الحليب في الممر الثالث، على اليسار." },
@@ -83,10 +71,7 @@ const DIALOGUES = [
       { q: "ماذا اشترى الشخص A؟", options: ["الخبز فقط", "الحليب فقط", "الخبز والحليب", "اللحم"], answer: 2 }
     ]
   },
-  {
-    title: "التعريف بنفسك (Sich vorstellen)",
-    icon: "👋",
-    level: "A1",
+  { title: "التعريف بنفسك (Sich vorstellen)", icon: "👋", level: "A1",
     lines: [
       { speaker: "A", de: "Hallo! Ich heiße Ahmed. Und du?", ar: "مرحباً! اسمي أحمد. وأنت؟" },
       { speaker: "B", de: "Hallo Ahmed! Ich bin Maria. Freut mich!", ar: "مرحباً أحمد! أنا ماريا. سعيد بلقائك!" },
@@ -102,10 +87,7 @@ const DIALOGUES = [
       { q: "لماذا يتعلم أحمد الألمانية؟", options: ["للسياحة", "للعمل", "للدراسة", "للرياضة"], answer: 2 }
     ]
   },
-  {
-    title: "استئجار شقة (Wohnungssuche)",
-    icon: "🏠",
-    level: "A2",
+  { title: "استئجار شقة (Wohnungssuche)", icon: "🏠", level: "A2",
     lines: [
       { speaker: "A", de: "Guten Tag, ich rufe wegen der Wohnung an.", ar: "نهارك سعيد، أتصل بخصوص الشقة." },
       { speaker: "B", de: "Guten Tag! Die Wohnung ist noch frei.", ar: "نهارك سعيد! الشقة لا تزال متاحة." },
@@ -114,9 +96,7 @@ const DIALOGUES = [
       { speaker: "A", de: "Wie hoch ist die Miete?", ar: "كم الإيجار؟" },
       { speaker: "B", de: "Die Miete beträgt 600 Euro pro Monat.", ar: "الإيجار 600 يورو شهرياً." },
       { speaker: "A", de: "Ist die Wohnung möbliert?", ar: "هل الشقة مفروشة؟" },
-      { speaker: "B", de: "Nein, sie ist unmöbliert.", ar: "لا، هي غير مفروشة." },
-      { speaker: "A", de: "Wann kann ich sie besichtigen?", ar: "متى يمكنني معاينتها؟" },
-      { speaker: "B", de: "Morgen um 15 Uhr, passt das?", ar: "غداً الساعة 15، هل يناسبك؟" }
+      { speaker: "B", de: "Nein, sie ist unmöbliert.", ar: "لا، هي غير مفروشة." }
     ],
     questions: [
       { q: "كم مساحة الشقة؟", options: ["40 متراً", "50 متراً", "60 متراً", "70 متراً"], answer: 2 },
@@ -124,10 +104,7 @@ const DIALOGUES = [
       { q: "هل الشقة مفروشة؟", options: ["نعم", "لا", "مفروشة جزئياً", "غير مذكور"], answer: 1 }
     ]
   },
-  {
-    title: "في البنك (Bei der Bank)",
-    icon: "🏦",
-    level: "A2",
+  { title: "في البنك (Bei der Bank)", icon: "🏦", level: "A2",
     lines: [
       { speaker: "A", de: "Guten Tag, ich möchte ein Konto eröffnen.", ar: "نهارك سعيد، أريد فتح حساب." },
       { speaker: "B", de: "Haben Sie einen Personalausweis dabei?", ar: "هل معك بطاقة هوية؟" },
@@ -135,7 +112,7 @@ const DIALOGUES = [
       { speaker: "B", de: "Möchten Sie eine Kreditkarte?", ar: "هل تريد بطاقة ائتمان؟" },
       { speaker: "A", de: "Ja, bitte. Wie hoch sind die Gebühren?", ar: "نعم، من فضلك. كم الرسوم؟" },
       { speaker: "B", de: "Die Karte kostet 30 Euro pro Jahr.", ar: "البطاقة تكلف 30 يورو سنوياً." },
-      { speaker: "A", de: "Das ist okay. Wie lange dauert die Eröffnung?", ar: "هذا مناسب. كم تستغرق عملية الفتح؟" },
+      { speaker: "A", de: "Wie lange dauert die Eröffnung?", ar: "كم تستغرق عملية الفتح؟" },
       { speaker: "B", de: "Etwa 20 Minuten.", ar: "حوالي 20 دقيقة." }
     ],
     questions: [
@@ -144,10 +121,7 @@ const DIALOGUES = [
       { q: "كم تستغرق عملية فتح الحساب؟", options: ["10 دقائق", "20 دقيقة", "30 دقيقة", "ساعة"], answer: 1 }
     ]
   },
-  {
-    title: "في العمل (Bei der Arbeit)",
-    icon: "💼",
-    level: "A2",
+  { title: "في العمل (Bei der Arbeit)", icon: "💼", level: "A2",
     lines: [
       { speaker: "A", de: "Guten Morgen, Herr Müller! Wie geht es Ihnen?", ar: "صباح الخير، سيد مولر! كيف حالك؟" },
       { speaker: "B", de: "Guten Morgen! Danke, gut. Und Ihnen?", ar: "صباح الخير! شكراً، بخير. وأنت؟" },
@@ -162,10 +136,7 @@ const DIALOGUES = [
       { q: "ماذا يجب أن يحضر الشخص A؟", options: ["الكمبيوتر", "التقرير", "القهوة", "الكتب"], answer: 1 }
     ]
   },
-  {
-    title: "في محطة الحافلات (Am Busbahnhof)",
-    icon: "🚌",
-    level: "A2",
+  { title: "في محطة الحافلات (Am Busbahnhof)", icon: "🚌", level: "A2",
     lines: [
       { speaker: "A", de: "Entschuldigung, wann fährt der nächste Bus nach Hamburg?", ar: "عذراً، متى تنطلق الحافلة القادمة إلى هامبورغ؟" },
       { speaker: "B", de: "Der nächste Bus fährt um 14:30 Uhr.", ar: "الحافلة القادمة تنطلق الساعة 14:30." },
@@ -174,20 +145,15 @@ const DIALOGUES = [
       { speaker: "A", de: "Wie viel kostet eine Fahrkarte?", ar: "كم تكلف التذكرة؟" },
       { speaker: "B", de: "25 Euro einfach.", ar: "25 يورو ذهاب فقط." },
       { speaker: "A", de: "Ich möchte eine Fahrkarte, bitte.", ar: "أريد تذكرة، من فضلك." },
-      { speaker: "B", de: "Einfach oder hin und zurück?", ar: "ذهاب فقط أم ذهاب وعودة؟" },
-      { speaker: "A", de: "Einfach, bitte.", ar: "ذهاب فقط، من فضلك." },
       { speaker: "B", de: "Von Gleis 5.", ar: "من الرصيف 5." }
     ],
     questions: [
       { q: "متى تنطلق الحافلة؟", options: ["13:30", "14:30", "15:30", "16:30"], answer: 1 },
       { q: "كم تستغرق الرحلة؟", options: ["ساعتان", "3 ساعات", "4 ساعات", "5 ساعات"], answer: 2 },
-      { q: "من أي رصيف تنطلق الحافلة؟", options: ["الرصيف 3", "الرصيف 4", "الرصيف 5", "الرصيف 6"], answer: 2 }
+      { q: "من أي رصيف تنطلق الحافلة؟", options: ["3", "4", "5", "6"], answer: 2 }
     ]
   },
-  {
-    title: "في الجامعة (An der Universität)",
-    icon: "🏫",
-    level: "A2",
+  { title: "في الجامعة (An der Universität)", icon: "🏫", level: "A2",
     lines: [
       { speaker: "A", de: "Entschuldigung, wo ist das Sekretariat?", ar: "عذراً، أين مكتب السكرتارية؟" },
       { speaker: "B", de: "Das Sekretariat ist im zweiten Stock, Zimmer 214.", ar: "السكرتارية في الطابق الثاني، غرفة 214." },
@@ -196,9 +162,7 @@ const DIALOGUES = [
       { speaker: "A", de: "Ich habe Niveau A2.", ar: "لدي مستوى A2." },
       { speaker: "B", de: "Gut. Der Kurs beginnt am 15. September.", ar: "جيد. الدورة تبدأ في 15 سبتمبر." },
       { speaker: "A", de: "Wie viel kostet der Kurs?", ar: "كم تكلف الدورة؟" },
-      { speaker: "B", de: "250 Euro für drei Monate.", ar: "250 يورو لثلاثة أشهر." },
-      { speaker: "A", de: "Muss ich etwas mitbringen?", ar: "هل يجب أن أحضر شيئاً؟" },
-      { speaker: "B", de: "Ja, Ihren Pass und ein Foto.", ar: "نعم، جواز سفرك وصورة." }
+      { speaker: "B", de: "250 Euro für drei Monate.", ar: "250 يورو لثلاثة أشهر." }
     ],
     questions: [
       { q: "أين مكتب السكرتارية؟", options: ["الطابق الأول", "الطابق الثاني", "الطابق الثالث", "الطابق الأرضي"], answer: 1 },
@@ -206,30 +170,24 @@ const DIALOGUES = [
       { q: "متى تبدأ الدورة؟", options: ["1 سبتمبر", "10 سبتمبر", "15 سبتمبر", "20 سبتمبر"], answer: 2 }
     ]
   },
-  {
-    title: "رياضة ولياقة (Sport und Fitness)",
-    icon: "🏃",
-    level: "A2",
+  { title: "رياضة ولياقة (Sport und Fitness)", icon: "🏃", level: "A2",
     lines: [
       { speaker: "A", de: "Hallo! Was machst du in deiner Freizeit?", ar: "مرحباً! ماذا تفعل في وقت فراغك؟" },
-      { speaker: "B", de: "Ich gehe dreimal pro Woche ins Fitnessstudio. Und du?", ar: "أذهب ثلاث مرات في الأسبوع إلى صالة الألعاب الرياضية. وأنت؟" },
+      { speaker: "B", de: "Ich gehe dreimal pro Woche ins Fitnessstudio.", ar: "أذهب ثلاث مرات في الأسبوع إلى صالة الألعاب الرياضية." },
       { speaker: "A", de: "Ich spiele Fußball mit Freunden.", ar: "ألعب كرة القدم مع الأصدقاء." },
       { speaker: "B", de: "Das ist toll! Wie oft spielst du?", ar: "هذا رائع! كم مرة تلعب؟" },
-      { speaker: "A", de: "Zweimal pro Woche, am Dienstag und am Samstag.", ar: "مرتين في الأسبوع، الثلاثاء والسبت." },
-      { speaker: "B", de: "Möchtest du auch ins Fitnessstudio gehen?", ar: "هل تريد أيضاً الذهاب إلى صالة الألعاب الرياضية؟" },
-      { speaker: "A", de: "Ja, gerne! Wo ist das Fitnessstudio?", ar: "نعم، بكل سرور! أين صالة الألعاب الرياضية؟" },
+      { speaker: "A", de: "Zweimal pro Woche.", ar: "مرتين في الأسبوع." },
+      { speaker: "B", de: "Möchtest du auch ins Fitnessstudio gehen?", ar: "هل تريد أيضاً الذهاب إلى الصالة الرياضية؟" },
+      { speaker: "A", de: "Ja, gerne! Wo ist das Fitnessstudio?", ar: "نعم، بكل سرور! أين الصالة؟" },
       { speaker: "B", de: "In der Hauptstraße, neben dem Supermarkt.", ar: "في الشارع الرئيسي، بجانب السوبر ماركت." }
     ],
     questions: [
-      { q: "كم مرة يذهب الشخص B إلى الصالة الرياضية؟", options: ["مرة", "مرتين", "ثلاث مرات", "أربع مرات"], answer: 2 },
+      { q: "كم مرة يذهب الشخص B إلى الصالة؟", options: ["مرة", "مرتين", "ثلاث مرات", "أربع مرات"], answer: 2 },
       { q: "ماذا يلعب الشخص A؟", options: ["تنس", "كرة سلة", "كرة قدم", "سباحة"], answer: 2 },
       { q: "أين الصالة الرياضية؟", options: ["في الشارع الرئيسي", "في المدرسة", "في الحديقة", "في المطار"], answer: 0 }
     ]
   },
-  {
-    title: "طلب بيتزا (Pizza bestellen)",
-    icon: "🍕",
-    level: "A1",
+  { title: "طلب بيتزا (Pizza bestellen)", icon: "🍕", level: "A1",
     lines: [
       { speaker: "A", de: "Pizzeria Bella, guten Abend! Was möchten Sie bestellen?", ar: "بيتزيريا بيلا، مساء الخير! ماذا تريد أن تطلب؟" },
       { speaker: "B", de: "Guten Abend! Ich möchte eine Pizza Margherita, bitte.", ar: "مساء الخير! أريد بيتزا مارغريتا، من فضلك." },
@@ -246,10 +204,7 @@ const DIALOGUES = [
       { q: "كم يستغرق التوصيل؟", options: ["10 دقائق", "20 دقيقة", "30 دقيقة", "ساعة"], answer: 2 }
     ]
   },
-  {
-    title: "في السينما (Im Kino)",
-    icon: "🎬",
-    level: "A2",
+  { title: "في السينما (Im Kino)", icon: "🎬", level: "A2",
     lines: [
       { speaker: "A", de: "Guten Abend! Zwei Tickets für den Film um 20 Uhr, bitte.", ar: "مساء الخير! تذكرتان لفيلم الساعة 20، من فضلك." },
       { speaker: "B", de: "Welchen Film möchten Sie sehen?", ar: "أي فيلم تريد أن تشاهد؟" },
@@ -266,10 +221,7 @@ const DIALOGUES = [
       { q: "متى يبدأ الفيلم؟", options: ["بعد 5 دقائق", "بعد 10 دقائق", "بعد 15 دقيقة", "بعد 30 دقيقة"], answer: 2 }
     ]
   },
-  {
-    title: "في المستشفى (Im Krankenhaus)",
-    icon: "🏥",
-    level: "A2",
+  { title: "في المستشفى (Im Krankenhaus)", icon: "🏥", level: "A2",
     lines: [
       { speaker: "A", de: "Guten Tag, ich möchte meinen Bruder besuchen.", ar: "نهارك سعيد، أريد زيارة أخي." },
       { speaker: "B", de: "Wie heißt Ihr Bruder?", ar: "ما اسم أخيك؟" },
@@ -286,10 +238,7 @@ const DIALOGUES = [
       { q: "كم مدة الزيارة المسموحة؟", options: ["15 دقيقة", "30 دقيقة", "ساعة", "ساعتان"], answer: 1 }
     ]
   },
-  {
-    title: "مشكلة في السيارة (Autoproblem)",
-    icon: "🚗",
-    level: "A2",
+  { title: "مشكلة في السيارة (Autoproblem)", icon: "🚗", level: "A2",
     lines: [
       { speaker: "A", de: "Guten Tag, mein Auto hat ein Problem.", ar: "نهارك سعيد، سيارتي لديها مشكلة." },
       { speaker: "B", de: "Was ist das Problem?", ar: "ما المشكلة؟" },
@@ -298,50 +247,40 @@ const DIALOGUES = [
       { speaker: "A", de: "Heute Morgen.", ar: "هذا الصباح." },
       { speaker: "B", de: "Können Sie das Auto vorbeibringen?", ar: "هل يمكنك إحضار السيارة؟" },
       { speaker: "A", de: "Ja, wann passt es Ihnen?", ar: "نعم، متى يناسبك؟" },
-      { speaker: "B", de: "Morgen um 9 Uhr.", ar: "غداً الساعة 9." },
-      { speaker: "A", de: "Perfekt. Bis morgen!", ar: "ممتاز. إلى الغد!" }
+      { speaker: "B", de: "Morgen um 9 Uhr.", ar: "غداً الساعة 9." }
     ],
     questions: [
       { q: "ما مشكلة السيارة؟", options: ["الإطار مثقوب", "المحرك لا يعمل", "الوقود فارغ", "الفرامل معطلة"], answer: 1 },
       { q: "متى لاحظ الشخص A المشكلة؟", options: ["أمس", "اليوم صباحاً", "اليوم مساءً", "منذ أسبوع"], answer: 1 },
-      { q: "متى الموعد؟", options: ["غداً الساعة 9", "غداً الساعة 10", "اليوم الساعة 9", "بعد غد"], answer: 0 }
+      { q: "متى الموعد؟", options: ["غداً 9", "غداً 10", "اليوم 9", "بعد غد"], answer: 0 }
     ]
   },
-  {
-    title: "في المكتبة (In der Bibliothek)",
-    icon: "📚",
-    level: "A2",
+  { title: "في المكتبة (In der Bibliothek)", icon: "📚", level: "A2",
     lines: [
       { speaker: "A", de: "Guten Tag, ich möchte ein Buch ausleihen.", ar: "نهارك سعيد، أريد استعارة كتاب." },
       { speaker: "B", de: "Haben Sie einen Bibliotheksausweis?", ar: "هل لديك بطاقة مكتبة؟" },
       { speaker: "A", de: "Nein, ich brauche einen. Wie bekomme ich einen?", ar: "لا، أحتاج واحدة. كيف أحصل عليها؟" },
       { speaker: "B", de: "Sie brauchen Ihren Pass und ein Foto.", ar: "تحتاج جواز سفرك وصورة." },
       { speaker: "A", de: "Gut. Und wie lange kann ich ein Buch ausleihen?", ar: "جيد. وكم مدة استعارة الكتاب؟" },
-      { speaker: "B", de: "Vier Wochen. Sie können verlängern.", ar: "أربعة أسابيع. يمكنك التمديد." },
+      { speaker: "B", de: "Vier Wochen.", ar: "أربعة أسابيع." },
       { speaker: "A", de: "Wo sind die Deutschbücher?", ar: "أين كتب اللغة الألمانية؟" },
       { speaker: "B", de: "Im zweiten Stock, links.", ar: "في الطابق الثاني، على اليسار." }
     ],
     questions: [
       { q: "ماذا يريد الشخص A؟", options: ["شراء كتاب", "استعارة كتاب", "إرجاع كتاب", "قراءة كتاب"], answer: 1 },
-      { q: "ماذا يحتاج للحصول على بطاقة المكتبة؟", options: ["جواز سفر وصورة", "بطاقة بنكية", "شهادة ميلاد", "لا شيء"], answer: 0 },
+      { q: "ماذا يحتاج للحصول على البطاقة؟", options: ["جواز سفر وصورة", "بطاقة بنكية", "شهادة ميلاد", "لا شيء"], answer: 0 },
       { q: "كم مدة استعارة الكتاب؟", options: ["أسبوع", "أسبوعان", "3 أسابيع", "4 أسابيع"], answer: 3 }
     ]
   }
 ];
 
-let currentDialogue = 0;
-let currentLine = 0;
-let currentQuestion = 0;
-let dialogueScore = 0;
+let currentDialogue = 0, currentLine = 0, currentQuestion = 0, dialogueScore = 0;
 
-function initDialoguesTab() {
-  renderDialogueList();
-}
+function initDialoguesTab() { renderDialogueList(); }
 
 function renderDialogueList() {
   const container = document.getElementById('dialoguesContent');
   if (!container) return;
-  
   container.innerHTML = `
     <div style="max-width:900px; margin:0 auto;">
       <h2 style="color:#1e3a8a; text-align:center; margin-bottom:25px; font-size:24px;">💬 محادثات حياتية</h2>
@@ -358,15 +297,11 @@ function renderDialogueList() {
           </div>
         `).join('')}
       </div>
-    </div>
-  `;
+    </div>`;
 }
 
 function openDialogue(index) {
-  currentDialogue = index;
-  currentLine = 0;
-  currentQuestion = 0;
-  dialogueScore = 0;
+  currentDialogue = index; currentLine = 0; currentQuestion = 0; dialogueScore = 0;
   renderDialogueView();
   if (typeof trackActivity === 'function') trackActivity('dialogues', 1);
 }
@@ -374,25 +309,20 @@ function openDialogue(index) {
 function renderDialogueView() {
   const container = document.getElementById('dialoguesContent');
   if (!container) return;
-  
   const d = DIALOGUES[currentDialogue];
   const progress = ((currentLine + 1) / d.lines.length * 100).toFixed(0);
   const isLastLine = currentLine === d.lines.length - 1;
-  
   container.innerHTML = `
     <div style="max-width:750px; margin:0 auto;">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
         <button onclick="renderDialogueList()" style="padding:8px 16px; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:20px; cursor:pointer; font-size:14px; font-weight:600; color:#64748b; font-family:Cairo,sans-serif;">← العودة للقائمة</button>
         <span style="color:#64748b; font-size:14px; font-weight:600;">الجملة ${currentLine + 1} من ${d.lines.length}</span>
       </div>
-      
       <div style="background:#e2e8f0; height:8px; border-radius:10px; overflow:hidden; margin-bottom:25px;">
         <div style="width:${progress}%; height:100%; background:linear-gradient(90deg, #4f46e5, #818cf8); transition:width 0.3s;"></div>
       </div>
-      
       <div style="background:#fff; border-radius:20px; padding:35px 25px; box-shadow:0 10px 30px rgba(0,0,0,0.08);">
         <h2 style="color:#1e3a8a; margin-bottom:25px; font-size:22px; text-align:center;">${d.icon} ${d.title}</h2>
-        
         ${d.lines.map((line, i) => {
           const isActive = i === currentLine;
           const isPassed = i < currentLine;
@@ -410,7 +340,6 @@ function renderDialogueView() {
             </div>
           `;
         }).join('')}
-        
         <div style="display:flex; gap:10px; justify-content:center; margin-top:25px; flex-wrap:wrap;">
           <button onclick="prevDialogueLine()" style="padding:12px 25px; background:#f1f5f9; color:#64748b; border:1px solid #e2e8f0; border-radius:12px; cursor:pointer; font-size:15px; font-weight:600; font-family:Cairo,sans-serif; ${currentLine === 0 ? 'opacity:0.5;cursor:not-allowed;' : ''}" ${currentLine === 0 ? 'disabled' : ''}>← السابق</button>
           <button onclick="playDialogueLine()" style="padding:12px 30px; background:#4f46e5; color:#fff; border:none; border-radius:12px; cursor:pointer; font-size:15px; font-weight:700; font-family:Cairo,sans-serif;">🔊 استمع</button>
@@ -420,15 +349,13 @@ function renderDialogueView() {
           }
         </div>
       </div>
-    </div>
-  `;
+    </div>`;
 }
 
 function playDialogueLine() {
   const d = DIALOGUES[currentDialogue];
   speak(d.lines[currentLine].de);
 }
-
 function nextDialogueLine() {
   const d = DIALOGUES[currentDialogue];
   if (currentLine < d.lines.length - 1) {
@@ -438,25 +365,17 @@ function nextDialogueLine() {
     if (typeof trackActivity === 'function') trackActivity('dialogues', 1);
   }
 }
-
 function prevDialogueLine() {
-  if (currentLine > 0) {
-    currentLine--;
-    renderDialogueView();
-    playDialogueLine();
-  }
+  if (currentLine > 0) { currentLine--; renderDialogueView(); playDialogueLine(); }
 }
 
 function startQuestions() {
-  currentQuestion = 0;
-  dialogueScore = 0;
-  renderQuestion();
+  currentQuestion = 0; dialogueScore = 0; renderQuestion();
 }
 
 function renderQuestion() {
   const container = document.getElementById('dialoguesContent');
   const d = DIALOGUES[currentDialogue];
-  
   if (currentQuestion >= d.questions.length) {
     container.innerHTML = `
       <div style="max-width:600px; margin:0 auto; text-align:center; padding:50px 30px; background:#fff; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.08);">
@@ -467,14 +386,11 @@ function renderQuestion() {
           <button onclick="renderDialogueList()" style="padding:14px 30px; background:#4f46e5; color:#fff; border:none; border-radius:25px; cursor:pointer; font-size:16px; font-weight:700; font-family:Cairo,sans-serif;">← العودة للقائمة</button>
           <button onclick="startQuestions()" style="padding:14px 30px; background:#10b981; color:#fff; border:none; border-radius:25px; cursor:pointer; font-size:16px; font-weight:700; font-family:Cairo,sans-serif;">🔄 إعادة الأسئلة</button>
         </div>
-      </div>
-    `;
+      </div>`;
     return;
   }
-  
   const q = d.questions[currentQuestion];
   const progress = ((currentQuestion + 1) / d.questions.length * 100).toFixed(0);
-  
   container.innerHTML = `
     <div style="max-width:700px; margin:0 auto;">
       <div style="display:flex; justify-content:space-between; margin-bottom:15px; color:#64748b; font-size:14px; font-weight:600;">
@@ -491,9 +407,7 @@ function renderQuestion() {
         <div id="dialogueOptions" style="display:flex; flex-direction:column; gap:12px;"></div>
         <div id="dialogueFeedback" style="margin-top:20px; display:none; padding:15px; border-radius:10px;"></div>
       </div>
-    </div>
-  `;
-  
+    </div>`;
   const optsBox = document.getElementById('dialogueOptions');
   q.options.forEach((opt, idx) => {
     const btn = document.createElement('button');
@@ -509,9 +423,7 @@ function checkAnswer(selectedIdx, btnEl) {
   const q = d.questions[currentQuestion];
   const allBtns = document.getElementById('dialogueOptions').querySelectorAll('button');
   const feedback = document.getElementById('dialogueFeedback');
-  
   allBtns.forEach(b => { b.disabled = true; b.style.cursor = 'default'; });
-  
   if (selectedIdx === q.answer) {
     btnEl.style.background = '#dcfce7'; btnEl.style.borderColor = '#16a34a'; btnEl.style.color = '#166534';
     dialogueScore++;
@@ -523,9 +435,7 @@ function checkAnswer(selectedIdx, btnEl) {
     feedback.innerHTML = '❌ <strong>إجابة خاطئة.</strong> الإجابة الصحيحة: <strong>' + q.options[q.answer] + '</strong>';
     feedback.style.background = '#fef2f2'; feedback.style.color = '#991b1b'; feedback.style.borderRight = '4px solid #dc2626';
   }
-  
   feedback.style.display = 'block';
-  
   const nextBtn = document.createElement('button');
   nextBtn.innerText = currentQuestion === d.questions.length - 1 ? 'النتيجة النهائية 🎉' : 'السؤال التالي ➡️';
   nextBtn.style.cssText = 'margin-top:15px; padding:12px 30px; background:#4f46e5; color:#fff; border:none; border-radius:12px; cursor:pointer; font-size:15px; font-weight:700; font-family:Cairo,sans-serif; width:100%;';
