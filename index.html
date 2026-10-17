@@ -157,70 +157,32 @@
     
     .container { padding: 15px 12px; }
     
-    /* التبويبات تصبح قابلة للتمرير أفقياً */
-    .tabs { 
-      flex-wrap: nowrap; 
-      overflow-x: auto; 
-      justify-content: flex-start; 
-      padding-bottom: 12px;
-      gap: 8px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
+    .tabs { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding-bottom: 12px; gap: 8px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .tabs::-webkit-scrollbar { display: none; }
-    .tab { 
-      padding: 10px 16px; 
-      font-size: 13px; 
-      white-space: nowrap; 
-      flex-shrink: 0;
-    }
+    .tab { padding: 10px 16px; font-size: 13px; white-space: nowrap; flex-shrink: 0; }
     
     .controls input { padding: 12px 18px; font-size: 15px; }
     
-    .filter-btns { 
-      flex-wrap: nowrap; 
-      overflow-x: auto; 
-      justify-content: flex-start; 
-      padding-bottom: 10px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
+    .filter-btns { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding-bottom: 10px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .filter-btns::-webkit-scrollbar { display: none; }
-    .filter-btn { 
-      padding: 7px 14px; 
-      font-size: 13px; 
-      white-space: nowrap; 
-      flex-shrink: 0;
-    }
+    .filter-btn { padding: 7px 14px; font-size: 13px; white-space: nowrap; flex-shrink: 0; }
     
-    /* البطاقات تصبح بعمود واحد */
-    .list-grid { 
-      grid-template-columns: 1fr; 
-      gap: 12px;
-    }
+    .list-grid { grid-template-columns: 1fr; gap: 12px; }
     .card { padding: 16px; }
     .card .de { font-size: 17px; padding-left: 38px; }
     .card .ar { font-size: 14px; }
     .audio-btn { width: 32px; height: 32px; font-size: 16px; }
     
-    /* النافذة المنبثقة تأخذ عرض الشاشة */
     .modal { padding: 10px; }
-    .modal-content { 
-      padding: 20px 15px; 
-      border-radius: 16px;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
+    .modal-content { padding: 20px 15px; border-radius: 16px; max-height: 90vh; overflow-y: auto; }
     .modal-content h2 { font-size: 22px; padding-left: 40px; }
     .close-btn { width: 32px; height: 32px; font-size: 16px; top: 12px; left: 12px; }
     
-    /* شبكة التصريف تصبح عموداً واحداً */
     .conj-grid { grid-template-columns: 1fr; gap: 8px; }
     .conj-item { padding: 10px 14px; font-size: 14px; }
     .section-title { font-size: 14px; }
     .meta { font-size: 14px; padding: 12px; }
     
-    /* القواعد */
     .rules-container { padding: 20px 15px; border-radius: 16px; }
     .rule-section h3 { font-size: 15px; padding: 14px 10px; }
     .rule-content { padding: 15px; }
@@ -230,22 +192,18 @@
     table { font-size: 13px; }
     th, td { padding: 8px 5px; }
     
-    /* الاختبار */
     .flashcard { padding: 40px 20px; min-height: 220px; }
     .flashcard-front, .flashcard-back { font-size: 24px; }
     .flashcard-hint { font-size: 13px; margin-top: 15px; }
     .btn-next { padding: 14px 30px; font-size: 16px; margin: 25px auto; }
     
-    /* التمارين */
     #exerciseOptions button { font-size: 14px !important; padding: 12px 15px !important; }
     #exerciseQuestion { font-size: 18px !important; }
     
-    /* التحدث والكتابة */
     #shadowDe, #challengeQ { font-size: 22px !important; }
     #shadowAr, #challengeQAr { font-size: 16px !important; }
     #challengeA { font-size: 18px !important; }
     
-    /* البطاقات في الشبكة (Resources) */
     #resourcesGrid { grid-template-columns: 1fr !important; }
   }
   
@@ -271,6 +229,7 @@
     <button class="tab" data-tab="speaking">🗣️ التحدث</button>
     <button class="tab" data-tab="exercises">📝 التمارين</button>
     <button class="tab" data-tab="writing">✍️ تدريب الكتابة</button>
+    <button class="tab" data-tab="listening">🎧 تدريب الاستماع</button>
     <button class="tab" data-tab="review">🎯 المراجعة اليومية</button>
     <button class="tab" data-tab="rules">📖 القواعد</button>
     <button class="tab" data-tab="resources">📚 المصادر</button>
@@ -362,6 +321,17 @@
     <div id="writingContent"></div>
   </div>
 
+  <div id="tab-listening" class="hidden">
+    <div style="max-width:700px; margin:0 auto; margin-bottom:20px; text-align:center;">
+      <div style="display:inline-flex; gap:8px; flex-wrap:wrap; justify-content:center;">
+        <button class="filter-btn level-btn active" data-level="all" onclick="setListeningLevel('all')" style="padding:8px 18px; border:1px solid #e2e8f0; background:#fff; border-radius:20px; cursor:pointer; font-size:14px; font-weight:600; font-family:Cairo,sans-serif;">الكل</button>
+        <button class="filter-btn level-btn" data-level="A1" onclick="setListeningLevel('A1')" style="padding:8px 18px; border:1px solid #e2e8f0; background:#fff; border-radius:20px; cursor:pointer; font-size:14px; font-weight:600; font-family:Cairo,sans-serif;">A1</button>
+        <button class="filter-btn level-btn" data-level="A2" onclick="setListeningLevel('A2')" style="padding:8px 18px; border:1px solid #e2e8f0; background:#fff; border-radius:20px; cursor:pointer; font-size:14px; font-weight:600; font-family:Cairo,sans-serif;">A2</button>
+      </div>
+    </div>
+    <div id="listeningContent"></div>
+  </div>
+
   <div id="tab-review" class="hidden">
     <div id="reviewContent"></div>
   </div>
@@ -383,6 +353,7 @@
 <script src="exercises.js"></script>
 <script src="review.js"></script>
 <script src="writing.js"></script>
+<script src="listening.js"></script>
 
 <script>
 const pronouns = ["ich","du","er/sie/es","wir","ihr","sie/Sie"];
@@ -474,6 +445,7 @@ function switchTab(name) {
   else if (name === "speaking") { loadShadow(); loadChallenge(); }
   else if (name === "exercises") { startExercises(); }
   else if (name === "writing") { initWritingTab(); }
+  else if (name === "listening") { initListeningTab(); }
   else if (name === "resources") { renderResources(); }
   else if (name === "review") { initReviewTab(); }
 }
