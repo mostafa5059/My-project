@@ -1,4 +1,4 @@
-/* ============ نظام التكرار المتباعد (SRS) - متوافق مع verbs.js الجديد ============ */
+/* ============ نظام التكرار المتباعد (SRS) - متوافق مع verbs.js و progress ============ */
 const STORAGE_KEY = 'german_srs_data';
 
 function loadSRSData() {
@@ -28,7 +28,7 @@ function initCard(data, word, ar, type) {
       lastReview: null
     };
   } else {
-    data[key].ar = ar; // تحديث الترجمة إذا تغيرت
+    data[key].ar = ar;
   }
   return data[key];
 }
@@ -174,7 +174,7 @@ function renderReviewTab() {
           <div style="background:#f0fdf4; padding:20px 40px; border-radius:12px; display:inline-block;">
             <div style="color:#64748b; font-size:14px; margin-bottom:5px;">الألمانية:</div>
             <div style="color:#059669; font-size:32px; font-weight:700;">${card.word}</div>
-            <button onclick="speak('${card.word}')" style="margin-top:10px; background:#eff6ff; border:none; border-radius:50%; width:36px; height:36px; cursor:pointer; font-size:18px;">🔊</button>
+            <button onclick="speak('${card.word.replace(/'/g, "\\'")}')" style="margin-top:10px; background:#eff6ff; border:none; border-radius:50%; width:36px; height:36px; cursor:pointer; font-size:18px;">🔊</button>
           </div>
         </div>
       </div>
@@ -199,9 +199,14 @@ function revealCard() {
 function answerCard(quality) {
   const card = currentReviewCards[currentReviewIndex];
   reviewCard(card, quality);
+  
+  // تسجيل النشاط في لوحة التقدم (سطر واحد يُضاف)
+  if (typeof trackActivity === 'function') trackActivity('reviews', 1);
+  
   if (quality === 1) reviewStats.hard++;
   else if (quality === 3) reviewStats.good++;
   else reviewStats.easy++;
+  
   currentReviewIndex++;
   renderReviewTab();
 }
