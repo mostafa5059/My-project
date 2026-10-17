@@ -64,105 +64,267 @@ const DIALOGUES = [
     ]
   },
   {
-    title: "في الفندق (Im Hotel)",
-    icon: "🏨",
+    title: "في السوبر ماركت (Im Supermarkt)",
+    icon: "🛒",
     level: "A1",
     lines: [
-      { speaker: "A", de: "Guten Abend! Ich habe eine Reservierung.", ar: "مساء الخير! لدي حجز." },
-      { speaker: "B", de: "Wie ist Ihr Name, bitte?", ar: "ما اسمك، من فضلك؟" },
-      { speaker: "A", de: "Mein Name ist Ahmed Hassan.", ar: "اسمي أحمد حسن." },
-      { speaker: "B", de: "Ja, ein Einzelzimmer für drei Nächte.", ar: "نعم، غرفة فردية لثلاث ليالٍ." },
-      { speaker: "A", de: "Wie viel kostet die Nacht?", ar: "كم تكلف الليلة؟" },
-      { speaker: "B", de: "80 Euro pro Nacht, inklusive Frühstück.", ar: "80 يورو في الليلة، شاملة الفطور." },
-      { speaker: "A", de: "Wann ist das Frühstück?", ar: "متى الفطور؟" },
-      { speaker: "B", de: "Von 7 bis 10 Uhr im Erdgeschoss.", ar: "من 7 إلى 10 في الطابق الأرضي." },
-      { speaker: "A", de: "Wo ist mein Zimmer?", ar: "أين غرفتي؟" },
-      { speaker: "B", de: "Zimmer 305, im dritten Stock.", ar: "الغرفة 305، في الطابق الثالث." }
+      { speaker: "A", de: "Entschuldigung, wo finde ich die Milch?", ar: "عذراً، أين أجد الحليب؟" },
+      { speaker: "B", de: "Die Milch ist im dritten Gang, links.", ar: "الحليب في الممر الثالث، على اليسار." },
+      { speaker: "A", de: "Danke. Wie viel kostet das Brot?", ar: "شكراً. كم يكلف الخبز؟" },
+      { speaker: "B", de: "Das Brot kostet 2 Euro.", ar: "الخبز يكلف 2 يورو." },
+      { speaker: "A", de: "Ich nehme das Brot und die Milch.", ar: "سآخذ الخبز والحليب." },
+      { speaker: "B", de: "Noch etwas?", ar: "شيء آخر؟" },
+      { speaker: "A", de: "Nein, danke. Wo kann ich bezahlen?", ar: "لا، شكراً. أين يمكنني الدفع؟" },
+      { speaker: "B", de: "An der Kasse dort vorne.", ar: "عند الصندوق هناك في الأمام." }
     ],
     questions: [
-      { q: "كم عدد الليالي؟", options: ["ليلة", "ليلتان", "ثلاث ليالٍ", "أربع ليالٍ"], answer: 2 },
-      { q: "كم تكلف الليلة؟", options: ["60 يورو", "70 يورو", "80 يورو", "90 يورو"], answer: 2 },
-      { q: "في أي طابق الغرفة؟", options: ["الأول", "الثاني", "الثالث", "الرابع"], answer: 2 }
+      { q: "أين يوجد الحليب؟", options: ["الممر الأول", "الممر الثاني", "الممر الثالث", "الممر الرابع"], answer: 2 },
+      { q: "كم يكلف الخبز؟", options: ["1 يورو", "2 يورو", "3 يورو", "4 يورو"], answer: 1 },
+      { q: "ماذا اشترى الشخص A؟", options: ["الخبز فقط", "الحليب فقط", "الخبز والحليب", "اللحم"], answer: 2 }
     ]
   },
   {
-    title: "في الصيدلية (In der Apotheke)",
-    icon: "💊",
-    level: "A2",
-    lines: [
-      { speaker: "A", de: "Guten Tag, ich brauche etwas gegen Kopfschmerzen.", ar: "نهارك سعيد، أحتاج شيئاً ضد الصداع." },
-      { speaker: "B", de: "Haben Sie ein Rezept?", ar: "هل لديك وصفة طبية؟" },
-      { speaker: "A", de: "Nein, ich brauche nur etwas Rezeptfreies.", ar: "لا، أحتاج فقط شيئاً بدون وصفة." },
-      { speaker: "B", de: "Ich empfehle Ihnen diese Tabletten. Nehmen Sie eine Tablette zweimal täglich.", ar: "أنصحك بهذه الأقراص. خذ قرصاً مرتين يومياً." },
-      { speaker: "A", de: "Danke. Wie viel kostet das?", ar: "شكراً. كم يكلف هذا؟" },
-      { speaker: "B", de: "Das kostet 8 Euro.", ar: "يكلف 8 يورو." },
-      { speaker: "A", de: "Und was hilft gegen Husten?", ar: "وما الذي يساعد ضد السعال؟" },
-      { speaker: "B", de: "Dieser Sirup hier ist sehr gut.", ar: "هذا الشراب هنا جيد جداً." }
-    ],
-    questions: [
-      { q: "ماذا يحتاج الشخص A؟", options: ["شيء ضد الصداع", "شيء ضد السعال", "شيء ضد الحمى", "شيء ضد البرد"], answer: 0 },
-      { q: "كم مرة يأخذ الأقراص؟", options: ["مرة", "مرتين", "ثلاث مرات", "أربع مرات"], answer: 1 },
-      { q: "كم تكلفة الأقراص؟", options: ["5 يورو", "6 يورو", "8 يورو", "10 يورو"], answer: 2 }
-    ]
-  },
-  {
-    title: "دعوة إلى حفلة (Einladung zur Party)",
-    icon: "🎉",
-    level: "A2",
-    lines: [
-      { speaker: "A", de: "Hallo Maria! Ich habe am Samstag eine Party.", ar: "مرحباً ماريا! لدي حفلة يوم السبت." },
-      { speaker: "B", de: "Oh, toll! Wo findet die Party statt?", ar: "أوه، رائع! أين تقام الحفلة؟" },
-      { speaker: "A", de: "Bei mir zu Hause, in der Schillerstraße 12.", ar: "في منزلي، في شارع شيلر 12." },
-      { speaker: "B", de: "Und wann beginnt sie?", ar: "ومتى تبدأ؟" },
-      { speaker: "A", de: "Um 19 Uhr. Kannst du kommen?", ar: "الساعة 19. هل يمكنك المجيء؟" },
-      { speaker: "B", de: "Ja, ich komme sehr gerne! Soll ich etwas mitbringen?", ar: "نعم، سآتي بكل سرور! هل يجب أن أحضر شيئاً؟" },
-      { speaker: "A", de: "Bring bitte einen Salat mit.", ar: "أحضري سلطة من فضلك." },
-      { speaker: "B", de: "Natürlich! Bis Samstag!", ar: "بالطبع! إلى السبت!" }
-    ],
-    questions: [
-      { q: "متى الحفلة؟", options: ["الجمعة", "السبت", "الأحد", "الاثنين"], answer: 1 },
-      { q: "أين تقام الحفلة؟", options: ["في مطعم", "في منزل الشخص A", "في حديقة", "في مقهى"], answer: 1 },
-      { q: "ماذا يجب أن تحضر ماريا؟", options: ["كعكة", "سلطة", "مشروب", "لا شيء"], answer: 1 }
-    ]
-  },
-  {
-    title: "محادثة هاتفية (Telefongespräch)",
-    icon: "📞",
-    level: "A2",
-    lines: [
-      { speaker: "A", de: "Guten Tag, hier ist Ahmed Hassan. Kann ich mit Frau Müller sprechen?", ar: "نهارك سعيد، أنا أحمد حسن. هل يمكنني التحدث مع السيدة مولر؟" },
-      { speaker: "B", de: "Einen Moment bitte. Es tut mir leid, Frau Müller ist in einer Besprechung.", ar: "لحظة من فضلك. آسف، السيدة مولر في اجتماع." },
-      { speaker: "A", de: "Wann ist sie wieder erreichbar?", ar: "متى يمكن الوصول إليها مرة أخرى؟" },
-      { speaker: "B", de: "Gegen 15 Uhr. Soll ich ihr eine Nachricht geben?", ar: "حوالي الساعة 15. هل أعطيها رسالة؟" },
-      { speaker: "A", de: "Ja, bitte. Sagen Sie ihr, dass ich angerufen habe.", ar: "نعم، من فضلك. قولي لها أنني اتصلت." },
-      { speaker: "B", de: "Ihre Telefonnummer bitte?", ar: "رقم هاتفك من فضلك؟" },
-      { speaker: "A", de: "0152 3456789.", ar: "0152 3456789." },
-      { speaker: "B", de: "Danke. Ich richte es aus. Auf Wiederhören!", ar: "شكراً. سأبلغها. إلى اللقاء!" }
-    ],
-    questions: [
-      { q: "مع من يريد أحمد التحدث؟", options: ["السيد مولر", "السيدة مولر", "السيد شميت", "السيدة شميت"], answer: 1 },
-      { q: "أين السيدة مولر؟", options: ["في إجازة", "في اجتماع", "في المنزل", "في المطار"], answer: 1 },
-      { q: "متى يمكن الوصول إليها؟", options: ["13", "14", "15", "16"], answer: 2 }
-    ]
-  },
-  {
-    title: "في المقهى (Im Café)",
-    icon: "☕",
+    title: "التعريف بنفسك (Sich vorstellen)",
+    icon: "👋",
     level: "A1",
     lines: [
-      { speaker: "A", de: "Guten Tag! Was möchten Sie bestellen?", ar: "نهارك سعيد! ماذا تريد أن تطلب؟" },
-      { speaker: "B", de: "Ich möchte einen Kaffee mit Milch, bitte.", ar: "أريد قهوة بالحليب، من فضلك." },
-      { speaker: "A", de: "Möchten Sie auch etwas essen?", ar: "هل تريد أيضاً شيئاً للأكل؟" },
-      { speaker: "B", de: "Ja, einen Apfelkuchen, bitte.", ar: "نعم، كعكة تفاح، من فضلك." },
-      { speaker: "A", de: "Möchten Sie hier sitzen oder mitnehmen?", ar: "تريد الجلوس هنا أم الأخذ معك؟" },
-      { speaker: "B", de: "Ich sitze hier. Danke.", ar: "سأجلس هنا. شكراً." },
-      { speaker: "A", de: "Das macht 6 Euro 50.", ar: "المجموع 6 يورو 50 سنتاً." },
-      { speaker: "B", de: "Hier bitte. Stimmt so.", ar: "ها هو من فضلك. احتفظ بالباقي." }
+      { speaker: "A", de: "Hallo! Ich heiße Ahmed. Und du?", ar: "مرحباً! اسمي أحمد. وأنت؟" },
+      { speaker: "B", de: "Hallo Ahmed! Ich bin Maria. Freut mich!", ar: "مرحباً أحمد! أنا ماريا. سعيد بلقائك!" },
+      { speaker: "A", de: "Woher kommst du, Maria?", ar: "من أين أنتِ يا ماريا؟" },
+      { speaker: "B", de: "Ich komme aus Spanien. Und du?", ar: "أنا من إسبانيا. وأنت؟" },
+      { speaker: "A", de: "Ich komme aus Ägypten.", ar: "أنا من مصر." },
+      { speaker: "B", de: "Was machst du hier?", ar: "ماذا تفعل هنا؟" },
+      { speaker: "A", de: "Ich lerne Deutsch. Ich möchte in Deutschland studieren.", ar: "أتعلم الألمانية. أريد الدراسة في ألمانيا." },
+      { speaker: "B", de: "Das ist toll! Viel Erfolg!", ar: "هذا رائع! حظاً موفقاً!" }
     ],
     questions: [
-      { q: "ماذا طلب الشخص B للشرب؟", options: ["شاي", "قهوة بالحليب", "عصير", "ماء"], answer: 1 },
-      { q: "ماذا طلب للأكل؟", options: ["كعكة شوكولاتة", "كعكة تفاح", "ساندويتش", "سلطة"], answer: 1 },
-      { q: "كم كان المجموع؟", options: ["5 يورو", "6 يورو 50", "7 يورو", "8 يورو"], answer: 1 }
+      { q: "من أين ماريا؟", options: ["من مصر", "من ألمانيا", "من إسبانيا", "من فرنسا"], answer: 2 },
+      { q: "لماذا يتعلم أحمد الألمانية؟", options: ["للسياحة", "للعمل", "للدراسة", "للرياضة"], answer: 2 }
+    ]
+  },
+  {
+    title: "استئجار شقة (Wohnungssuche)",
+    icon: "🏠",
+    level: "A2",
+    lines: [
+      { speaker: "A", de: "Guten Tag, ich rufe wegen der Wohnung an.", ar: "نهارك سعيد، أتصل بخصوص الشقة." },
+      { speaker: "B", de: "Guten Tag! Die Wohnung ist noch frei.", ar: "نهارك سعيد! الشقة لا تزال متاحة." },
+      { speaker: "A", de: "Wie groß ist die Wohnung?", ar: "كم مساحة الشقة؟" },
+      { speaker: "B", de: "Sie hat 60 Quadratmeter, zwei Zimmer und eine Küche.", ar: "مساحتها 60 متراً مربعاً، غرفتان ومطبخ." },
+      { speaker: "A", de: "Wie hoch ist die Miete?", ar: "كم الإيجار؟" },
+      { speaker: "B", de: "Die Miete beträgt 600 Euro pro Monat.", ar: "الإيجار 600 يورو شهرياً." },
+      { speaker: "A", de: "Ist die Wohnung möbliert?", ar: "هل الشقة مفروشة؟" },
+      { speaker: "B", de: "Nein, sie ist unmöbliert.", ar: "لا، هي غير مفروشة." },
+      { speaker: "A", de: "Wann kann ich sie besichtigen?", ar: "متى يمكنني معاينتها؟" },
+      { speaker: "B", de: "Morgen um 15 Uhr, passt das?", ar: "غداً الساعة 15، هل يناسبك؟" }
+    ],
+    questions: [
+      { q: "كم مساحة الشقة؟", options: ["40 متراً", "50 متراً", "60 متراً", "70 متراً"], answer: 2 },
+      { q: "كم الإيجار الشهري؟", options: ["400 يورو", "500 يورو", "600 يورو", "700 يورو"], answer: 2 },
+      { q: "هل الشقة مفروشة؟", options: ["نعم", "لا", "مفروشة جزئياً", "غير مذكور"], answer: 1 }
+    ]
+  },
+  {
+    title: "في البنك (Bei der Bank)",
+    icon: "🏦",
+    level: "A2",
+    lines: [
+      { speaker: "A", de: "Guten Tag, ich möchte ein Konto eröffnen.", ar: "نهارك سعيد، أريد فتح حساب." },
+      { speaker: "B", de: "Haben Sie einen Personalausweis dabei?", ar: "هل معك بطاقة هوية؟" },
+      { speaker: "A", de: "Ja, hier bitte.", ar: "نعم، ها هي من فضلك." },
+      { speaker: "B", de: "Möchten Sie eine Kreditkarte?", ar: "هل تريد بطاقة ائتمان؟" },
+      { speaker: "A", de: "Ja, bitte. Wie hoch sind die Gebühren?", ar: "نعم، من فضلك. كم الرسوم؟" },
+      { speaker: "B", de: "Die Karte kostet 30 Euro pro Jahr.", ar: "البطاقة تكلف 30 يورو سنوياً." },
+      { speaker: "A", de: "Das ist okay. Wie lange dauert die Eröffnung?", ar: "هذا مناسب. كم تستغرق عملية الفتح؟" },
+      { speaker: "B", de: "Etwa 20 Minuten.", ar: "حوالي 20 دقيقة." }
+    ],
+    questions: [
+      { q: "ماذا يريد الشخص A؟", options: ["سحب مال", "فتح حساب", "تحويل مال", "إغلاق حساب"], answer: 1 },
+      { q: "كم تكلف بطاقة الائتمان سنوياً؟", options: ["10 يورو", "20 يورو", "30 يورو", "40 يورو"], answer: 2 },
+      { q: "كم تستغرق عملية فتح الحساب؟", options: ["10 دقائق", "20 دقيقة", "30 دقيقة", "ساعة"], answer: 1 }
+    ]
+  },
+  {
+    title: "في العمل (Bei der Arbeit)",
+    icon: "💼",
+    level: "A2",
+    lines: [
+      { speaker: "A", de: "Guten Morgen, Herr Müller! Wie geht es Ihnen?", ar: "صباح الخير، سيد مولر! كيف حالك؟" },
+      { speaker: "B", de: "Guten Morgen! Danke, gut. Und Ihnen?", ar: "صباح الخير! شكراً، بخير. وأنت؟" },
+      { speaker: "A", de: "Auch gut, danke. Wann ist die Besprechung?", ar: "بخير أيضاً، شكراً. متى الاجتماع؟" },
+      { speaker: "B", de: "Um 10 Uhr im Konferenzraum.", ar: "الساعة 10 في قاعة الاجتماعات." },
+      { speaker: "A", de: "Muss ich etwas vorbereiten?", ar: "هل يجب أن أحضر شيئاً؟" },
+      { speaker: "B", de: "Ja, bitte bringen Sie den Bericht mit.", ar: "نعم، من فضلك أحضر التقرير معك." },
+      { speaker: "A", de: "Natürlich, ich habe ihn schon fertig.", ar: "بالطبع، لقد أنهيته بالفعل." }
+    ],
+    questions: [
+      { q: "متى الاجتماع؟", options: ["الساعة 8", "الساعة 9", "الساعة 10", "الساعة 11"], answer: 2 },
+      { q: "ماذا يجب أن يحضر الشخص A؟", options: ["الكمبيوتر", "التقرير", "القهوة", "الكتب"], answer: 1 }
+    ]
+  },
+  {
+    title: "في محطة الحافلات (Am Busbahnhof)",
+    icon: "🚌",
+    level: "A2",
+    lines: [
+      { speaker: "A", de: "Entschuldigung, wann fährt der nächste Bus nach Hamburg?", ar: "عذراً، متى تنطلق الحافلة القادمة إلى هامبورغ؟" },
+      { speaker: "B", de: "Der nächste Bus fährt um 14:30 Uhr.", ar: "الحافلة القادمة تنطلق الساعة 14:30." },
+      { speaker: "A", de: "Wie lange dauert die Fahrt?", ar: "كم تستغرق الرحلة؟" },
+      { speaker: "B", de: "Etwa 4 Stunden.", ar: "حوالي 4 ساعات." },
+      { speaker: "A", de: "Wie viel kostet eine Fahrkarte?", ar: "كم تكلف التذكرة؟" },
+      { speaker: "B", de: "25 Euro einfach.", ar: "25 يورو ذهاب فقط." },
+      { speaker: "A", de: "Ich möchte eine Fahrkarte, bitte.", ar: "أريد تذكرة، من فضلك." },
+      { speaker: "B", de: "Einfach oder hin und zurück?", ar: "ذهاب فقط أم ذهاب وعودة؟" },
+      { speaker: "A", de: "Einfach, bitte.", ar: "ذهاب فقط، من فضلك." },
+      { speaker: "B", de: "Von Gleis 5.", ar: "من الرصيف 5." }
+    ],
+    questions: [
+      { q: "متى تنطلق الحافلة؟", options: ["13:30", "14:30", "15:30", "16:30"], answer: 1 },
+      { q: "كم تستغرق الرحلة؟", options: ["ساعتان", "3 ساعات", "4 ساعات", "5 ساعات"], answer: 2 },
+      { q: "من أي رصيف تنطلق الحافلة؟", options: ["الرصيف 3", "الرصيف 4", "الرصيف 5", "الرصيف 6"], answer: 2 }
+    ]
+  },
+  {
+    title: "في الجامعة (An der Universität)",
+    icon: "🏫",
+    level: "A2",
+    lines: [
+      { speaker: "A", de: "Entschuldigung, wo ist das Sekretariat?", ar: "عذراً، أين مكتب السكرتارية؟" },
+      { speaker: "B", de: "Das Sekretariat ist im zweiten Stock, Zimmer 214.", ar: "السكرتارية في الطابق الثاني، غرفة 214." },
+      { speaker: "A", de: "Danke. Ich möchte mich für den Deutschkurs anmelden.", ar: "شكراً. أريد التسجيل في دورة اللغة الألمانية." },
+      { speaker: "B", de: "Welches Niveau haben Sie?", ar: "ما مستواك؟" },
+      { speaker: "A", de: "Ich habe Niveau A2.", ar: "لدي مستوى A2." },
+      { speaker: "B", de: "Gut. Der Kurs beginnt am 15. September.", ar: "جيد. الدورة تبدأ في 15 سبتمبر." },
+      { speaker: "A", de: "Wie viel kostet der Kurs?", ar: "كم تكلف الدورة؟" },
+      { speaker: "B", de: "250 Euro für drei Monate.", ar: "250 يورو لثلاثة أشهر." },
+      { speaker: "A", de: "Muss ich etwas mitbringen?", ar: "هل يجب أن أحضر شيئاً؟" },
+      { speaker: "B", de: "Ja, Ihren Pass und ein Foto.", ar: "نعم، جواز سفرك وصورة." }
+    ],
+    questions: [
+      { q: "أين مكتب السكرتارية؟", options: ["الطابق الأول", "الطابق الثاني", "الطابق الثالث", "الطابق الأرضي"], answer: 1 },
+      { q: "ما مستوى الشخص A؟", options: ["A1", "A2", "B1", "B2"], answer: 1 },
+      { q: "متى تبدأ الدورة؟", options: ["1 سبتمبر", "10 سبتمبر", "15 سبتمبر", "20 سبتمبر"], answer: 2 }
+    ]
+  },
+  {
+    title: "رياضة ولياقة (Sport und Fitness)",
+    icon: "🏃",
+    level: "A2",
+    lines: [
+      { speaker: "A", de: "Hallo! Was machst du in deiner Freizeit?", ar: "مرحباً! ماذا تفعل في وقت فراغك؟" },
+      { speaker: "B", de: "Ich gehe dreimal pro Woche ins Fitnessstudio. Und du?", ar: "أذهب ثلاث مرات في الأسبوع إلى صالة الألعاب الرياضية. وأنت؟" },
+      { speaker: "A", de: "Ich spiele Fußball mit Freunden.", ar: "ألعب كرة القدم مع الأصدقاء." },
+      { speaker: "B", de: "Das ist toll! Wie oft spielst du?", ar: "هذا رائع! كم مرة تلعب؟" },
+      { speaker: "A", de: "Zweimal pro Woche, am Dienstag und am Samstag.", ar: "مرتين في الأسبوع، الثلاثاء والسبت." },
+      { speaker: "B", de: "Möchtest du auch ins Fitnessstudio gehen?", ar: "هل تريد أيضاً الذهاب إلى صالة الألعاب الرياضية؟" },
+      { speaker: "A", de: "Ja, gerne! Wo ist das Fitnessstudio?", ar: "نعم، بكل سرور! أين صالة الألعاب الرياضية؟" },
+      { speaker: "B", de: "In der Hauptstraße, neben dem Supermarkt.", ar: "في الشارع الرئيسي، بجانب السوبر ماركت." }
+    ],
+    questions: [
+      { q: "كم مرة يذهب الشخص B إلى الصالة الرياضية؟", options: ["مرة", "مرتين", "ثلاث مرات", "أربع مرات"], answer: 2 },
+      { q: "ماذا يلعب الشخص A؟", options: ["تنس", "كرة سلة", "كرة قدم", "سباحة"], answer: 2 },
+      { q: "أين الصالة الرياضية؟", options: ["في الشارع الرئيسي", "في المدرسة", "في الحديقة", "في المطار"], answer: 0 }
+    ]
+  },
+  {
+    title: "طلب بيتزا (Pizza bestellen)",
+    icon: "🍕",
+    level: "A1",
+    lines: [
+      { speaker: "A", de: "Pizzeria Bella, guten Abend! Was möchten Sie bestellen?", ar: "بيتزيريا بيلا، مساء الخير! ماذا تريد أن تطلب؟" },
+      { speaker: "B", de: "Guten Abend! Ich möchte eine Pizza Margherita, bitte.", ar: "مساء الخير! أريد بيتزا مارغريتا، من فضلك." },
+      { speaker: "A", de: "Möchten Sie auch etwas trinken?", ar: "هل تريد أيضاً شيئاً للشرب؟" },
+      { speaker: "B", de: "Ja, eine Cola, bitte.", ar: "نعم، كولا، من فضلك." },
+      { speaker: "A", de: "Möchten Sie die Pizza abholen oder liefern lassen?", ar: "تريد استلام البيتزا أم توصيلها؟" },
+      { speaker: "B", de: "Liefern bitte. Meine Adresse ist Gartenstraße 10.", ar: "توصيل من فضلك. عنواني هو Gartenstraße 10." },
+      { speaker: "A", de: "Das dauert etwa 30 Minuten.", ar: "يستغرق حوالي 30 دقيقة." },
+      { speaker: "B", de: "Das ist in Ordnung. Danke!", ar: "هذا مناسب. شكراً!" }
+    ],
+    questions: [
+      { q: "ماذا طلب الشخص B؟", options: ["بيتزا مارغريتا", "بيتزا سلامي", "معكرونة", "سلطة"], answer: 0 },
+      { q: "ماذا طلب للشرب؟", options: ["ماء", "عصير", "كولا", "قهوة"], answer: 2 },
+      { q: "كم يستغرق التوصيل؟", options: ["10 دقائق", "20 دقيقة", "30 دقيقة", "ساعة"], answer: 2 }
+    ]
+  },
+  {
+    title: "في السينما (Im Kino)",
+    icon: "🎬",
+    level: "A2",
+    lines: [
+      { speaker: "A", de: "Guten Abend! Zwei Tickets für den Film um 20 Uhr, bitte.", ar: "مساء الخير! تذكرتان لفيلم الساعة 20، من فضلك." },
+      { speaker: "B", de: "Welchen Film möchten Sie sehen?", ar: "أي فيلم تريد أن تشاهد؟" },
+      { speaker: "A", de: "Den neuen Actionfilm, bitte.", ar: "الفيلم الأكشن الجديد، من فضلك." },
+      { speaker: "B", de: "Das macht 20 Euro.", ar: "المجموع 20 يورو." },
+      { speaker: "A", de: "Wo sind unsere Plätze?", ar: "أين مقاعدنا؟" },
+      { speaker: "B", de: "Reihe 5, Plätze 7 und 8.", ar: "الصف 5، المقعدان 7 و8." },
+      { speaker: "A", de: "Wann beginnt der Film?", ar: "متى يبدأ الفيلم؟" },
+      { speaker: "B", de: "In 15 Minuten. Saal 3.", ar: "بعد 15 دقيقة. القاعة 3." }
+    ],
+    questions: [
+      { q: "كم تذكرة طلب الشخص A؟", options: ["واحدة", "اثنتان", "ثلاث", "أربع"], answer: 1 },
+      { q: "كم السعر الإجمالي؟", options: ["10 يورو", "15 يورو", "20 يورو", "25 يورو"], answer: 2 },
+      { q: "متى يبدأ الفيلم؟", options: ["بعد 5 دقائق", "بعد 10 دقائق", "بعد 15 دقيقة", "بعد 30 دقيقة"], answer: 2 }
+    ]
+  },
+  {
+    title: "في المستشفى (Im Krankenhaus)",
+    icon: "🏥",
+    level: "A2",
+    lines: [
+      { speaker: "A", de: "Guten Tag, ich möchte meinen Bruder besuchen.", ar: "نهارك سعيد، أريد زيارة أخي." },
+      { speaker: "B", de: "Wie heißt Ihr Bruder?", ar: "ما اسم أخيك؟" },
+      { speaker: "A", de: "Er heißt Ali Hassan. Er liegt im Zimmer 215.", ar: "اسمه علي حسن. إنه في الغرفة 215." },
+      { speaker: "B", de: "Besuchszeiten sind von 14 bis 18 Uhr.", ar: "أوقات الزيارة من 14 إلى 18." },
+      { speaker: "A", de: "Gut, es ist jetzt 15 Uhr. Kann ich zu ihm?", ar: "جيد، إنها الساعة 15 الآن. هل يمكنني الذهاب إليه؟" },
+      { speaker: "B", de: "Ja, aber nur 30 Minuten, bitte.", ar: "نعم، لكن 30 دقيقة فقط، من فضلك." },
+      { speaker: "A", de: "In Ordnung. Wo ist der Aufzug?", ar: "حسناً. أين المصعد؟" },
+      { speaker: "B", de: "Geradeaus, dann rechts.", ar: "مباشرة، ثم يميناً." }
+    ],
+    questions: [
+      { q: "من يريد الشخص A زيارة؟", options: ["أمه", "أبوه", "أخوه", "صديقه"], answer: 2 },
+      { q: "متى أوقات الزيارة؟", options: ["10-12", "14-18", "18-20", "8-10"], answer: 1 },
+      { q: "كم مدة الزيارة المسموحة؟", options: ["15 دقيقة", "30 دقيقة", "ساعة", "ساعتان"], answer: 1 }
+    ]
+  },
+  {
+    title: "مشكلة في السيارة (Autoproblem)",
+    icon: "🚗",
+    level: "A2",
+    lines: [
+      { speaker: "A", de: "Guten Tag, mein Auto hat ein Problem.", ar: "نهارك سعيد، سيارتي لديها مشكلة." },
+      { speaker: "B", de: "Was ist das Problem?", ar: "ما المشكلة؟" },
+      { speaker: "A", de: "Der Motor startet nicht.", ar: "المحرك لا يعمل." },
+      { speaker: "B", de: "Wann haben Sie das bemerkt?", ar: "متى لاحظت ذلك؟" },
+      { speaker: "A", de: "Heute Morgen.", ar: "هذا الصباح." },
+      { speaker: "B", de: "Können Sie das Auto vorbeibringen?", ar: "هل يمكنك إحضار السيارة؟" },
+      { speaker: "A", de: "Ja, wann passt es Ihnen?", ar: "نعم، متى يناسبك؟" },
+      { speaker: "B", de: "Morgen um 9 Uhr.", ar: "غداً الساعة 9." },
+      { speaker: "A", de: "Perfekt. Bis morgen!", ar: "ممتاز. إلى الغد!" }
+    ],
+    questions: [
+      { q: "ما مشكلة السيارة؟", options: ["الإطار مثقوب", "المحرك لا يعمل", "الوقود فارغ", "الفرامل معطلة"], answer: 1 },
+      { q: "متى لاحظ الشخص A المشكلة؟", options: ["أمس", "اليوم صباحاً", "اليوم مساءً", "منذ أسبوع"], answer: 1 },
+      { q: "متى الموعد؟", options: ["غداً الساعة 9", "غداً الساعة 10", "اليوم الساعة 9", "بعد غد"], answer: 0 }
+    ]
+  },
+  {
+    title: "في المكتبة (In der Bibliothek)",
+    icon: "📚",
+    level: "A2",
+    lines: [
+      { speaker: "A", de: "Guten Tag, ich möchte ein Buch ausleihen.", ar: "نهارك سعيد، أريد استعارة كتاب." },
+      { speaker: "B", de: "Haben Sie einen Bibliotheksausweis?", ar: "هل لديك بطاقة مكتبة؟" },
+      { speaker: "A", de: "Nein, ich brauche einen. Wie bekomme ich einen?", ar: "لا، أحتاج واحدة. كيف أحصل عليها؟" },
+      { speaker: "B", de: "Sie brauchen Ihren Pass und ein Foto.", ar: "تحتاج جواز سفرك وصورة." },
+      { speaker: "A", de: "Gut. Und wie lange kann ich ein Buch ausleihen?", ar: "جيد. وكم مدة استعارة الكتاب؟" },
+      { speaker: "B", de: "Vier Wochen. Sie können verlängern.", ar: "أربعة أسابيع. يمكنك التمديد." },
+      { speaker: "A", de: "Wo sind die Deutschbücher?", ar: "أين كتب اللغة الألمانية؟" },
+      { speaker: "B", de: "Im zweiten Stock, links.", ar: "في الطابق الثاني، على اليسار." }
+    ],
+    questions: [
+      { q: "ماذا يريد الشخص A؟", options: ["شراء كتاب", "استعارة كتاب", "إرجاع كتاب", "قراءة كتاب"], answer: 1 },
+      { q: "ماذا يحتاج للحصول على بطاقة المكتبة؟", options: ["جواز سفر وصورة", "بطاقة بنكية", "شهادة ميلاد", "لا شيء"], answer: 0 },
+      { q: "كم مدة استعارة الكتاب؟", options: ["أسبوع", "أسبوعان", "3 أسابيع", "4 أسابيع"], answer: 3 }
     ]
   }
 ];
@@ -171,7 +333,6 @@ let currentDialogue = 0;
 let currentLine = 0;
 let currentQuestion = 0;
 let dialogueScore = 0;
-let inQuestionsMode = false;
 
 function initDialoguesTab() {
   renderDialogueList();
@@ -180,7 +341,6 @@ function initDialoguesTab() {
 function renderDialogueList() {
   const container = document.getElementById('dialoguesContent');
   if (!container) return;
-  inQuestionsMode = false;
   
   container.innerHTML = `
     <div style="max-width:900px; margin:0 auto;">
@@ -193,7 +353,7 @@ function renderDialogueList() {
             <h3 style="color:#1e3a8a; font-size:18px; margin-bottom:8px; font-weight:700;">${d.title}</h3>
             <div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px;">
               <span style="background:${d.level === 'A1' ? '#dcfce7' : '#fef3c7'}; color:${d.level === 'A1' ? '#166534' : '#92400e'}; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700;">${d.level}</span>
-              <span style="color:#4f46e5; font-weight:700; font-size:14px;">${d.lines.length} جملة + ${d.questions.length} أسئلة ➡️</span>
+              <span style="color:#4f46e5; font-weight:700; font-size:13px;">${d.lines.length} جملة + ${d.questions.length} أسئلة</span>
             </div>
           </div>
         `).join('')}
@@ -207,7 +367,6 @@ function openDialogue(index) {
   currentLine = 0;
   currentQuestion = 0;
   dialogueScore = 0;
-  inQuestionsMode = false;
   renderDialogueView();
   if (typeof trackActivity === 'function') trackActivity('dialogues', 1);
 }
@@ -289,7 +448,6 @@ function prevDialogueLine() {
 }
 
 function startQuestions() {
-  inQuestionsMode = true;
   currentQuestion = 0;
   dialogueScore = 0;
   renderQuestion();
