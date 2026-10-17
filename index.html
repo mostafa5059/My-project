@@ -206,6 +206,7 @@
     <button class="tab" data-tab="writing">✍️ تدريب الكتابة</button>
     <button class="tab" data-tab="listening">🎧 تدريب الاستماع</button>
     <button class="tab" data-tab="dialogues">💬 المحادثات</button>
+    <button class="tab" data-tab="progress">📊 لوحة التقدم</button>
     <button class="tab" data-tab="review">🎯 المراجعة اليومية</button>
     <button class="tab" data-tab="rules">📖 القواعد</button>
     <button class="tab" data-tab="resources">📚 المصادر</button>
@@ -276,7 +277,7 @@
   <div id="tab-exercises" class="hidden">
     <div style="max-width:700px; margin:0 auto;">
       <div style="background:#fff; padding:40px 30px; border-radius:16px; box-shadow:0 10px 25px rgba(0,0,0,0.08); text-align:center;">
-        <p id="exerciseProgress" style="color:#64748b; font-weight:600; margin-bottom:20px;">السؤال 1 من 17</p>
+        <p id="exerciseProgress" style="color:#64748b; font-weight:600; margin-bottom:20px;">السؤال 1 من 20</p>
         <h2 id="exerciseQuestion" style="color:#1e3a8a; font-size:24px; margin-bottom:12px; line-height:1.5;">-</h2>
         <p id="exerciseQuestionAr" style="color:#64748b; font-size:16px; margin-bottom:25px;">-</p>
         <div id="exerciseOptions" style="display:flex; flex-direction:column; gap:12px; max-width:400px; margin:0 auto;"></div>
@@ -312,6 +313,10 @@
     <div id="dialoguesContent"></div>
   </div>
 
+  <div id="tab-progress" class="hidden">
+    <div id="progressContent"></div>
+  </div>
+
   <div id="tab-review" class="hidden">
     <div id="reviewContent"></div>
   </div>
@@ -335,6 +340,7 @@
 <script src="writing.js"></script>
 <script src="listening.js"></script>
 <script src="dialogues.js"></script>
+<script src="progress.js"></script>
 
 <script>
 const pronouns = ["ich","du","er/sie/es","wir","ihr","sie/Sie"];
@@ -428,6 +434,7 @@ function switchTab(name) {
   else if (name === "writing") { initWritingTab(); }
   else if (name === "listening") { initListeningTab(); }
   else if (name === "dialogues") { initDialoguesTab(); }
+  else if (name === "progress") { initProgressTab(); }
   else if (name === "resources") { renderResources(); }
   else if (name === "review") { initReviewTab(); }
 }
@@ -508,70 +515,6 @@ function showAnswer() {
 function nextChallenge() {
   currentChallenge = (currentChallenge + 1) % SPEAKING_CHALLENGES.length;
   loadChallenge();
-}
-
-let currentExercise = 0;
-let exerciseAnswered = false;
-let exerciseScore = 0;
-
-function startExercises() {
-  currentExercise = 0;
-  exerciseScore = 0;
-  exerciseAnswered = false;
-  loadExercise();
-}
-
-function loadExercise() {
-  const ex = EXERCISES[currentExercise];
-  document.getElementById("exerciseProgress").innerText = 'السؤال ' + (currentExercise + 1) + ' من ' + EXERCISES.length + ' (النتيجة: ' + exerciseScore + ')';
-  document.getElementById("exerciseQuestion").innerText = ex.question;
-  document.getElementById("exerciseQuestionAr").innerText = ex.questionAr;
-  
-  const optsBox = document.getElementById("exerciseOptions");
-  optsBox.innerHTML = '';
-  ex.options.forEach((opt, idx) => {
-    const btn = document.createElement('button');
-    btn.innerText = opt;
-    btn.style.cssText = 'padding:14px 20px; background:#f8fafc; border:2px solid #e2e8f0; border-radius:12px; cursor:pointer; font-size:16px; font-weight:600; font-family:Cairo,sans-serif; transition:all 0.2s; color:#1e293b;';
-    btn.onmouseover = () => { if (!exerciseAnswered) btn.style.background = '#eff6ff'; };
-    btn.onmouseout = () => { if (!exerciseAnswered) btn.style.background = '#f8fafc'; };
-    btn.onclick = () => checkExercise(idx, btn);
-    optsBox.appendChild(btn);
-  });
-  
-  document.getElementById("exerciseFeedback").style.display = 'none';
-  document.getElementById("exerciseNextBtn").style.display = 'none';
-  exerciseAnswered = false;
-}
-
-function checkExercise(selectedIdx, btnEl) {
-  if (exerciseAnswered) return;
-  exerciseAnswered = true;
-  const ex = EXERCISES[currentExercise];
-  const allBtns = document.getElementById("exerciseOptions").querySelectorAll('button');
-  const feedback = document.getElementById("exerciseFeedback");
-  
-  if (selectedIdx === ex.answer) {
-    btnEl.style.background = '#dcfce7'; btnEl.style.borderColor = '#16a34a'; btnEl.style.color = '#166534';
-    exerciseScore++;
-    feedback.innerHTML = '✅ <strong>إجابة صحيحة!</strong><br><span style="font-size:14px;">' + ex.explanation + '</span>';
-    feedback.style.background = '#f0fdf4'; feedback.style.borderRight = '4px solid #16a34a'; feedback.style.color = '#166534';
-  } else {
-    btnEl.style.background = '#fee2e2'; btnEl.style.borderColor = '#dc2626'; btnEl.style.color = '#991b1b';
-    allBtns[ex.answer].style.background = '#dcfce7'; allBtns[ex.answer].style.borderColor = '#16a34a'; allBtns[ex.answer].style.color = '#166534';
-    feedback.innerHTML = '❌ <strong>إجابة خاطئة.</strong> الإجابة الصحيحة: <strong>' + ex.options[ex.answer] + '</strong><br><span style="font-size:14px;">' + ex.explanation + '</span>';
-    feedback.style.background = '#fef2f2'; feedback.style.borderRight = '4px solid #dc2626'; feedback.style.color = '#991b1b';
-  }
-  
-  feedback.style.display = 'block';
-  document.getElementById("exerciseNextBtn").style.display = 'inline-block';
-  document.getElementById("exerciseNextBtn").innerText = (currentExercise === EXERCISES.length - 1) ? 'إعادة من البداية 🔄' : 'السؤال التالي ➡️';
-}
-
-function nextExercise() {
-  currentExercise = (currentExercise + 1) % EXERCISES.length;
-  if (currentExercise === 0) exerciseScore = 0;
-  loadExercise();
 }
 
 function renderResources() {
