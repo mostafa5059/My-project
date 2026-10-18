@@ -34,33 +34,9 @@
   header h1{font-size:28px;font-weight:700;margin-bottom:10px; letter-spacing: 0.5px; position: relative; z-index: 1;}
   header p { font-size: 16px; opacity: 0.9; position: relative; z-index: 1; font-weight: 400;}
   
-  .lang-buttons {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    display: flex;
-    gap: 10px;
-    z-index: 10;
-    flex-wrap: wrap;
-  }
-  .lang-btn {
-    background: rgba(255,255,255,0.2);
-    color: #fff;
-    border: 2px solid rgba(255,255,255,0.4);
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 14px;
-    transition: all 0.2s;
-    backdrop-filter: blur(10px);
-    font-family: 'Cairo', sans-serif;
-    white-space: nowrap;
-  }
-  .lang-btn:hover {
-    background: rgba(255,255,255,0.3);
-    transform: translateY(-2px);
-  }
+  .lang-buttons { position: absolute; top: 20px; left: 20px; display: flex; gap: 10px; z-index: 10; flex-wrap: wrap; }
+  .lang-btn { background: rgba(255,255,255,0.2); color: #fff; border: 2px solid rgba(255,255,255,0.4); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 14px; transition: all 0.2s; backdrop-filter: blur(10px); font-family: 'Cairo', sans-serif; white-space: nowrap; }
+  .lang-btn:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
   
   .container{max-width:1150px;margin:0 auto;padding:30px 20px;}
   
@@ -80,33 +56,8 @@
   .filter-btn.active{background:var(--primary-dark);color:#fff;border-color:var(--primary-dark); box-shadow: 0 4px 10px rgba(55,48,163,0.25);}
   
   .list-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px; animation: fadeIn 0.6s ease-out;}
-  .card{
-    background:var(--card-bg);
-    padding:22px;
-    border-radius:var(--radius-lg);
-    cursor:pointer;
-    border-right:6px solid var(--primary);
-    box-shadow:var(--shadow-sm);
-    position:relative;
-    transition: var(--transition);
-    animation: slideUp 0.5s ease-out;
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    border-left: 1px solid var(--border-color);
-    overflow: hidden;
-  }
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary), var(--primary-light));
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-  }
+  .card{ background:var(--card-bg); padding:22px; border-radius:var(--radius-lg); cursor:pointer; border-right:6px solid var(--primary); box-shadow:var(--shadow-sm); position:relative; transition: var(--transition); animation: slideUp 0.5s ease-out; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); border-left: 1px solid var(--border-color); overflow: hidden; }
+  .card::before { content: ''; position: absolute; top: 0; right: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--primary), var(--primary-light)); transform: scaleX(0); transform-origin: right; transition: transform 0.3s ease; }
   .card:hover::before { transform: scaleX(1); }
   .card:hover{ transform: translateY(-6px); box-shadow:var(--shadow-xl); border-right-color: var(--primary-light); }
   .card:active { transform: translateY(-2px) scale(0.98); }
@@ -116,23 +67,8 @@
   .card.adj { border-right-color: #f59e0b; }
   .card.adj::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
   
-  .card .de {
-    font-weight: 800;
-    font-size: 22px;
-    color: var(--primary-dark);
-    margin-bottom: 6px;
-    letter-spacing: 0.3px;
-    display: block;
-    direction: ltr;
-    text-align: right;
-    padding-left: 40px;
-  }
-  .card .ar {
-    font-size: 15px;
-    color: var(--text-muted);
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
+  .card .de { font-weight: 800; font-size: 22px; color: var(--primary-dark); margin-bottom: 6px; letter-spacing: 0.3px; display: block; direction: ltr; text-align: right; padding-left: 40px; }
+  .card .ar { font-size: 15px; color: var(--text-muted); font-weight: 600; margin-bottom: 10px; }
   .card.noun .de { color: #047857; } 
   .card.adj .de { color: #b45309; }
   
@@ -162,32 +98,8 @@
   .section-title{font-size:16px;font-weight:700;color:var(--primary);margin:25px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--border-color); display: flex; align-items: center; gap: 8px;}
   
   .conj-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px; animation: fadeIn 0.5s ease-out;}
-  .conj-item {
-    background: #ffffff;
-    padding: 14px 18px;
-    border-radius: 10px;
-    font-size: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid var(--border-color);
-    transition: var(--transition);
-    font-weight: 600;
-    position: relative;
-  }
-  .conj-item::before {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 3px;
-    height: 60%;
-    background: var(--primary-light);
-    border-radius: 3px;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
+  .conj-item { background: #ffffff; padding: 14px 18px; border-radius: 10px; font-size: 15px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-color); transition: var(--transition); font-weight: 600; position: relative; }
+  .conj-item::before { content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 3px; height: 60%; background: var(--primary-light); border-radius: 3px; opacity: 0; transition: opacity 0.2s; }
   .conj-item:hover { background: #f8fafc; border-color: var(--primary-light); transform: translateX(-4px); }
   .conj-item:hover::before { opacity: 1; }
   .conj-item .pron { color: var(--primary-dark); font-weight: 700; min-width: 80px; direction: rtl; }
@@ -211,17 +123,7 @@
   .rule-content ul{padding-right:25px;margin-bottom:25px}
   .rule-content li{font-size:16px;color:var(--text-main);margin-bottom:14px; line-height: 1.9;}
   .rule-content code{background:#eff6ff;color:var(--primary-dark);padding:5px 12px;border-radius:8px;font-family:'Courier New',monospace;font-weight:bold; font-size: 15px; border: 1px solid #bfdbfe; display: inline-block; margin: 2px 0;}
-  .example-box {
-    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-    border-right: 5px solid var(--accent);
-    padding: 25px 30px;
-    margin: 25px 0;
-    border-radius: 12px;
-    font-size: 16px;
-    line-height: 2.1;
-    box-shadow: 0 4px 12px rgba(16,185,129,0.08);
-    position: relative;
-  }
+  .example-box { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-right: 5px solid var(--accent); padding: 25px 30px; margin: 25px 0; border-radius: 12px; font-size: 16px; line-height: 2.1; box-shadow: 0 4px 12px rgba(16,185,129,0.08); position: relative; }
   .example-box::before { content: '💬'; position: absolute; top: 12px; left: 18px; font-size: 22px; opacity: 0.7; }
   .example-box strong { color: #047857; font-weight: 800;}
   table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 25px 0; font-size: 15px; box-shadow: var(--shadow-md); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color);}
@@ -317,7 +219,6 @@
     <button class="tab active" data-tab="verbs">🔤 الأفعال</button>
     <button class="tab" data-tab="nouns">📦 الأسماء</button>
     <button class="tab" data-tab="adjectives">🎨 الصفات</button>
-    <button class="tab" data-tab="basics">📚 الأساسيات</button>
     <button class="tab" data-tab="flashcards">🧠 الاختبار</button>
     <button class="tab" data-tab="speaking">🗣️ التحدث</button>
     <button class="tab" data-tab="exercises">📝 التمارين</button>
@@ -343,7 +244,6 @@
   <div id="tab-verbs"><div class="list-grid" id="verbList"></div></div>
   <div id="tab-nouns" class="hidden"><div class="list-grid" id="nounList"></div></div>
   <div id="tab-adjectives" class="hidden"><div class="list-grid" id="adjList"></div></div>
-  <div id="tab-basics" class="hidden"><div id="basicsContent"></div></div>
   
   <div id="tab-flashcards" class="hidden">
     <div class="flashcard-container">
@@ -462,7 +362,6 @@
 <script src="progress.js"></script>
 <script src="i18n.js"></script>
 <script src="resources.js"></script>
-<script src="basics.js"></script>
 
 <script>
 const pronouns = ["ich","du","er/sie/es","wir","ihr","sie/Sie"];
@@ -554,7 +453,6 @@ function switchTab(name) {
   else if (name === "writing") { initWritingTab(); }
   else if (name === "listening") { initListeningTab(); }
   else if (name === "dialogues") { initDialoguesTab(); }
-  else if (name === "basics") { initBasicsTab(); }
   else if (name === "progress") { initProgressTab(); }
   else if (name === "resources") { renderResources(); }
   else if (name === "review") { initReviewTab(); }
@@ -631,7 +529,7 @@ function nextChallenge() { currentChallenge = (currentChallenge + 1) % SPEAKING_
 function renderResources() {
   const container = document.getElementById('resourcesGrid');
   if (typeof RESOURCES === 'undefined') {
-    container.innerHTML = '<p style="text-align:center; color:#dc2626;">⚠️ ملف المصادر غير محمّل. يرجى التأكد من وجود resources.js</p>';
+    container.innerHTML = '<p style="text-align:center; color:#dc2626;">⚠️ ملف المصادر غير محمّل.</p>';
     return;
   }
   container.innerHTML = RESOURCES.map(r => 
