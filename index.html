@@ -310,8 +310,8 @@ function openVerb(index) {
   } else {
     const präsensHTML = v.präsens.map((form, i) => '<div class="conj-item"><span class="pron">' + pronouns[i] + '</span><span>' + form + '</span></div>').join("");
     content += '<div class="section-title">📘 المضارع</div><div class="conj-grid">' + präsensHTML + '</div>';
-    content += '<div class="section-title">⏳ الماضي البسيط</div><div class="conj-item"><span>' + v.präteritum + '</span></div>';
-    content += '<div class="section-title">✅ الماضي التام</div><div class="conj-item"><span>' + v.perfekt + '</span></div>';
+   content += '<div class="section-title">⏳ Präteritum (الماضي البسيط)</div><div class="conj-item"><span>' + v.präteritum + '</span></div>';
+content += '<div class="section-title">✅ Perfekt (الماضي التام)</div><div class="conj-item"><span>' + v.perfekt + '</span></div>';
   }
   
   if (v.example) content += '<div class="section-title">💬 مثال</div><div class="example-box">' + v.example + '</div>';
