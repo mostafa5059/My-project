@@ -213,6 +213,7 @@
   <script src="basics.js"></script>
 
 <script>
+  let contentLanguage = localStorage.getItem('content_language') || 'de';
 const pronouns = ["ich","du","er/sie/es","wir","ihr","sie/Sie"];
 const typeLabels = { regular:{text:"منتظم",cls:"regular"}, unregelmäßig:{text:"⚡ غير منتظم",cls:"unregelmäßig"}, trennbar:{text:"🔹 منفصل",cls:"trennbar"}, reflexiv:{text:"🔄 انعكاسي",cls:"reflexiv"} };
 const ruleHints = { unregelmäßig:"⚡ فعل غير منتظم: تتغير حركة الجذر في المضارع (du/er) وفي الماضي.", trennbar:"🔹 فعل منفصل: البادئة تُنقل لنهاية الجملة (مثل: stehe auf).", reflexiv:"🔄 فعل انعكاسي: يحتاج ضميراً انعكاسياً (mich/dich/sich...)." };
