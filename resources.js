@@ -48,3 +48,54 @@ const RESOURCES = [
     icon: "📖"
   }
 ];
+
+const RESOURCES_EN = [
+  {
+    title: "BBC Learning English",
+    description: "دورات مجانية من BBC لتعلم الإنجليزية مع صوتيات وتمارين تفاعلية.",
+    url: "https://www.bbc.co.uk/learningenglish",
+    icon: "🇬🇧"
+  },
+  {
+    title: "British Council - LearnEnglish",
+    description: "موارد تعليمية رسمية من المجلس الثقافي البريطاني مع تمارين واستماع.",
+    url: "https://learnenglish.britishcouncil.org",
+    icon: "🎓"
+  },
+  {
+    title: "Cambridge Dictionary",
+    description: "قاموس كامبريدج مع نطق صوتي وأمثلة وترجمة.",
+    url: "https://dictionary.cambridge.org",
+    icon: "📖"
+  },
+  {
+    title: "Duolingo English",
+    description: "تطبيق تفاعلي لتعلم الإنجليزية من الصفر مع تمارين يومية.",
+    url: "https://www.duolingo.com/course/en/en/Learn-English",
+    icon: "🦉"
+  },
+  {
+    title: "Perfect English Grammar",
+    description: "شرح مبسط لكل قواعد اللغة الإنجليزية مع تمارين PDF مجانية.",
+    url: "https://www.perfect-english-grammar.com",
+    icon: "✏️"
+  },
+  {
+    title: "VOA Learning English",
+    description: "أخبار ودروس صوتية بالإنجليزية البطيئة للمبتدئين.",
+    url: "https://learningenglish.voanews.com",
+    icon: "📻"
+  },
+  {
+    title: "EnglishClub",
+    description: "دروس مجانية في القواعد والمفردات والنطق مع اختبارات.",
+    url: "https://www.englishclub.com",
+    icon: "🌐"
+  },
+  {
+    title: "TED-Ed - English Lessons",
+    description: "فيديوهات تعليمية قصيرة لتحسين الاستماع والمفردات.",
+    url: "https://ed.ted.com/lessons",
+    icon: "🎬"
+  }
+];
