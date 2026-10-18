@@ -79,7 +79,7 @@ const RULES_HTML = `
   </div>
 
   <div class="rule-section">
-    <h3>6) حروف الجر (Präpositionen)</h3>
+    <h3>6) حروف الجر (Präpositionen) - نظرة عامة</h3>
     <div class="rule-content">
       <p><strong>حروف جر تأخذ Akkusativ:</strong> durch, für, gegen, ohne, um, bis, entlang.</p>
       <p style="font-size:14px;color:#92400e;background:#fffbeb;padding:10px 14px;border-radius:8px;border-right:4px solid #f59e0b;"><strong>ملاحظة:</strong> <code>bis</code> غالباً تأخذ Akkusativ، لكن عند استخدامها مع حرف جر آخر (مثل <code>bis zu</code>) تأخذ حالة الحرف الآخر. <code>entlang</code> تأخذ Akkusativ عندما تأتي بعد الاسم (der Straße entlang).</p>
@@ -246,6 +246,122 @@ const RULES_HTML = `
       <p><strong>روابط أخرى مشابهة:</strong> deswegen, darum, trotzdem (نفس القاعدة).</p>
     </div>
   </div>
+
+  <div class="rule-section">
+    <h3>17) حروف الجر التي تأخذ Akkusativ فقط</h3>
+    <div class="rule-content">
+      <p>هذه الحروف <strong>دائماً</strong> تأخذ Akkusativ، سواء كان هناك حركة أو سكون. لحفظها: <strong>durch, für, gegen, ohne, um</strong> (وأحياناً bis, entlang).</p>
+      <table>
+        <tr><th>الحرف</th><th>المعنى</th><th>مثال</th><th>الترجمة</th></tr>
+        <tr><td><strong>durch</strong></td><td>عبر / من خلال</td><td>Wir gehen <strong>durch den</strong> Park.</td><td>نمشي عبر الحديقة.</td></tr>
+        <tr><td><strong>für</strong></td><td>من أجل / لـ</td><td>Das Geschenk ist <strong>für dich</strong>.</td><td>الهدية من أجلك.</td></tr>
+        <tr><td><strong>gegen</strong></td><td>ضد / نحو</td><td>Ich bin <strong>gegen den</strong> Krieg.</td><td>أنا ضد الحرب.</td></tr>
+        <tr><td><strong>ohne</strong></td><td>بدون</td><td>Ich trinke Kaffee <strong>ohne</strong> Zucker.</td><td>أشرب القهوة بدون سكر.</td></tr>
+        <tr><td><strong>um</strong></td><td>حول / في (الوقت)</td><td>Wir sitzen <strong>um den</strong> Tisch.<br>Der Kurs beginnt <strong>um</strong> 9 Uhr.</td><td>نجلس حول الطاولة.<br>الدورة تبدأ الساعة 9.</td></tr>
+        <tr><td><strong>bis</strong></td><td>حتى</td><td>Ich arbeite <strong>bis</strong> 5 Uhr.</td><td>أعمل حتى الساعة 5.</td></tr>
+        <tr><td><strong>entlang</strong></td><td>على طول</td><td>Wir gehen die Straße <strong>entlang</strong>.</td><td>نمشي على طول الشارع.</td></tr>
+      </table>
+      <div class="example-box">
+        <strong>ملاحظات مهمة:</strong><br>
+        • <code>bis</code> غالباً تأخذ Akkusativ، لكن عند استخدامها مع حرف جر آخر (مثل <code>bis zu</code>) تأخذ حالة الحرف الآخر.<br>
+        • <code>entlang</code> تأتي عادة <strong>بعد</strong> الاسم (die Straße entlang) وتأخذ Akkusativ. إذا جاءت قبله (entlang der Straße) تأخذ Genitiv.
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-section">
+    <h3>18) حروف الجر التي تأخذ Dativ فقط</h3>
+    <div class="rule-content">
+      <p>هذه الحروف <strong>دائماً</strong> تأخذ Dativ. لحفظها: <strong>aus, bei, mit, nach, seit, von, zu</strong> (وأحياناً gegenüber).</p>
+      <table>
+        <tr><th>الحرف</th><th>المعنى</th><th>مثال</th><th>الترجمة</th></tr>
+        <tr><td><strong>aus</strong></td><td>من (أصل/داخل)</td><td>Ich komme <strong>aus der</strong> Schweiz.</td><td>أنا من سويسرا.</td></tr>
+        <tr><td><strong>bei</strong></td><td>عند / لدى</td><td>Ich wohne <strong>bei meiner</strong> Familie.</td><td>أسكن عند عائلتي.</td></tr>
+        <tr><td><strong>mit</strong></td><td>مع / بواسطة</td><td>Ich fahre <strong>mit dem</strong> Bus.</td><td>أسافر بالحافلة.</td></tr>
+        <tr><td><strong>nach</strong></td><td>إلى (مدن/دول) / بعد</td><td>Ich fliege <strong>nach</strong> Berlin.<br><strong>Nach dem</strong> Essen gehen wir spazieren.</td><td>أسافر إلى برلين.<br>بعد الأكل نتنزه.</td></tr>
+        <tr><td><strong>seit</strong></td><td>منذ</td><td>Ich lerne Deutsch <strong>seit einem</strong> Jahr.</td><td>أتعلم الألمانية منذ سنة.</td></tr>
+        <tr><td><strong>von</strong></td><td>من / عن</td><td>Das ist ein Geschenk <strong>von meinem</strong> Vater.</td><td>هذه هدية من والدي.</td></tr>
+        <tr><td><strong>zu</strong></td><td>إلى (أشخاص/أماكن)</td><td>Ich gehe <strong>zu meiner</strong> Mutter.</td><td>أذهب إلى أمي.</td></tr>
+        <tr><td><strong>gegenüber</strong></td><td>مقابل</td><td>Die Bank ist <strong>dem</strong> Bahnhof <strong>gegenüber</strong>.</td><td>البنك مقابل المحطة.</td></tr>
+      </table>
+      <div class="example-box">
+        <strong>ملاحظات مهمة:</strong><br>
+        • <code>nach</code> تُستخدم مع المدن والدول (nach Berlin, nach Deutschland) بدون أداة.<br>
+        • <code>zu</code> تُستخدم مع الأشخاص والأماكن المحددة (zu mir, zum Arzt, zur Schule).<br>
+        • <code>gegenüber</code> غالباً تأتي بعد الاسم.
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-section">
+    <h3>19) حروف الجر المتغيرة (Wechselpräpositionen)</h3>
+    <div class="rule-content">
+      <p>هذه الحروف التسعة تأخذ <strong>Dativ</strong> عند السكون (Wo? = أين؟) و <strong>Akkusativ</strong> عند الحركة (Wohin? = إلى أين؟).</p>
+      <p><strong>الحروف التسعة:</strong> <code>an, auf, hinter, in, neben, über, unter, vor, zwischen</code></p>
+      <table>
+        <tr><th>الحرف</th><th>المعنى</th><th>Dativ (أين؟)</th><th>Akkusativ (إلى أين؟)</th></tr>
+        <tr><td><strong>an</strong></td><td>على / بجانب</td><td>Das Bild hängt <strong>an der</strong> Wand.</td><td>Ich hänge das Bild <strong>an die</strong> Wand.</td></tr>
+        <tr><td><strong>auf</strong></td><td>على (سطح)</td><td>Das Buch liegt <strong>auf dem</strong> Tisch.</td><td>Ich lege das Buch <strong>auf den</strong> Tisch.</td></tr>
+        <tr><td><strong>hinter</strong></td><td>خلف</td><td>Die Katze ist <strong>hinter dem</strong> Sofa.</td><td>Die Katze läuft <strong>hinter das</strong> Sofa.</td></tr>
+        <tr><td><strong>in</strong></td><td>في / داخل</td><td>Ich bin <strong>in der</strong> Schule.</td><td>Ich gehe <strong>in die</strong> Schule.</td></tr>
+        <tr><td><strong>neben</strong></td><td>بجانب</td><td>Der Stuhl steht <strong>neben dem</strong> Tisch.</td><td>Ich stelle den Stuhl <strong>neben den</strong> Tisch.</td></tr>
+        <tr><td><strong>über</strong></td><td>فوق (بدون لمس)</td><td>Die Lampe hängt <strong>über dem</strong> Tisch.</td><td>Ich hänge die Lampe <strong>über den</strong> Tisch.</td></tr>
+        <tr><td><strong>unter</strong></td><td>تحت</td><td>Die Katze ist <strong>unter dem</strong> Tisch.</td><td>Die Katze läuft <strong>unter den</strong> Tisch.</td></tr>
+        <tr><td><strong>vor</strong></td><td>أمام / قبل</td><td>Das Auto steht <strong>vor dem</strong> Haus.</td><td>Ich fahre <strong>vor das</strong> Haus.</td></tr>
+        <tr><td><strong>zwischen</strong></td><td>بين</td><td>Die Bank ist <strong>zwischen dem</strong> Supermarkt und der Schule.</td><td>Ich stelle den Tisch <strong>zwischen die</strong> Stühle.</td></tr>
+      </table>
+      <div class="example-box">
+        <strong>قاعدة سهلة:</strong><br>
+        • <strong>Wo?</strong> (أين؟) → <strong>Dativ</strong> (سكون)<br>
+        • <strong>Wohin?</strong> (إلى أين؟) → <strong>Akkusativ</strong> (حركة)<br><br>
+        <strong>أفعال شائعة:</strong><br>
+        • مع Dativ: <code>sein, liegen, stehen, sitzen, hängen</code> (حالة سكون)<br>
+        • مع Akkusativ: <code>legen, stellen, setzen, hängen</code> (حالة حركة)
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-section">
+    <h3>20) حروف الجر التي تأخذ Genitiv</h3>
+    <div class="rule-content">
+      <p>هذه الحروف تأخذ <strong>Genitiv</strong> — تُستخدم في المستوى A2 وما بعده، خاصة في اللغة الرسمية والكتابة.</p>
+      <table>
+        <tr><th>الحرف</th><th>المعنى</th><th>مثال</th><th>الترجمة</th></tr>
+        <tr><td><strong>während</strong></td><td>خلال / بينما</td><td><strong>Während des</strong> Unterrichts darf man nicht telefonieren.</td><td>خلال الدرس لا يُسمح بالهاتف.</td></tr>
+        <tr><td><strong>wegen</strong></td><td>بسبب</td><td><strong>Wegen des</strong> Regens bleiben wir zu Hause.</td><td>بسبب المطر نبقى في المنزل.</td></tr>
+        <tr><td><strong>trotz</strong></td><td>رغم</td><td><strong>Trotz des</strong> Regens gehen wir spazieren.</td><td>رغم المطر نتنزه.</td></tr>
+        <tr><td><strong>statt</strong></td><td>بدلاً من</td><td><strong>Statt des</strong> Autos nehme ich den Bus.</td><td>بدلاً من السيارة آخذ الحافلة.</td></tr>
+        <tr><td><strong>innerhalb</strong></td><td>داخل / خلال</td><td><strong>Innerhalb des</strong> Gebäudes darf man nicht rauchen.</td><td>داخل المبنى لا يُسمح بالتدخين.</td></tr>
+        <tr><td><strong>außerhalb</strong></td><td>خارج</td><td><strong>Außerhalb der</strong> Stadt ist es ruhig.</td><td>خارج المدينة الجو هادئ.</td></tr>
+      </table>
+      <div class="example-box">
+        <strong>ملاحظة:</strong> في المحادثة اليومية، غالباً ما تُستخدم <code>wegen</code> و <code>trotz</code> مع <strong>Dativ</strong> بدلاً من Genitiv (مقبول في اللغة العامية).<br>
+        <strong>مثال:</strong> Wegen dem Regen... (عامية) / Wegen des Regens... (فصحى)
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-section">
+    <h3>21) حروف جر شائعة أخرى (A2)</h3>
+    <div class="rule-content">
+      <p>حروف جر إضافية تُستخدم كثيراً في المستوى A2:</p>
+      <table>
+        <tr><th>الحرف</th><th>المعنى</th><th>الحالة</th><th>مثال</th></tr>
+        <tr><td><strong>pro</strong></td><td>لكل / عن</td><td>Akkusativ</td><td>Das kostet 5 Euro <strong>pro</strong> Person.</td></tr>
+        <tr><td><strong>je</strong></td><td>لكل</td><td>Akkusativ</td><td>Das kostet 10 Euro <strong>je</strong> Person.</td></tr>
+        <tr><td><strong>ab</strong></td><td>من (زمنياً)</td><td>Dativ</td><td><strong>Ab dem</strong> 1. Mai bin ich hier.</td></tr>
+        <tr><td><strong>entlang</strong></td><td>على طول</td><td>Akkusativ (بعد الاسم) / Genitiv (قبله)</td><td>Die Straße <strong>entlang</strong> / <strong>Entlang der</strong> Straße.</td></tr>
+        <tr><td><strong>gegenüber</strong></td><td>مقابل</td><td>Dativ</td><td><strong>Dem</strong> Bahnhof <strong>gegenüber</strong> ist ein Café.</td></tr>
+        <tr><td><strong>außer</strong></td><td>باستثناء</td><td>Dativ</td><td><strong>Außer dir</strong> kommt niemand.</td></tr>
+      </table>
+      <div class="example-box">
+        <strong>ملاحظات:</strong><br>
+        • <code>pro</code> و <code>je</code> تُستخدمان للتوزيع (لكل شخص/شيء).<br>
+        • <code>ab</code> تُستخدم مع الزمن (ab morgen, ab dem 1. Mai).<br>
+        • <code>außer</code> تعني "باستثناء" وتأخذ Dativ.
+      </div>
+    </div>
+  </div>
 `;
 
 const RULES_HTML_EN = `
@@ -365,131 +481,6 @@ const RULES_HTML_EN = `
         I <strong>can</strong> swim.<br>
         You <strong>must</strong> wear a seatbelt.<br>
         You <strong>should</strong> see a doctor.
-      </div>
-    </div>
-  </div>
-    <div class="rule-section">
-    <h3>17) حروف الجر التي تأخذ Akkusativ فقط</h3>
-    <div class="rule-content">
-      <p>هذه الحروف <strong>دائماً</strong> تأخذ Akkusativ، سواء كان هناك حركة أو سكون. لحفظها: <strong>durch, für, gegen, ohne, um</strong> (وأحياناً bis, entlang).</p>
-      
-      <table>
-        <tr><th>الحرف</th><th>المعنى</th><th>مثال</th><th>الترجمة</th></tr>
-        <tr><td><strong>durch</strong></td><td>عبر / من خلال</td><td>Wir gehen <strong>durch den</strong> Park.</td><td>نمشي عبر الحديقة.</td></tr>
-        <tr><td><strong>für</strong></td><td>من أجل / لـ</td><td>Das Geschenk ist <strong>für dich</strong>.</td><td>الهدية من أجلك.</td></tr>
-        <tr><td><strong>gegen</strong></td><td>ضد / نحو</td><td>Ich bin <strong>gegen den</strong> Krieg.</td><td>أنا ضد الحرب.</td></tr>
-        <tr><td><strong>ohne</strong></td><td>بدون</td><td>Ich trinke Kaffee <strong>ohne</strong> Zucker.</td><td>أشرب القهوة بدون سكر.</td></tr>
-        <tr><td><strong>um</strong></td><td>حول / في (الوقت)</td><td>Wir sitzen <strong>um den</strong> Tisch.<br>Der Kurs beginnt <strong>um</strong> 9 Uhr.</td><td>نجلس حول الطاولة.<br>الدورة تبدأ الساعة 9.</td></tr>
-        <tr><td><strong>bis</strong></td><td>حتى</td><td>Ich arbeite <strong>bis</strong> 5 Uhr.</td><td>أعمل حتى الساعة 5.</td></tr>
-        <tr><td><strong>entlang</strong></td><td>على طول</td><td>Wir gehen die Straße <strong>entlang</strong>.</td><td>نمشي على طول الشارع.</td></tr>
-      </table>
-
-      <div class="example-box">
-        <strong>ملاحظات مهمة:</strong><br>
-        • <code>bis</code> غالباً تأخذ Akkusativ، لكن عند استخدامها مع حرف جر آخر (مثل <code>bis zu</code>) تأخذ حالة الحرف الآخر.<br>
-        • <code>entlang</code> تأتي عادة <strong>بعد</strong> الاسم (die Straße entlang) وتأخذ Akkusativ. إذا جاءت قبله (entlang der Straße) تأخذ Genitiv.
-      </div>
-    </div>
-  </div>
-
-  <div class="rule-section">
-    <h3>18) حروف الجر التي تأخذ Dativ فقط</h3>
-    <div class="rule-content">
-      <p>هذه الحروف <strong>دائماً</strong> تأخذ Dativ. لحفظها: <strong>aus, bei, mit, nach, seit, von, zu</strong> (وأحياناً gegenüber).</p>
-      
-      <table>
-        <tr><th>الحرف</th><th>المعنى</th><th>مثال</th><th>الترجمة</th></tr>
-        <tr><td><strong>aus</strong></td><td>من (أصل/داخل)</td><td>Ich komme <strong>aus der</strong> Schweiz.</td><td>أنا من سويسرا.</td></tr>
-        <tr><td><strong>bei</strong></td><td>عند / لدى</td><td>Ich wohne <strong>bei meiner</strong> Familie.</td><td>أسكن عند عائلتي.</td></tr>
-        <tr><td><strong>mit</strong></td><td>مع / بواسطة</td><td>Ich fahre <strong>mit dem</strong> Bus.</td><td>أسافر بالحافلة.</td></tr>
-        <tr><td><strong>nach</strong></td><td>إلى (مدن/دول) / بعد</td><td>Ich fliege <strong>nach</strong> Berlin.<br><strong>Nach dem</strong> Essen gehen wir spazieren.</td><td>أسافر إلى برلين.<br>بعد الأكل نتنزه.</td></tr>
-        <tr><td><strong>seit</strong></td><td>منذ</td><td>Ich lerne Deutsch <strong>seit einem</strong> Jahr.</td><td>أتعلم الألمانية منذ سنة.</td></tr>
-        <tr><td><strong>von</strong></td><td>من / عن</td><td>Das ist ein Geschenk <strong>von meinem</strong> Vater.</td><td>هذه هدية من والدي.</td></tr>
-        <tr><td><strong>zu</strong></td><td>إلى (أشخاص/أماكن)</td><td>Ich gehe <strong>zu meiner</strong> Mutter.</td><td>أذهب إلى أمي.</td></tr>
-        <tr><td><strong>gegenüber</strong></td><td>مقابل</td><td>Die Bank ist <strong>dem</strong> Bahnhof <strong>gegenüber</strong>.</td><td>البنك مقابل المحطة.</td></tr>
-      </table>
-
-      <div class="example-box">
-        <strong>ملاحظات مهمة:</strong><br>
-        • <code>nach</code> تُستخدم مع المدن والدول (nach Berlin, nach Deutschland) بدون أداة.<br>
-        • <code>zu</code> تُستخدم مع الأشخاص والأماكن المحددة (zu mir, zum Arzt, zur Schule).<br>
-        • <code>gegenüber</code> غالباً تأتي بعد الاسم.
-      </div>
-    </div>
-  </div>
-
-  <div class="rule-section">
-    <h3>19) حروف الجر المتغيرة (Wechselpräpositionen)</h3>
-    <div class="rule-content">
-      <p>هذه الحروف التسعة تأخذ <strong>Dativ</strong> عند السكون (Wo? = أين؟) و <strong>Akkusativ</strong> عند الحركة (Wohin? = إلى أين؟).</p>
-      <p><strong>الحروف التسعة:</strong> <code>an, auf, hinter, in, neben, über, unter, vor, zwischen</code></p>
-      
-      <table>
-        <tr><th>الحرف</th><th>المعنى</th><th>Dativ (أين؟)</th><th>Akkusativ (إلى أين؟)</th></tr>
-        <tr><td><strong>an</strong></td><td>على / بجانب</td><td>Das Bild hängt <strong>an der</strong> Wand.</td><td>Ich hänge das Bild <strong>an die</strong> Wand.</td></tr>
-        <tr><td><strong>auf</strong></td><td>على (سطح)</td><td>Das Buch liegt <strong>auf dem</strong> Tisch.</td><td>Ich lege das Buch <strong>auf den</strong> Tisch.</td></tr>
-        <tr><td><strong>hinter</strong></td><td>خلف</td><td>Die Katze ist <strong>hinter dem</strong> Sofa.</td><td>Die Katze läuft <strong>hinter das</strong> Sofa.</td></tr>
-        <tr><td><strong>in</strong></td><td>في / داخل</td><td>Ich bin <strong>in der</strong> Schule.</td><td>Ich gehe <strong>in die</strong> Schule.</td></tr>
-        <tr><td><strong>neben</strong></td><td>بجانب</td><td>Der Stuhl steht <strong>neben dem</strong> Tisch.</td><td>Ich stelle den Stuhl <strong>neben den</strong> Tisch.</td></tr>
-        <tr><td><strong>über</strong></td><td>فوق (بدون لمس)</td><td>Die Lampe hängt <strong>über dem</strong> Tisch.</td><td>Ich hänge die Lampe <strong>über den</strong> Tisch.</td></tr>
-        <tr><td><strong>unter</strong></td><td>تحت</td><td>Die Katze ist <strong>unter dem</strong> Tisch.</td><td>Die Katze läuft <strong>unter den</strong> Tisch.</td></tr>
-        <tr><td><strong>vor</strong></td><td>أمام / قبل</td><td>Das Auto steht <strong>vor dem</strong> Haus.</td><td>Ich fahre <strong>vor das</strong> Haus.</td></tr>
-        <tr><td><strong>zwischen</strong></td><td>بين</td><td>Die Bank ist <strong>zwischen dem</strong> Supermarkt und der Schule.</td><td>Ich stelle den Tisch <strong>zwischen die</strong> Stühle.</td></tr>
-      </table>
-
-      <div class="example-box">
-        <strong>قاعدة سهلة:</strong><br>
-        • <strong>Wo?</strong> (أين؟) → <strong>Dativ</strong> (سكون)<br>
-        • <strong>Wohin?</strong> (إلى أين؟) → <strong>Akkusativ</strong> (حركة)<br><br>
-        <strong>أفعال شائعة:</strong><br>
-        • مع Dativ: <code>sein, liegen, stehen, sitzen, hängen</code> (حالة سكون)<br>
-        • مع Akkusativ: <code>legen, stellen, setzen, hängen</code> (حالة حركة)
-      </div>
-    </div>
-  </div>
-
-  <div class="rule-section">
-    <h3>20) حروف الجر التي تأخذ Genitiv</h3>
-    <div class="rule-content">
-      <p>هذه الحروف تأخذ <strong>Genitiv</strong> — تُستخدم في المستوى A2 وما بعده، خاصة في اللغة الرسمية والكتابة.</p>
-      
-      <table>
-        <tr><th>الحرف</th><th>المعنى</th><th>مثال</th><th>الترجمة</th></tr>
-        <tr><td><strong>während</strong></td><td>خلال / بينما</td><td><strong>Während des</strong> Unterrichts darf man nicht telefonieren.</td><td>خلال الدرس لا يُسمح بالهاتف.</td></tr>
-        <tr><td><strong>wegen</strong></td><td>بسبب</td><td><strong>Wegen des</strong> Regens bleiben wir zu Hause.</td><td>بسبب المطر نبقى في المنزل.</td></tr>
-        <tr><td><strong>trotz</strong></td><td>رغم</td><td><strong>Trotz des</strong> Regens gehen wir spazieren.</td><td>رغم المطر نتنزه.</td></tr>
-        <tr><td><strong>statt</strong></td><td>بدلاً من</td><td><strong>Statt des</strong> Autos nehme ich den Bus.</td><td>بدلاً من السيارة آخذ الحافلة.</td></tr>
-        <tr><td><strong>innerhalb</strong></td><td>داخل / خلال</td><td><strong>Innerhalb des</strong> Gebäudes darf man nicht rauchen.</td><td>داخل المبنى لا يُسمح بالتدخين.</td></tr>
-        <tr><td><strong>außerhalb</strong></td><td>خارج</td><td><strong>Außerhalb der</strong> Stadt ist es ruhig.</td><td>خارج المدينة الجو هادئ.</td></tr>
-      </table>
-
-      <div class="example-box">
-        <strong>ملاحظة:</strong> في المحادثة اليومية، غالباً ما تُستخدم <code>wegen</code> و <code>trotz</code> مع <strong>Dativ</strong> بدلاً من Genitiv (مقبول في اللغة العامية).<br>
-        <strong>مثال:</strong> Wegen dem Regen... (عامية) / Wegen des Regens... (فصحى)
-      </div>
-    </div>
-  </div>
-
-  <div class="rule-section">
-    <h3>21) حروف جر شائعة أخرى (A2)</h3>
-    <div class="rule-content">
-      <p>حروف جر إضافية تُستخدم كثيراً في المستوى A2:</p>
-      
-      <table>
-        <tr><th>الحرف</th><th>المعنى</th><th>الحالة</th><th>مثال</th></tr>
-        <tr><td><strong>pro</strong></td><td>لكل / عن</td><td>Akkusativ</td><td>Das kostet 5 Euro <strong>pro</strong> Person.</td></tr>
-        <tr><td><strong>je</strong></td><td>لكل</td><td>Akkusativ</td><td>Das kostet 10 Euro <strong>je</strong> Person.</td></tr>
-        <tr><td><strong>ab</strong></td><td>من (زمنياً)</td><td>Dativ</td><td><strong>Ab dem</strong> 1. Mai bin ich hier.</td></tr>
-        <tr><td><strong>entlang</strong></td><td>على طول</td><td>Akkusativ (بعد الاسم) / Genitiv (قبله)</td><td>Die Straße <strong>entlang</strong> / <strong>Entlang der</strong> Straße.</td></tr>
-        <tr><td><strong>gegenüber</strong></td><td>مقابل</td><td>Dativ</td><td><strong>Dem</strong> Bahnhof <strong>gegenüber</strong> ist ein Café.</td></tr>
-        <tr><td><strong>außer</strong></td><td>باستثناء</td><td>Dativ</td><td><strong>Außer dir</strong> kommt niemand.</td></tr>
-      </table>
-
-      <div class="example-box">
-        <strong>ملاحظات:</strong><br>
-        • <code>pro</code> و <code>je</code> تُستخدمان للتوزيع (لكل شخص/شيء).<br>
-        • <code>ab</code> تُستخدم مع الزمن (ab morgen, ab dem 1. Mai).<br>
-        • <code>außer</code> تعني "باستثناء" وتأخذ Dativ.
       </div>
     </div>
   </div>
