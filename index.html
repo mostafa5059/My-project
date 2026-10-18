@@ -1,3 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الأفعال والمفردات الألمانية A1 - A2.2</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --primary: #4f46e5; --primary-light: #818cf8; --primary-dark: #3730a3; --accent: #10b981; --bg-color: #f1f5f9; --card-bg: #ffffff; --text-main: #0f172a; --text-muted: #64748b; --border-color: #e2e8f0; --radius-lg: 16px; --radius-xl: 24px; --transition: all 0.3s ease; }
+  *{box-sizing:border-box;margin:0;padding:0; font-family: 'Cairo', Tahoma, sans-serif;}
+  body{background:var(--bg-color);color:var(--text-main);line-height:1.7; overflow-x: hidden;}
+  header{background:linear-gradient(135deg, #1e1b4b, #4f46e5);color:#fff;padding:40px 20px;text-align:center; border-bottom-left-radius: var(--radius-xl); border-bottom-right-radius: var(--radius-xl); position: relative;}
+  header h1{font-size:28px;font-weight:700;margin-bottom:10px;}
+  header p { font-size: 16px; opacity: 0.9;}
+  .lang-buttons { position: absolute; top: 20px; left: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .lang-btn { background: rgba(255,255,255,0.2); color: #fff; border: 2px solid rgba(255,255,255,0.4); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 14px; font-family: 'Cairo', sans-serif; }
+  .container{max-width:1150px;margin:0 auto;padding:30px 20px;}
+  .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px; justify-content: center;}
+  .tab{padding:12px 24px;border:none;background:var(--card-bg);color:var(--text-muted);border-radius:30px;cursor:pointer;font-size:15px;font-weight:600; border: 1px solid var(--border-color);}
+  .tab.active{background:var(--primary);color:#fff;}
+  .controls{margin-bottom:25px; max-width: 600px; margin-left: auto; margin-right: auto;}
+  .controls input{width:100%;padding:16px 24px;border:2px solid var(--border-color);border-radius:20px;font-size:16px;outline:none;}
+  .filter-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px; justify-content: center;}
+  .filter-btn{padding:8px 18px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-muted);border-radius:20px;cursor:pointer;font-size:14px; font-weight: 600;}
+  .filter-btn.active{background:var(--primary-dark);color:#fff;}
+  .list-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;}
+  .card{ background:var(--card-bg); padding:22px; border-radius:var(--radius-lg); cursor:pointer; border-right:6px solid var(--primary); position:relative; border: 1px solid var(--border-color); }
+  .card.noun { border-right-color: var(--accent); } .card.adj { border-right-color: #f59e0b; }
+  .card .de { font-weight: 800; font-size: 22px; color: var(--primary-dark); margin-bottom: 6px; direction: ltr; text-align: right; padding-left: 40px; }
+  .card .ar { font-size: 15px; color: var(--text-muted); font-weight: 600; }
+  .card.noun .de { color: #047857; } .card.adj .de { color: #b45309; }
+  .audio-btn{position:absolute; top:16px; left:16px; background:#f1f5f9; border:none; border-radius:50%; width:38px; height:38px; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; color: var(--primary);}
+  .hidden{display:none!important}
+  .modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:100;padding:20px;overflow-y:auto;}
+  .modal.active{display:flex;align-items:center;justify-content:center;}
+  .modal-content{background:var(--card-bg);border-radius:var(--radius-xl);max-width:680px;width:100%;padding:35px;position:relative; max-height: 90vh; overflow-y: auto;}
+  .close-btn{position:absolute;top:20px;left:20px;background:#fee2e2;color:#dc2626;border:none;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:18px;font-weight:700;}
+  .modal-content h2{color:var(--primary-dark);margin-bottom:10px;display:inline-block; font-size:32px; font-weight: 800;}
+  .badge{display:inline-block;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700;margin:6px 6px 15px 0;}
+  .badge.trennbar{background:#dbeafe;color:#1e40af} .badge.reflexiv{background:#fce7f3;color:#9d174d} .badge.unregelmäßig{background:#fef3c7;color:#92400e} .badge.regular{background:#dcfce7;color:#166534}
+  .rule-hint{background:#fffbeb;border-right:4px solid #f59e0b;padding:14px 18px;border-radius:10px;font-size:14px;color:#92400e;margin-bottom:20px;}
+  .section-title{font-size:16px;font-weight:700;color:var(--primary);margin:25px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--border-color);}
+  .conj-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .conj-item { background: #ffffff; padding: 14px 18px; border-radius: 10px; font-size: 15px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-color); font-weight: 600; }
+  .conj-item .pron { color: var(--primary-dark); font-weight: 700; min-width: 80px; direction: rtl; }
+  .conj-item span:not(.pron) { direction: ltr; text-align: left; font-weight: 700; }
+  .meta{background:#eff6ff;padding:16px;border-radius:12px;margin-top:10px;font-size:15px; border: 1px solid #bfdbfe; font-weight: 600;}
+  .info-block { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+  .info-item { background: #f0fdf4; padding: 14px 18px; border-radius: 12px; font-size: 15px; border-right: 5px solid var(--accent); font-weight: 600; }
+  .info-item strong { color: #065f46; display: block; font-size: 13px; margin-bottom: 6px;}
+  .rules-container{background:var(--card-bg);padding:40px;border-radius:var(--radius-xl);border: 1px solid var(--border-color);}
+  .rule-section { border-bottom: 1px solid var(--border-color); padding-bottom: 30px; margin-bottom: 30px; }
+  .rule-section:last-child { border-bottom: none; }
+  .rule-section h3{color:var(--primary-dark);margin-bottom:15px;font-size:22px;border-right:6px solid var(--primary);padding:20px; cursor: pointer; display:flex; justify-content:space-between; align-items: center; background: #f8fafc; border-radius: 14px; font-weight: 800;}
+  .rule-section h3::after { content: '▼'; font-size: 16px; color: var(--primary); }
+  .rule-section.open h3::after { transform: rotate(180deg); }
+  .rule-content { display: none; padding: 30px; background: #fff; border: 1px solid var(--border-color); border-radius: 14px; margin-top: 20px;}
+  .rule-section.open .rule-content { display: block;}
+  .rule-content p{font-size:17px;color:var(--text-main);margin-bottom:18px; line-height: 2;}
+  .rule-content ul{padding-right:25px;margin-bottom:25px}
+  .rule-content li{font-size:16px;color:var(--text-main);margin-bottom:14px; line-height: 1.9;}
+  .rule-content code{background:#eff6ff;color:var(--primary-dark);padding:5px 12px;border-radius:8px;font-family:'Courier New',monospace;font-weight:bold; font-size: 15px;}
+  .example-box { background: #f0fdf4; border-right: 5px solid var(--accent); padding: 25px 30px; margin: 25px 0; border-radius: 12px; font-size: 16px; line-height: 2.1; }
+  .example-box strong { color: #047857; font-weight: 800;}
+  table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 15px; border: 1px solid var(--border-color);}
+  th, td { border: 1px solid var(--border-color); padding: 14px; text-align: center; }
+  th { background: #eff6ff; color: var(--primary-dark); font-weight: 700;}
+  .flashcard-container { max-width: 550px; margin: 40px auto; }
+  .flashcard { background: var(--card-bg); border-radius: var(--radius-xl); padding: 60px 30px; cursor: pointer; min-height: 280px; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 2px solid var(--border-color); }
+  .flashcard-front { color: var(--primary-dark); font-size: 36px; font-weight: 700; }
+  .flashcard-back { color: var(--accent); font-size: 36px; font-weight: 700; display: none; }
+  .flashcard-hint { color: #94a3b8; font-size: 16px; margin-top: 25px; font-weight: 600;}
+  .btn-next { display: block; margin: 35px auto; padding: 16px 45px; background: var(--primary); color: #fff; border: none; border-radius: 30px; cursor: pointer; font-size: 18px; font-weight: 700; }
+  @media (max-width: 768px) {
+    header { padding: 25px 15px; padding-top: 80px; }
+    .lang-buttons { top: 15px; left: 15px; right: 15px; justify-content: center; }
+    .tabs { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab { padding: 10px 16px; font-size: 13px; white-space: nowrap; flex-shrink: 0; }
+    .list-grid { grid-template-columns: 1fr; gap: 12px; }
+    .conj-grid { grid-template-columns: 1fr; }
+    .modal-content { padding: 20px 15px; border-radius: 16px; }
+    .modal-content h2 { font-size: 24px; }
+    .info-block { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
 <body>
 <header>
   <div class="lang-buttons">
@@ -12,7 +99,6 @@
     <button class="tab active" data-tab="verbs">🔤 الأفعال</button>
     <button class="tab" data-tab="nouns">📦 الأسماء</button>
     <button class="tab" data-tab="adjectives">🎨 الصفات</button>
-    <button class="tab" data-tab="basics">📚 الأساسيات</button>
     <button class="tab" data-tab="flashcards">🧠 الاختبار</button>
     <button class="tab" data-tab="speaking">🗣️ التحدث</button>
     <button class="tab" data-tab="exercises">📝 التمارين</button>
@@ -35,7 +121,6 @@
   <div id="tab-verbs"><div class="list-grid" id="verbList"></div></div>
   <div id="tab-nouns" class="hidden"><div class="list-grid" id="nounList"></div></div>
   <div id="tab-adjectives" class="hidden"><div class="list-grid" id="adjList"></div></div>
-  <div id="tab-basics" class="hidden"><div id="basicsContent"></div></div>
   <div id="tab-flashcards" class="hidden">
     <div class="flashcard-container">
       <div class="flashcard" onclick="flipCard()">
@@ -116,7 +201,6 @@
 <script src="progress.js"></script>
 <script src="i18n.js"></script>
 <script src="resources.js"></script>
-<script src="basics.js"></script>
 
 <script>
 const pronouns = ["ich","du","er/sie/es","wir","ihr","sie/Sie"];
@@ -134,7 +218,7 @@ function renderVerbs() {
   const list = document.getElementById("verbList");
   list.innerHTML = filtered.map(v => '<div class="card" data-index="' + VERBS.indexOf(v) + '"><button class="audio-btn" onclick="event.stopPropagation(); speak(\'' + v.de.replace(/ \(.*\)/, '') + '\')">🔊</button><div class="de">' + v.de + '</div><div class="ar">' + v.ar + '</div></div>').join("");
   list.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => openVerb(+c.getAttribute("data-index"))));
-  applyTranslationVisibility();
+  if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
 }
 function renderNouns() {
   const f = currentSearch.trim().toLowerCase();
@@ -142,7 +226,7 @@ function renderNouns() {
   const list = document.getElementById("nounList");
   list.innerHTML = filtered.map(n => '<div class="card noun" data-index="' + NOUNS.indexOf(n) + '"><button class="audio-btn" onclick="event.stopPropagation(); speak(\'' + n.de.replace('der ','').replace('die ','').replace('das ','') + '\')">🔊</button><div class="de">' + n.de + '</div><div class="ar">' + n.ar + '</div></div>').join("");
   list.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => openNoun(+c.getAttribute("data-index"))));
-  applyTranslationVisibility();
+  if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
 }
 function renderAdjectives() {
   const f = currentSearch.trim().toLowerCase();
@@ -150,7 +234,7 @@ function renderAdjectives() {
   const list = document.getElementById("adjList");
   list.innerHTML = filtered.map(a => '<div class="card adj" data-index="' + ADJECTIVES.indexOf(a) + '"><button class="audio-btn" onclick="event.stopPropagation(); speak(\'' + a.de + '\')">🔊</button><div class="de">' + a.de + '</div><div class="ar">' + a.ar + '</div></div>').join("");
   list.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => openAdjective(+c.getAttribute("data-index"))));
-  applyTranslationVisibility();
+  if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
 }
 function openVerb(index) {
   const v = VERBS[index], label = typeLabels[v.type] || typeLabels.regular, hint = ruleHints[v.type] || "";
@@ -189,7 +273,6 @@ function switchTab(name) {
   else if (name === "writing") { initWritingTab(); }
   else if (name === "listening") { initListeningTab(); }
   else if (name === "dialogues") { initDialoguesTab(); }
-  else if (name === "basics") { initBasicsTab(); }
   else if (name === "progress") { initProgressTab(); }
   else if (name === "resources") { renderResources(); }
   else if (name === "review") { initReviewTab(); }
