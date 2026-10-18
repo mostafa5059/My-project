@@ -239,7 +239,7 @@ function renderVerbs() {
 }
 function renderNouns() {
   const f = currentSearch.trim().toLowerCase();
-  const sourceData = contentLanguage === 'en' ? NOUNS_EN : NOUNS;
+  const sourceData = contentLanguage === 'en' ? (typeof NOUNS_EN !== 'undefined' ? NOUNS_EN : []) : (typeof NOUNS !== 'undefined' ? NOUNS : []);
   const filtered = sourceData.filter(n => {
     const word = contentLanguage === 'en' ? n.en : n.de;
     return word.toLowerCase().includes(f) || n.ar.includes(currentSearch.trim());
