@@ -346,7 +346,7 @@ function switchTab(name) {
   document.getElementById("search").style.display = (name === "verbs" || name === "nouns" || name === "adjectives") ? "block" : "none";
   if (name === "flashcards") newCard();
   else if (name === "verbs" || name === "nouns" || name === "adjectives") renderCurrent();
-  else if (name === "rules") document.getElementById("rulesContent").innerHTML = RULES_HTML;
+  else if (name === "rules") document.getElementById("rulesContent").innerHTML = (contentLanguage === 'en' ? RULES_HTML_EN : RULES_HTML);
   else if (name === "speaking") { loadShadow(); loadChallenge(); }
   else if (name === "exercises") { startExercises(); }
   else if (name === "writing") { initWritingTab(); }
