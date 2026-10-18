@@ -73,7 +73,57 @@ const SHADOWING_DATA = [
   { de: "Ich bin sehr glücklich über diese Nachricht.", ar: "أنا سعيد جداً بهذا الخبر." },
   { de: "Das finde ich sehr interessant.", ar: "أجد هذا مثيراً للاهتمام جداً." },
   { de: "Entschuldigung, ich habe dich nicht verstanden.", ar: "عذراً، لم أفهمك." },
-  { de: "Ich bin einverstanden. Das ist eine gute Idee.", ar: "أنا موافق. هذه فكرة جيدة." }
+  { de: "Ich bin einverstanden. Das ist eine gute Idee.", ar: "أنا موافق. هذه فكرة جيدة." },
+
+  // الأسرة والأصدقاء (61-68)
+  { de: "Meine Familie besteht aus vier Personen.", ar: "عائلتي تتكون من أربعة أفراد." },
+  { de: "Ich habe einen älteren Bruder und eine jüngere Schwester.", ar: "لدي أخ أكبر وأخت أصغر." },
+  { de: "Meine Eltern wohnen in Kairo.", ar: "والداي يسكنان في القاهرة." },
+  { de: "Ich habe viele Freunde in Deutschland.", ar: "لدي أصدقاء كثيرون في ألمانيا." },
+  { de: "Mein bester Freund heißt Ali.", ar: "أفضل صديق لي اسمه علي." },
+  { de: "Wir treffen uns oft am Wochenende.", ar: "نتقابل غالباً في عطلة نهاية الأسبوع." },
+  { de: "Ich verstehe mich gut mit meiner Familie.", ar: "أتفاهم جيداً مع عائلتي." },
+  { de: "Hast du Kinder? — Nein, ich habe keine Kinder.", ar: "هل لديك أطفال؟ — لا، ليس لدي أطفال." },
+
+  // السكن والإيجار (69-76)
+  { de: "Ich suche eine Wohnung in der Stadtmitte.", ar: "أبحث عن شقة في وسط المدينة." },
+  { de: "Wie hoch ist die Miete pro Monat?", ar: "كم الإيجار شهرياً؟" },
+  { de: "Die Wohnung hat zwei Zimmer und eine Küche.", ar: "الشقة بها غرفتان ومطبخ." },
+  { de: "Ist die Nebenkosten in der Miete enthalten?", ar: "هل التكاليف الإضافية مشمولة في الإيجار؟" },
+  { de: "Ich möchte einen Mietvertrag unterschreiben.", ar: "أريد توقيع عقد إيجار." },
+  { de: "Die Wohnung ist möbliert und sehr hell.", ar: "الشقة مفروشة ومشرقة جداً." },
+  { de: "Gibt es einen Aufzug im Gebäude?", ar: "هل يوجد مصعد في المبنى؟" },
+  { de: "Ich wohne im dritten Stock.", ar: "أسكن في الطابق الثالث." },
+
+  // المواصلات (77-84)
+  { de: "Ich fahre mit der U-Bahn zur Arbeit.", ar: "أذهب إلى العمل بالمترو." },
+  { de: "Der Bus kommt in fünf Minuten.", ar: "الحافلة تأتي بعد خمس دقائق." },
+  { de: "Wo muss ich umsteigen?", ar: "أين يجب أن أغير الوسيلة؟" },
+  { de: "Ich habe meinen Zug verpasst.", ar: "لقد فاتني القطار." },
+  { de: "Wie komme ich am besten zum Flughafen?", ar: "كيف أصل إلى المطار بأفضل طريقة؟" },
+  { de: "Das Taxi ist zu teuer. Ich nehme lieber den Bus.", ar: "التاكسي غالٍ جداً. أفضل أخذ الحافلة." },
+  { de: "Ich kaufe ein Monatsticket für den öffentlichen Verkehr.", ar: "أشتري تذكرة شهرية للمواصلات العامة." },
+  { de: "Der Zug hat 20 Minuten Verspätung.", ar: "القطار متأخر 20 دقيقة." },
+
+  // الطقس والفصول (85-92)
+  { de: "Im Winter schneit es oft in Deutschland.", ar: "في الشتاء تثلج غالباً في ألمانيا." },
+  { de: "Im Sommer ist es sehr heiß in Ägypten.", ar: "في الصيف الجو حار جداً في مصر." },
+  { de: "Heute ist es bewölkt und windig.", ar: "اليوم الجو غائم وعاصف." },
+  { de: "Es regnet stark. Nimm einen Regenschirm mit!", ar: "تمطر بغزارة. خذ مظلة معك!" },
+  { de: "Der Frühling ist meine Lieblingsjahreszeit.", ar: "الربيع هو فصلي المفضل." },
+  { de: "Im Herbst fallen die Blätter von den Bäumen.", ar: "في الخريف تتساقط الأوراق من الأشجار." },
+  { de: "Die Temperatur liegt bei 25 Grad.", ar: "درجة الحرارة 25 درجة." },
+  { de: "Morgen wird es sonnig und warm.", ar: "غداً سيكون الجو مشمساً ودافئاً." },
+
+  // الهوايات والرياضة (93-100)
+  { de: "In meiner Freizeit spiele ich Fußball.", ar: "في وقت فراغي ألعب كرة القدم." },
+  { de: "Ich gehe dreimal pro Woche ins Fitnessstudio.", ar: "أذهب إلى صالة الألعاب الرياضية ثلاث مرات أسبوعياً." },
+  { de: "Ich lese gerne Romane und Krimis.", ar: "أحب قراءة الروايات والقصص البوليسية." },
+  { de: "Meine Hobbys sind Musik hören und Reisen.", ar: "هواياتي هي الاستماع للموسيقى والسفر." },
+  { de: "Ich spiele seit zehn Jahren Gitarre.", ar: "أعزف على الجيتار منذ عشر سنوات." },
+  { de: "Am Sonntag gehe ich oft schwimmen.", ar: "يوم الأحد أذهب غالباً للسباحة." },
+  { de: "Ich interessiere mich für Fotografie.", ar: "أهتم بالتصوير الفوتوغرافي." },
+  { de: "Wir machen oft Ausflüge in die Berge.", ar: "نقوم غالباً برحلات إلى الجبال." }
 ];
 
 const SPEAKING_CHALLENGES = [
@@ -86,5 +136,20 @@ const SPEAKING_CHALLENGES = [
   { q: "Was machst du in deiner Freizeit?", qAr: "ماذا تفعل في وقت فراغك؟", a: "In meiner Freizeit lese ich Bücher und treibe Sport.", aAr: "في وقت فراغي أقرأ الكتب وأمارس الرياضة." },
   { q: "Warum lernst du Deutsch?", qAr: "لماذا تتعلم الألمانية؟", a: "Ich lerne Deutsch für meine Arbeit.", aAr: "أتعلم الألمانية من أجل عملي." },
   { q: "Hast du Geschwister?", qAr: "هل لديك أشقاء؟", a: "Ja, ich habe einen Bruder und eine Schwester.", aAr: "نعم، لدي أخ وأخت." },
-  { q: "Was hast du gestern gemacht?", qAr: "ماذا فعلت أمس؟", a: "Ich habe gearbeitet und dann ferngesehen.", aAr: "عملت ثم شاهدت التلفاز." }
+  { q: "Was hast du gestern gemacht?", qAr: "ماذا فعلت أمس؟", a: "Ich habe gearbeitet und dann ferngesehen.", aAr: "عملت ثم شاهدت التلفاز." },
+  { q: "Was ist dein Lieblingsessen?", qAr: "ما هو طعامك المفضل؟", a: "Mein Lieblingsessen ist Pizza.", aAr: "طعامي المفضل هو البيتزا." },
+  { q: "Wann stehst du normalerweise auf?", qAr: "متى تستيقظ عادة؟", a: "Ich stehe um 7 Uhr auf.", aAr: "أستيقظ الساعة 7." },
+  { q: "Was machst du am Wochenende?", qAr: "ماذا تفعل في عطلة نهاية الأسبوع؟", a: "Ich treffe Freunde oder gehe spazieren.", aAr: "أقابل الأصدقاء أو أتنزه." },
+  { q: "Hast du ein Haustier?", qAr: "هل لديك حيوان أليف؟", a: "Ja, ich habe eine Katze.", aAr: "نعم، لدي قطة." },
+  { q: "Wie kommst du zur Arbeit?", qAr: "كيف تذهب إلى العمل؟", a: "Ich fahre mit dem Bus.", aAr: "أذهب بالحافلة." },
+  { q: "Was ist dein Lieblingsfach in der Schule?", qAr: "ما هو مادتك المفضلة في المدرسة؟", a: "Mein Lieblingsfach ist Mathematik.", aAr: "مادتي المفضلة هي الرياضيات." },
+  { q: "Wo warst du im letzten Urlaub?", qAr: "أين كنت في الإجازة الماضية؟", a: "Ich war in Italien.", aAr: "كنت في إيطاليا." },
+  { q: "Was möchtest du in der Zukunft machen?", qAr: "ماذا تريد أن تفعل في المستقبل؟", a: "Ich möchte Arzt werden.", aAr: "أريد أن أصبح طبيباً." },
+  { q: "Kannst du gut kochen?", qAr: "هل تجيد الطبخ؟", a: "Ja, ich koche ziemlich gut.", aAr: "نعم، أطبخ بشكل جيد." },
+  { q: "Was ist dein Lieblingssport?", qAr: "ما هي رياضتك المفضلة؟", a: "Mein Lieblingssport ist Fußball.", aAr: "رياضتي المفضلة هي كرة القدم." },
+  { q: "Wie ist das Wetter heute?", qAr: "كيف حال الطقس اليوم؟", a: "Es ist sonnig und warm.", aAr: "الجو مشمس ودافئ." },
+  { q: "Was trinkst du morgens?", qAr: "ماذا تشرب في الصباح؟", a: "Ich trinke Kaffee.", aAr: "أشرب القهوة." },
+  { q: "Hast du heute Zeit?", qAr: "هل لديك وقت اليوم؟", a: "Ja, ich habe heute Nachmittag Zeit.", aAr: "نعم، لدي وقت بعد الظهر." },
+  { q: "Wie viele Sprachen sprichst du?", qAr: "كم لغة تتحدث؟", a: "Ich spreche zwei Sprachen.", aAr: "أتحدث لغتين." },
+  { q: "Wo möchtest du wohnen?", qAr: "أين تريد أن تسكن؟", a: "Ich möchte in Berlin wohnen.", aAr: "أريد أن أسكن في برلين." }
 ];
