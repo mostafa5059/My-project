@@ -387,7 +387,14 @@ document.getElementById("modal").addEventListener("click", e => { if (e.target.i
 document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => switchTab(t.getAttribute("data-tab"))));
 document.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => { document.querySelectorAll(".filter-btn").forEach(x => x.classList.remove("active")); b.classList.add("active"); currentFilter = b.getAttribute("data-filter"); renderVerbs(); }));
 document.getElementById("search").addEventListener("input", e => { currentSearch = e.target.value; renderCurrent(); });
-  let contentLanguage = localStorage.getItem('content_language') || 'de';
+renderVerbs();
+applyLanguage();
+applyTranslationVisibility();
+
+// إضافة تسمية اللغة الحالية عند تحميل الصفحة
+if (document.getElementById('currentLangLabel')) {
+  document.getElementById('currentLangLabel').textContent = contentLanguage === 'de' ? '(Deutsch)' : '(English)';
+}
 
 function toggleContentLanguage() {
   contentLanguage = contentLanguage === 'de' ? 'en' : 'de';
