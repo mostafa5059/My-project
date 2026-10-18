@@ -1,210 +1,3 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الأفعال والمفردات الألمانية A1 - A2.2</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --primary: #4f46e5;
-    --primary-light: #818cf8;
-    --primary-dark: #3730a3;
-    --accent: #10b981;
-    --bg-color: #f1f5f9;
-    --card-bg: #ffffff;
-    --text-main: #0f172a;
-    --text-muted: #64748b;
-    --border-color: #e2e8f0;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
-    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
-    --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.02);
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  *{box-sizing:border-box;margin:0;padding:0; font-family: 'Cairo', Tahoma, sans-serif;}
-  body{background:var(--bg-color);color:var(--text-main);line-height:1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased;}
-  
-  header{background:linear-gradient(135deg, #1e1b4b, #4f46e5);color:#fff;padding:40px 20px;text-align:center; box-shadow: 0 10px 30px rgba(79,70,229,0.2); border-bottom-left-radius: var(--radius-xl); border-bottom-right-radius: var(--radius-xl); animation: fadeInDown 0.8s ease-out; position: relative; overflow: hidden;}
-  header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%); transform: rotate(30deg); pointer-events: none;}
-  header h1{font-size:28px;font-weight:700;margin-bottom:10px; letter-spacing: 0.5px; position: relative; z-index: 1;}
-  header p { font-size: 16px; opacity: 0.9; position: relative; z-index: 1; font-weight: 400;}
-  
-  .lang-buttons { position: absolute; top: 20px; left: 20px; display: flex; gap: 10px; z-index: 10; flex-wrap: wrap; }
-  .lang-btn { background: rgba(255,255,255,0.2); color: #fff; border: 2px solid rgba(255,255,255,0.4); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 14px; transition: all 0.2s; backdrop-filter: blur(10px); font-family: 'Cairo', sans-serif; white-space: nowrap; }
-  .lang-btn:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
-  
-  .container{max-width:1150px;margin:0 auto;padding:30px 20px;}
-  
-  .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px; justify-content: center;}
-  .tab{padding:12px 24px;border:none;background:var(--card-bg);color:var(--text-muted);border-radius:30px;cursor:pointer;font-size:15px;font-weight:600; transition: var(--transition); box-shadow: var(--shadow-sm); border: 1px solid var(--border-color);}
-  .tab:hover{ background: #f8fafc; transform: translateY(-2px); box-shadow: var(--shadow-md); color: var(--primary); }
-  .tab.active{background:var(--primary);color:#fff; box-shadow: 0 4px 15px rgba(79,70,229,0.3); transform: translateY(-2px); border-color: var(--primary);}
-  
-  .controls{margin-bottom:25px; position: relative; max-width: 600px; margin-left: auto; margin-right: auto;}
-  .controls input{width:100%;padding:16px 24px;border:2px solid var(--border-color);border-radius:20px;font-size:16px;outline:none; transition: var(--transition); background: var(--card-bg); box-shadow: var(--shadow-sm); color: var(--text-main);}
-  .controls input:focus{border-color:var(--primary-light); box-shadow: 0 0 0 4px rgba(79,70,229,0.1);}
-  .controls input::placeholder { color: #94a3b8; }
-  
-  .filter-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px; justify-content: center;}
-  .filter-btn{padding:8px 18px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-muted);border-radius:20px;cursor:pointer;font-size:14px; font-weight: 600; transition: var(--transition); box-shadow: var(--shadow-sm);}
-  .filter-btn:hover{ background: #f8fafc; color: var(--primary); }
-  .filter-btn.active{background:var(--primary-dark);color:#fff;border-color:var(--primary-dark); box-shadow: 0 4px 10px rgba(55,48,163,0.25);}
-  
-  .list-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px; animation: fadeIn 0.6s ease-out;}
-  .card{ background:var(--card-bg); padding:22px; border-radius:var(--radius-lg); cursor:pointer; border-right:6px solid var(--primary); box-shadow:var(--shadow-sm); position:relative; transition: var(--transition); animation: slideUp 0.5s ease-out; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); border-left: 1px solid var(--border-color); overflow: hidden; }
-  .card::before { content: ''; position: absolute; top: 0; right: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--primary), var(--primary-light)); transform: scaleX(0); transform-origin: right; transition: transform 0.3s ease; }
-  .card:hover::before { transform: scaleX(1); }
-  .card:hover{ transform: translateY(-6px); box-shadow:var(--shadow-xl); border-right-color: var(--primary-light); }
-  .card:active { transform: translateY(-2px) scale(0.98); }
-  
-  .card.noun { border-right-color: var(--accent); } 
-  .card.noun::before { background: linear-gradient(90deg, var(--accent), #34d399); }
-  .card.adj { border-right-color: #f59e0b; }
-  .card.adj::before { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
-  
-  .card .de { font-weight: 800; font-size: 22px; color: var(--primary-dark); margin-bottom: 6px; letter-spacing: 0.3px; display: block; direction: ltr; text-align: right; padding-left: 40px; }
-  .card .ar { font-size: 15px; color: var(--text-muted); font-weight: 600; margin-bottom: 10px; }
-  .card.noun .de { color: #047857; } 
-  .card.adj .de { color: #b45309; }
-  
-  .audio-btn{position:absolute; top:16px; left:16px; background:#f1f5f9; border:none; border-radius:50%; width:38px; height:38px; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; transition: var(--transition); color: var(--primary);}
-  .audio-btn:hover{background:#e0e7ff; transform: scale(1.15); box-shadow: 0 4px 12px rgba(79,70,229,0.2);}
-  .audio-btn:active{ transform: scale(0.9); }
-  
-  .hidden{display:none!important}
-  
-  .modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:100;padding:20px;overflow-y:auto; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);}
-  .modal.active{display:flex;align-items:center;justify-content:center; animation: fadeIn 0.3s ease-out;}
-  .modal-content{background:var(--card-bg);border-radius:var(--radius-xl);max-width:680px;width:100%;padding:35px;position:relative; box-shadow: var(--shadow-xl); animation: zoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid var(--border-color); max-height: 90vh; overflow-y: auto;}
-  
-  .close-btn{position:absolute;top:20px;left:20px;background:#fee2e2;color:#dc2626;border:none;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:18px;font-weight:700; transition: var(--transition); display: flex; align-items: center; justify-content: center;}
-  .close-btn:hover{ background: #fca5a5; transform: rotate(90deg); }
-  
-  .modal-content h2{color:var(--primary-dark);margin-bottom:10px;padding-left:50px;display:inline-block; font-size:32px; font-weight: 800;}
-  
-  .badge{display:inline-block;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700;margin:6px 6px 15px 0; animation: fadeIn 0.5s ease-out; letter-spacing: 0.3px;}
-  .badge.trennbar{background:#dbeafe;color:#1e40af} 
-  .badge.reflexiv{background:#fce7f3;color:#9d174d}
-  .badge.unregelmäßig{background:#fef3c7;color:#92400e} 
-  .badge.regular{background:#dcfce7;color:#166534}
-  
-  .rule-hint{background:#fffbeb;border-right:4px solid #f59e0b;padding:14px 18px;border-radius:10px;font-size:14px;color:#92400e;margin-bottom:20px; animation: slideInRight 0.4s ease-out; font-weight: 600;}
-  
-  .section-title{font-size:16px;font-weight:700;color:var(--primary);margin:25px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--border-color); display: flex; align-items: center; gap: 8px;}
-  
-  .conj-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px; animation: fadeIn 0.5s ease-out;}
-  .conj-item { background: #ffffff; padding: 14px 18px; border-radius: 10px; font-size: 15px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-color); transition: var(--transition); font-weight: 600; position: relative; }
-  .conj-item::before { content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 3px; height: 60%; background: var(--primary-light); border-radius: 3px; opacity: 0; transition: opacity 0.2s; }
-  .conj-item:hover { background: #f8fafc; border-color: var(--primary-light); transform: translateX(-4px); }
-  .conj-item:hover::before { opacity: 1; }
-  .conj-item .pron { color: var(--primary-dark); font-weight: 700; min-width: 80px; direction: rtl; }
-  .conj-item span:not(.pron) { direction: ltr; text-align: left; font-weight: 700; color: var(--text-main); }
-  
-  .meta{background:#eff6ff;padding:16px;border-radius:12px;margin-top:10px;font-size:15px; border: 1px solid #bfdbfe; font-weight: 600;}
-  .info-block { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
-  .info-item { background: #f0fdf4; padding: 14px 18px; border-radius: 12px; font-size: 15px; border-right: 5px solid var(--accent); font-weight: 600; }
-  .info-item strong { color: #065f46; display: block; font-size: 13px; margin-bottom: 6px; opacity: 0.8;}
-  
-  .rules-container{background:var(--card-bg);padding:40px;border-radius:var(--radius-xl);box-shadow:var(--shadow-md); animation: fadeIn 0.5s ease-out; border: 1px solid var(--border-color);}
-  .rule-section { border-bottom: 1px solid var(--border-color); padding-bottom: 30px; margin-bottom: 30px; }
-  .rule-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .rule-section h3{color:var(--primary-dark);margin-bottom:15px;font-size:22px;border-right:6px solid var(--primary);padding:20px; cursor: pointer; display:flex; justify-content:space-between; align-items: center; background: linear-gradient(135deg, #f8fafc, #f1f5f9); border-radius: 14px; transition: var(--transition); font-weight: 800; letter-spacing: 0.2px;}
-  .rule-section h3:hover { background: linear-gradient(135deg, #f1f5f9, #e2e8f0); transform: translateX(-4px); box-shadow: var(--shadow-sm);}
-  .rule-section h3::after { content: '▼'; font-size: 16px; color: var(--primary); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-  .rule-section.open h3::after { transform: rotate(180deg); }
-  .rule-content { display: none; padding: 30px; background: #fff; border: 1px solid var(--border-color); border-radius: 14px; margin-top: 20px; box-shadow: var(--shadow-sm);}
-  .rule-section.open .rule-content { display: block; animation: slideDown 0.4s ease-out;}
-  .rule-content p{font-size:17px;color:var(--text-main);margin-bottom:18px; line-height: 2;}
-  .rule-content ul{padding-right:25px;margin-bottom:25px}
-  .rule-content li{font-size:16px;color:var(--text-main);margin-bottom:14px; line-height: 1.9;}
-  .rule-content code{background:#eff6ff;color:var(--primary-dark);padding:5px 12px;border-radius:8px;font-family:'Courier New',monospace;font-weight:bold; font-size: 15px; border: 1px solid #bfdbfe; display: inline-block; margin: 2px 0;}
-  .example-box { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-right: 5px solid var(--accent); padding: 25px 30px; margin: 25px 0; border-radius: 12px; font-size: 16px; line-height: 2.1; box-shadow: 0 4px 12px rgba(16,185,129,0.08); position: relative; }
-  .example-box::before { content: '💬'; position: absolute; top: 12px; left: 18px; font-size: 22px; opacity: 0.7; }
-  .example-box strong { color: #047857; font-weight: 800;}
-  table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 25px 0; font-size: 15px; box-shadow: var(--shadow-md); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color);}
-  th, td { border-bottom: 1px solid var(--border-color); padding: 14px; text-align: center; }
-  th { background: linear-gradient(135deg, #eff6ff, #dbeafe); color: var(--primary-dark); font-weight: 700; font-size: 16px;}
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: #f8fafc; }
-
-  .flashcard-container { max-width: 550px; margin: 40px auto; perspective: 1000px; }
-  .flashcard { background: var(--card-bg); border-radius: var(--radius-xl); padding: 60px 30px; cursor: pointer; box-shadow: var(--shadow-lg); min-height: 280px; display: flex; align-items: center; justify-content: center; flex-direction: column; transition: var(--transition); border: 2px solid var(--border-color); }
-  .flashcard:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-xl); border-color: var(--primary-light); }
-  .flashcard:active { transform: scale(0.98); }
-  .flashcard-front { color: var(--primary-dark); font-size: 36px; font-weight: 700; animation: fadeIn 0.5s ease-out; }
-  .flashcard-back { color: var(--accent); font-size: 36px; font-weight: 700; display: none; animation: fadeIn 0.5s ease-out; }
-  .flashcard-hint { color: #94a3b8; font-size: 16px; margin-top: 25px; font-weight: 600;}
-  .btn-next { display: block; margin: 35px auto; padding: 16px 45px; background: var(--primary); color: #fff; border: none; border-radius: 30px; cursor: pointer; font-size: 18px; font-weight: 700; transition: var(--transition); box-shadow: 0 4px 15px rgba(79,70,229,0.3); }
-  .btn-next:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(79,70,229,0.4); }
-  .btn-next:active { transform: translateY(0); }
-
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes slideDown { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes slideInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
-  @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-
-  @media (max-width: 768px) {
-    header { padding: 25px 15px; padding-top: 80px; }
-    header h1 { font-size: 20px; }
-    header p { font-size: 13px; }
-    .lang-buttons { top: 15px; left: 15px; right: 15px; justify-content: center; }
-    .lang-btn { padding: 6px 12px; font-size: 12px; }
-    .container { padding: 15px 12px; }
-    .tabs { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding-bottom: 12px; gap: 8px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-    .tabs::-webkit-scrollbar { display: none; }
-    .tab { padding: 10px 16px; font-size: 13px; white-space: nowrap; flex-shrink: 0; }
-    .controls input { padding: 12px 18px; font-size: 15px; }
-    .filter-btns { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding-bottom: 10px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-    .filter-btns::-webkit-scrollbar { display: none; }
-    .filter-btn { padding: 7px 14px; font-size: 13px; white-space: nowrap; flex-shrink: 0; }
-    .list-grid { grid-template-columns: 1fr; gap: 12px; }
-    .card { padding: 16px; }
-    .card .de { font-size: 19px; padding-left: 38px; }
-    .card .ar { font-size: 14px; }
-    .audio-btn { width: 32px; height: 32px; font-size: 16px; }
-    .modal { padding: 10px; }
-    .modal-content { padding: 20px 15px; border-radius: 16px; max-height: 90vh; overflow-y: auto; }
-    .modal-content h2 { font-size: 24px; padding-left: 40px; }
-    .close-btn { width: 32px; height: 32px; font-size: 16px; top: 12px; left: 12px; }
-    .conj-grid { grid-template-columns: 1fr; gap: 8px; }
-    .conj-item { padding: 10px 14px; font-size: 14px; }
-    .section-title { font-size: 14px; }
-    .meta { font-size: 14px; padding: 12px; }
-    .rules-container { padding: 20px 15px; border-radius: 16px; }
-    .rule-section h3 { font-size: 15px; padding: 14px 10px; }
-    .rule-content { padding: 15px; }
-    .rule-content p, .rule-content li { font-size: 14px; }
-    .rule-content code { font-size: 13px; padding: 2px 6px; }
-    .example-box { padding: 15px; font-size: 14px; }
-    table { font-size: 13px; }
-    th, td { padding: 8px 5px; }
-    .flashcard { padding: 40px 20px; min-height: 220px; }
-    .flashcard-front, .flashcard-back { font-size: 24px; }
-    .flashcard-hint { font-size: 13px; margin-top: 15px; }
-    .btn-next { padding: 14px 30px; font-size: 16px; margin: 25px auto; }
-    #exerciseOptions button { font-size: 14px !important; padding: 12px 15px !important; }
-    #exerciseQuestion { font-size: 18px !important; }
-    #shadowDe, #challengeQ { font-size: 22px !important; }
-    #shadowAr, #challengeQAr { font-size: 16px !important; }
-    #challengeA { font-size: 18px !important; }
-    #resourcesGrid { grid-template-columns: 1fr !important; }
-  }
-  
-  @media (max-width: 400px) {
-    header h1 { font-size: 18px; }
-    .tab { padding: 8px 12px; font-size: 12px; }
-    .card .de { font-size: 17px; }
-    .modal-content h2 { font-size: 20px; }
-  }
-</style>
-</head>
 <body>
 <header>
   <div class="lang-buttons">
@@ -231,9 +24,7 @@
     <button class="tab" data-tab="rules">📖 القواعد</button>
     <button class="tab" data-tab="resources">📚 المصادر</button>
   </div>
-
   <div class="controls"><input type="text" id="search" placeholder="🔍 ابحث بالعربي أو الألماني..."></div>
-  
   <div class="filter-btns" id="verbFilters">
     <button class="filter-btn active" data-filter="all">الكل</button>
     <button class="filter-btn" data-filter="regular">منتظمة</button>
@@ -241,12 +32,10 @@
     <button class="filter-btn" data-filter="trennbar">منفصلة</button>
     <button class="filter-btn" data-filter="reflexiv">انعكاسية</button>
   </div>
-
   <div id="tab-verbs"><div class="list-grid" id="verbList"></div></div>
   <div id="tab-nouns" class="hidden"><div class="list-grid" id="nounList"></div></div>
   <div id="tab-adjectives" class="hidden"><div class="list-grid" id="adjList"></div></div>
   <div id="tab-basics" class="hidden"><div id="basicsContent"></div></div>
-  
   <div id="tab-flashcards" class="hidden">
     <div class="flashcard-container">
       <div class="flashcard" onclick="flipCard()">
@@ -257,33 +46,28 @@
       <button class="btn-next" onclick="nextCard()">التالي ➡️</button>
     </div>
   </div>
-
   <div id="tab-speaking" class="hidden">
     <div style="display:flex; gap:15px; flex-wrap:wrap; justify-content:center; margin-bottom:30px;">
-      <button class="filter-btn active" onclick="switchSpeakingMode('shadowing')">🔊 التكرار (Shadowing)</button>
+      <button class="filter-btn active" onclick="switchSpeakingMode('shadowing')">🔊 التكرار</button>
       <button class="filter-btn" onclick="switchSpeakingMode('challenge')">💬 تحدي التحدث</button>
     </div>
-    
     <div id="shadowingSection">
-      <div style="background:var(--card-bg); padding:50px 30px; border-radius:var(--radius-xl); text-align:center; box-shadow:var(--shadow-lg); max-width:650px; margin:0 auto; border-top: 6px solid var(--primary);">
-        <p id="shadowCounter" style="color:var(--primary); font-weight:700; margin-bottom:20px; font-size:16px; background:#e0e7ff; padding:6px 15px; border-radius:20px; display:inline-block;">الجملة 1 من 30</p>
-        <p style="color:var(--text-muted); margin-bottom:25px; font-size:16px; font-weight:600;">استمع للجملة الألمانية، ثم كررها بصوت عالٍ.</p>
-        <h2 id="shadowDe" style="color:var(--primary-dark); font-size:32px; margin-bottom:20px; font-weight:700; line-height:1.5;">-</h2>
+      <div style="background:var(--card-bg); padding:50px 30px; border-radius:var(--radius-xl); text-align:center; max-width:650px; margin:0 auto; border-top: 6px solid var(--primary);">
+        <p id="shadowCounter" style="color:var(--primary); font-weight:700; margin-bottom:20px;">الجملة 1 من 30</p>
+        <h2 id="shadowDe" style="color:var(--primary-dark); font-size:32px; margin-bottom:20px; font-weight:700;">-</h2>
         <p id="shadowAr" style="color:var(--accent); font-size:20px; margin-bottom:35px; font-weight:700; background:#f0fdf4; padding:12px 25px; border-radius:12px; display:inline-block;">-</p>
-        <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap; margin-top:20px;">
+        <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
           <button class="btn-next" onclick="speak(document.getElementById('shadowDe').innerText)" style="margin:0; background:var(--primary);">🔊 استمع</button>
           <button class="btn-next" onclick="nextShadow()" style="margin:0; background:var(--accent);">التالي ➡️</button>
         </div>
       </div>
     </div>
-
     <div id="challengeSection" class="hidden">
-      <div style="background:var(--card-bg); padding:50px 30px; border-radius:var(--radius-xl); text-align:center; box-shadow:var(--shadow-lg); max-width:650px; margin:0 auto; border-top: 6px solid #f59e0b;">
-        <p style="color:var(--text-muted); margin-bottom:25px; font-size:16px; font-weight:600;">اقرأ السؤال، أجب بصوتك، ثم اضغط "إظهار الإجابة".</p>
+      <div style="background:var(--card-bg); padding:50px 30px; border-radius:var(--radius-xl); text-align:center; max-width:650px; margin:0 auto; border-top: 6px solid #f59e0b;">
         <h2 id="challengeQ" style="color:var(--primary-dark); font-size:28px; margin-bottom:12px; font-weight:700;">-</h2>
         <p id="challengeQAr" style="color:var(--text-muted); font-size:18px; margin-bottom:25px; font-weight:600;">-</p>
         <button class="btn-next" onclick="speak(document.getElementById('challengeQ').innerText)" style="margin:15px auto; background:var(--primary);">🔊 استمع للسؤال</button>
-        <div id="challengeAnsBox" style="display:none; background:#f0fdf4; padding:25px; border-radius:12px; margin-top:25px; border: 1px solid #bbf7d0; animation: slideDown 0.4s ease-out;">
+        <div id="challengeAnsBox" style="display:none; background:#f0fdf4; padding:25px; border-radius:12px; margin-top:25px;">
           <h3 id="challengeA" style="color:var(--accent); font-size:24px; margin-bottom:10px; font-weight:700;">-</h3>
           <p id="challengeAAr" style="color:var(--text-muted); font-size:18px; font-weight:600;">-</p>
         </div>
@@ -294,12 +78,11 @@
       </div>
     </div>
   </div>
-
   <div id="tab-exercises" class="hidden">
     <div style="max-width:700px; margin:0 auto;">
-      <div style="background:#fff; padding:40px 30px; border-radius:16px; box-shadow:0 10px 25px rgba(0,0,0,0.08); text-align:center;">
+      <div style="background:#fff; padding:40px 30px; border-radius:16px; text-align:center;">
         <p id="exerciseProgress" style="color:#64748b; font-weight:600; margin-bottom:20px;">السؤال 1 من 20</p>
-        <h2 id="exerciseQuestion" style="color:#1e3a8a; font-size:24px; margin-bottom:12px; line-height:1.5;">-</h2>
+        <h2 id="exerciseQuestion" style="color:#1e3a8a; font-size:24px; margin-bottom:12px;">-</h2>
         <p id="exerciseQuestionAr" style="color:#64748b; font-size:16px; margin-bottom:25px;">-</p>
         <div id="exerciseOptions" style="display:flex; flex-direction:column; gap:12px; max-width:400px; margin:0 auto;"></div>
         <div id="exerciseFeedback" style="margin-top:25px; display:none; padding:15px; border-radius:10px;"></div>
@@ -307,43 +90,12 @@
       </div>
     </div>
   </div>
-
-  <div id="tab-writing" class="hidden">
-    <div style="max-width:700px; margin:0 auto; margin-bottom:20px; text-align:center;">
-      <div style="display:inline-flex; gap:8px; flex-wrap:wrap; justify-content:center;">
-        <button class="filter-btn level-btn active" data-level="all" onclick="setWritingLevel('all')" style="padding:8px 18px; border:1px solid #e2e8f0; background:#fff; border-radius:20px; cursor:pointer; font-size:14px; font-weight:600; font-family:Cairo,sans-serif;">الكل</button>
-        <button class="filter-btn level-btn" data-level="A1" onclick="setWritingLevel('A1')" style="padding:8px 18px; border:1px solid #e2e8f0; background:#fff; border-radius:20px; cursor:pointer; font-size:14px; font-weight:600; font-family:Cairo,sans-serif;">A1</button>
-        <button class="filter-btn level-btn" data-level="A2" onclick="setWritingLevel('A2')" style="padding:8px 18px; border:1px solid #e2e8f0; background:#fff; border-radius:20px; cursor:pointer; font-size:14px; font-weight:600; font-family:Cairo,sans-serif;">A2</button>
-      </div>
-    </div>
-    <div id="writingContent"></div>
-  </div>
-
-  <div id="tab-listening" class="hidden">
-    <div style="max-width:700px; margin:0 auto; margin-bottom:20px; text-align:center;">
-      <div style="display:inline-flex; gap:8px; flex-wrap:wrap; justify-content:center;">
-        <button class="filter-btn level-btn active" data-level="all" onclick="setListeningLevel('all')" style="padding:8px 18px; border:1px solid #e2e8f0; background:#fff; border-radius:20px; cursor:pointer; font-size:14px; font-weight:600; font-family:Cairo,sans-serif;">الكل</button>
-        <button class="filter-btn level-btn" data-level="A1" onclick="setListeningLevel('A1')" style="padding:8px 18px; border:1px solid #e2e8f0; background:#fff; border-radius:20px; cursor:pointer; font-size:14px; font-weight:600; font-family:Cairo,sans-serif;">A1</button>
-        <button class="filter-btn level-btn" data-level="A2" onclick="setListeningLevel('A2')" style="padding:8px 18px; border:1px solid #e2e8f0; background:#fff; border-radius:20px; cursor:pointer; font-size:14px; font-weight:600; font-family:Cairo,sans-serif;">A2</button>
-      </div>
-    </div>
-    <div id="listeningContent"></div>
-  </div>
-
-  <div id="tab-dialogues" class="hidden">
-    <div id="dialoguesContent"></div>
-  </div>
-
-  <div id="tab-progress" class="hidden">
-    <div id="progressContent"></div>
-  </div>
-
-  <div id="tab-review" class="hidden">
-    <div id="reviewContent"></div>
-  </div>
-
+  <div id="tab-writing" class="hidden"><div id="writingContent"></div></div>
+  <div id="tab-listening" class="hidden"><div id="listeningContent"></div></div>
+  <div id="tab-dialogues" class="hidden"><div id="dialoguesContent"></div></div>
+  <div id="tab-progress" class="hidden"><div id="progressContent"></div></div>
+  <div id="tab-review" class="hidden"><div id="reviewContent"></div></div>
   <div id="tab-rules" class="hidden"><div class="rules-container" id="rulesContent"></div></div>
-
   <div id="tab-resources" class="hidden">
     <div style="max-width:850px; margin:0 auto;">
       <h2 style="color:#1e3a8a; text-align:center; margin-bottom:25px; font-size:24px;">📚 مصادر رسمية موثوقة لتعلم الألمانية</h2>
@@ -369,24 +121,12 @@
 <script>
 const pronouns = ["ich","du","er/sie/es","wir","ihr","sie/Sie"];
 const typeLabels = { regular:{text:"منتظم",cls:"regular"}, unregelmäßig:{text:"⚡ غير منتظم",cls:"unregelmäßig"}, trennbar:{text:"🔹 منفصل",cls:"trennbar"}, reflexiv:{text:"🔄 انعكاسي",cls:"reflexiv"} };
-const ruleHints = {
-  unregelmäßig:"⚡ فعل غير منتظم: تتغير حركة الجذر في المضارع (du/er) وفي الماضي.",
-  trennbar:"🔹 فعل منفصل: البادئة تُنقل لنهاية الجملة (مثل: stehe auf).",
-  reflexiv:"🔄 فعل انعكاسي: يحتاج ضميراً انعكاسياً (mich/dich/sich...)."
-};
-
+const ruleHints = { unregelmäßig:"⚡ فعل غير منتظم: تتغير حركة الجذر في المضارع (du/er) وفي الماضي.", trennbar:"🔹 فعل منفصل: البادئة تُنقل لنهاية الجملة (مثل: stehe auf).", reflexiv:"🔄 فعل انعكاسي: يحتاج ضميراً انعكاسياً (mich/dich/sich...)." };
 const isDativ = (de) => ["helfen", "danken", "gefallen", "gehören", "passen", "antworten", "zuhören", "empfehlen"].includes(de.replace(" (Dativ)", ""));
 const isSein = (de) => ["aufstehen", "ausgehen", "einsteigen", "aussteigen", "umsteigen", "ankommen", "mitkommen", "zurückkommen", "laufen", "reisen", "wandern", "gehen", "kommen", "fahren", "fliegen", "werden"].includes(de.replace(" (sein)", ""));
-
 let currentTab = "verbs", currentFilter = "all", currentSearch = "";
 
-function speak(text) {
-  if ('speechSynthesis' in window) {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'de-DE'; utterance.rate = 0.9;
-    window.speechSynthesis.speak(utterance);
-  }
-}
+function speak(text) { if ('speechSynthesis' in window) { const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'de-DE'; utterance.rate = 0.9; window.speechSynthesis.speak(utterance); } }
 
 function renderVerbs() {
   const f = currentSearch.trim().toLowerCase();
@@ -396,7 +136,6 @@ function renderVerbs() {
   list.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => openVerb(+c.getAttribute("data-index"))));
   applyTranslationVisibility();
 }
-
 function renderNouns() {
   const f = currentSearch.trim().toLowerCase();
   const filtered = NOUNS.filter(n => n.de.toLowerCase().includes(f) || n.ar.includes(currentSearch.trim()));
@@ -405,7 +144,6 @@ function renderNouns() {
   list.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => openNoun(+c.getAttribute("data-index"))));
   applyTranslationVisibility();
 }
-
 function renderAdjectives() {
   const f = currentSearch.trim().toLowerCase();
   const filtered = ADJECTIVES.filter(a => a.de.toLowerCase().includes(f) || a.ar.includes(currentSearch.trim()));
@@ -414,7 +152,6 @@ function renderAdjectives() {
   list.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => openAdjective(+c.getAttribute("data-index"))));
   applyTranslationVisibility();
 }
-
 function openVerb(index) {
   const v = VERBS[index], label = typeLabels[v.type] || typeLabels.regular, hint = ruleHints[v.type] || "";
   const präsensHTML = v.präsens.map((form, i) => '<div class="conj-item"><span class="pron">' + pronouns[i] + '</span><span>' + form + '</span><button class="audio-btn" style="position:static; width:30px; height:30px; font-size:14px; margin-right:auto;" onclick="speak(\'' + pronouns[i] + ' ' + form + '\')">🔊</button></div>').join("");
@@ -423,22 +160,19 @@ function openVerb(index) {
   if (isSein(v.de)) badges += '<span class="badge" style="background:#dbeafe;color:#1e40af;">✈️ يأخذ sein</span>';
   let exampleHTML = '';
   if (v.example) { exampleHTML = '<div class="section-title">💬 مثال في جملة</div><div class="example-box">' + v.example + '</div>'; }
-  document.getElementById("modalContent").innerHTML = '<button class="close-btn" onclick="closeModal()">✕</button><div style="text-align:center; margin-bottom:20px;"><h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + v.de + '</h2> <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + v.de.replace(/ \(.*\)/, '') + '\')">🔊</button>' + (translationHidden ? '' : '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + v.ar + '</div>') + '<div style="margin-top:15px;">' + badges + '</div></div>' + (hint ? '<div class="rule-hint">' + hint + '</div>' : '') + '<div class="section-title">📘 المضارع (Präsens)</div><div class="conj-grid">' + präsensHTML + '</div><div class="section-title">⏳ الماضي البسيط (Präteritum)</div><div class="conj-item" style="margin-bottom:10px;"><span class="pron">er/sie/es</span><span>' + v.präteritum + '</span><button class="audio-btn" style="position:static; width:30px; height:30px; font-size:14px; margin-right:auto;" onclick="speak(\'' + v.präteritum + '\')">🔊</button></div><div class="section-title">✅ الماضي التام (Perfekt)</div><div class="conj-item" style="margin-bottom:10px;"><span class="pron">Perfekt</span><span>' + v.perfekt + '</span><button class="audio-btn" style="position:static; width:30px; height:30px; font-size:14px; margin-right:auto;" onclick="speak(\'' + v.perfekt + '\')">🔊</button></div><div class="conj-item"><span class="pron">Partizip II</span><span>' + v.partizip + '</span></div>' + exampleHTML;
+  document.getElementById("modalContent").innerHTML = '<button class="close-btn" onclick="closeModal()">✕</button><div style="text-align:center; margin-bottom:20px;"><h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + v.de + '</h2> <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + v.de.replace(/ \(.*\)/, '') + '\')">🔊</button>' + (typeof translationHidden !== 'undefined' && translationHidden ? '' : '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + v.ar + '</div>') + '<div style="margin-top:15px;">' + badges + '</div></div>' + (hint ? '<div class="rule-hint">' + hint + '</div>' : '') + '<div class="section-title">📘 المضارع (Präsens)</div><div class="conj-grid">' + präsensHTML + '</div><div class="section-title">⏳ الماضي البسيط (Präteritum)</div><div class="conj-item" style="margin-bottom:10px;"><span class="pron">er/sie/es</span><span>' + v.präteritum + '</span><button class="audio-btn" style="position:static; width:30px; height:30px; font-size:14px; margin-right:auto;" onclick="speak(\'' + v.präteritum + '\')">🔊</button></div><div class="section-title">✅ الماضي التام (Perfekt)</div><div class="conj-item" style="margin-bottom:10px;"><span class="pron">Perfekt</span><span>' + v.perfekt + '</span><button class="audio-btn" style="position:static; width:30px; height:30px; font-size:14px; margin-right:auto;" onclick="speak(\'' + v.perfekt + '\')">🔊</button></div><div class="conj-item"><span class="pron">Partizip II</span><span>' + v.partizip + '</span></div>' + exampleHTML;
   document.getElementById("modal").classList.add("active");
 }
-
 function openNoun(index) {
   const n = NOUNS[index];
-  document.getElementById("modalContent").innerHTML = '<button class="close-btn" onclick="closeModal()">✕</button><div style="text-align:center; margin-bottom:20px;"><h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + n.de + '</h2> <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + n.de + '\')">🔊</button>' + (translationHidden ? '' : '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + n.ar + '</div>') + '</div><div class="section-title">📦 الجمع</div><div class="conj-item" style="margin-bottom:10px;"><span class="pron">Plural</span><span>' + n.plural + '</span><button class="audio-btn" style="position:static; width:30px; height:30px; font-size:14px; margin-right:auto;" onclick="speak(\'' + n.plural + '\')">🔊</button></div><div class="section-title">📐 الحالات الإعرابية</div><div class="info-block"><div class="info-item"><strong>Nominativ</strong>' + n.de + '</div><div class="info-item"><strong>Akkusativ</strong>' + n.akk + '</div><div class="info-item"><strong>Dativ</strong>' + n.dat + '</div></div>';
+  document.getElementById("modalContent").innerHTML = '<button class="close-btn" onclick="closeModal()">✕</button><div style="text-align:center; margin-bottom:20px;"><h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + n.de + '</h2> <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + n.de + '\')">🔊</button>' + (typeof translationHidden !== 'undefined' && translationHidden ? '' : '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + n.ar + '</div>') + '</div><div class="section-title">📦 الجمع</div><div class="conj-item" style="margin-bottom:10px;"><span class="pron">Plural</span><span>' + n.plural + '</span><button class="audio-btn" style="position:static; width:30px; height:30px; font-size:14px; margin-right:auto;" onclick="speak(\'' + n.plural + '\')">🔊</button></div><div class="section-title">📐 الحالات الإعرابية</div><div class="info-block"><div class="info-item"><strong>Nominativ</strong>' + n.de + '</div><div class="info-item"><strong>Akkusativ</strong>' + n.akk + '</div><div class="info-item"><strong>Dativ</strong>' + n.dat + '</div></div>';
   document.getElementById("modal").classList.add("active");
 }
-
 function openAdjective(index) {
   const a = ADJECTIVES[index];
-  document.getElementById("modalContent").innerHTML = '<button class="close-btn" onclick="closeModal()">✕</button><div style="text-align:center; margin-bottom:20px;"><h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + a.de + '</h2> <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + a.de + '\')">🔊</button>' + (translationHidden ? '' : '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + a.ar + '</div>') + '</div><div class="rule-hint">الصفات تُصرَّف حسب الحالة والجنس والعدد عند استخدامها قبل الاسم، وتبقى بدون تصريف عند استخدامها كخبر.</div>';
+  document.getElementById("modalContent").innerHTML = '<button class="close-btn" onclick="closeModal()">✕</button><div style="text-align:center; margin-bottom:20px;"><h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + a.de + '</h2> <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + a.de + '\')">🔊</button>' + (typeof translationHidden !== 'undefined' && translationHidden ? '' : '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + a.ar + '</div>') + '</div><div class="rule-hint">الصفات تُصرَّف حسب الحالة والجنس والعدد عند استخدامها قبل الاسم، وتبقى بدون تصريف عند استخدامها كخبر.</div>';
   document.getElementById("modal").classList.add("active");
 }
-
 function closeModal() { document.getElementById("modal").classList.remove("active"); }
 function switchTab(name) {
   currentTab = name;
@@ -447,7 +181,6 @@ function switchTab(name) {
   document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.getAttribute("data-tab") === name));
   document.getElementById("verbFilters").style.display = (name === "verbs") ? "flex" : "none";
   document.getElementById("search").style.display = (name === "verbs" || name === "nouns" || name === "adjectives") ? "block" : "none";
-  
   if (name === "flashcards") newCard();
   else if (name === "verbs" || name === "nouns" || name === "adjectives") renderCurrent();
   else if (name === "rules") document.getElementById("rulesContent").innerHTML = RULES_HTML;
@@ -461,105 +194,35 @@ function switchTab(name) {
   else if (name === "resources") { renderResources(); }
   else if (name === "review") { initReviewTab(); }
 }
-
 function renderCurrent() {
-  if (currentTab === "verbs") renderVerbs(); 
-  else if (currentTab === "nouns") renderNouns(); 
-  else if (currentTab === "adjectives") renderAdjectives();
+  if (currentTab === "verbs") renderVerbs(); else if (currentTab === "nouns") renderNouns(); else if (currentTab === "adjectives") renderAdjectives();
 }
-
 let currentCard = null, isFlipped = false;
-function newCard() {
-  const v = VERBS[Math.floor(Math.random() * VERBS.length)];
-  currentCard = v; isFlipped = false;
-  document.getElementById("card-front").innerText = v.ar;
-  document.getElementById("card-back").innerText = v.de;
-  document.getElementById("card-front").style.display = "block";
-  document.getElementById("card-back").style.display = "none";
-}
-function flipCard() {
-  if (!currentCard) return;
-  isFlipped = !isFlipped;
-  document.getElementById("card-front").style.display = isFlipped ? "none" : "block";
-  document.getElementById("card-back").style.display = isFlipped ? "block" : "none";
-  if (isFlipped) speak(currentCard.de.replace(/ \(.*\)/, ''));
-}
+function newCard() { const v = VERBS[Math.floor(Math.random() * VERBS.length)]; currentCard = v; isFlipped = false; document.getElementById("card-front").innerText = v.ar; document.getElementById("card-back").innerText = v.de; document.getElementById("card-front").style.display = "block"; document.getElementById("card-back").style.display = "none"; }
+function flipCard() { if (!currentCard) return; isFlipped = !isFlipped; document.getElementById("card-front").style.display = isFlipped ? "none" : "block"; document.getElementById("card-back").style.display = isFlipped ? "block" : "none"; if (isFlipped) speak(currentCard.de.replace(/ \(.*\)/, '')); }
 function nextCard() { newCard(); }
-
-document.addEventListener('click', function(e) {
-  if (e.target.tagName === 'H3' && e.target.parentElement.classList.contains('rule-section')) {
-    e.target.parentElement.classList.toggle('open');
-  }
-});
-
+document.addEventListener('click', function(e) { if (e.target.tagName === 'H3' && e.target.parentElement.classList.contains('rule-section')) { e.target.parentElement.classList.toggle('open'); } });
 let currentShadow = 0, currentChallenge = 0;
-let speakingMode = "shadowing";
-
 function switchSpeakingMode(mode) {
-  speakingMode = mode;
   document.querySelectorAll('#tab-speaking .filter-btn').forEach(b => b.classList.remove('active'));
-  if (mode === 'shadowing') {
-    document.querySelector('#tab-speaking .filter-btn:nth-child(1)').classList.add('active');
-    document.getElementById('shadowingSection').classList.remove('hidden');
-    document.getElementById('challengeSection').classList.add('hidden');
-    loadShadow();
-  } else {
-    document.querySelector('#tab-speaking .filter-btn:nth-child(2)').classList.add('active');
-    document.getElementById('challengeSection').classList.remove('hidden');
-    document.getElementById('shadowingSection').classList.add('hidden');
-    loadChallenge();
-  }
+  if (mode === 'shadowing') { document.querySelector('#tab-speaking .filter-btn:nth-child(1)').classList.add('active'); document.getElementById('shadowingSection').classList.remove('hidden'); document.getElementById('challengeSection').classList.add('hidden'); loadShadow(); }
+  else { document.querySelector('#tab-speaking .filter-btn:nth-child(2)').classList.add('active'); document.getElementById('challengeSection').classList.remove('hidden'); document.getElementById('shadowingSection').classList.add('hidden'); loadChallenge(); }
 }
-
-function loadShadow() {
-  const s = SHADOWING_DATA[currentShadow];
-  document.getElementById('shadowDe').innerText = s.de;
-  document.getElementById('shadowAr').innerText = s.ar;
-  const counter = document.getElementById('shadowCounter');
-  if (counter) { counter.innerText = 'الجملة ' + (currentShadow + 1) + ' من ' + SHADOWING_DATA.length; }
-}
+function loadShadow() { const s = SHADOWING_DATA[currentShadow]; document.getElementById('shadowDe').innerText = s.de; document.getElementById('shadowAr').innerText = s.ar; document.getElementById('shadowCounter').innerText = 'الجملة ' + (currentShadow + 1) + ' من ' + SHADOWING_DATA.length; }
 function nextShadow() { currentShadow = (currentShadow + 1) % SHADOWING_DATA.length; loadShadow(); }
-function loadChallenge() {
-  const c = SPEAKING_CHALLENGES[currentChallenge];
-  document.getElementById('challengeQ').innerText = c.q;
-  document.getElementById('challengeQAr').innerText = c.qAr;
-  document.getElementById('challengeA').innerText = c.a;
-  document.getElementById('challengeAAr').innerText = c.aAr;
-  document.getElementById('challengeAnsBox').style.display = 'none';
-}
+function loadChallenge() { const c = SPEAKING_CHALLENGES[currentChallenge]; document.getElementById('challengeQ').innerText = c.q; document.getElementById('challengeQAr').innerText = c.qAr; document.getElementById('challengeA').innerText = c.a; document.getElementById('challengeAAr').innerText = c.aAr; document.getElementById('challengeAnsBox').style.display = 'none'; }
 function showAnswer() { document.getElementById('challengeAnsBox').style.display = 'block'; }
 function nextChallenge() { currentChallenge = (currentChallenge + 1) % SPEAKING_CHALLENGES.length; loadChallenge(); }
-
 function renderResources() {
   const container = document.getElementById('resourcesGrid');
-  if (typeof RESOURCES === 'undefined') {
-    container.innerHTML = '<p style="text-align:center; color:#dc2626;">⚠️ ملف المصادر غير محمّل.</p>';
-    return;
-  }
-  container.innerHTML = RESOURCES.map(r => 
-    '<a href="' + r.url + '" target="_blank" rel="noopener" style="text-decoration:none;">' +
-    '<div style="background:#fff; padding:22px; border-radius:14px; box-shadow:0 4px 12px rgba(0,0,0,0.06); transition:all 0.2s; border-right:5px solid #4f46e5; height:100%; display:flex; flex-direction:column;">' +
-    '<h3 style="color:#1e3a8a; font-size:18px; margin-bottom:10px; font-weight:700;">' + r.icon + ' ' + r.title + '</h3>' +
-    '<p style="color:#64748b; font-size:14px; line-height:1.6; flex-grow:1;">' + r.description + '</p>' +
-    '<span style="color:#4f46e5; font-weight:700; font-size:14px; margin-top:12px;">زيارة المصدر ↗️</span>' +
-    '</div></a>'
-  ).join('');
-  container.querySelectorAll('a > div').forEach(card => {
-    card.onmouseover = () => { card.style.transform = 'translateY(-5px)'; card.style.boxShadow = '0 12px 24px rgba(79,70,229,0.15)'; };
-    card.onmouseout = () => { card.style.transform = 'translateY(0)'; card.style.boxShadow = '0 4px 12px rgba(0,0,0,0.06)'; };
-  });
+  if (typeof RESOURCES === 'undefined') { container.innerHTML = '<p style="text-align:center; color:#dc2626;">⚠️ ملف المصادر غير محمّل.</p>'; return; }
+  container.innerHTML = RESOURCES.map(r => '<a href="' + r.url + '" target="_blank" rel="noopener" style="text-decoration:none;"><div style="background:#fff; padding:22px; border-radius:14px; border-right:5px solid #4f46e5; height:100%; display:flex; flex-direction:column;"><h3 style="color:#1e3a8a; font-size:18px; margin-bottom:10px; font-weight:700;">' + r.icon + ' ' + r.title + '</h3><p style="color:#64748b; font-size:14px; line-height:1.6; flex-grow:1;">' + r.description + '</p><span style="color:#4f46e5; font-weight:700; font-size:14px; margin-top:12px;">زيارة المصدر ↗️</span></div></a>').join('');
 }
-
 document.getElementById("modal").addEventListener("click", e => { if (e.target.id === "modal") closeModal(); });
 document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => switchTab(t.getAttribute("data-tab"))));
-document.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => {
-  document.querySelectorAll(".filter-btn").forEach(x => x.classList.remove("active"));
-  b.classList.add("active"); currentFilter = b.getAttribute("data-filter"); renderVerbs();
-}));
+document.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => { document.querySelectorAll(".filter-btn").forEach(x => x.classList.remove("active")); b.classList.add("active"); currentFilter = b.getAttribute("data-filter"); renderVerbs(); }));
 document.getElementById("search").addEventListener("input", e => { currentSearch = e.target.value; renderCurrent(); });
 renderVerbs();
-applyLanguage();
-applyTranslationVisibility();
 </script>
 </body>
 </html>
