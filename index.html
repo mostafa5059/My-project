@@ -399,7 +399,9 @@ if (document.getElementById('currentLangLabel')) {
 function toggleContentLanguage() {
   contentLanguage = contentLanguage === 'de' ? 'en' : 'de';
   localStorage.setItem('content_language', contentLanguage);
-  document.getElementById('contentLangBtn').textContent = contentLanguage === 'de' ? '🇬🇧 English' : '🇩🇪 Deutsch';
+  
+  const btn = document.getElementById('contentLangBtn');
+  if (btn) btn.textContent = contentLanguage === 'de' ? '🇬🇧 English' : '🇩🇪 Deutsch';
   
   const label = document.getElementById('currentLangLabel');
   if (label) label.textContent = contentLanguage === 'de' ? '(Deutsch)' : '(English)';
@@ -409,12 +411,19 @@ function toggleContentLanguage() {
     filters.style.display = contentLanguage === 'en' ? 'none' : 'flex';
   }
   
-  if (currentTab === 'verbs') renderVerbs();
-  if (currentTab === 'nouns') renderNouns();
-  if (currentTab === 'adjectives') renderAdjectives();
-  if (currentTab === 'rules') document.getElementById('rulesContent').innerHTML = (contentLanguage === 'en' ? RULES_HTML_EN : RULES_HTML);
-  if (currentTab === 'progress') initProgressTab();
-  if (currentTab === 'review') initReviewTab();
+  try {
+    if (currentTab === 'verbs') renderVerbs();
+    if (currentTab === 'nouns') renderNouns();
+    if (currentTab === 'adjectives') renderAdjectives();
+    if (currentTab === 'rules') {
+      const rulesContainer = document.getElementById('rulesContent');
+      if (rulesContainer) rulesContainer.innerHTML = (contentLanguage === 'en' ? RULES_HTML_EN : RULES_HTML);
+    }
+    if (currentTab === 'progress' && typeof initProgressTab === 'function') initProgressTab();
+    if (currentTab === 'review' && typeof initReviewTab === 'function') initReviewTab();
+  } catch (e) {
+    console.error('Error in toggleContentLanguage:', e);
+  }
 }
 renderVerbs();
 </script>
