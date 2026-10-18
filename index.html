@@ -394,6 +394,9 @@ function toggleContentLanguage() {
   localStorage.setItem('content_language', contentLanguage);
   document.getElementById('contentLangBtn').textContent = contentLanguage === 'de' ? '🇬🇧 English' : '🇩🇪 Deutsch';
   
+  const label = document.getElementById('currentLangLabel');
+  if (label) label.textContent = contentLanguage === 'de' ? '(Deutsch)' : '(English)';
+  
   const filters = document.getElementById('verbFilters');
   if (filters) {
     filters.style.display = contentLanguage === 'en' ? 'none' : 'flex';
@@ -402,7 +405,9 @@ function toggleContentLanguage() {
   if (currentTab === 'verbs') renderVerbs();
   if (currentTab === 'nouns') renderNouns();
   if (currentTab === 'adjectives') renderAdjectives();
-  if (currentTab === 'rules') document.getElementById("rulesContent").innerHTML = (contentLanguage === 'en' ? RULES_HTML_EN : RULES_HTML);
+  if (currentTab === 'rules') document.getElementById('rulesContent').innerHTML = (contentLanguage === 'en' ? RULES_HTML_EN : RULES_HTML);
+  if (currentTab === 'progress') initProgressTab();
+  if (currentTab === 'review') initReviewTab();
 }
 renderVerbs();
 </script>
