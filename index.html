@@ -225,11 +225,26 @@ function speak(text) { if ('speechSynthesis' in window) { const utterance = new 
 
 function renderVerbs() {
   const f = currentSearch.trim().toLowerCase();
-  const sourceData = contentLanguage === 'en' ? VERBS_EN : VERBS;
+  const sourceData = contentLanguage === 'en' ? (typeof VERBS_EN !== 'undefined' ? VERBS_EN : []) : (typeof VERBS !== 'undefined' ? VERBS : []);
+  
   const filtered = sourceData.filter(v => {
     const word = contentLanguage === 'en' ? v.en : v.de;
-    return word.toLowerCase().includes(f) || v.ar.includes(currentSearch.trim());
+    const matchSearch = word.toLowerCase().includes(f) || v.ar.includes(currentSearch.trim());
+    
+    let matchFilter = true;
+    if (currentFilter === "all") {
+      matchFilter = true;
+    } else if (currentFilter === "dativ") {
+      matchFilter = contentLanguage === 'de' && ["helfen", "danken", "gefallen", "gehören", "passen", "antworten", "zuhören", "empfehlen"].includes(v.de.replace(" (Dativ)", ""));
+    } else if (currentFilter === "sein") {
+      matchFilter = contentLanguage === 'de' && ["aufstehen", "ausgehen", "einsteigen", "aussteigen", "umsteigen", "ankommen", "mitkommen", "zurückkommen", "laufen", "reisen", "wandern", "gehen", "kommen", "fahren", "fliegen", "werden"].includes(v.de.replace(" (sein)", ""));
+    } else {
+      matchFilter = v.type === currentFilter;
+    }
+    
+    return matchSearch && matchFilter;
   });
+  
   const list = document.getElementById("verbList");
   list.innerHTML = filtered.map(v => {
     const word = contentLanguage === 'en' ? v.en : v.de;
