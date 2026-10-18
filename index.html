@@ -218,7 +218,6 @@ const pronouns = ["ich","du","er/sie/es","wir","ihr","sie/Sie"];
 const typeLabels = { regular:{text:"منتظم",cls:"regular"}, unregelmäßig:{text:"⚡ غير منتظم",cls:"unregelmäßig"}, trennbar:{text:"🔹 منفصل",cls:"trennbar"}, reflexiv:{text:"🔄 انعكاسي",cls:"reflexiv"} };
 const ruleHints = { unregelmäßig:"⚡ فعل غير منتظم: تتغير حركة الجذر في المضارع (du/er) وفي الماضي.", trennbar:"🔹 فعل منفصل: البادئة تُنقل لنهاية الجملة (مثل: stehe auf).", reflexiv:"🔄 فعل انعكاسي: يحتاج ضميراً انعكاسياً (mich/dich/sich...)." };
 
-/* ✅ إصلاح 1: قائمتا Dativ و sein — أضفنا "schmecken" و "sein" */
 const isDativ = (de) => ["helfen", "danken", "gefallen", "gehören", "passen", "antworten", "zuhören", "empfehlen", "schmecken"].includes(de.replace(" (Dativ)", ""));
 const isSein = (de) => ["aufstehen", "ausgehen", "einsteigen", "aussteigen", "umsteigen", "ankommen", "mitkommen", "zurückkommen", "laufen", "reisen", "wandern", "gehen", "kommen", "fahren", "fliegen", "werden", "sein"].includes(de.replace(" (sein)", ""));
 
@@ -238,10 +237,8 @@ function renderVerbs() {
     if (currentFilter === "all") {
       matchFilter = true;
     } else if (currentFilter === "dativ") {
-      /* ✅ إصلاح 2: استخدام isDativ() بدل التكرار */
       matchFilter = contentLanguage === 'de' && isDativ(v.de);
     } else if (currentFilter === "sein") {
-      /* ✅ إصلاح 3: استخدام isSein() بدل التكرار */
       matchFilter = contentLanguage === 'de' && isSein(v.de);
     } else {
       matchFilter = v.type === currentFilter;
@@ -309,9 +306,9 @@ function openVerb(index) {
     content += '<div class="section-title">✅ Past Participle</div><div class="conj-item"><span>' + v.pp + '</span></div>';
   } else {
     const präsensHTML = v.präsens.map((form, i) => '<div class="conj-item"><span class="pron">' + pronouns[i] + '</span><span>' + form + '</span></div>').join("");
-    content += '<div class="section-title">📘 المضارع</div><div class="conj-grid">' + präsensHTML + '</div>';
-   content += '<div class="section-title">⏳ Präteritum (الماضي البسيط)</div><div class="conj-item"><span>' + v.präteritum + '</span></div>';
-content += '<div class="section-title">✅ Perfekt (الماضي التام)</div><div class="conj-item"><span>' + v.perfekt + '</span></div>';
+    content += '<div class="section-title">📘 Präsens (المضارع)</div><div class="conj-grid">' + präsensHTML + '</div>';
+    content += '<div class="section-title">⏳ Präteritum (الماضي البسيط)</div><div class="conj-item"><span>' + v.präteritum + '</span></div>';
+    content += '<div class="section-title">✅ Perfekt (الماضي التام)</div><div class="conj-item"><span>' + v.perfekt + '</span></div>';
   }
   
   if (v.example) content += '<div class="section-title">💬 مثال</div><div class="example-box">' + v.example + '</div>';
@@ -363,7 +360,6 @@ function openAdjective(index) {
 }
 function closeModal() { document.getElementById("modal").classList.remove("active"); }
 
-/* ✅ إصلاح 4: switchTab — حماية كاملة + applyTranslationVisibility في النهاية */
 function switchTab(name) {
   currentTab = name;
   document.querySelectorAll('[id^="tab-"]').forEach(el => el.classList.add("hidden"));
@@ -376,7 +372,6 @@ function switchTab(name) {
   if (filters) filters.style.display = (name === "verbs") ? "flex" : "none";
   if (search) search.style.display = (name === "verbs" || name === "nouns" || name === "adjectives") ? "block" : "none";
 
-  /* ✅ إصلاح 5: لفّ كل استدعاء بـ typeof */
   try {
     if (name === "flashcards") { if (typeof newCard === 'function') newCard(); }
     else if (name === "verbs" || name === "nouns" || name === "adjectives") renderCurrent();
@@ -396,7 +391,6 @@ function switchTab(name) {
     else if (name === "review") { if (typeof initReviewTab === 'function') initReviewTab(); }
   } catch(e) { console.error('switchTab(' + name + '):', e); }
   
-  /* ✅ إصلاح 6: تطبيق إخفاء الترجمة بعد كل عرض */
   if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
 }
 
@@ -419,38 +413,38 @@ function nextShadow() { currentShadow = (currentShadow + 1) % SHADOWING_DATA.len
 function loadChallenge() { const c = SPEAKING_CHALLENGES[currentChallenge]; document.getElementById('challengeQ').innerText = c.q; document.getElementById('challengeQAr').innerText = c.qAr; document.getElementById('challengeA').innerText = c.a; document.getElementById('challengeAAr').innerText = c.aAr; document.getElementById('challengeAnsBox').style.display = 'none'; }
 function showAnswer() { document.getElementById('challengeAnsBox').style.display = 'block'; }
 function nextChallenge() { currentChallenge = (currentChallenge + 1) % SPEAKING_CHALLENGES.length; loadChallenge(); }
+
+/* ✅ renderResources — يدعم اللغتين */
 function renderResources() {
   const container = document.getElementById('resourcesGrid');
   if (!container) return;
   const isEn = (typeof contentLanguage !== 'undefined' && contentLanguage === 'en');
-  const source = isEn 
-    ? (typeof RESOURCES_EN !== 'undefined' ? RESOURCES_EN : RESOURCES) 
+  const source = isEn
+    ? (typeof RESOURCES_EN !== 'undefined' ? RESOURCES_EN : [])
     : (typeof RESOURCES !== 'undefined' ? RESOURCES : []);
   if (!source || !source.length) {
     container.innerHTML = '<p style="text-align:center; color:#dc2626;">⚠️ ملف المصادر غير محمّل.</p>';
     return;
   }
   container.innerHTML = source.map(r => '<a href="' + r.url + '" target="_blank" rel="noopener" style="text-decoration:none;"><div style="background:#fff; padding:22px; border-radius:14px; border-right:5px solid #4f46e5; height:100%; display:flex; flex-direction:column;"><h3 style="color:#1e3a8a; font-size:18px; margin-bottom:10px; font-weight:700;">' + r.icon + ' ' + r.title + '</h3><p style="color:#64748b; font-size:14px; line-height:1.6; flex-grow:1;">' + r.description + '</p><span style="color:#4f46e5; font-weight:700; font-size:14px; margin-top:12px;">زيارة المصدر ↗️</span></div></a>').join('');
-  
-  /* تحديث عنوان القسم حسب اللغة */
+  /* ✅ تحديث عنوان القسم حسب اللغة */
   const titleEl = container.parentElement.querySelector('h2');
   if (titleEl) {
-    titleEl.textContent = isEn 
-      ? '📚 موثوقة لتعلم اللغة الإنجليزية' 
+    titleEl.textContent = isEn
+      ? '📚 مصادر رسمية موثوقة لتعلم الإنجليزية'
       : '📚 مصادر رسمية موثوقة لتعلم الألمانية';
   }
 }
+
 document.getElementById("modal").addEventListener("click", e => { if (e.target.id === "modal") closeModal(); });
 document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => switchTab(t.getAttribute("data-tab"))));
 document.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => { document.querySelectorAll(".filter-btn").forEach(x => x.classList.remove("active")); b.classList.add("active"); currentFilter = b.getAttribute("data-filter"); renderVerbs(); }));
 document.getElementById("search").addEventListener("input", e => { currentSearch = e.target.value; renderCurrent(); });
 
-/* ✅ إصلاح 7: إزالة renderVerbs() المكررة + حماية applyLanguage */
 renderVerbs();
 try { if (typeof applyLanguage === 'function') applyLanguage(); } catch(e) { console.error('applyLanguage:', e); }
 try { if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility(); } catch(e) { console.error('applyTranslationVisibility:', e); }
 
-// إضافة تسمية اللغة الحالية عند تحميل الصفحة
 if (document.getElementById('currentLangLabel')) {
   document.getElementById('currentLangLabel').textContent = contentLanguage === 'de' ? '(Deutsch)' : '(English)';
 }
@@ -480,6 +474,8 @@ function toggleContentLanguage() {
     }
     if (currentTab === 'progress' && typeof initProgressTab === 'function') initProgressTab();
     if (currentTab === 'review' && typeof initReviewTab === 'function') initReviewTab();
+    /* ✅ إضافة: تحديث المصادر عند تبديل اللغة */
+    if (currentTab === 'resources' && typeof renderResources === 'function') renderResources();
   } catch (e) {
     console.error('Error in toggleContentLanguage:', e);
   }
