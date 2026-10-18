@@ -19,6 +19,41 @@ const READING_DATA = [
     icon: "☀️",
     text: "Ich stehe um 7 Uhr auf. Ich frühstücke. Dann gehe ich zur Arbeit. Ich arbeite von 9 bis 5 Uhr. Am Mittag esse ich zu Mittag. Am Abend gehe ich nach Hause. Ich esse zu Abend und sehe fern. Ich schlafe um 11 Uhr.",
     translation: "أستيقظ الساعة 7. أفطر. ثم أذهب إلى العمل. أعمل من 9 إلى 5. في الظهر أتناول الغداء. في المساء أذهب إلى المنزل. أتناول العشاء وأشاهد التلفاز. أنام الساعة 11."
+  },
+  {
+    title: "رحلة إلى برلين (Eine Reise nach Berlin)",
+    level: "A2",
+    icon: "🚆",
+    text: "Letzten Sommer bin ich nach Berlin gefahren. Ich bin mit dem Zug gefahren. Die Fahrt hat vier Stunden gedauert. In Berlin habe ich viele Sehenswürdigkeiten gesehen. Ich habe das Brandenburger Tor besucht. Ich habe auch den Reichstag gesehen. Das Essen war sehr lecker. Ich habe viele Fotos gemacht. Die Reise war sehr schön.",
+    translation: "في الصيف الماضي سافرت إلى برلين. سافرت بالقطار. استغرقت الرحلة أربع ساعات. في برلين شاهدت العديد من المعالم السياحية. زرت بوابة براندنبورغ. شاهدت أيضاً مبنى الرايخستاغ. كان الطعام لذيذاً جداً. التقطت العديد من الصور. كانت الرحلة جميلة جداً."
+  },
+  {
+    title: "في المطعم (Im Restaurant)",
+    level: "A2",
+    icon: "🍽️",
+    text: "Gestern war ich mit meiner Familie im Restaurant. Wir haben einen Tisch für vier Personen reserviert. Der Kellner hat uns die Speisekarte gebracht. Ich habe eine Suppe und einen Salat bestellt. Mein Vater hat ein Steak gegessen. Meine Mutter hat Fisch gegessen. Wir haben Wasser getrunken. Am Ende haben wir die Rechnung bezahlt. Das Essen war sehr lecker.",
+    translation: "أمس كنت مع عائلتي في المطعم. حجزنا طاولة لأربعة أشخاص. أحضر لنا النادل قائمة الطعام. طلبت شوربة وسلطة. أكل والدي شريحة لحم. أكلت والدتي سمكاً. شربنا ماءً. في النهاية دفعنا الفاتورة. كان الطعام لذيذاً جداً."
+  },
+  {
+    title: "عمل جديد (Ein neuer Job)",
+    level: "A2",
+    icon: "💼",
+    text: "Ich habe einen neuen Job gefunden. Ich arbeite jetzt in einer großen Firma. Meine Arbeit beginnt um 9 Uhr und endet um 5 Uhr. Ich arbeite mit vielen Kollegen zusammen. Mein Chef ist sehr freundlich. Ich verdiene ein gutes Gehalt. Ich habe auch Urlaub im Sommer. Ich bin sehr glücklich mit meinem neuen Job.",
+    translation: "وجدت وظيفة جديدة. أعمل الآن في شركة كبيرة. يبدأ عملي الساعة 9 وينتهي الساعة 5. أعمل مع العديد من الزملاء. مديري ودود جداً. أتقاضى راتباً جيداً. لدي أيضاً إجازة في الصيف. أنا سعيد جداً بوظيفتي الجديدة."
+  },
+  {
+    title: "قصة: الرسالة المفقودة (Der verlorene Brief)",
+    level: "B1",
+    icon: "📜",
+    text: "Ahmed war auf dem Weg zur Post. Er wollte einen wichtigen Brief abschicken. Plötzlich begann es zu regnen. Ahmed rannte schnell unter einen Baum. Als er zu Hause ankam, bemerkte er, dass der Brief nicht mehr in seiner Tasche war. Er suchte überall, aber er konnte den Brief nicht finden. Am nächsten Tag ging er zur Post und fragte nach. Eine freundliche Frau hatte den Brief gefunden und ihn aufgehoben. Ahmed war sehr erleichtert und bedankte sich herzlich.",
+    translation: "كان أحمد في طريقه إلى البريد. أراد إرسال رسالة مهمة. فجأة بدأت تمطر. ركض أحمد بسرعة تحت شجرة. عندما وصل إلى المنزل، لاحظ أن الرسالة لم تعد في حقيبته. بحث في كل مكان، لكنه لم يتمكن من العثور على الرسالة. في اليوم التالي ذهب إلى البريد وسأل. سيدة ودودة كانت قد وجدت الرسالة واحتفظت بها. شعر أحمد بالارتياح الشديد وشكرها بحرارة."
+  },
+  {
+    title: "قصة: يوم في الحديقة (Ein Tag im Park)",
+    level: "B1",
+    icon: "🌳",
+    text: "Am Samstag ging Maria in den Park. Das Wetter war wunderschön. Die Sonne schien und die Vögel sangen. Sie setzte sich auf eine Bank und las ein Buch. Nach einer Stunde kam ein kleiner Hund und spielte vor ihr. Maria lächelte und streichelte den Hund. Der Besitzer des Hundes kam und entschuldigte sich. Sie unterhielten sich und tranken zusammen Kaffee. Am Abend ging Maria glücklich nach Hause.",
+    translation: "يوم السبت ذهبت ماريا إلى الحديقة. كان الطقس جميلاً جداً. كانت الشمس مشرقة والطيور تغني. جلست على مقعد وقرأت كتاباً. بعد ساعة جاء كلب صغير ولعب أمامها. ابتسمت ماريا وربتت على الكلب. جاء صاحب الكلب واعتذر. تحدثا وشربا القهوة معاً. في المساء عادت ماريا إلى المنزل بسعادة."
   }
 ];
 
@@ -33,6 +68,9 @@ function renderReadingList() {
   if (!container) return;
   currentReading = null;
   
+  const levels = { A1: "#dcfce7", A2: "#fef3c7", B1: "#fee2e2" };
+  const levelColors = { A1: "#166534", A2: "#92400e", B1: "#991b1b" };
+  
   container.innerHTML = `
     <div style="max-width:900px; margin:0 auto;">
       <h2 style="color:#1e3a8a; text-align:center; margin-bottom:25px; font-size:24px;">📖 القراءة</h2>
@@ -43,7 +81,7 @@ function renderReadingList() {
             <div style="font-size:40px; margin-bottom:12px;">${r.icon}</div>
             <h3 style="color:#1e3a8a; font-size:18px; margin-bottom:8px; font-weight:700;">${r.title}</h3>
             <div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px;">
-              <span style="background:#dcfce7; color:#166534; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700;">${r.level}</span>
+              <span style="background:${levels[r.level] || '#f1f5f9'}; color:${levelColors[r.level] || '#64748b'}; padding:4px 12px; border-radius:20px; font-size:12px; font-weight:700;">${r.level}</span>
               <span style="color:#4f46e5; font-weight:700; font-size:14px;">اقرأ ➡️</span>
             </div>
           </div>
