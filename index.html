@@ -401,6 +401,7 @@ function toggleContentLanguage() {
   if (currentTab === 'verbs') renderVerbs();
   if (currentTab === 'nouns') renderNouns();
   if (currentTab === 'adjectives') renderAdjectives();
+  if (currentTab === 'rules') document.getElementById("rulesContent").innerHTML = (contentLanguage === 'en' ? RULES_HTML_EN : RULES_HTML);
 }
 renderVerbs();
 </script>
