@@ -134,3 +134,15 @@ const VERBS_EN = [
   { en: "read", ar: "يقرأ", past: "read", pp: "read", example: "I read a book. (أقرأ كتاباً)" },
   { en: "write", ar: "يكتب", past: "wrote", pp: "written", example: "I write a letter. (أكتب رسالة)" }
 ];
+const NOUNS_EN = [
+  { en: "table", ar: "طاولة", plural: "tables" },
+  { en: "book", ar: "كتاب", plural: "books" },
+  { en: "house", ar: "منزل", plural: "houses" },
+  { en: "car", ar: "سيارة", plural: "cars" },
+  { en: "man", ar: "رجل", plural: "men" },
+  { en: "woman", ar: "امرأة", plural: "women" },
+  { en: "child", ar: "طفل", plural: "children" },
+  { en: "friend", ar: "صديق", plural: "friends" },
+  { en: "school", ar: "مدرسة", plural: "schools" },
+  { en: "city", ar: "مدينة", plural: "cities" }
+];
