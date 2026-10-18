@@ -356,24 +356,66 @@ function openAdjective(index) {
 function closeModal() { document.getElementById("modal").classList.remove("active"); }
 function switchTab(name) {
   currentTab = name;
+  
+  // إخفاء كل الأقسام
   document.querySelectorAll('[id^="tab-"]').forEach(el => el.classList.add("hidden"));
-  document.getElementById("tab-" + name).classList.remove("hidden");
-  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.getAttribute("data-tab") === name));
-  document.getElementById("verbFilters").style.display = (name === "verbs") ? "flex" : "none";
-  document.getElementById("search").style.display = (name === "verbs" || name === "nouns" || name === "adjectives") ? "block" : "none";
-  if (name === "flashcards") newCard();
-  else if (name === "verbs" || name === "nouns" || name === "adjectives") renderCurrent();
-  else if (name === "rules") document.getElementById("rulesContent").innerHTML = (contentLanguage === 'en' ? RULES_HTML_EN : RULES_HTML);
-  else if (name === "speaking") { loadShadow(); loadChallenge(); }
-  else if (name === "exercises") { startExercises(); }
-  else if (name === "writing") { initWritingTab(); }
-  else if (name === "listening") { initListeningTab(); }
-  else if (name === "dialogues") { initDialoguesTab(); }
-  else if (name === "basics") { initBasicsTab(); }  
-  else if (name === "reading") { initReadingTab(); }
-  else if (name === "progress") { initProgressTab(); }
-  else if (name === "resources") { renderResources(); }
-  else if (name === "review") { initReviewTab(); }
+  
+  // إظهار القسم المطلوب فقط
+  const targetTab = document.getElementById("tab-" + name);
+  if (targetTab) targetTab.classList.remove("hidden");
+  
+  // تحديث شكل الأزرار (تفعيل الزر المضغوط)
+  document.querySelectorAll(".tab").forEach(t => {
+    if (t.getAttribute("data-tab") === name) {
+      t.classList.add("active");
+    } else {
+      t.classList.remove("active");
+    }
+  });
+  
+  // إظهار وإخفاء شريط البحث والفلاتر
+  const filters = document.getElementById("verbFilters");
+  const search = document.getElementById("search");
+  
+  if (filters) filters.style.display = (name === "verbs") ? "flex" : "none";
+  if (search) search.style.display = (name === "verbs" || name === "nouns" || name === "adjectives") ? "block" : "none";
+  
+  // استدعاء الدالة الخاصة بكل تبويب لعرض محتواه
+  if (name === "verbs") {
+    renderVerbs();
+  } else if (name === "nouns") {
+    renderNouns();
+  } else if (name === "adjectives") {
+    renderAdjectives();
+  } else if (name === "basics") {
+    if (typeof initBasicsTab === 'function') initBasicsTab();
+  } else if (name === "flashcards") {
+    if (typeof newCard === 'function') newCard();
+  } else if (name === "speaking") {
+    if (typeof loadShadow === 'function') loadShadow();
+    if (typeof loadChallenge === 'function') loadChallenge();
+  } else if (name === "exercises") {
+    if (typeof startExercises === 'function') startExercises();
+  } else if (name === "writing") {
+    if (typeof initWritingTab === 'function') initWritingTab();
+  } else if (name === "listening") {
+    if (typeof initListeningTab === 'function') initListeningTab();
+  } else if (name === "dialogues") {
+    if (typeof initDialoguesTab === 'function') initDialoguesTab();
+  } else if (name === "progress") {
+    if (typeof initProgressTab === 'function') initProgressTab();
+  } else if (name === "review") {
+    if (typeof initReviewTab === 'function') initReviewTab();
+  } else if (name === "rules") {
+    const rulesContent = document.getElementById("rulesContent");
+    if (rulesContent) {
+      rulesContent.innerHTML = (contentLanguage === 'en' && typeof RULES_HTML_EN !== 'undefined') ? RULES_HTML_EN : RULES_HTML;
+    }
+  } else if (name === "reading") {
+    if (typeof initReadingTab === 'function') initReadingTab();
+  } else if (name === "resources") {
+    if (typeof renderResources === 'function') renderResources();
+  }
 }
 function renderCurrent() {
   if (currentTab === "verbs") renderVerbs(); else if (currentTab === "nouns") renderNouns(); else if (currentTab === "adjectives") renderAdjectives();
