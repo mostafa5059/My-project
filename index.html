@@ -219,6 +219,7 @@
     <button class="tab active" data-tab="verbs">🔤 الأفعال</button>
     <button class="tab" data-tab="nouns">📦 الأسماء</button>
     <button class="tab" data-tab="adjectives">🎨 الصفات</button>
+    <button class="tab" data-tab="basics">📚 الأساسيات</button>
     <button class="tab" data-tab="flashcards">🧠 الاختبار</button>
     <button class="tab" data-tab="speaking">🗣️ التحدث</button>
     <button class="tab" data-tab="exercises">📝 التمارين</button>
@@ -244,6 +245,7 @@
   <div id="tab-verbs"><div class="list-grid" id="verbList"></div></div>
   <div id="tab-nouns" class="hidden"><div class="list-grid" id="nounList"></div></div>
   <div id="tab-adjectives" class="hidden"><div class="list-grid" id="adjList"></div></div>
+  <div id="tab-basics" class="hidden"><div id="basicsContent"></div></div>
   
   <div id="tab-flashcards" class="hidden">
     <div class="flashcard-container">
@@ -362,6 +364,7 @@
 <script src="progress.js"></script>
 <script src="i18n.js"></script>
 <script src="resources.js"></script>
+<script src="basics.js"></script>
 
 <script>
 const pronouns = ["ich","du","er/sie/es","wir","ihr","sie/Sie"];
@@ -453,6 +456,7 @@ function switchTab(name) {
   else if (name === "writing") { initWritingTab(); }
   else if (name === "listening") { initListeningTab(); }
   else if (name === "dialogues") { initDialoguesTab(); }
+  else if (name === "basics") { initBasicsTab(); }
   else if (name === "progress") { initProgressTab(); }
   else if (name === "resources") { renderResources(); }
   else if (name === "review") { initReviewTab(); }
