@@ -1,13 +1,17 @@
-/* ============ نظام التكرار المتباعد (SRS) - متوافق مع verbs.js و progress ============ */
-const STORAGE_KEY = 'german_srs_data';
+/* ============ نظام التكرار المتباعد (SRS) - متوافق مع اللغتين ============ */
+
+function getSrsKey() {
+  const lang = localStorage.getItem('content_language') || 'de';
+  return 'app_srs_' + lang;
+}
 
 function loadSRSData() {
-  const data = localStorage.getItem(STORAGE_KEY);
+  const data = localStorage.getItem(getSrsKey());
   return data ? JSON.parse(data) : {};
 }
 
 function saveSRSData(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  localStorage.setItem(getSrsKey(), JSON.stringify(data));
 }
 
 function getCardKey(word, type) {
@@ -37,26 +41,44 @@ function getDueCards() {
   const data = loadSRSData();
   const now = Date.now();
   const due = [];
-  
   const allWords = [];
+  const lang = localStorage.getItem('content_language') || 'de';
   
-  if (typeof VERBS !== 'undefined') {
-    VERBS.forEach(v => {
-      const cleanDe = v.de.replace(/\s*\(.*\)\s*/g, '').trim();
-      allWords.push({ de: cleanDe, ar: v.ar, type: 'verb' });
-    });
-  }
-  
-  if (typeof NOUNS !== 'undefined') {
-    NOUNS.forEach(n => {
-      allWords.push({ de: n.de, ar: n.ar, type: 'noun' });
-    });
-  }
-  
-  if (typeof ADJECTIVES !== 'undefined') {
-    ADJECTIVES.forEach(a => {
-      allWords.push({ de: a.de, ar: a.ar, type: 'adj' });
-    });
+  if (lang === 'en') {
+    // الإنجليزية
+    if (typeof VERBS_EN !== 'undefined') {
+      VERBS_EN.forEach(v => {
+        allWords.push({ de: v.en, ar: v.ar, type: 'verb' });
+      });
+    }
+    if (typeof NOUNS_EN !== 'undefined') {
+      NOUNS_EN.forEach(n => {
+        allWords.push({ de: n.en, ar: n.ar, type: 'noun' });
+      });
+    }
+    if (typeof ADJECTIVES_EN !== 'undefined') {
+      ADJECTIVES_EN.forEach(a => {
+        allWords.push({ de: a.en, ar: a.ar, type: 'adj' });
+      });
+    }
+  } else {
+    // الألمانية
+    if (typeof VERBS !== 'undefined') {
+      VERBS.forEach(v => {
+        const cleanDe = v.de.replace(/\s*\(.*\)\s*/g, '').trim();
+        allWords.push({ de: cleanDe, ar: v.ar, type: 'verb' });
+      });
+    }
+    if (typeof NOUNS !== 'undefined') {
+      NOUNS.forEach(n => {
+        allWords.push({ de: n.de, ar: n.ar, type: 'noun' });
+      });
+    }
+    if (typeof ADJECTIVES !== 'undefined') {
+      ADJECTIVES.forEach(a => {
+        allWords.push({ de: a.de, ar: a.ar, type: 'adj' });
+      });
+    }
   }
   
   allWords.forEach(w => {
@@ -199,21 +221,17 @@ function revealCard() {
 function answerCard(quality) {
   const card = currentReviewCards[currentReviewIndex];
   reviewCard(card, quality);
-  
-  // تسجيل النشاط في لوحة التقدم (سطر واحد يُضاف)
   if (typeof trackActivity === 'function') trackActivity('reviews', 1);
-  
   if (quality === 1) reviewStats.hard++;
   else if (quality === 3) reviewStats.good++;
   else reviewStats.easy++;
-  
   currentReviewIndex++;
   renderReviewTab();
 }
 
 function resetSRS() {
-  if (confirm('هل أنت متأكد؟ سيتم حذف كل تقدمك في الحفظ.')) {
-    localStorage.removeItem(STORAGE_KEY);
+  if (confirm('هل أنت متأكد؟ سيتم حذف تقدم المراجعة لهذه اللغة فقط.')) {
+    localStorage.removeItem(getSrsKey());
     startReview();
   }
 }
