@@ -254,14 +254,31 @@ function renderAdjectives() {
   if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
 }
 function openVerb(index) {
-  const v = VERBS[index], label = typeLabels[v.type] || typeLabels.regular, hint = ruleHints[v.type] || "";
-  const präsensHTML = v.präsens.map((form, i) => '<div class="conj-item"><span class="pron">' + pronouns[i] + '</span><span>' + form + '</span><button class="audio-btn" style="position:static; width:30px; height:30px; font-size:14px; margin-right:auto;" onclick="speak(\'' + pronouns[i] + ' ' + form + '\')">🔊</button></div>').join("");
-  let badges = '<span class="badge ' + label.cls + '">' + label.text + '</span>';
-  if (isDativ(v.de)) badges += '<span class="badge" style="background:#fce7f3;color:#9d174d;">📌 يأخذ Dativ</span>';
-  if (isSein(v.de)) badges += '<span class="badge" style="background:#dbeafe;color:#1e40af;">✈️ يأخذ sein</span>';
-  let exampleHTML = '';
-  if (v.example) { exampleHTML = '<div class="section-title">💬 مثال في جملة</div><div class="example-box">' + v.example + '</div>'; }
-  document.getElementById("modalContent").innerHTML = '<button class="close-btn" onclick="closeModal()">✕</button><div style="text-align:center; margin-bottom:20px;"><h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + v.de + '</h2> <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + v.de.replace(/ \(.*\)/, '') + '\')">🔊</button>' + (typeof translationHidden !== 'undefined' && translationHidden ? '' : '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + v.ar + '</div>') + '<div style="margin-top:15px;">' + badges + '</div></div>' + (hint ? '<div class="rule-hint">' + hint + '</div>' : '') + '<div class="section-title">📘 المضارع (Präsens)</div><div class="conj-grid">' + präsensHTML + '</div><div class="section-title">⏳ الماضي البسيط (Präteritum)</div><div class="conj-item" style="margin-bottom:10px;"><span class="pron">er/sie/es</span><span>' + v.präteritum + '</span><button class="audio-btn" style="position:static; width:30px; height:30px; font-size:14px; margin-right:auto;" onclick="speak(\'' + v.präteritum + '\')">🔊</button></div><div class="section-title">✅ الماضي التام (Perfekt)</div><div class="conj-item" style="margin-bottom:10px;"><span class="pron">Perfekt</span><span>' + v.perfekt + '</span><button class="audio-btn" style="position:static; width:30px; height:30px; font-size:14px; margin-right:auto;" onclick="speak(\'' + v.perfekt + '\')">🔊</button></div><div class="conj-item"><span class="pron">Partizip II</span><span>' + v.partizip + '</span></div>' + exampleHTML;
+  const sourceData = contentLanguage === 'en' ? VERBS_EN : VERBS;
+  const v = sourceData[index];
+  if (!v) return;
+  const word = contentLanguage === 'en' ? v.en : v.de;
+  const isEnglish = contentLanguage === 'en';
+  
+  let content = '<button class="close-btn" onclick="closeModal()">✕</button>';
+  content += '<div style="text-align:center; margin-bottom:20px;">';
+  content += '<h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + word + '</h2>';
+  content += ' <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + word + '\')">🔊</button>';
+  content += '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + v.ar + '</div></div>';
+  
+  if (isEnglish) {
+    content += '<div class="section-title">📘 Past Tense</div><div class="conj-item"><span>' + v.past + '</span></div>';
+    content += '<div class="section-title">✅ Past Participle</div><div class="conj-item"><span>' + v.pp + '</span></div>';
+  } else {
+    const präsensHTML = v.präsens.map((form, i) => '<div class="conj-item"><span class="pron">' + pronouns[i] + '</span><span>' + form + '</span></div>').join("");
+    content += '<div class="section-title">📘 المضارع</div><div class="conj-grid">' + präsensHTML + '</div>';
+    content += '<div class="section-title">⏳ الماضي البسيط</div><div class="conj-item"><span>' + v.präteritum + '</span></div>';
+    content += '<div class="section-title">✅ الماضي التام</div><div class="conj-item"><span>' + v.perfekt + '</span></div>';
+  }
+  
+  if (v.example) content += '<div class="section-title">💬 مثال</div><div class="example-box">' + v.example + '</div>';
+  
+  document.getElementById("modalContent").innerHTML = content;
   document.getElementById("modal").classList.add("active");
 }
 function openNoun(index) {
