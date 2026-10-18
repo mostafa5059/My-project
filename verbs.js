@@ -311,3 +311,15 @@ const NOUNS_EN = [
   { en: "school", ar: "مدرسة", plural: "schools" },
   { en: "city", ar: "مدينة", plural: "cities" }
 ];
+const ADJECTIVES_EN = [
+  { en: "big", ar: "كبير" },
+  { en: "small", ar: "صغير" },
+  { en: "good", ar: "جيد" },
+  { en: "bad", ar: "سيء" },
+  { en: "new", ar: "جديد" },
+  { en: "old", ar: "قديم" },
+  { en: "beautiful", ar: "جميل" },
+  { en: "fast", ar: "سريع" },
+  { en: "slow", ar: "بطيء" },
+  { en: "happy", ar: "سعيد" }
+];
