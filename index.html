@@ -459,6 +459,7 @@
 <script src="dialogues.js"></script>
 <script src="progress.js"></script>
 <script src="i18n.js"></script>
+<script src="resources.js"></script>
 
 <script>
 const pronouns = ["ich","du","er/sie/es","wir","ihr","sie/Sie"];
@@ -676,6 +677,10 @@ function nextChallenge() {
 
 function renderResources() {
   const container = document.getElementById('resourcesGrid');
+  if (typeof RESOURCES === 'undefined') {
+    container.innerHTML = '<p style="text-align:center; color:#dc2626;">⚠️ ملف المصادر غير محمّل. يرجى التأكد من وجود resources.js</p>';
+    return;
+  }
   container.innerHTML = RESOURCES.map(r => 
     '<a href="' + r.url + '" target="_blank" rel="noopener" style="text-decoration:none;">' +
     '<div style="background:#fff; padding:22px; border-radius:14px; box-shadow:0 4px 12px rgba(0,0,0,0.06); transition:all 0.2s; border-right:5px solid #4f46e5; height:100%; display:flex; flex-direction:column;">' +
