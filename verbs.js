@@ -121,6 +121,7 @@ const VERBS = [
   { de:"reisen", ar:"يسافر", type:"regular", präsens:["reise","reist","reist","reisen","reist","reisen"], präteritum:"reiste", perfekt:"ist gereist", partizip:"gereist", example:"Ich reise nach Italien. (أسافر إلى إيطاليا)" },
   { de:"wandern", ar:"يتنزه", type:"regular", präsens:["wandere","wanderst","wandert","wandern","wandert","wandern"], präteritum:"wanderte", perfekt:"ist gewandert", partizip:"gewandert", example:"Wir wandern in den Bergen. (نتنزه في الجبال)" }
 ];
+
 const NOUNS = [
   { de:"der Tisch", ar:"طاولة", plural:"die Tische", akk:"den Tisch", dat:"dem Tisch" },
   { de:"die Lampe", ar:"مصباح", plural:"die Lampen", akk:"die Lampe", dat:"der Lampe" },
@@ -158,16 +159,16 @@ const NOUNS = [
   { de:"das Mittagessen", ar:"غداء", plural:"die Mittagessen", akk:"das Mittagessen", dat:"dem Mittagessen" },
   { de:"das Abendessen", ar:"عشاء", plural:"die Abendessen", akk:"das Abendessen", dat:"dem Abendessen" },
   { de:"der Salat", ar:"سلطة", plural:"die Salate", akk:"den Salat", dat:"dem Salat" },
-  { de:"das Fleisch", ar:"لحم", plural:"die Fleisch", akk:"das Fleisch", dat:"dem Fleisch" },
+  { de:"das Fleisch", ar:"لحم", plural:"—", akk:"das Fleisch", dat:"dem Fleisch" },
   { de:"der Fisch", ar:"سمك", plural:"die Fische", akk:"den Fisch", dat:"dem Fisch" },
-  { de:"das Obst", ar:"فواكه", plural:"die Obst", akk:"das Obst", dat:"dem Obst" },
-  { de:"das Gemüse", ar:"خضروات", plural:"die Gemüse", akk:"das Gemüse", dat:"dem Gemüse" },
+  { de:"das Obst", ar:"فواكه", plural:"—", akk:"das Obst", dat:"dem Obst" },
+  { de:"das Gemüse", ar:"خضروات", plural:"—", akk:"das Gemüse", dat:"dem Gemüse" },
   { de:"die Kartoffel", ar:"بطاطس", plural:"die Kartoffeln", akk:"die Kartoffel", dat:"der Kartoffel" },
-  { de:"der Zucker", ar:"سكر", plural:"die Zucker", akk:"den Zucker", dat:"dem Zucker" },
+  { de:"der Zucker", ar:"سكر", plural:"—", akk:"den Zucker", dat:"dem Zucker" },
   { de:"das Salz", ar:"ملح", plural:"die Salze", akk:"das Salz", dat:"dem Salz" },
   { de:"das Öl", ar:"زيت", plural:"die Öle", akk:"das Öl", dat:"dem Öl" },
   { de:"der Tee", ar:"شاي", plural:"die Tees", akk:"den Tee", dat:"dem Tee" },
-  { de:"die Milch", ar:"حليب", plural:"die Milch", akk:"die Milch", dat:"der Milch" },
+  { de:"die Milch", ar:"حليب", plural:"—", akk:"die Milch", dat:"der Milch" },
   { de:"der Beruf", ar:"مهنة", plural:"die Berufe", akk:"den Beruf", dat:"dem Beruf" },
   { de:"das Büro", ar:"مكتب", plural:"die Büros", akk:"das Büro", dat:"dem Büro" },
   { de:"die Firma", ar:"شركة", plural:"die Firmen", akk:"die Firma", dat:"der Firma" },
@@ -275,6 +276,7 @@ const NOUNS = [
   { de:"das Medikament", ar:"دواء", plural:"die Medikamente", akk:"das Medikament", dat:"dem Medikament" },
   { de:"der Zahnarzt", ar:"طبيب أسنان", plural:"die Zahnärzte", akk:"den Zahnarzt", dat:"dem Zahnarzt" }
 ];
+
 const ADJECTIVES = [
   { de:"groß", ar:"كبير" }, { de:"klein", ar:"صغير" }, { de:"gut", ar:"جيد" },
   { de:"schlecht", ar:"سيء" }, { de:"neu", ar:"جديد" }, { de:"alt", ar:"قديم" },
@@ -287,6 +289,7 @@ const ADJECTIVES = [
   { de:"höflich", ar:"مؤدب" }, { de:"pünktlich", ar:"دقيق في المواعيد" }, { de:"interessant", ar:"مثير للاهتمام" },
   { de:"langweilig", ar:"ممل" }, { de:"gefährlich", ar:"خطير" }, { de:"sicher", ar:"آمن" }
 ];
+
 const VERBS_EN = [
   { en: "be", ar: "يكون", past: "was/were", pp: "been", example: "I am a student. (أنا طالب)" },
   { en: "have", ar: "يملك", past: "had", pp: "had", example: "I have a book. (لدي كتاب)" },
@@ -299,6 +302,7 @@ const VERBS_EN = [
   { en: "read", ar: "يقرأ", past: "read", pp: "read", example: "I read a book. (أقرأ كتاباً)" },
   { en: "write", ar: "يكتب", past: "wrote", pp: "written", example: "I write a letter. (أكتب رسالة)" }
 ];
+
 const NOUNS_EN = [
   { en: "table", ar: "طاولة", plural: "tables" },
   { en: "book", ar: "كتاب", plural: "books" },
@@ -311,6 +315,7 @@ const NOUNS_EN = [
   { en: "school", ar: "مدرسة", plural: "schools" },
   { en: "city", ar: "مدينة", plural: "cities" }
 ];
+
 const ADJECTIVES_EN = [
   { en: "big", ar: "كبير" },
   { en: "small", ar: "صغير" },
