@@ -251,24 +251,19 @@ function switchTab(name) {
   document.querySelectorAll('[id^="tab-"]').forEach(el => el.classList.add("hidden"));
   const target = document.getElementById("tab-" + name);
   if (target) target.classList.remove("hidden");
-  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.tab === name));
+  document.querySelectorAll(".tab").forEach(t => {
+    t.classList.toggle("active", t.getAttribute("data-tab") === name);
+  });
 
   const filters = document.getElementById("verbFilters");
-  const search = document.getElementById("searchWrap");
+  const search = document.getElementById("search");
   if (filters) filters.style.display = (name === "verbs") ? "flex" : "none";
   if (search) search.style.display = (name === "verbs" || name === "nouns" || name === "adjectives") ? "block" : "none";
 
-  try {
-    if (name === "verbs") renderVerbs();
-    else if (name === "nouns") renderNouns();
-    else if (name === "adjectives") renderAdjectives();
-    else if (name === "flashcards") newCard();
-    else if (name === "speaking") { loadShadow(); loadChallenge(); }
-    else if (name === "exercises") startExercises();
-    else if (name === "rules") renderRules();
-    else if (name === "resources") renderResources();
-    else if (typeof renderPlaceholderTab === 'function') renderPlaceholderTab(name);
-  } catch(e) { console.error("switchTab error:", e); }
+  // ✅ أضف هذا السطر في نهاية switchTab — بعد كل عرض
+  if (typeof applyTranslationVisibility === 'function') {
+    applyTranslationVisibility();
+  }
 }
 
 /* ==================== البحث والفلاتر ==================== */
