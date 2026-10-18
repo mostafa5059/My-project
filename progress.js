@@ -1,18 +1,22 @@
-/* ============ لوحة التقدم (Progress Dashboard) ============ */
-const PROGRESS_KEY = 'german_app_progress';
+/* ============ لوحة التقدم (Progress Dashboard) - متوافق مع اللغتين ============ */
+
+function getProgressKey() {
+  const lang = localStorage.getItem('content_language') || 'de';
+  return 'app_progress_' + lang;
+}
 
 function loadProgress() {
-  const data = localStorage.getItem(PROGRESS_KEY);
+  const data = localStorage.getItem(getProgressKey());
   if (data) return JSON.parse(data);
   return {
-    days: {},           // { "2025-01-15": { reviews: 5, exercises: 3, writing: 2, listening: 1, dialogues: 0 } }
+    days: {},
     firstVisit: Date.now(),
     lastVisit: null
   };
 }
 
 function saveProgress(data) {
-  localStorage.setItem(PROGRESS_KEY, JSON.stringify(data));
+  localStorage.setItem(getProgressKey(), JSON.stringify(data));
 }
 
 function getTodayKey() {
@@ -20,7 +24,6 @@ function getTodayKey() {
   return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
 }
 
-// تحديث نشاط اليوم
 function trackActivity(type, amount = 1) {
   const data = loadProgress();
   const today = getTodayKey();
@@ -33,7 +36,6 @@ function trackActivity(type, amount = 1) {
   saveProgress(data);
 }
 
-// حساب السلسلة (Streak)
 function calculateStreak() {
   const data = loadProgress();
   const today = new Date();
@@ -52,7 +54,6 @@ function calculateStreak() {
   return streak;
 }
 
-// حساب إجمالي الأنشطة
 function calculateTotals() {
   const data = loadProgress();
   let totalReviews = 0, totalExercises = 0, totalWriting = 0, totalListening = 0, totalDialogues = 0, totalDays = 0;
@@ -68,7 +69,6 @@ function calculateTotals() {
   return { totalReviews, totalExercises, totalWriting, totalListening, totalDialogues, totalDays };
 }
 
-// آخر 7 أيام نشاط
 function getLast7Days() {
   const data = loadProgress();
   const days = [];
@@ -97,8 +97,7 @@ function renderProgressDashboard() {
   const container = document.getElementById('progressContent');
   if (!container) return;
   
-  // تسجيل زيارة اليوم
-  trackActivity('visit', 0); // نسجل الزيارة بدون زيادة
+  trackActivity('visit', 0);
   
   const streak = calculateStreak();
   const totals = calculateTotals();
@@ -107,16 +106,13 @@ function renderProgressDashboard() {
   const data = loadProgress();
   const todayData = data.days[todayKey] || { reviews: 0, exercises: 0, writing: 0, listening: 0, dialogues: 0 };
   
-  // إحصائيات من SRS
   let srsStats = { total: 0, due: 0, learned: 0 };
   if (typeof getStats === 'function') {
     try { srsStats = getStats(); } catch(e) {}
   }
   
-  // أقصى قيمة في الأسبوع (لرسم المخطط)
   const maxDay = Math.max(...last7.map(d => d.total), 1);
   
-  // نصائح ذكية
   const tips = [];
   if (srsStats.due > 0) tips.push('🎯 لديك ' + srsStats.due + ' بطاقة مستحقة للمراجعة اليوم.');
   if (todayData.reviews === 0 && todayData.exercises === 0) tips.push('💡 ابدأ يومك بمراجعة 5 بطاقات لتبقى نشطاً.');
@@ -124,43 +120,36 @@ function renderProgressDashboard() {
   if (srsStats.learned > 50) tips.push('🏆 حفظت ' + srsStats.learned + ' كلمة حتى الآن. عمل رائع!');
   if (tips.length === 0) tips.push('🌟 كل شيء جيد! استمر في المذاكرة.');
   
+  const langLabel = localStorage.getItem('content_language') === 'en' ? '🇬🇧 English' : '🇩🇪 Deutsch';
+  
   container.innerHTML = `
     <div style="max-width:1000px; margin:0 auto;">
-      <h2 style="color:#1e3a8a; text-align:center; margin-bottom:25px; font-size:26px;">📊 لوحة التقدم</h2>
+      <h2 style="color:#1e3a8a; text-align:center; margin-bottom:10px; font-size:26px;">📊 لوحة التقدم</h2>
+      <p style="color:#64748b; text-align:center; margin-bottom:25px; font-size:14px;">اللغة الحالية: <strong>${langLabel}</strong></p>
       
-      <!-- البطاقات الرئيسية -->
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:18px; margin-bottom:30px;">
-        
-        <!-- السلسلة -->
-        <div style="background:linear-gradient(135deg, #f97316, #ea580c); padding:25px; border-radius:16px; color:#fff; text-align:center; box-shadow:0 8px 20px rgba(249,115,22,0.3);">
+        <div style="background:linear-gradient(135deg, #f97316, #ea580c); padding:25px; border-radius:16px; color:#fff; text-align:center;">
           <div style="font-size:48px; margin-bottom:8px;">🔥</div>
           <div style="font-size:42px; font-weight:700; line-height:1;">${streak}</div>
-          <div style="font-size:14px; opacity:0.95; margin-top:8px; font-weight:600;">يوم متتالي</div>
+          <div style="font-size:14px; margin-top:8px; font-weight:600;">يوم متتالي</div>
         </div>
-        
-        <!-- الكلمات المحفوظة -->
-        <div style="background:linear-gradient(135deg, #10b981, #059669); padding:25px; border-radius:16px; color:#fff; text-align:center; box-shadow:0 8px 20px rgba(16,185,129,0.3);">
+        <div style="background:linear-gradient(135deg, #10b981, #059669); padding:25px; border-radius:16px; color:#fff; text-align:center;">
           <div style="font-size:48px; margin-bottom:8px;">🏆</div>
           <div style="font-size:42px; font-weight:700; line-height:1;">${srsStats.learned}</div>
-          <div style="font-size:14px; opacity:0.95; margin-top:8px; font-weight:600;">كلمة محفوظة</div>
+          <div style="font-size:14px; margin-top:8px; font-weight:600;">كلمة محفوظة</div>
         </div>
-        
-        <!-- إجمالي المراجعات -->
-        <div style="background:linear-gradient(135deg, #4f46e5, #3730a3); padding:25px; border-radius:16px; color:#fff; text-align:center; box-shadow:0 8px 20px rgba(79,70,229,0.3);">
+        <div style="background:linear-gradient(135deg, #4f46e5, #3730a3); padding:25px; border-radius:16px; color:#fff; text-align:center;">
           <div style="font-size:48px; margin-bottom:8px;">📚</div>
           <div style="font-size:42px; font-weight:700; line-height:1;">${totals.totalReviews}</div>
-          <div style="font-size:14px; opacity:0.95; margin-top:8px; font-weight:600;">مراجعة إجمالية</div>
+          <div style="font-size:14px; margin-top:8px; font-weight:600;">مراجعة إجمالية</div>
         </div>
-        
-        <!-- إجمالي الأيام -->
-        <div style="background:linear-gradient(135deg, #0891b2, #0e7490); padding:25px; border-radius:16px; color:#fff; text-align:center; box-shadow:0 8px 20px rgba(8,145,178,0.3);">
+        <div style="background:linear-gradient(135deg, #0891b2, #0e7490); padding:25px; border-radius:16px; color:#fff; text-align:center;">
           <div style="font-size:48px; margin-bottom:8px;">📅</div>
           <div style="font-size:42px; font-weight:700; line-height:1;">${totals.totalDays}</div>
-          <div style="font-size:14px; opacity:0.95; margin-top:8px; font-weight:600;">يوم نشاط</div>
+          <div style="font-size:14px; margin-top:8px; font-weight:600;">يوم نشاط</div>
         </div>
       </div>
       
-      <!-- نشاط اليوم -->
       <div style="background:#fff; padding:25px; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.06); margin-bottom:25px;">
         <h3 style="color:#1e3a8a; font-size:18px; margin-bottom:20px; font-weight:700;">✨ نشاط اليوم</h3>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); gap:12px;">
@@ -187,7 +176,6 @@ function renderProgressDashboard() {
         </div>
       </div>
       
-      <!-- المخطط الأسبوعي -->
       <div style="background:#fff; padding:25px; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.06); margin-bottom:25px;">
         <h3 style="color:#1e3a8a; font-size:18px; margin-bottom:20px; font-weight:700;">📈 نشاطك في آخر 7 أيام</h3>
         <div style="display:flex; align-items:flex-end; justify-content:space-between; height:200px; gap:10px; padding:0 10px;">
@@ -198,7 +186,7 @@ function renderProgressDashboard() {
             return `
               <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;">
                 <div style="font-size:13px; font-weight:700; color:#64748b;">${d.total}</div>
-                <div style="width:100%; height:${height}px; background:${color}; border-radius:8px 8px 0 0; transition:all 0.3s; ${isToday ? 'box-shadow:0 0 15px rgba(79,70,229,0.5);' : ''}"></div>
+                <div style="width:100%; height:${height}px; background:${color}; border-radius:8px 8px 0 0; ${isToday ? 'box-shadow:0 0 15px rgba(79,70,229,0.5);' : ''}"></div>
                 <div style="font-size:11px; color:${isToday ? '#4f46e5' : '#94a3b8'}; font-weight:${isToday ? '700' : '600'};">${d.label}</div>
               </div>
             `;
@@ -206,26 +194,26 @@ function renderProgressDashboard() {
         </div>
       </div>
       
-      <!-- نصائح ذكية -->
-      <div style="background:linear-gradient(135deg, #fef3c7, #fde68a); padding:25px; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.06); margin-bottom:25px;">
+      <div style="background:linear-gradient(135deg, #fef3c7, #fde68a); padding:25px; border-radius:16px; margin-bottom:25px;">
         <h3 style="color:#92400e; font-size:18px; margin-bottom:15px; font-weight:700;">💡 نصائح لليوم</h3>
         <div style="display:flex; flex-direction:column; gap:10px;">
           ${tips.map(t => '<div style="color:#78350f; font-size:15px; font-weight:600; line-height:1.6;">' + t + '</div>').join('')}
         </div>
       </div>
       
-      <!-- زر إعادة تعيين -->
       <div style="text-align:center; margin-top:30px;">
-        <button onclick="resetAllProgress()" style="padding:10px 25px; background:#fee2e2; color:#dc2626; border:none; border-radius:20px; cursor:pointer; font-weight:600; font-size:14px; font-family:Cairo,sans-serif;">🗑️ إعادة تعيين كل البيانات</button>
+        <button onclick="resetAllProgress()" style="padding:10px 25px; background:#fee2e2; color:#dc2626; border:none; border-radius:20px; cursor:pointer; font-weight:600; font-size:14px; font-family:Cairo,sans-serif;">🗑️ إعادة تعيين تقدم هذه اللغة</button>
       </div>
     </div>
   `;
 }
 
 function resetAllProgress() {
-  if (confirm('هل أنت متأكد؟ سيتم حذف كل تقدمك (المراجعة + النشاط).')) {
-    localStorage.removeItem(PROGRESS_KEY);
-    localStorage.removeItem('german_srs_data');
+  if (confirm('هل أنت متأكد؟ سيتم حذف تقدم هذه اللغة فقط (وليس اللغة الأخرى).')) {
+    localStorage.removeItem(getProgressKey());
+    if (typeof getSrsKey === 'function') {
+      localStorage.removeItem(getSrsKey());
+    }
     renderProgressDashboard();
   }
 }
