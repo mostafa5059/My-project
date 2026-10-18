@@ -275,6 +275,18 @@ const NOUNS = [
   { de:"das Medikament", ar:"دواء", plural:"die Medikamente", akk:"das Medikament", dat:"dem Medikament" },
   { de:"der Zahnarzt", ar:"طبيب أسنان", plural:"die Zahnärzte", akk:"den Zahnarzt", dat:"dem Zahnarzt" }
 ];
+const ADJECTIVES = [
+  { de:"groß", ar:"كبير" }, { de:"klein", ar:"صغير" }, { de:"gut", ar:"جيد" },
+  { de:"schlecht", ar:"سيء" }, { de:"neu", ar:"جديد" }, { de:"alt", ar:"قديم" },
+  { de:"schnell", ar:"سريع" }, { de:"langsam", ar:"بطيء" }, { de:"schön", ar:"جميل" },
+  { de:"wichtig", ar:"مهم" }, { de:"richtig", ar:"صحيح" }, { de:"falsch", ar:"خاطئ" },
+  { de:"teuer", ar:"غالي" }, { de:"billig", ar:"رخيص" }, { de:"leicht", ar:"سهل" },
+  { de:"schwer", ar:"صعب" }, { de:"glücklich", ar:"سعيد" }, { de:"traurig", ar:"حزين" },
+  { de:"müde", ar:"متعب" }, { de:"krank", ar:"مريض" }, { de:"gesund", ar:"صحي" },
+  { de:"sauber", ar:"نظيف" }, { de:"schmutzig", ar:"قذر" }, { de:"freundlich", ar:"ودود" },
+  { de:"höflich", ar:"مؤدب" }, { de:"pünktlich", ar:"دقيق في المواعيد" }, { de:"interessant", ar:"مثير للاهتمام" },
+  { de:"langweilig", ar:"ممل" }, { de:"gefährlich", ar:"خطير" }, { de:"sicher", ar:"آمن" }
+];
 const VERBS_EN = [
   { en: "be", ar: "يكون", past: "was/were", pp: "been", example: "I am a student. (أنا طالب)" },
   { en: "have", ar: "يملك", past: "had", pp: "had", example: "I have a book. (لدي كتاب)" },
