@@ -6,135 +6,115 @@
 <title>الأفعال والمفردات الألمانية A1 - A2.2</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --primary:#4f46e5; --primary-light:#818cf8; --primary-dark:#3730a3; --accent:#10b981; --bg-color:#f1f5f9; --card-bg:#fff; --text-main:#0f172a; --text-muted:#64748b; --border-color:#e2e8f0; --radius-lg:16px; --radius-xl:24px; --transition:all .3s ease; }
-  *{box-sizing:border-box;margin:0;padding:0;font-family:'Cairo',Tahoma,sans-serif}
-  body{background:var(--bg-color);color:var(--text-main);line-height:1.7;overflow-x:hidden}
-  header{background:linear-gradient(135deg,#1e1b4b,#4f46e5);color:#fff;padding:40px 20px;text-align:center;border-bottom-left-radius:var(--radius-xl);border-bottom-right-radius:var(--radius-xl);position:relative}
-  header h1{font-size:28px;font-weight:700;margin-bottom:10px}
-  header p{font-size:16px;opacity:.9}
-  .lang-buttons{position:absolute;top:20px;left:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-  .lang-btn{background:rgba(255,255,255,.2);color:#fff;border:2px solid rgba(255,255,255,.4);padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:700;font-size:14px;font-family:'Cairo',sans-serif;transition:var(--transition)}
-  .lang-btn:hover{background:rgba(255,255,255,.35)}
-  .container{max-width:1150px;margin:0 auto;padding:30px 20px}
-  .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;justify-content:center}
-  .tab{padding:12px 24px;border:none;background:var(--card-bg);color:var(--text-muted);border-radius:30px;cursor:pointer;font-size:15px;font-weight:600;border:1px solid var(--border-color);transition:var(--transition)}
-  .tab:hover{border-color:var(--primary-light)}
-  .tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
-  .controls{margin-bottom:25px;max-width:600px;margin-left:auto;margin-right:auto}
-  .controls input{width:100%;padding:16px 24px;border:2px solid var(--border-color);border-radius:20px;font-size:16px;outline:none;transition:var(--transition)}
-  .controls input:focus{border-color:var(--primary)}
-  .filter-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px;justify-content:center}
-  .filter-btn{padding:8px 18px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-muted);border-radius:20px;cursor:pointer;font-size:14px;font-weight:600;transition:var(--transition)}
-  .filter-btn:hover{border-color:var(--primary-light)}
-  .filter-btn.active{background:var(--primary-dark);color:#fff;border-color:var(--primary-dark)}
-  .list-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
-  .card{background:var(--card-bg);padding:22px;border-radius:var(--radius-lg);cursor:pointer;border-right:6px solid var(--primary);position:relative;border:1px solid var(--border-color);transition:var(--transition)}
-  .card:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(79,70,229,.15)}
-  .card.noun{border-right-color:var(--accent)}
-  .card.adj{border-right-color:#f59e0b}
-  .card .de{font-weight:800;font-size:22px;color:var(--primary-dark);margin-bottom:6px;direction:ltr;text-align:right;padding-left:40px}
-  .card .ar{font-size:15px;color:var(--text-muted);font-weight:600}
-  .card.noun .de{color:#047857}
-  .card.adj .de{color:#b45309}
-  .audio-btn{position:absolute;top:16px;left:16px;background:#f1f5f9;border:none;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;color:var(--primary);transition:var(--transition)}
-  .audio-btn:hover{background:#e0e7ff}
+  :root { --primary: #4f46e5; --primary-light: #818cf8; --primary-dark: #3730a3; --accent: #10b981; --bg-color: #f1f5f9; --card-bg: #ffffff; --text-main: #0f172a; --text-muted: #64748b; --border-color: #e2e8f0; --radius-lg: 16px; --radius-xl: 24px; --transition: all 0.3s ease; }
+  *{box-sizing:border-box;margin:0;padding:0; font-family: 'Cairo', Tahoma, sans-serif;}
+  body{background:var(--bg-color);color:var(--text-main);line-height:1.7; overflow-x: hidden;}
+  header{background:linear-gradient(135deg, #1e1b4b, #4f46e5);color:#fff;padding:40px 20px;text-align:center; border-bottom-left-radius: var(--radius-xl); border-bottom-right-radius: var(--radius-xl); position: relative;}
+  header h1{font-size:28px;font-weight:700;margin-bottom:10px;}
+  header p { font-size: 16px; opacity: 0.9;}
+  .lang-buttons { position: absolute; top: 20px; left: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .lang-btn { background: rgba(255,255,255,0.2); color: #fff; border: 2px solid rgba(255,255,255,0.4); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 14px; font-family: 'Cairo', sans-serif; }
+  .container{max-width:1150px;margin:0 auto;padding:30px 20px;}
+  .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px; justify-content: center;}
+  .tab{padding:12px 24px;border:none;background:var(--card-bg);color:var(--text-muted);border-radius:30px;cursor:pointer;font-size:15px;font-weight:600; border: 1px solid var(--border-color);}
+  .tab.active{background:var(--primary);color:#fff;}
+  .controls{margin-bottom:25px; max-width: 600px; margin-left: auto; margin-right: auto;}
+  .controls input{width:100%;padding:16px 24px;border:2px solid var(--border-color);border-radius:20px;font-size:16px;outline:none;}
+  .filter-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px; justify-content: center;}
+  .filter-btn{padding:8px 18px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-muted);border-radius:20px;cursor:pointer;font-size:14px; font-weight: 600;}
+  .filter-btn.active{background:var(--primary-dark);color:#fff;}
+  .list-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;}
+  .card{ background:var(--card-bg); padding:22px; border-radius:var(--radius-lg); cursor:pointer; border-right:6px solid var(--primary); position:relative; border: 1px solid var(--border-color); }
+  .card.noun { border-right-color: var(--accent); } .card.adj { border-right-color: #f59e0b; }
+  .card .de { font-weight: 800; font-size: 22px; color: var(--primary-dark); margin-bottom: 6px; direction: ltr; text-align: right; padding-left: 40px; }
+  .card .ar { font-size: 15px; color: var(--text-muted); font-weight: 600; }
+  .card.noun .de { color: #047857; } .card.adj .de { color: #b45309; }
+  .audio-btn{position:absolute; top:16px; left:16px; background:#f1f5f9; border:none; border-radius:50%; width:38px; height:38px; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; color: var(--primary);}
   .hidden{display:none!important}
-  .modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,.6);z-index:100;padding:20px;overflow-y:auto}
-  .modal.active{display:flex;align-items:center;justify-content:center}
-  .modal-content{background:var(--card-bg);border-radius:var(--radius-xl);max-width:680px;width:100%;padding:35px;position:relative;max-height:90vh;overflow-y:auto}
-  .close-btn{position:absolute;top:20px;left:20px;background:#fee2e2;color:#dc2626;border:none;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:18px;font-weight:700}
-  .modal-content h2{color:var(--primary-dark);margin-bottom:10px;display:inline-block;font-size:32px;font-weight:800}
-  .badge{display:inline-block;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700;margin:6px 6px 15px 0}
-  .badge.trennbar{background:#dbeafe;color:#1e40af}
-  .badge.reflexiv{background:#fce7f3;color:#9d174d}
-  .badge.unregelmäßig{background:#fef3c7;color:#92400e}
-  .badge.regular{background:#dcfce7;color:#166534}
-  .rule-hint{background:#fffbeb;border-right:4px solid #f59e0b;padding:14px 18px;border-radius:10px;font-size:14px;color:#92400e;margin-bottom:20px}
-  .section-title{font-size:16px;font-weight:700;color:var(--primary);margin:25px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--border-color)}
-  .conj-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .conj-item{background:#fff;padding:14px 18px;border-radius:10px;font-size:15px;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--border-color);font-weight:600}
-  .conj-item .pron{color:var(--primary-dark);font-weight:700;min-width:80px;direction:rtl}
-  .conj-item span:not(.pron){direction:ltr;text-align:left;font-weight:700}
-  .meta{background:#eff6ff;padding:16px;border-radius:12px;margin-top:10px;font-size:15px;border:1px solid #bfdbfe;font-weight:600}
-  .info-block{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-  .info-item{background:#f0fdf4;padding:14px 18px;border-radius:12px;font-size:15px;border-right:5px solid var(--accent);font-weight:600}
-  .info-item strong{color:#065f46;display:block;font-size:13px;margin-bottom:6px}
-  .rules-container{background:var(--card-bg);padding:40px;border-radius:var(--radius-xl);border:1px solid var(--border-color)}
-  .rule-section{border-bottom:1px solid var(--border-color);padding-bottom:30px;margin-bottom:30px}
-  .rule-section:last-child{border-bottom:none}
-  .rule-section h3{color:var(--primary-dark);margin-bottom:15px;font-size:22px;border-right:6px solid var(--primary);padding:20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:#f8fafc;border-radius:14px;font-weight:800}
-  .rule-section h3::after{content:'▼';font-size:16px;color:var(--primary);transition:var(--transition)}
-  .rule-section.open h3::after{transform:rotate(180deg)}
-  .rule-content{display:none;padding:30px;background:#fff;border:1px solid var(--border-color);border-radius:14px;margin-top:20px}
-  .rule-section.open .rule-content{display:block}
-  .rule-content p{font-size:17px;color:var(--text-main);margin-bottom:18px;line-height:2}
+  .modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,0.6);z-index:100;padding:20px;overflow-y:auto;}
+  .modal.active{display:flex;align-items:center;justify-content:center;}
+  .modal-content{background:var(--card-bg);border-radius:var(--radius-xl);max-width:680px;width:100%;padding:35px;position:relative; max-height: 90vh; overflow-y: auto;}
+  .close-btn{position:absolute;top:20px;left:20px;background:#fee2e2;color:#dc2626;border:none;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:18px;font-weight:700;}
+  .modal-content h2{color:var(--primary-dark);margin-bottom:10px;display:inline-block; font-size:32px; font-weight: 800;}
+  .badge{display:inline-block;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700;margin:6px 6px 15px 0;}
+  .badge.trennbar{background:#dbeafe;color:#1e40af} .badge.reflexiv{background:#fce7f3;color:#9d174d} .badge.unregelmäßig{background:#fef3c7;color:#92400e} .badge.regular{background:#dcfce7;color:#166534}
+  .rule-hint{background:#fffbeb;border-right:4px solid #f59e0b;padding:14px 18px;border-radius:10px;font-size:14px;color:#92400e;margin-bottom:20px;}
+  .section-title{font-size:16px;font-weight:700;color:var(--primary);margin:25px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--border-color);}
+  .conj-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .conj-item { background: #ffffff; padding: 14px 18px; border-radius: 10px; font-size: 15px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-color); font-weight: 600; }
+  .conj-item .pron { color: var(--primary-dark); font-weight: 700; min-width: 80px; direction: rtl; }
+  .conj-item span:not(.pron) { direction: ltr; text-align: left; font-weight: 700; }
+  .meta{background:#eff6ff;padding:16px;border-radius:12px;margin-top:10px;font-size:15px; border: 1px solid #bfdbfe; font-weight: 600;}
+  .info-block { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+  .info-item { background: #f0fdf4; padding: 14px 18px; border-radius: 12px; font-size: 15px; border-right: 5px solid var(--accent); font-weight: 600; }
+  .info-item strong { color: #065f46; display: block; font-size: 13px; margin-bottom: 6px;}
+  .rules-container{background:var(--card-bg);padding:40px;border-radius:var(--radius-xl);border: 1px solid var(--border-color);}
+  .rule-section { border-bottom: 1px solid var(--border-color); padding-bottom: 30px; margin-bottom: 30px; }
+  .rule-section:last-child { border-bottom: none; }
+  .rule-section h3{color:var(--primary-dark);margin-bottom:15px;font-size:22px;border-right:6px solid var(--primary);padding:20px; cursor: pointer; display:flex; justify-content:space-between; align-items: center; background: #f8fafc; border-radius: 14px; font-weight: 800;}
+  .rule-section h3::after { content: '▼'; font-size: 16px; color: var(--primary); }
+  .rule-section.open h3::after { transform: rotate(180deg); }
+  .rule-content { display: none; padding: 30px; background: #fff; border: 1px solid var(--border-color); border-radius: 14px; margin-top: 20px;}
+  .rule-section.open .rule-content { display: block;}
+  .rule-content p{font-size:17px;color:var(--text-main);margin-bottom:18px; line-height: 2;}
   .rule-content ul{padding-right:25px;margin-bottom:25px}
-  .rule-content li{font-size:16px;color:var(--text-main);margin-bottom:14px;line-height:1.9}
-  .rule-content code{background:#eff6ff;color:var(--primary-dark);padding:5px 12px;border-radius:8px;font-family:'Courier New',monospace;font-weight:bold;font-size:15px}
-  .example-box{background:#f0fdf4;border-right:5px solid var(--accent);padding:25px 30px;margin:25px 0;border-radius:12px;font-size:16px;line-height:2.1}
-  .example-box strong{color:#047857;font-weight:800}
-  table{width:100%;border-collapse:collapse;margin:25px 0;font-size:15px;border:1px solid var(--border-color)}
-  th,td{border:1px solid var(--border-color);padding:14px;text-align:center}
-  th{background:#eff6ff;color:var(--primary-dark);font-weight:700}
-  .flashcard-container{max-width:550px;margin:40px auto}
-  .flashcard{background:var(--card-bg);border-radius:var(--radius-xl);padding:60px 30px;cursor:pointer;min-height:280px;display:flex;align-items:center;justify-content:center;flex-direction:column;border:2px solid var(--border-color);transition:var(--transition)}
-  .flashcard:hover{border-color:var(--primary-light)}
-  .flashcard-front{color:var(--primary-dark);font-size:36px;font-weight:700}
-  .flashcard-back{color:var(--accent);font-size:36px;font-weight:700;display:none}
-  .flashcard-hint{color:#94a3b8;font-size:16px;margin-top:25px;font-weight:600}
-  .btn-next{display:block;margin:35px auto;padding:16px 45px;background:var(--primary);color:#fff;border:none;border-radius:30px;cursor:pointer;font-size:18px;font-weight:700;transition:var(--transition)}
-  .btn-next:hover{background:var(--primary-dark)}
-  .placeholder-tab{background:#fff;padding:50px 30px;border-radius:var(--radius-xl);text-align:center;border:2px dashed var(--border-color)}
-  .placeholder-tab h3{color:var(--primary-dark);font-size:22px;margin-bottom:15px}
-  .placeholder-tab p{color:var(--text-muted);font-size:16px}
-  @media (max-width:768px){
-    header{padding:25px 15px;padding-top:100px}
-    .lang-buttons{top:15px;left:15px;right:15px;justify-content:center}
-    .tabs{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:10px}
-    .tabs::-webkit-scrollbar{display:none}
-    .tab{padding:10px 16px;font-size:13px;white-space:nowrap;flex-shrink:0}
-    .list-grid{grid-template-columns:1fr;gap:12px}
-    .conj-grid{grid-template-columns:1fr}
-    .modal-content{padding:20px 15px;border-radius:16px}
-    .modal-content h2{font-size:24px}
-    .info-block{grid-template-columns:1fr}
+  .rule-content li{font-size:16px;color:var(--text-main);margin-bottom:14px; line-height: 1.9;}
+  .rule-content code{background:#eff6ff;color:var(--primary-dark);padding:5px 12px;border-radius:8px;font-family:'Courier New',monospace;font-weight:bold; font-size: 15px;}
+  .example-box { background: #f0fdf4; border-right: 5px solid var(--accent); padding: 25px 30px; margin: 25px 0; border-radius: 12px; font-size: 16px; line-height: 2.1; }
+  .example-box strong { color: #047857; font-weight: 800;}
+  table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 15px; border: 1px solid var(--border-color);}
+  th, td { border: 1px solid var(--border-color); padding: 14px; text-align: center; }
+  th { background: #eff6ff; color: var(--primary-dark); font-weight: 700;}
+  .flashcard-container { max-width: 550px; margin: 40px auto; }
+  .flashcard { background: var(--card-bg); border-radius: var(--radius-xl); padding: 60px 30px; cursor: pointer; min-height: 280px; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 2px solid var(--border-color); }
+  .flashcard-front { color: var(--primary-dark); font-size: 36px; font-weight: 700; }
+  .flashcard-back { color: var(--accent); font-size: 36px; font-weight: 700; display: none; }
+  .flashcard-hint { color: #94a3b8; font-size: 16px; margin-top: 25px; font-weight: 600;}
+  .btn-next { display: block; margin: 35px auto; padding: 16px 45px; background: var(--primary); color: #fff; border: none; border-radius: 30px; cursor: pointer; font-size: 18px; font-weight: 700; }
+  @media (max-width: 768px) {
+    header { padding: 25px 15px; padding-top: 80px; }
+    .lang-buttons { top: 15px; left: 15px; right: 15px; justify-content: center; }
+    .tabs { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab { padding: 10px 16px; font-size: 13px; white-space: nowrap; flex-shrink: 0; }
+    .list-grid { grid-template-columns: 1fr; gap: 12px; }
+    .conj-grid { grid-template-columns: 1fr; }
+    .modal-content { padding: 20px 15px; border-radius: 16px; }
+    .modal-content h2 { font-size: 24px; }
+    .info-block { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 <header>
   <div class="lang-buttons">
-    <button id="langSwitchBtn" class="lang-btn" onclick="toggleContentLanguage()">Deutsch 🇩🇪</button>
-    <span id="currentLangLabel" style="color:#fff;font-size:14px;font-weight:700;"></span>
+    <button id="langSwitchBtn" class="lang-btn" onclick="switchLanguage()">Deutsch 🇩🇪</button>
+    <button id="contentLangBtn" class="lang-btn" onclick="toggleContentLanguage()" style="background:rgba(16,185,129,0.3);" title="تبديل لغة المحتوى">🇬🇧 English</button>
+    <span id="currentLangLabel" style="color:#fff; font-size:14px; font-weight:700; margin-left:10px;"></span>
     <button id="translationToggleBtn" class="lang-btn" onclick="toggleTranslation()">إخفاء الترجمة 👁️‍🗨️</button>
   </div>
   <h1>🇩🇪 الأفعال والمفردات الألمانية A1 - A2.2</h1>
   <p>منصة شاملة للمذاكرة والتحضير للامتحانات</p>
 </header>
-
 <div class="container">
-  <div class="tabs" id="mainTabs">
+  <div class="tabs">
     <button class="tab active" data-tab="verbs">🔤 الأفعال</button>
     <button class="tab" data-tab="nouns">📦 الأسماء</button>
     <button class="tab" data-tab="adjectives">🎨 الصفات</button>
-    <button class="tab" data-tab="basics">📚 الأساسيات</button>
     <button class="tab" data-tab="flashcards">🧠 الاختبار</button>
     <button class="tab" data-tab="speaking">🗣️ التحدث</button>
     <button class="tab" data-tab="exercises">📝 التمارين</button>
     <button class="tab" data-tab="writing">✍️ تدريب الكتابة</button>
     <button class="tab" data-tab="listening">🎧 تدريب الاستماع</button>
     <button class="tab" data-tab="dialogues">💬 المحادثات</button>
+    <button class="tab" data-tab="basics">📚 الأساسيات</button>
+    <button class="tab" data-tab="reading">📖 القراءة</button>
     <button class="tab" data-tab="progress">📊 لوحة التقدم</button>
     <button class="tab" data-tab="review">🎯 المراجعة اليومية</button>
     <button class="tab" data-tab="rules">📖 القواعد</button>
-    <button class="tab" data-tab="reading">📖 القراءة</button>
     <button class="tab" data-tab="resources">📚 المصادر</button>
   </div>
-
-  <div class="controls" id="searchWrap">
-    <input type="text" id="search" placeholder="🔍 ابحث بالعربي أو الألماني...">
-  </div>
-
+  <div class="controls"><input type="text" id="search" placeholder="🔍 ابحث بالعربي أو الألماني..."></div>
   <div class="filter-btns" id="verbFilters">
     <button class="filter-btn active" data-filter="all">الكل</button>
     <button class="filter-btn" data-filter="regular">منتظمة</button>
@@ -144,11 +124,9 @@
     <button class="filter-btn" data-filter="dativ">📌 Dativ</button>
     <button class="filter-btn" data-filter="sein">✈️ sein</button>
   </div>
-
   <div id="tab-verbs"><div class="list-grid" id="verbList"></div></div>
   <div id="tab-nouns" class="hidden"><div class="list-grid" id="nounList"></div></div>
   <div id="tab-adjectives" class="hidden"><div class="list-grid" id="adjList"></div></div>
-
   <div id="tab-flashcards" class="hidden">
     <div class="flashcard-container">
       <div class="flashcard" onclick="flipCard()">
@@ -159,53 +137,50 @@
       <button class="btn-next" onclick="nextCard()">التالي ➡️</button>
     </div>
   </div>
-
   <div id="tab-speaking" class="hidden">
-    <div style="display:flex;gap:15px;flex-wrap:wrap;justify-content:center;margin-bottom:30px;">
+    <div style="display:flex; gap:15px; flex-wrap:wrap; justify-content:center; margin-bottom:30px;">
       <button class="filter-btn active" onclick="switchSpeakingMode('shadowing')">🔊 التكرار</button>
       <button class="filter-btn" onclick="switchSpeakingMode('challenge')">💬 تحدي التحدث</button>
     </div>
     <div id="shadowingSection">
-      <div style="background:var(--card-bg);padding:50px 30px;border-radius:var(--radius-xl);text-align:center;max-width:650px;margin:0 auto;border-top:6px solid var(--primary);">
-        <p id="shadowCounter" style="color:var(--primary);font-weight:700;margin-bottom:20px;">الجملة 1 من 10</p>
-        <h2 id="shadowDe" style="color:var(--primary-dark);font-size:32px;margin-bottom:20px;font-weight:700;">-</h2>
-        <p id="shadowAr" style="color:var(--accent);font-size:20px;margin-bottom:35px;font-weight:700;background:#f0fdf4;padding:12px 25px;border-radius:12px;display:inline-block;">-</p>
-        <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;">
-          <button class="btn-next" onclick="speak(document.getElementById('shadowDe').innerText)" style="margin:0;">🔊 استمع</button>
-          <button class="btn-next" onclick="nextShadow()" style="margin:0;background:var(--accent);">التالي ➡️</button>
+      <div style="background:var(--card-bg); padding:50px 30px; border-radius:var(--radius-xl); text-align:center; max-width:650px; margin:0 auto; border-top: 6px solid var(--primary);">
+        <p id="shadowCounter" style="color:var(--primary); font-weight:700; margin-bottom:20px;">الجملة 1 من 30</p>
+        <h2 id="shadowDe" style="color:var(--primary-dark); font-size:32px; margin-bottom:20px; font-weight:700;">-</h2>
+        <p id="shadowAr" style="color:var(--accent); font-size:20px; margin-bottom:35px; font-weight:700; background:#f0fdf4; padding:12px 25px; border-radius:12px; display:inline-block;">-</p>
+        <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
+          <button class="btn-next" onclick="speak(document.getElementById('shadowDe').innerText)" style="margin:0; background:var(--primary);">🔊 استمع</button>
+          <button class="btn-next" onclick="nextShadow()" style="margin:0; background:var(--accent);">التالي ➡️</button>
         </div>
       </div>
     </div>
     <div id="challengeSection" class="hidden">
-      <div style="background:var(--card-bg);padding:50px 30px;border-radius:var(--radius-xl);text-align:center;max-width:650px;margin:0 auto;border-top:6px solid #f59e0b;">
-        <h2 id="challengeQ" style="color:var(--primary-dark);font-size:28px;margin-bottom:12px;font-weight:700;">-</h2>
-        <p id="challengeQAr" style="color:var(--text-muted);font-size:18px;margin-bottom:25px;font-weight:600;">-</p>
-        <button class="btn-next" onclick="speak(document.getElementById('challengeQ').innerText)" style="margin:15px auto;">🔊 استمع للسؤال</button>
-        <div id="challengeAnsBox" style="display:none;background:#f0fdf4;padding:25px;border-radius:12px;margin-top:25px;">
-          <h3 id="challengeA" style="color:var(--accent);font-size:24px;margin-bottom:10px;font-weight:700;">-</h3>
-          <p id="challengeAAr" style="color:var(--text-muted);font-size:18px;font-weight:600;">-</p>
+      <div style="background:var(--card-bg); padding:50px 30px; border-radius:var(--radius-xl); text-align:center; max-width:650px; margin:0 auto; border-top: 6px solid #f59e0b;">
+        <h2 id="challengeQ" style="color:var(--primary-dark); font-size:28px; margin-bottom:12px; font-weight:700;">-</h2>
+        <p id="challengeQAr" style="color:var(--text-muted); font-size:18px; margin-bottom:25px; font-weight:600;">-</p>
+        <button class="btn-next" onclick="speak(document.getElementById('challengeQ').innerText)" style="margin:15px auto; background:var(--primary);">🔊 استمع للسؤال</button>
+        <div id="challengeAnsBox" style="display:none; background:#f0fdf4; padding:25px; border-radius:12px; margin-top:25px;">
+          <h3 id="challengeA" style="color:var(--accent); font-size:24px; margin-bottom:10px; font-weight:700;">-</h3>
+          <p id="challengeAAr" style="color:var(--text-muted); font-size:18px; font-weight:600;">-</p>
         </div>
-        <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-top:25px;">
-          <button class="btn-next" onclick="showAnswer()" style="margin:0;background:#d97706;">إظهار الإجابة 👁️</button>
-          <button class="btn-next" onclick="nextChallenge()" style="margin:0;">سؤال جديد ➡️</button>
+        <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap; margin-top:25px;">
+          <button class="btn-next" onclick="showAnswer()" style="margin:0; background:#d97706;">إظهار الإجابة 👁️</button>
+          <button class="btn-next" onclick="nextChallenge()" style="margin:0; background:var(--primary);">سؤال جديد ➡️</button>
         </div>
       </div>
     </div>
   </div>
-
   <div id="tab-exercises" class="hidden">
-    <div style="max-width:700px;margin:0 auto;">
-      <div style="background:#fff;padding:40px 30px;border-radius:16px;text-align:center;">
-        <p id="exerciseProgress" style="color:#64748b;font-weight:600;margin-bottom:20px;">السؤال 1 من 5</p>
-        <h2 id="exerciseQuestion" style="color:#1e3a8a;font-size:24px;margin-bottom:12px;">-</h2>
-        <p id="exerciseQuestionAr" style="color:#64748b;font-size:16px;margin-bottom:25px;">-</p>
-        <div id="exerciseOptions" style="display:flex;flex-direction:column;gap:12px;max-width:400px;margin:0 auto;"></div>
-        <div id="exerciseFeedback" style="margin-top:25px;display:none;padding:15px;border-radius:10px;"></div>
-        <button id="exerciseNextBtn" onclick="nextExercise()" style="display:none;margin-top:20px;padding:14px 35px;background:#4f46e5;color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:16px;font-weight:700;">السؤال التالي ➡️</button>
+    <div style="max-width:700px; margin:0 auto;">
+      <div style="background:#fff; padding:40px 30px; border-radius:16px; text-align:center;">
+        <p id="exerciseProgress" style="color:#64748b; font-weight:600; margin-bottom:20px;">السؤال 1 من 20</p>
+        <h2 id="exerciseQuestion" style="color:#1e3a8a; font-size:24px; margin-bottom:12px;">-</h2>
+        <p id="exerciseQuestionAr" style="color:#64748b; font-size:16px; margin-bottom:25px;">-</p>
+        <div id="exerciseOptions" style="display:flex; flex-direction:column; gap:12px; max-width:400px; margin:0 auto;"></div>
+        <div id="exerciseFeedback" style="margin-top:25px; display:none; padding:15px; border-radius:10px;"></div>
+        <button id="exerciseNextBtn" onclick="nextExercise()" style="display:none; margin-top:20px; padding:14px 35px; background:#4f46e5; color:#fff; border:none; border-radius:25px; cursor:pointer; font-size:16px; font-weight:700;">السؤال التالي ➡️</button>
       </div>
     </div>
   </div>
-
   <div id="tab-writing" class="hidden"><div id="writingContent"></div></div>
   <div id="tab-listening" class="hidden"><div id="listeningContent"></div></div>
   <div id="tab-basics" class="hidden"><div id="basicsContent"></div></div>
@@ -215,86 +190,284 @@
   <div id="tab-reading" class="hidden"><div id="readingContent"></div></div>
   <div id="tab-rules" class="hidden"><div class="rules-container" id="rulesContent"></div></div>
   <div id="tab-resources" class="hidden">
-    <div style="max-width:850px;margin:0 auto;">
-      <h2 style="color:#1e3a8a;text-align:center;margin-bottom:25px;font-size:24px;">📚 مصادر رسمية موثوقة لتعلم الألمانية</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;" id="resourcesGrid"></div>
+    <div style="max-width:850px; margin:0 auto;">
+      <h2 style="color:#1e3a8a; text-align:center; margin-bottom:25px; font-size:24px;">📚 مصادر رسمية موثوقة لتعلم الألمانية</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:18px;" id="resourcesGrid"></div>
     </div>
   </div>
 </div>
-
 <div class="modal" id="modal"><div class="modal-content" id="modalContent"></div></div>
 
-<!-- تحميل الملفات بالترتيب الصحيح -->
-<script src="helpers.js"></script>
 <script src="verbs.js"></script>
-<script src="nouns.js"></script>
-<script src="adjectives.js"></script>
 <script src="rules.js"></script>
 <script src="speaking.js"></script>
 <script src="exercises.js"></script>
-<script src="flashcards.js"></script>
-<script src="resources.js"></script>
-<script src="placeholders.js"></script>
+<script src="review.js"></script>
+<script src="writing.js"></script>
+<script src="listening.js"></script>
+<script src="dialogues.js"></script>
+<script src="progress.js"></script>
 <script src="i18n.js"></script>
+<script src="resources.js"></script>
+<script src="reading.js"></script>
+<script src="basics.js"></script>
 
 <script>
-/* ==================== الحالة العامة ==================== */
-let contentLanguage = localStorage.getItem('content_language') || 'de';
-let translationVisible = localStorage.getItem('translation_visible') !== 'false';
+  let contentLanguage = localStorage.getItem('content_language') || 'de';
+const pronouns = ["ich","du","er/sie/es","wir","ihr","sie/Sie"];
+const typeLabels = { regular:{text:"منتظم",cls:"regular"}, unregelmäßig:{text:"⚡ غير منتظم",cls:"unregelmäßig"}, trennbar:{text:"🔹 منفصل",cls:"trennbar"}, reflexiv:{text:"🔄 انعكاسي",cls:"reflexiv"} };
+const ruleHints = { unregelmäßig:"⚡ فعل غير منتظم: تتغير حركة الجذر في المضارع (du/er) وفي الماضي.", trennbar:"🔹 فعل منفصل: البادئة تُنقل لنهاية الجملة (مثل: stehe auf).", reflexiv:"🔄 فعل انعكاسي: يحتاج ضميراً انعكاسياً (mich/dich/sich...)." };
+
+/* ✅ إصلاح 1: قائمتا Dativ و sein — أضفنا "schmecken" و "sein" */
+const isDativ = (de) => ["helfen", "danken", "gefallen", "gehören", "passen", "antworten", "zuhören", "empfehlen", "schmecken"].includes(de.replace(" (Dativ)", ""));
+const isSein = (de) => ["aufstehen", "ausgehen", "einsteigen", "aussteigen", "umsteigen", "ankommen", "mitkommen", "zurückkommen", "laufen", "reisen", "wandern", "gehen", "kommen", "fahren", "fliegen", "werden", "sein"].includes(de.replace(" (sein)", ""));
+
 let currentTab = "verbs", currentFilter = "all", currentSearch = "";
 
-const pronouns = ["ich","du","er/sie/es","wir","ihr","sie/Sie"];
+function speak(text) { if ('speechSynthesis' in window) { const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'de-DE'; utterance.rate = 0.9; window.speechSynthesis.speak(utterance); } }
 
-/* ==================== التبويبات ==================== */
+function renderVerbs() {
+  const f = currentSearch.trim().toLowerCase();
+  const sourceData = contentLanguage === 'en' ? (typeof VERBS_EN !== 'undefined' ? VERBS_EN : []) : (typeof VERBS !== 'undefined' ? VERBS : []);
+  
+  const filtered = sourceData.filter(v => {
+    const word = contentLanguage === 'en' ? v.en : v.de;
+    const matchSearch = word.toLowerCase().includes(f) || v.ar.includes(currentSearch.trim());
+    
+    let matchFilter = true;
+    if (currentFilter === "all") {
+      matchFilter = true;
+    } else if (currentFilter === "dativ") {
+      /* ✅ إصلاح 2: استخدام isDativ() بدل التكرار */
+      matchFilter = contentLanguage === 'de' && isDativ(v.de);
+    } else if (currentFilter === "sein") {
+      /* ✅ إصلاح 3: استخدام isSein() بدل التكرار */
+      matchFilter = contentLanguage === 'de' && isSein(v.de);
+    } else {
+      matchFilter = v.type === currentFilter;
+    }
+    
+    return matchSearch && matchFilter;
+  });
+  
+  const list = document.getElementById("verbList");
+  list.innerHTML = filtered.map(v => {
+    const word = contentLanguage === 'en' ? v.en : v.de;
+    const idx = sourceData.indexOf(v);
+    return '<div class="card" data-index="' + idx + '"><button class="audio-btn" onclick="event.stopPropagation(); speak(\'' + word.replace(/ \(.*\)/, '') + '\')">🔊</button><div class="de">' + word + '</div><div class="ar">' + v.ar + '</div></div>';
+  }).join("");
+  list.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => openVerb(+c.getAttribute("data-index"))));
+  if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
+}
+function renderNouns() {
+  const f = currentSearch.trim().toLowerCase();
+  const sourceData = contentLanguage === 'en' ? (typeof NOUNS_EN !== 'undefined' ? NOUNS_EN : []) : (typeof NOUNS !== 'undefined' ? NOUNS : []);
+  const filtered = sourceData.filter(n => {
+    const word = contentLanguage === 'en' ? n.en : n.de;
+    return word.toLowerCase().includes(f) || n.ar.includes(currentSearch.trim());
+  });
+  const list = document.getElementById("nounList");
+  list.innerHTML = filtered.map(n => {
+    const word = contentLanguage === 'en' ? n.en : n.de;
+    const idx = sourceData.indexOf(n);
+    return '<div class="card noun" data-index="' + idx + '"><button class="audio-btn" onclick="event.stopPropagation(); speak(\'' + word.replace('der ','').replace('die ','').replace('das ','') + '\')">🔊</button><div class="de">' + word + '</div><div class="ar">' + n.ar + '</div></div>';
+  }).join("");
+  list.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => openNoun(+c.getAttribute("data-index"))));
+  if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
+}
+function renderAdjectives() {
+  const f = currentSearch.trim().toLowerCase();
+  const sourceData = contentLanguage === 'en' ? (typeof ADJECTIVES_EN !== 'undefined' ? ADJECTIVES_EN : []) : (typeof ADJECTIVES !== 'undefined' ? ADJECTIVES : []);
+  const filtered = sourceData.filter(a => {
+    const word = contentLanguage === 'en' ? a.en : a.de;
+    return word.toLowerCase().includes(f) || a.ar.includes(currentSearch.trim());
+  });
+  const list = document.getElementById("adjList");
+  list.innerHTML = filtered.map(a => {
+    const word = contentLanguage === 'en' ? a.en : a.de;
+    const idx = sourceData.indexOf(a);
+    return '<div class="card adj" data-index="' + idx + '"><button class="audio-btn" onclick="event.stopPropagation(); speak(\'' + word + '\')">🔊</button><div class="de">' + word + '</div><div class="ar">' + a.ar + '</div></div>';
+  }).join("");
+  list.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => openAdjective(+c.getAttribute("data-index"))));
+  if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
+}
+function openVerb(index) {
+  const sourceData = contentLanguage === 'en' ? VERBS_EN : VERBS;
+  const v = sourceData[index];
+  if (!v) return;
+  const word = contentLanguage === 'en' ? v.en : v.de;
+  const isEnglish = contentLanguage === 'en';
+  
+  let content = '<button class="close-btn" onclick="closeModal()">✕</button>';
+  content += '<div style="text-align:center; margin-bottom:20px;">';
+  content += '<h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + word + '</h2>';
+  content += ' <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + word + '\')">🔊</button>';
+  content += '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + v.ar + '</div></div>';
+  
+  if (isEnglish) {
+    content += '<div class="section-title">📘 Past Tense</div><div class="conj-item"><span>' + v.past + '</span></div>';
+    content += '<div class="section-title">✅ Past Participle</div><div class="conj-item"><span>' + v.pp + '</span></div>';
+  } else {
+    const präsensHTML = v.präsens.map((form, i) => '<div class="conj-item"><span class="pron">' + pronouns[i] + '</span><span>' + form + '</span></div>').join("");
+    content += '<div class="section-title">📘 المضارع</div><div class="conj-grid">' + präsensHTML + '</div>';
+    content += '<div class="section-title">⏳ الماضي البسيط</div><div class="conj-item"><span>' + v.präteritum + '</span></div>';
+    content += '<div class="section-title">✅ الماضي التام</div><div class="conj-item"><span>' + v.perfekt + '</span></div>';
+  }
+  
+  if (v.example) content += '<div class="section-title">💬 مثال</div><div class="example-box">' + v.example + '</div>';
+  
+  document.getElementById("modalContent").innerHTML = content;
+  document.getElementById("modal").classList.add("active");
+  if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
+}
+function openNoun(index) {
+  const sourceData = contentLanguage === 'en' ? (typeof NOUNS_EN !== 'undefined' ? NOUNS_EN : []) : (typeof NOUNS !== 'undefined' ? NOUNS : []);
+  const n = sourceData[index];
+  if (!n) return;
+  const word = contentLanguage === 'en' ? n.en : n.de;
+  const isEnglish = contentLanguage === 'en';
+  
+  let content = '<button class="close-btn" onclick="closeModal()">✕</button>';
+  content += '<div style="text-align:center; margin-bottom:20px;">';
+  content += '<h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + word + '</h2>';
+  content += ' <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + word + '\')">🔊</button>';
+  content += '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + n.ar + '</div></div>';
+  
+  if (isEnglish) {
+    content += '<div class="section-title">📦 Plural</div><div class="conj-item"><span>' + n.plural + '</span></div>';
+  } else {
+    content += '<div class="section-title">📦 الجمع</div><div class="conj-item"><span class="pron">Plural</span><span>' + n.plural + '</span></div>';
+    content += '<div class="section-title">📐 الحالات الإعرابية</div><div class="info-block"><div class="info-item"><strong>Nominativ</strong>' + n.de + '</div><div class="info-item"><strong>Akkusativ</strong>' + n.akk + '</div><div class="info-item"><strong>Dativ</strong>' + n.dat + '</div></div>';
+  }
+  
+  document.getElementById("modalContent").innerHTML = content;
+  document.getElementById("modal").classList.add("active");
+  if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
+}
+function openAdjective(index) {
+  const sourceData = contentLanguage === 'en' ? (typeof ADJECTIVES_EN !== 'undefined' ? ADJECTIVES_EN : []) : (typeof ADJECTIVES !== 'undefined' ? ADJECTIVES : []);
+  const a = sourceData[index];
+  if (!a) return;
+  const word = contentLanguage === 'en' ? a.en : a.de;
+  
+  let content = '<button class="close-btn" onclick="closeModal()">✕</button>';
+  content += '<div style="text-align:center; margin-bottom:20px;">';
+  content += '<h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + word + '</h2>';
+  content += ' <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + word + '\')">🔊</button>';
+  content += '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + a.ar + '</div></div>';
+  content += '<div class="rule-hint">' + (contentLanguage === 'en' ? 'Adjectives describe nouns.' : 'الصفات تُصرَّف حسب الحالة والجنس والعدد عند استخدامها قبل الاسم.') + '</div>';
+  
+  document.getElementById("modalContent").innerHTML = content;
+  document.getElementById("modal").classList.add("active");
+  if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
+}
+function closeModal() { document.getElementById("modal").classList.remove("active"); }
+
+/* ✅ إصلاح 4: switchTab — حماية كاملة + applyTranslationVisibility في النهاية */
 function switchTab(name) {
   currentTab = name;
   document.querySelectorAll('[id^="tab-"]').forEach(el => el.classList.add("hidden"));
   const target = document.getElementById("tab-" + name);
   if (target) target.classList.remove("hidden");
-  document.querySelectorAll(".tab").forEach(t => {
-    t.classList.toggle("active", t.getAttribute("data-tab") === name);
-  });
-
+  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.getAttribute("data-tab") === name));
+  
   const filters = document.getElementById("verbFilters");
   const search = document.getElementById("search");
   if (filters) filters.style.display = (name === "verbs") ? "flex" : "none";
   if (search) search.style.display = (name === "verbs" || name === "nouns" || name === "adjectives") ? "block" : "none";
 
-  // ✅ أضف هذا السطر في نهاية switchTab — بعد كل عرض
-  if (typeof applyTranslationVisibility === 'function') {
-    applyTranslationVisibility();
-  }
+  /* ✅ إصلاح 5: لفّ كل استدعاء بـ typeof */
+  try {
+    if (name === "flashcards") { if (typeof newCard === 'function') newCard(); }
+    else if (name === "verbs" || name === "nouns" || name === "adjectives") renderCurrent();
+    else if (name === "rules") {
+      const rc = document.getElementById("rulesContent");
+      if (rc) rc.innerHTML = (contentLanguage === 'en' && typeof RULES_HTML_EN !== 'undefined') ? RULES_HTML_EN : (typeof RULES_HTML !== 'undefined' ? RULES_HTML : '');
+    }
+    else if (name === "speaking") { if (typeof loadShadow === 'function') loadShadow(); if (typeof loadChallenge === 'function') loadChallenge(); }
+    else if (name === "exercises") { if (typeof startExercises === 'function') startExercises(); }
+    else if (name === "writing") { if (typeof initWritingTab === 'function') initWritingTab(); }
+    else if (name === "listening") { if (typeof initListeningTab === 'function') initListeningTab(); }
+    else if (name === "dialogues") { if (typeof initDialoguesTab === 'function') initDialoguesTab(); }
+    else if (name === "basics") { if (typeof initBasicsTab === 'function') initBasicsTab(); }
+    else if (name === "reading") { if (typeof initReadingTab === 'function') initReadingTab(); }
+    else if (name === "progress") { if (typeof initProgressTab === 'function') initProgressTab(); }
+    else if (name === "resources") { if (typeof renderResources === 'function') renderResources(); }
+    else if (name === "review") { if (typeof initReviewTab === 'function') initReviewTab(); }
+  } catch(e) { console.error('switchTab(' + name + '):', e); }
+  
+  /* ✅ إصلاح 6: تطبيق إخفاء الترجمة بعد كل عرض */
+  if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
 }
 
-/* ==================== البحث والفلاتر ==================== */
 function renderCurrent() {
-  if (currentTab === "verbs") renderVerbs();
-  else if (currentTab === "nouns") renderNouns();
-  else if (currentTab === "adjectives") renderAdjectives();
+  if (currentTab === "verbs") renderVerbs(); else if (currentTab === "nouns") renderNouns(); else if (currentTab === "adjectives") renderAdjectives();
+}
+let currentCard = null, isFlipped = false;
+function newCard() { const v = VERBS[Math.floor(Math.random() * VERBS.length)]; currentCard = v; isFlipped = false; document.getElementById("card-front").innerText = v.ar; document.getElementById("card-back").innerText = v.de; document.getElementById("card-front").style.display = "block"; document.getElementById("card-back").style.display = "none"; }
+function flipCard() { if (!currentCard) return; isFlipped = !isFlipped; document.getElementById("card-front").style.display = isFlipped ? "none" : "block"; document.getElementById("card-back").style.display = isFlipped ? "block" : "none"; if (isFlipped) speak(currentCard.de.replace(/ \(.*\)/, '')); }
+function nextCard() { newCard(); }
+document.addEventListener('click', function(e) { if (e.target.tagName === 'H3' && e.target.parentElement.classList.contains('rule-section')) { e.target.parentElement.classList.toggle('open'); } });
+let currentShadow = 0, currentChallenge = 0;
+function switchSpeakingMode(mode) {
+  document.querySelectorAll('#tab-speaking .filter-btn').forEach(b => b.classList.remove('active'));
+  if (mode === 'shadowing') { document.querySelector('#tab-speaking .filter-btn:nth-child(1)').classList.add('active'); document.getElementById('shadowingSection').classList.remove('hidden'); document.getElementById('challengeSection').classList.add('hidden'); loadShadow(); }
+  else { document.querySelector('#tab-speaking .filter-btn:nth-child(2)').classList.add('active'); document.getElementById('challengeSection').classList.remove('hidden'); document.getElementById('shadowingSection').classList.add('hidden'); loadChallenge(); }
+}
+function loadShadow() { const s = SHADOWING_DATA[currentShadow]; document.getElementById('shadowDe').innerText = s.de; document.getElementById('shadowAr').innerText = s.ar; document.getElementById('shadowCounter').innerText = 'الجملة ' + (currentShadow + 1) + ' من ' + SHADOWING_DATA.length; }
+function nextShadow() { currentShadow = (currentShadow + 1) % SHADOWING_DATA.length; loadShadow(); }
+function loadChallenge() { const c = SPEAKING_CHALLENGES[currentChallenge]; document.getElementById('challengeQ').innerText = c.q; document.getElementById('challengeQAr').innerText = c.qAr; document.getElementById('challengeA').innerText = c.a; document.getElementById('challengeAAr').innerText = c.aAr; document.getElementById('challengeAnsBox').style.display = 'none'; }
+function showAnswer() { document.getElementById('challengeAnsBox').style.display = 'block'; }
+function nextChallenge() { currentChallenge = (currentChallenge + 1) % SPEAKING_CHALLENGES.length; loadChallenge(); }
+function renderResources() {
+  const container = document.getElementById('resourcesGrid');
+  if (typeof RESOURCES === 'undefined') { container.innerHTML = '<p style="text-align:center; color:#dc2626;">⚠️ ملف المصادر غير محمّل.</p>'; return; }
+  container.innerHTML = RESOURCES.map(r => '<a href="' + r.url + '" target="_blank" rel="noopener" style="text-decoration:none;"><div style="background:#fff; padding:22px; border-radius:14px; border-right:5px solid #4f46e5; height:100%; display:flex; flex-direction:column;"><h3 style="color:#1e3a8a; font-size:18px; margin-bottom:10px; font-weight:700;">' + r.icon + ' ' + r.title + '</h3><p style="color:#64748b; font-size:14px; line-height:1.6; flex-grow:1;">' + r.description + '</p><span style="color:#4f46e5; font-weight:700; font-size:14px; margin-top:12px;">زيارة المصدر ↗️</span></div></a>').join('');
+}
+document.getElementById("modal").addEventListener("click", e => { if (e.target.id === "modal") closeModal(); });
+document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => switchTab(t.getAttribute("data-tab"))));
+document.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => { document.querySelectorAll(".filter-btn").forEach(x => x.classList.remove("active")); b.classList.add("active"); currentFilter = b.getAttribute("data-filter"); renderVerbs(); }));
+document.getElementById("search").addEventListener("input", e => { currentSearch = e.target.value; renderCurrent(); });
+
+/* ✅ إصلاح 7: إزالة renderVerbs() المكررة + حماية applyLanguage */
+renderVerbs();
+try { if (typeof applyLanguage === 'function') applyLanguage(); } catch(e) { console.error('applyLanguage:', e); }
+try { if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility(); } catch(e) { console.error('applyTranslationVisibility:', e); }
+
+// إضافة تسمية اللغة الحالية عند تحميل الصفحة
+if (document.getElementById('currentLangLabel')) {
+  document.getElementById('currentLangLabel').textContent = contentLanguage === 'de' ? '(Deutsch)' : '(English)';
 }
 
-/* ==================== الأحداث ==================== */
-document.getElementById("modal").addEventListener("click", e => { if (e.target.id === "modal") closeModal(); });
-document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => switchTab(t.dataset.tab)));
-document.querySelectorAll(".filter-btn[data-filter]").forEach(b => b.addEventListener("click", () => {
-  document.querySelectorAll(".filter-btn[data-filter]").forEach(x => x.classList.remove("active"));
-  b.classList.add("active");
-  currentFilter = b.dataset.filter;
-  renderVerbs();
-}));
-document.getElementById("search").addEventListener("input", e => {
-  currentSearch = e.target.value;
-  renderCurrent();
-});
-
-/* ==================== التهيئة ==================== */
-(function init() {
+function toggleContentLanguage() {
+  contentLanguage = contentLanguage === 'de' ? 'en' : 'de';
+  localStorage.setItem('content_language', contentLanguage);
+  
+  const btn = document.getElementById('contentLangBtn');
+  if (btn) btn.textContent = contentLanguage === 'de' ? '🇬🇧 English' : '🇩🇪 Deutsch';
+  
   const label = document.getElementById('currentLangLabel');
   if (label) label.textContent = contentLanguage === 'de' ? '(Deutsch)' : '(English)';
-  const tBtn = document.getElementById('translationToggleBtn');
-  if (tBtn) tBtn.textContent = translationVisible ? 'إخفاء الترجمة 👁️‍🗨️' : 'إظهار الترجمة 👁️';
-  renderVerbs();
-})();
+  
+  const filters = document.getElementById('verbFilters');
+  if (filters) {
+    filters.style.display = contentLanguage === 'en' ? 'none' : 'flex';
+  }
+  
+  try {
+    if (currentTab === 'verbs') renderVerbs();
+    if (currentTab === 'nouns') renderNouns();
+    if (currentTab === 'adjectives') renderAdjectives();
+    if (currentTab === 'rules') {
+      const rulesContainer = document.getElementById('rulesContent');
+      if (rulesContainer) rulesContainer.innerHTML = (contentLanguage === 'en' && typeof RULES_HTML_EN !== 'undefined') ? RULES_HTML_EN : RULES_HTML;
+    }
+    if (currentTab === 'progress' && typeof initProgressTab === 'function') initProgressTab();
+    if (currentTab === 'review' && typeof initReviewTab === 'function') initReviewTab();
+  } catch (e) {
+    console.error('Error in toggleContentLanguage:', e);
+  }
+}
 </script>
 </body>
 </html>
