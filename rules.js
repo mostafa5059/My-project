@@ -14,9 +14,9 @@ const RULES_HTML = `
         <tr><td>sie/Sie</td><td>machen</td><td>fahren</td><td>sind</td></tr>
       </table>
       <div class="example-box"><strong>أمثلة:</strong><br>Ich <strong>mache</strong> meine Hausaufgaben.<br>Er <strong>fährt</strong> nach Berlin.<br>Wir <strong>sind</strong> Studenten.</div>
-      <p><strong>ب. الماضي البسيط (Präteritum):</strong></p>
+      <p><strong>ب. الماضي البسيط (Präteritum):</strong> يُستخدم غالباً في الكتابة والقصص.</p>
       <div class="example-box">Ich <strong>war</strong> gestern krank.<br>Er <strong>hatte</strong> keine Zeit.<br>Sie <strong>ging</strong> nach Hause.</div>
-      <p><strong>ج. الماضي التام (Perfekt):</strong> haben/sein + Partizip II</p>
+      <p><strong>ج. الماضي التام (Perfekt):</strong> haben/sein + Partizip II — يُستخدم في المحادثة اليومية.</p>
       <div class="example-box">Ich <strong>habe</strong> einen Film <strong>gesehen</strong>.<br>Er <strong>ist</strong> nach Berlin <strong>gefahren</strong>.<br>Wir <strong>haben</strong> Deutsch <strong>gelernt</strong>.</div>
       <p><strong>د. المستقبل (Futur I):</strong> werden + Infinitiv</p>
       <div class="example-box">Ich <strong>werde</strong> morgen nach Berlin <strong>fahren</strong>.<br>Es <strong>wird</strong> wahrscheinlich <strong>regnen</strong>.</div>
@@ -58,7 +58,7 @@ const RULES_HTML = `
     <h3>4) الأفعال المنفصلة (Trennbare Verben)</h3>
     <div class="rule-content">
       <p>البادئات (ab-, an-, auf-, aus-, ein-, mit-, zu-, zurück-) تنفصل وتذهب إلى نهاية الجملة.</p>
-      <div class="example-box">Ich <strong>stehe</strong> um 7 Uhr <strong>auf</strong>.<br>Er <strong>ruft</strong> seine Mutter <strong>an</strong>.<br>In Perfekt: Ich bin um 7 Uhr <strong>auf</strong>ge<strong>standen</strong>.</div>
+      <div class="example-box">Ich <strong>stehe</strong> um 7 Uhr <strong>auf</strong>.<br>Er <strong>ruft</strong> seine Mutter <strong>an</strong>.<br>في Perfekt: Ich bin um 7 Uhr <strong>auf</strong>ge<strong>standen</strong>.</div>
     </div>
   </div>
 
@@ -77,10 +77,12 @@ const RULES_HTML = `
       <div class="example-box">Ich <strong>freue mich</strong>.<br>Du <strong>wäschst dich</strong>.<br>Ich wasche <strong>mir</strong> die Hände.</div>
     </div>
   </div>
-    <div class="rule-section">
+
+  <div class="rule-section">
     <h3>6) حروف الجر (Präpositionen)</h3>
     <div class="rule-content">
       <p><strong>حروف جر تأخذ Akkusativ:</strong> durch, für, gegen, ohne, um, bis, entlang.</p>
+      <p style="font-size:14px;color:#92400e;background:#fffbeb;padding:10px 14px;border-radius:8px;border-right:4px solid #f59e0b;"><strong>ملاحظة:</strong> <code>bis</code> غالباً تأخذ Akkusativ، لكن عند استخدامها مع حرف جر آخر (مثل <code>bis zu</code>) تأخذ حالة الحرف الآخر. <code>entlang</code> تأخذ Akkusativ عندما تأتي بعد الاسم (der Straße entlang).</p>
       <div class="example-box">Das ist <strong>für dich</strong>.<br>Ich gehe <strong>ohne dich</strong>.</div>
       <p><strong>حروف جر تأخذ Dativ:</strong> mit, nach, bei, seit, von, zu, aus, gegenüber.</p>
       <div class="example-box">Ich fahre <strong>mit dem Bus</strong>.<br>Ich komme <strong>aus der Schweiz</strong>.</div>
@@ -125,19 +127,21 @@ const RULES_HTML = `
   <div class="rule-section">
     <h3>10) الأفعال الشاذة (Unregelmäßige Verben)</h3>
     <div class="rule-content">
+      <p>الأفعال الشاذة تتغير حركة الجذر في <strong>Präteritum</strong> و <strong>Perfekt</strong>.</p>
       <table>
-        <tr><th>Infinitiv</th><th>Präteritum</th><th>Partizip II</th></tr>
-        <tr><td>sein</td><td>war</td><td>ist gewesen</td></tr>
-        <tr><td>haben</td><td>hatte</td><td>hat gehabt</td></tr>
-        <tr><td>werden</td><td>wurde</td><td>ist geworden</td></tr>
-        <tr><td>gehen</td><td>ging</td><td>ist gegangen</td></tr>
-        <tr><td>kommen</td><td>kam</td><td>ist gekommen</td></tr>
-        <tr><td>sehen</td><td>sah</td><td>hat gesehen</td></tr>
-        <tr><td>essen</td><td>aß</td><td>hat gegessen</td></tr>
-        <tr><td>sprechen</td><td>sprach</td><td>hat gesprochen</td></tr>
-        <tr><td>lesen</td><td>las</td><td>hat gelesen</td></tr>
-        <tr><td>fahren</td><td>fuhr</td><td>ist gefahren</td></tr>
+        <tr><th>Infinitiv</th><th>Präteritum</th><th>Perfekt</th><th>Partizip II</th></tr>
+        <tr><td>sein</td><td>war</td><td>ist gewesen</td><td>gewesen</td></tr>
+        <tr><td>haben</td><td>hatte</td><td>hat gehabt</td><td>gehabt</td></tr>
+        <tr><td>werden</td><td>wurde</td><td>ist geworden</td><td>geworden</td></tr>
+        <tr><td>gehen</td><td>ging</td><td>ist gegangen</td><td>gegangen</td></tr>
+        <tr><td>kommen</td><td>kam</td><td>ist gekommen</td><td>gekommen</td></tr>
+        <tr><td>sehen</td><td>sah</td><td>hat gesehen</td><td>gesehen</td></tr>
+        <tr><td>essen</td><td>aß</td><td>hat gegessen</td><td>gegessen</td></tr>
+        <tr><td>sprechen</td><td>sprach</td><td>hat gesprochen</td><td>gesprochen</td></tr>
+        <tr><td>lesen</td><td>las</td><td>hat gelesen</td><td>gelesen</td></tr>
+        <tr><td>fahren</td><td>fuhr</td><td>ist gefahren</td><td>gefahren</td></tr>
       </table>
+      <p style="font-size:14px;color:#065f46;background:#f0fdf4;padding:10px 14px;border-radius:8px;border-right:4px solid #10b981;"><strong>ملاحظة:</strong> <code>Perfekt</code> = الفعل المساعد (haben/sein) + <code>Partizip II</code>.</p>
     </div>
   </div>
 
@@ -159,13 +163,15 @@ const RULES_HTML = `
   <div class="rule-section">
     <h3>12) أدوات الملكية (Possessivartikel)</h3>
     <div class="rule-content">
-      <p>mein, dein, sein, ihr, unser, euer, ihr - تتغير حسب الحالة والجنس.</p>
+      <p>mein, dein, sein, ihr, unser, euer, ihr — تتغير حسب الحالة والجنس والعدد.</p>
       <table>
         <tr><th>الجنس</th><th>Nominativ</th><th>Akkusativ</th><th>Dativ</th></tr>
-        <tr><td>مذكر</td><td>mein Vater</td><td><strong>meinen</strong></td><td><strong>meinem</strong></td></tr>
-        <tr><td>مؤنث</td><td>meine Mutter</td><td>meine</td><td><strong>meiner</strong></td></tr>
-        <tr><td>محايد</td><td>mein Kind</td><td>mein</td><td><strong>meinem</strong></td></tr>
+        <tr><td>مذكر</td><td>mein Vater</td><td><strong>meinen</strong> Vater</td><td><strong>meinem</strong> Vater</td></tr>
+        <tr><td>مؤنث</td><td>meine Mutter</td><td>meine Mutter</td><td><strong>meiner</strong> Mutter</td></tr>
+        <tr><td>محايد</td><td>mein Kind</td><td>mein Kind</td><td><strong>meinem</strong> Kind</td></tr>
+        <tr><td>جمع</td><td>meine Kinder</td><td>meine Kinder</td><td><strong>meinen</strong> Kindern</td></tr>
       </table>
+      <div class="example-box">Nom: <strong>Mein</strong> Vater ist Lehrer.<br>Akk: Ich sehe <strong>meinen</strong> Vater.<br>Dat: Ich helfe <strong>meinem</strong> Vater.</div>
     </div>
   </div>
 
@@ -196,6 +202,7 @@ const RULES_HTML = `
         <tr><td>Nominativ</td><td>der gut<strong>e</strong></td><td>die gut<strong>e</strong></td><td>das gut<strong>e</strong></td><td>die gut<strong>en</strong></td></tr>
         <tr><td>Akkusativ</td><td>den gut<strong>en</strong></td><td>die gut<strong>e</strong></td><td>das gut<strong>e</strong></td><td>die gut<strong>en</strong></td></tr>
         <tr><td>Dativ</td><td>dem gut<strong>en</strong></td><td>der gut<strong>en</strong></td><td>dem gut<strong>en</strong></td><td>den gut<strong>en</strong></td></tr>
+        <tr><td>Genitiv</td><td>des gut<strong>en</strong></td><td>der gut<strong>en</strong></td><td>des gut<strong>en</strong></td><td>der gut<strong>en</strong></td></tr>
       </table>
       <p><strong>ب. التصريف المختلط (بعد ein/kein):</strong></p>
       <table>
@@ -203,6 +210,7 @@ const RULES_HTML = `
         <tr><td>Nominativ</td><td>ein gut<strong>er</strong></td><td>eine gut<strong>e</strong></td><td>ein gut<strong>es</strong></td></tr>
         <tr><td>Akkusativ</td><td>einen gut<strong>en</strong></td><td>eine gut<strong>e</strong></td><td>ein gut<strong>es</strong></td></tr>
         <tr><td>Dativ</td><td>einem gut<strong>en</strong></td><td>einer gut<strong>en</strong></td><td>einem gut<strong>en</strong></td></tr>
+        <tr><td>Genitiv</td><td>eines gut<strong>en</strong></td><td>einer gut<strong>en</strong></td><td>eines gut<strong>en</strong></td></tr>
       </table>
       <p><strong>ج. التصريف القوي (بدون أداة):</strong></p>
       <table>
@@ -210,6 +218,7 @@ const RULES_HTML = `
         <tr><td>Nominativ</td><td>gut<strong>er</strong> Wein</td><td>gut<strong>e</strong> Milch</td><td>gut<strong>es</strong> Bier</td></tr>
         <tr><td>Akkusativ</td><td>gut<strong>en</strong> Wein</td><td>gut<strong>e</strong> Milch</td><td>gut<strong>es</strong> Bier</td></tr>
         <tr><td>Dativ</td><td>gut<strong>em</strong> Wein</td><td>gut<strong>er</strong> Milch</td><td>gut<strong>em</strong> Bier</td></tr>
+        <tr><td>Genitiv</td><td>gut<strong>en</strong> Weines</td><td>gut<strong>er</strong> Milch</td><td>gut<strong>en</strong> Bieres</td></tr>
       </table>
       <div class="example-box"><strong>Nom:</strong> Der <strong>gut</strong>e Mann kommt.<br><strong>Akk:</strong> Ich sehe den <strong>gut</strong>en Mann.<br><strong>Dat:</strong> Ich helfe dem <strong>gut</strong>en Mann.<br><strong>مع النكرة:</strong> Ein <strong>gut</strong>er Mann kommt.<br><strong>بدون أداة:</strong> <strong>Gut</strong>er Wein ist teuer.</div>
     </div>
@@ -238,6 +247,7 @@ const RULES_HTML = `
     </div>
   </div>
 `;
+
 const RULES_HTML_EN = `
   <div class="rule-section open">
     <h3>1) The Alphabet and Pronunciation</h3>
