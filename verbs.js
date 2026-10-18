@@ -121,6 +121,37 @@ const VERBS = [
   { de:"reisen", ar:"يسافر", type:"regular", präsens:["reise","reist","reist","reisen","reist","reisen"], präteritum:"reiste", perfekt:"ist gereist", partizip:"gereist", example:"Ich reise nach Italien. (أسافر إلى إيطاليا)" },
   { de:"wandern", ar:"يتنزه", type:"regular", präsens:["wandere","wanderst","wandert","wandern","wandert","wandern"], präteritum:"wanderte", perfekt:"ist gewandert", partizip:"gewandert", example:"Wir wandern in den Bergen. (نتنزه في الجبال)" }
 ];
+const NOUNS = [
+  { de:"der Tisch", ar:"طاولة", plural:"die Tische", akk:"den Tisch", dat:"dem Tisch" },
+  { de:"die Lampe", ar:"مصباح", plural:"die Lampen", akk:"die Lampe", dat:"der Lampe" },
+  { de:"das Buch", ar:"كتاب", plural:"die Bücher", akk:"das Buch", dat:"dem Buch" },
+  { de:"der Stuhl", ar:"كرسي", plural:"die Stühle", akk:"den Stuhl", dat:"dem Stuhl" },
+  { de:"die Tür", ar:"باب", plural:"die Türen", akk:"die Tür", dat:"der Tür" },
+  { de:"das Fenster", ar:"نافذة", plural:"die Fenster", akk:"das Fenster", dat:"dem Fenster" },
+  { de:"der Mann", ar:"رجل", plural:"die Männer", akk:"den Mann", dat:"dem Mann" },
+  { de:"die Frau", ar:"امرأة", plural:"die Frauen", akk:"die Frau", dat:"der Frau" },
+  { de:"das Kind", ar:"طفل", plural:"die Kinder", akk:"das Kind", dat:"dem Kind" },
+  { de:"der Tag", ar:"يوم", plural:"die Tage", akk:"den Tag", dat:"dem Tag" },
+  { de:"die Woche", ar:"أسبوع", plural:"die Wochen", akk:"die Woche", dat:"der Woche" },
+  { de:"das Jahr", ar:"سنة", plural:"die Jahre", akk:"das Jahr", dat:"dem Jahr" },
+  { de:"der Apfel", ar:"تفاحة", plural:"die Äpfel", akk:"den Apfel", dat:"dem Apfel" },
+  { de:"das Wasser", ar:"ماء", plural:"—", akk:"das Wasser", dat:"dem Wasser" },
+  { de:"der Kaffee", ar:"قهوة", plural:"—", akk:"den Kaffee", dat:"dem Kaffee" },
+  { de:"das Brot", ar:"خبز", plural:"die Brote", akk:"das Brot", dat:"dem Brot" },
+  { de:"der Lehrer", ar:"مدرس", plural:"die Lehrer", akk:"den Lehrer", dat:"dem Lehrer" },
+  { de:"die Schule", ar:"مدرسة", plural:"die Schulen", akk:"die Schule", dat:"der Schule" },
+  { de:"der Freund", ar:"صديق", plural:"die Freunde", akk:"den Freund", dat:"dem Freund" },
+  { de:"die Familie", ar:"عائلة", plural:"die Familien", akk:"die Familie", dat:"der Familie" },
+  { de:"das Haus", ar:"منزل", plural:"die Häuser", akk:"das Haus", dat:"dem Haus" },
+  { de:"die Wohnung", ar:"شقة", plural:"die Wohnungen", akk:"die Wohnung", dat:"der Wohnung" },
+  { de:"die Stadt", ar:"مدينة", plural:"die Städte", akk:"die Stadt", dat:"der Stadt" },
+  { de:"das Land", ar:"بلد", plural:"die Länder", akk:"das Land", dat:"dem Land" },
+  { de:"der Zug", ar:"قطار", plural:"die Züge", akk:"den Zug", dat:"dem Zug" },
+  { de:"das Auto", ar:"سيارة", plural:"die Autos", akk:"das Auto", dat:"dem Auto" },
+  { de:"das Zimmer", ar:"غرفة", plural:"die Zimmer", akk:"das Zimmer", dat:"dem Zimmer" },
+  { de:"der Hund", ar:"كلب", plural:"die Hunde", akk:"den Hund", dat:"dem Hund" },
+  { de:"die Katze", ar:"قطة", plural:"die Katzen", akk:"die Katze", dat:"der Katze" }
+];
 
 const VERBS_EN = [
   { en: "be", ar: "يكون", past: "was/were", pp: "been", example: "I am a student. (أنا طالب)" },
