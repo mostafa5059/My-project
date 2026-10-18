@@ -97,7 +97,7 @@ function renderProgressDashboard() {
   const container = document.getElementById('progressContent');
   if (!container) return;
   
-  trackActivity('visit', 0);
+  /* ✅ إصلاح: أزلنا trackActivity('visit', 0) لأنه كان يُنشئ يوماً فارغاً */
   
   const streak = calculateStreak();
   const totals = calculateTotals();
