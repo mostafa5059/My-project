@@ -333,6 +333,21 @@ document.getElementById("modal").addEventListener("click", e => { if (e.target.i
 document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => switchTab(t.getAttribute("data-tab"))));
 document.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => { document.querySelectorAll(".filter-btn").forEach(x => x.classList.remove("active")); b.classList.add("active"); currentFilter = b.getAttribute("data-filter"); renderVerbs(); }));
 document.getElementById("search").addEventListener("input", e => { currentSearch = e.target.value; renderCurrent(); });
+  let contentLanguage = localStorage.getItem('content_language') || 'de';
+
+function toggleContentLanguage() {
+  contentLanguage = contentLanguage === 'de' ? 'en' : 'de';
+  localStorage.setItem('content_language', contentLanguage);
+  document.getElementById('contentLangBtn').textContent = contentLanguage === 'de' ? '🇬🇧 English' : '🇩🇪 Deutsch';
+  if (currentTab === 'verbs') renderVerbs();
+  if (currentTab === 'nouns') renderNouns();
+  if (currentTab === 'adjectives') renderAdjectives();
+}
+
+if (contentLanguage === 'en') {
+  const btn = document.getElementById('contentLangBtn');
+  if (btn) btn.textContent = '🇩🇪 Deutsch';
+}
 renderVerbs();
 </script>
 </body>
