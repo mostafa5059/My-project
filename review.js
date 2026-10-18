@@ -45,7 +45,6 @@ function getDueCards() {
   const lang = localStorage.getItem('content_language') || 'de';
   
   if (lang === 'en') {
-    // الإنجليزية
     if (typeof VERBS_EN !== 'undefined') {
       VERBS_EN.forEach(v => {
         allWords.push({ de: v.en, ar: v.ar, type: 'verb' });
@@ -62,7 +61,6 @@ function getDueCards() {
       });
     }
   } else {
-    // الألمانية
     if (typeof VERBS !== 'undefined') {
       VERBS.forEach(v => {
         const cleanDe = v.de.replace(/\s*\(.*\)\s*/g, '').trim();
@@ -153,6 +151,9 @@ function renderReviewTab() {
   if (!container) return;
   
   const stats = getStats();
+  /* ✅ إصلاح: تحديد اللغة الحالية */
+  const lang = localStorage.getItem('content_language') || 'de';
+  const langLabel = lang === 'en' ? 'الإنجليزية' : 'الألمانية';
   
   if (currentReviewCards.length === 0 || currentReviewIndex >= currentReviewCards.length) {
     const done = currentReviewCards.length > 0;
@@ -190,11 +191,11 @@ function renderReviewTab() {
       </div>
       <div id="reviewCardBox" style="background:#fff; border-radius:20px; padding:60px 30px; box-shadow:0 10px 30px rgba(0,0,0,0.1); text-align:center; min-height:280px; display:flex; flex-direction:column; justify-content:center; align-items:center;">
         <span style="display:inline-block; padding:6px 15px; border-radius:20px; font-size:12px; font-weight:700; margin-bottom:20px; background:${typeBg}; color:${typeColor};">${typeLabel}</span>
-        <p style="color:#64748b; font-size:14px; margin-bottom:10px;">ترجم هذه الكلمة إلى الألمانية:</p>
+        <p style="color:#64748b; font-size:14px; margin-bottom:10px;">ترجم هذه الكلمة إلى ${langLabel}:</p>
         <h2 style="color:#1e3a8a; font-size:32px; font-weight:700; margin-bottom:15px;">${card.ar}</h2>
         <div id="revealBox" style="display:none; margin-top:20px;">
           <div style="background:#f0fdf4; padding:20px 40px; border-radius:12px; display:inline-block;">
-            <div style="color:#64748b; font-size:14px; margin-bottom:5px;">الألمانية:</div>
+            <div style="color:#64748b; font-size:14px; margin-bottom:5px;">${langLabel}:</div>
             <div style="color:#059669; font-size:32px; font-weight:700;">${card.word}</div>
             <button onclick="speak('${card.word.replace(/'/g, "\\'")}')" style="margin-top:10px; background:#eff6ff; border:none; border-radius:50%; width:36px; height:36px; cursor:pointer; font-size:18px;">🔊</button>
           </div>
