@@ -290,7 +290,7 @@ function openVerb(index) {
   document.getElementById("modal").classList.add("active");
 }
 function openNoun(index) {
-  const sourceData = contentLanguage === 'en' ? NOUNS_EN : NOUNS;
+  const sourceData = contentLanguage === 'en' ? (typeof NOUNS_EN !== 'undefined' ? NOUNS_EN : []) : (typeof NOUNS !== 'undefined' ? NOUNS : []);
   const n = sourceData[index];
   if (!n) return;
   const word = contentLanguage === 'en' ? n.en : n.de;
