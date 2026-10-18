@@ -440,7 +440,6 @@ function renderResources() {
       : '📚 مصادر رسمية موثوقة لتعلم الألمانية';
   }
 }
-}
 document.getElementById("modal").addEventListener("click", e => { if (e.target.id === "modal") closeModal(); });
 document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => switchTab(t.getAttribute("data-tab"))));
 document.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => { document.querySelectorAll(".filter-btn").forEach(x => x.classList.remove("active")); b.classList.add("active"); currentFilter = b.getAttribute("data-filter"); renderVerbs(); }));
