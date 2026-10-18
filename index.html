@@ -239,9 +239,17 @@ function renderVerbs() {
 }
 function renderNouns() {
   const f = currentSearch.trim().toLowerCase();
-  const filtered = NOUNS.filter(n => n.de.toLowerCase().includes(f) || n.ar.includes(currentSearch.trim()));
+  const sourceData = contentLanguage === 'en' ? NOUNS_EN : NOUNS;
+  const filtered = sourceData.filter(n => {
+    const word = contentLanguage === 'en' ? n.en : n.de;
+    return word.toLowerCase().includes(f) || n.ar.includes(currentSearch.trim());
+  });
   const list = document.getElementById("nounList");
-  list.innerHTML = filtered.map(n => '<div class="card noun" data-index="' + NOUNS.indexOf(n) + '"><button class="audio-btn" onclick="event.stopPropagation(); speak(\'' + n.de.replace('der ','').replace('die ','').replace('das ','') + '\')">🔊</button><div class="de">' + n.de + '</div><div class="ar">' + n.ar + '</div></div>').join("");
+  list.innerHTML = filtered.map(n => {
+    const word = contentLanguage === 'en' ? n.en : n.de;
+    const idx = sourceData.indexOf(n);
+    return '<div class="card noun" data-index="' + idx + '"><button class="audio-btn" onclick="event.stopPropagation(); speak(\'' + word.replace('der ','').replace('die ','').replace('das ','') + '\')">🔊</button><div class="de">' + word + '</div><div class="ar">' + n.ar + '</div></div>';
+  }).join("");
   list.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => openNoun(+c.getAttribute("data-index"))));
   if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
 }
