@@ -421,8 +421,25 @@ function showAnswer() { document.getElementById('challengeAnsBox').style.display
 function nextChallenge() { currentChallenge = (currentChallenge + 1) % SPEAKING_CHALLENGES.length; loadChallenge(); }
 function renderResources() {
   const container = document.getElementById('resourcesGrid');
-  if (typeof RESOURCES === 'undefined') { container.innerHTML = '<p style="text-align:center; color:#dc2626;">⚠️ ملف المصادر غير محمّل.</p>'; return; }
-  container.innerHTML = RESOURCES.map(r => '<a href="' + r.url + '" target="_blank" rel="noopener" style="text-decoration:none;"><div style="background:#fff; padding:22px; border-radius:14px; border-right:5px solid #4f46e5; height:100%; display:flex; flex-direction:column;"><h3 style="color:#1e3a8a; font-size:18px; margin-bottom:10px; font-weight:700;">' + r.icon + ' ' + r.title + '</h3><p style="color:#64748b; font-size:14px; line-height:1.6; flex-grow:1;">' + r.description + '</p><span style="color:#4f46e5; font-weight:700; font-size:14px; margin-top:12px;">زيارة المصدر ↗️</span></div></a>').join('');
+  if (!container) return;
+  const isEn = (typeof contentLanguage !== 'undefined' && contentLanguage === 'en');
+  const source = isEn 
+    ? (typeof RESOURCES_EN !== 'undefined' ? RESOURCES_EN : RESOURCES) 
+    : (typeof RESOURCES !== 'undefined' ? RESOURCES : []);
+  if (!source || !source.length) {
+    container.innerHTML = '<p style="text-align:center; color:#dc2626;">⚠️ ملف المصادر غير محمّل.</p>';
+    return;
+  }
+  container.innerHTML = source.map(r => '<a href="' + r.url + '" target="_blank" rel="noopener" style="text-decoration:none;"><div style="background:#fff; padding:22px; border-radius:14px; border-right:5px solid #4f46e5; height:100%; display:flex; flex-direction:column;"><h3 style="color:#1e3a8a; font-size:18px; margin-bottom:10px; font-weight:700;">' + r.icon + ' ' + r.title + '</h3><p style="color:#64748b; font-size:14px; line-height:1.6; flex-grow:1;">' + r.description + '</p><span style="color:#4f46e5; font-weight:700; font-size:14px; margin-top:12px;">زيارة المصدر ↗️</span></div></a>').join('');
+  
+  /* تحديث عنوان القسم حسب اللغة */
+  const titleEl = container.parentElement.querySelector('h2');
+  if (titleEl) {
+    titleEl.textContent = isEn 
+      ? '📚 موثوقة لتعلم اللغة الإنجليزية' 
+      : '📚 مصادر رسمية موثوقة لتعلم الألمانية';
+  }
+}
 }
 document.getElementById("modal").addEventListener("click", e => { if (e.target.id === "modal") closeModal(); });
 document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => switchTab(t.getAttribute("data-tab"))));
