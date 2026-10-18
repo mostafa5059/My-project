@@ -238,3 +238,124 @@ const RULES_HTML = `
     </div>
   </div>
 `;
+const RULES_HTML_EN = `
+  <div class="rule-section open">
+    <h3>1) The Alphabet and Pronunciation</h3>
+    <div class="rule-content">
+      <p>English has 26 letters. Some letters have different sounds depending on the word.</p>
+      <div class="example-box">
+        A = /eɪ/ (as in "cake")<br>
+        B = /biː/ (as in "book")<br>
+        C = /siː/ (as in "city") or /k/ (as in "cat")
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-section">
+    <h3>2) Articles (a, an, the)</h3>
+    <div class="rule-content">
+      <p><strong>a</strong> = used before consonant sounds (a book, a car).<br>
+      <strong>an</strong> = used before vowel sounds (an apple, an hour).<br>
+      <strong>the</strong> = used for specific things (the book on the table).</p>
+      <div class="example-box">
+        I have <strong>a</strong> dog.<br>
+        She is <strong>an</strong> engineer.<br>
+        <strong>The</strong> sun is hot.
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-section">
+    <h3>3) Present Simple</h3>
+    <div class="rule-content">
+      <p>Used for habits and facts. Add <strong>-s</strong> for he/she/it.</p>
+      <table>
+        <tr><th>Pronoun</th><th>Verb</th><th>Example</th></tr>
+        <tr><td>I / You / We / They</td><td>work</td><td>I work every day.</td></tr>
+        <tr><td>He / She / It</td><td>work<strong>s</strong></td><td>She works in a bank.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="rule-section">
+    <h3>4) Present Continuous</h3>
+    <div class="rule-content">
+      <p>Used for actions happening now: <strong>am/is/are + verb-ing</strong>.</p>
+      <div class="example-box">
+        I <strong>am studying</strong> English.<br>
+        She <strong>is reading</strong> a book.<br>
+        They <strong>are playing</strong> football.
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-section">
+    <h3>5) Past Simple</h3>
+    <div class="rule-content">
+      <p>Used for finished actions in the past. Regular verbs: add <strong>-ed</strong>. Irregular verbs: see table.</p>
+      <div class="example-box">
+        I <strong>worked</strong> yesterday.<br>
+        She <strong>went</strong> to school.<br>
+        They <strong>ate</strong> pizza.
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-section">
+    <h3>6) Past Continuous</h3>
+    <div class="rule-content">
+      <p>Used for actions in progress in the past: <strong>was/were + verb-ing</strong>.</p>
+      <div class="example-box">
+        I <strong>was reading</strong> when he called.<br>
+        They <strong>were playing</strong> football.
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-section">
+    <h3>7) Present Perfect</h3>
+    <div class="rule-content">
+      <p>Used for past actions with a connection to the present: <strong>have/has + past participle</strong>.</p>
+      <div class="example-box">
+        I <strong>have seen</strong> that movie.<br>
+        She <strong>has finished</strong> her work.
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-section">
+    <h3>8) Future (will / going to)</h3>
+    <div class="rule-content">
+      <p><strong>will</strong> = for decisions and predictions.<br>
+      <strong>going to</strong> = for plans.</p>
+      <div class="example-box">
+        I <strong>will help</strong> you.<br>
+        She <strong>is going to travel</strong> to London.
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-section">
+    <h3>9) Comparatives and Superlatives</h3>
+    <div class="rule-content">
+      <p>Short adjectives: add <strong>-er / -est</strong>.<br>
+      Long adjectives: use <strong>more / most</strong>.</p>
+      <div class="example-box">
+        big → big<strong>ger</strong> → the big<strong>gest</strong><br>
+        beautiful → <strong>more</strong> beautiful → the <strong>most</strong> beautiful
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-section">
+    <h3>10) Modal Verbs (can, must, should)</h3>
+    <div class="rule-content">
+      <p><strong>can</strong> = ability, <strong>must</strong> = obligation, <strong>should</strong> = advice.</p>
+      <div class="example-box">
+        I <strong>can</strong> swim.<br>
+        You <strong>must</strong> wear a seatbelt.<br>
+        You <strong>should</strong> see a doctor.
+      </div>
+    </div>
+  </div>
+`;
