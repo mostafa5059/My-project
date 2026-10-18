@@ -223,26 +223,17 @@ function speak(text) { if ('speechSynthesis' in window) { const utterance = new 
 
 function renderVerbs() {
   const f = currentSearch.trim().toLowerCase();
-  const filtered = VERBS.filter(v => {
-    const matchSearch = v.de.toLowerCase().includes(f) || v.ar.includes(currentSearch.trim());
-    
-    // فلترة حسب النوع
-    let matchFilter = true;
-    if (currentFilter === "all") {
-      matchFilter = true;
-    } else if (currentFilter === "dativ") {
-      matchFilter = ["helfen", "danken", "gefallen", "gehören", "passen", "antworten", "zuhören", "empfehlen"].includes(v.de.replace(" (Dativ)", ""));
-    } else if (currentFilter === "sein") {
-      matchFilter = ["aufstehen", "ausgehen", "einsteigen", "aussteigen", "umsteigen", "ankommen", "mitkommen", "zurückkommen", "laufen", "reisen", "wandern", "gehen", "kommen", "fahren", "fliegen", "werden"].includes(v.de.replace(" (sein)", ""));
-    } else {
-      matchFilter = v.type === currentFilter;
-    }
-    
-    return matchSearch && matchFilter;
+  const sourceData = contentLanguage === 'en' ? VERBS_EN : VERBS;
+  const filtered = sourceData.filter(v => {
+    const word = contentLanguage === 'en' ? v.en : v.de;
+    return word.toLowerCase().includes(f) || v.ar.includes(currentSearch.trim());
   });
-  
   const list = document.getElementById("verbList");
-  list.innerHTML = filtered.map(v => '<div class="card" data-index="' + VERBS.indexOf(v) + '"><button class="audio-btn" onclick="event.stopPropagation(); speak(\'' + v.de.replace(/ \(.*\)/, '') + '\')">🔊</button><div class="de">' + v.de + '</div><div class="ar">' + v.ar + '</div></div>').join("");
+  list.innerHTML = filtered.map(v => {
+    const word = contentLanguage === 'en' ? v.en : v.de;
+    const idx = sourceData.indexOf(v);
+    return '<div class="card" data-index="' + idx + '"><button class="audio-btn" onclick="event.stopPropagation(); speak(\'' + word.replace(/ \(.*\)/, '') + '\')">🔊</button><div class="de">' + word + '</div><div class="ar">' + v.ar + '</div></div>';
+  }).join("");
   list.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => openVerb(+c.getAttribute("data-index"))));
   if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
 }
