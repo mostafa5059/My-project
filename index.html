@@ -347,14 +347,13 @@ function toggleContentLanguage() {
   contentLanguage = contentLanguage === 'de' ? 'en' : 'de';
   localStorage.setItem('content_language', contentLanguage);
   document.getElementById('contentLangBtn').textContent = contentLanguage === 'de' ? '🇬🇧 English' : '🇩🇪 Deutsch';
+  
+  const filters = document.getElementById('verbFilters');
+  if (filters) {
+    filters.style.display = contentLanguage === 'en' ? 'none' : 'flex';
+  }
+  
   if (currentTab === 'verbs') renderVerbs();
-  if (currentTab === 'nouns') renderNouns();
-  if (currentTab === 'adjectives') renderAdjectives();
-}
-
-if (contentLanguage === 'en') {
-  const btn = document.getElementById('contentLangBtn');
-  if (btn) btn.textContent = '🇩🇪 Deutsch';
 }
 renderVerbs();
 </script>
