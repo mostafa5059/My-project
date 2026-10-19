@@ -292,25 +292,60 @@
   .lesson-exercise-opt:disabled{cursor:default}
   body.dark-mode .lesson-exercise-opt{background:#0f172a;color:#f1f5f9;border-color:#334155}
   body.dark-mode .lesson-exercise-opt:hover:not(:disabled){background:#1e293b}
-    /* ============ إصلاح نهائي لألوان الدروس في الوضع الليلي ============ */
-  body.dark-mode .grammar-tip,
+      /* ============ الحل النهائي والجذري للوضع الليلي ============ */
+  
+  /* 1. إجبار كل أزرار التمارين على أن تكون داكنة بنص أبيض ساطع */
+  body.dark-mode .lesson-exercise-opt,
+  body.dark-mode .pron-exercise-option,
+  body.dark-mode .filter-btn {
+    background-color: #1e293b !important; 
+    color: #ffffff !important; 
+    border: 2px solid #475569 !important;
+  }
+
+  /* 2. عند تمرير الماوس فوق الزر */
+  body.dark-mode .lesson-exercise-opt:hover:not(:disabled),
+  body.dark-mode .pron-exercise-option:hover:not(:disabled) {
+    background-color: #334155 !important;
+    border-color: #818cf8 !important;
+    color: #ffffff !important;
+  }
+
+  /* 3. عندما تكون الإجابة صحيحة (أخضر داكن ونص أبيض) */
+  body.dark-mode .lesson-exercise-opt.correct {
+    background-color: #065f46 !important;
+    border-color: #10b981 !important;
+    color: #ffffff !important;
+  }
+
+  /* 4. عندما تكون الإجابة خاطئة (أحمر داكن ونص أبيض) */
+  body.dark-mode .lesson-exercise-opt.wrong {
+    background-color: #991b1b !important;
+    border-color: #ef4444 !important;
+    color: #ffffff !important;
+  }
+
+  /* 5. صناديق التنبيهات (النصيحة) */
   body.dark-mode .rule-hint,
+  body.dark-mode .grammar-tip,
   body.dark-mode .example-box {
-    background: #1e293b !important; /* خلفية داكنة مريحة */
-    color: #fcd34d !important;      /* نص أصفر فاتح جداً */
+    background-color: #1e293b !important;
+    color: #fcd34d !important; /* نص أصفر فاتح */
     border-color: #4f46e5 !important;
   }
-  
-  body.dark-mode .grammar-content p, 
+
+  /* 6. النصوص داخل الجداول والقواعد */
+  body.dark-mode .grammar-content p,
   body.dark-mode .grammar-content li,
   body.dark-mode .grammar-content td,
-  body.dark-mode .grammar-content strong {
-    color: #f1f5f9 !important; /* نص أبيض مائل للرمادي */
+  body.dark-mode .grammar-content strong,
+  body.dark-mode td,
+  body.dark-mode th {
+    color: #f1f5f9 !important;
   }
   
-  body.dark-mode .grammar-content h4 {
-    color: #a5b4fc !important; /* لون بنفسجي فاتح للعناوين */
-    border-bottom-color: #334155 !important;
+  body.dark-mode th {
+    background-color: #0f172a !important;
   }
 </style>
 </head>
