@@ -130,6 +130,25 @@
   body.dark-mode .rule-hint{background:#78350f;color:#fcd34d}
   body.dark-mode .placeholder-tab{background:#1e293b;border-color:#334155}
 
+  /* ============ بطاقات الدروس ============ */
+  .lessons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+  .lesson-card{background:var(--card-bg);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;border:1px solid var(--border-color);border-right:6px solid var(--primary);transition:var(--transition)}
+  .lesson-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(79,70,229,.18)}
+  .lesson-img-wrap{width:100%;height:160px;background:#e0e7ff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .lesson-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+  .lesson-body{padding:16px 18px}
+  .lesson-level{display:inline-block;background:#dbeafe;color:#1e40af;font-size:12px;font-weight:800;padding:3px 10px;border-radius:10px;margin-bottom:8px}
+  .lesson-title{color:var(--primary-dark);font-size:18px;font-weight:800;direction:ltr;text-align:right;margin-bottom:4px}
+  .lesson-title-ar{color:var(--text-muted);font-size:14px;font-weight:600;margin-bottom:10px}
+  .lesson-topic{display:inline-block;background:#f0fdf4;color:#065f46;font-size:12px;font-weight:700;padding:3px 10px;border-radius:10px;margin-left:6px}
+  .lesson-words-count{display:inline-block;background:#fef3c7;color:#92400e;font-size:12px;font-weight:700;padding:3px 10px;border-radius:10px}
+  body.dark-mode .lesson-card{background:#1e293b;border-color:#334155}
+  body.dark-mode .lesson-title{color:#a5b4fc}
+  body.dark-mode .lesson-img-wrap{background:#0f172a}
+  body.dark-mode .lesson-level{background:#1e3a8a;color:#93c5fd}
+  body.dark-mode .lesson-topic{background:#064e3b;color:#6ee7b7}
+  body.dark-mode .lesson-words-count{background:#78350f;color:#fcd34d}
+
   @media (max-width:768px){
     header{padding:25px 15px;padding-top:100px}
     .lang-buttons{top:15px;left:15px;right:15px;justify-content:center}
@@ -173,6 +192,7 @@
     <button class="tab" data-tab="dialogues">💬 المحادثات</button>
     <button class="tab" data-tab="progress">📊 لوحة التقدم</button>
     <button class="tab" data-tab="review">🎯 المراجعة اليومية</button>
+    <button class="tab" data-tab="lessons">📚 الدروس</button>
     <button class="tab" data-tab="rules">📖 القواعد</button>
     <button class="tab" data-tab="reading">📖 القراءة</button>
     <button class="tab" data-tab="resources">📚 المصادر</button>
@@ -265,6 +285,7 @@
   <div id="tab-progress" class="hidden"><div id="progressContent"></div></div>
   <div id="tab-review" class="hidden"><div id="reviewContent"></div></div>
   <div id="tab-reading" class="hidden"><div id="readingContent"></div></div>
+  <div id="tab-lessons" class="hidden"><div id="lessonsContent"></div></div>
   <div id="tab-rules" class="hidden"><div class="rules-container" id="rulesContent"></div></div>
   <div id="tab-resources" class="hidden">
     <div style="max-width:850px;margin:0 auto;">
@@ -289,6 +310,7 @@
 <script src="resources.js"></script>
 <script src="reading.js"></script>
 <script src="basics.js"></script>
+<script src="lessons.js"></script>
 
 <script>
 /* ==================== الحالة ==================== */
@@ -597,6 +619,7 @@ function switchTab(name) {
     else if (name === "basics") { if (typeof initBasicsTab === 'function') initBasicsTab(); }
     else if (name === "reading") { if (typeof initReadingTab === 'function') initReadingTab(); }
     else if (name === "progress") { if (typeof initProgressTab === 'function') initProgressTab(); }
+    else if (name === "lessons") { if (typeof initLessonsTab === 'function') initLessonsTab(); }
     else if (name === "rules") { if (typeof renderRules === 'function') renderRules(); else { const rc = document.getElementById("rulesContent"); if (rc) rc.innerHTML = (contentLanguage === 'en' && typeof RULES_HTML_EN !== 'undefined') ? RULES_HTML_EN : (typeof RULES_HTML !== 'undefined' ? RULES_HTML : ''); } }
     else if (name === "resources") { if (typeof renderResources === 'function') renderResources(); }
     else if (name === "review") { if (typeof initReviewTab === 'function') initReviewTab(); }
@@ -701,6 +724,7 @@ function toggleContentLanguage() {
     else if (currentTab === 'nouns') { currentTopic = 'all'; buildTopicFilters('nouns'); renderNouns(); }
     else if (currentTab === 'adjectives') renderAdjectives();
     else if (currentTab === 'favorites') renderFavorites();
+    else if (currentTab === 'lessons') { if (typeof initLessonsTab === 'function') initLessonsTab(); }
     else if (currentTab === 'rules') { const rc = document.getElementById('rulesContent'); if (rc) rc.innerHTML = (contentLanguage === 'en' && typeof RULES_HTML_EN !== 'undefined') ? RULES_HTML_EN : RULES_HTML; }
     else if (currentTab === 'progress' && typeof initProgressTab === 'function') initProgressTab();
     else if (currentTab === 'review' && typeof initReviewTab === 'function') initReviewTab();
