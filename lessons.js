@@ -254,10 +254,13 @@ function renderLessonsTab() {
 }
 
 /* ========== فتح درس ========== */
+/* ========== فتح درس ========== */
 function openLesson(id) {
   const lesson = LESSONS.find(l => l.id === id);
   if (!lesson) return;
   const allWords = [...(lesson.words || []), ...((lesson.newWords || []).map(w => w.de))];
+  
+  // تجهيز جدول الكلمات
   const rows = allWords.map(w => {
     const d = getWordData(w);
     const clean = w.replace(/^(der|die|das) /, '');
@@ -265,17 +268,17 @@ function openLesson(id) {
     if (d.kind === 'noun' && d.plural) extra = `الجمع: ${d.plural}`;
     else if (d.kind === 'verb' && d.präteritum) extra = `الماضي: ${d.präteritum} — Perfekt: ${d.perfekt}`;
     return `<tr>
-      <td style="font-weight:700;color:var(--primary-dark);direction:ltr;text-align:right;">
+      <td style="font-weight:700;color:var(--primary-dark);direction:ltr;text-align:right;padding:12px;">
         ${w}
-        <button class="audio-btn" style="position:static;display:inline-flex;width:30px;height:30px;font-size:14px;margin-right:6px;"
-                onclick="speak('${clean.replace(/'/g, "\\'")}')">🔊</button>
+        <button class="audio-btn" style="position:static;display:inline-flex;width:30px;height:30px;font-size:14px;margin-right:8px;" onclick="speak('${clean.replace(/'/g, "\\'")}')">🔊</button>
       </td>
-      <td>${d.ar || '—'}</td>
-      <td style="font-size:13px;color:var(--text-muted);">${extra}</td>
+      <td style="padding:12px;">${d.ar || '—'}</td>
+      <td style="font-size:13px;color:var(--text-muted);padding:12px;">${extra}</td>
     </tr>`;
   }).join('');
 
-    const grammarHTML = lesson.grammar ? `
+  // تجهيز القاعدة النحوية
+  const grammarHTML = lesson.grammar ? `
     <div class="section-title" style="margin-top:30px;">📐 القاعدة: ${lesson.grammar.title}</div>
     <div class="rule-hint" style="font-size:16px; margin-bottom:20px;">${lesson.grammar.titleAr}</div>
     <div class="grammar-content" style="display:block;padding:30px;background:var(--card-bg);border-radius:16px;border-right:6px solid var(--primary); box-shadow:0 4px 15px rgba(0,0,0,0.05);">
@@ -283,39 +286,55 @@ function openLesson(id) {
     </div>
   ` : '';
 
+  // تجهيز حاوية التمارين
   const exercisesHTML = (lesson.exercises && lesson.exercises.length) ? `
-    <div class="section-title">📝 تمارين (${lesson.exercises.length})</div>
+    <div class="section-title" style="margin-top:30px;">📝 تمارين (${lesson.exercises.length})</div>
     <div id="lessonExercises" style="display:flex;flex-direction:column;gap:14px;"></div>
   ` : '';
 
+  // تجميع النافذة
   const html = `
     <button class="close-btn" onclick="closeModal()">✕</button>
-    <div style="text-align:center;margin-bottom:18px;">
-      <h2 style="font-size:26px;">${lesson.emoji} ${lesson.title}</h2>
-      <p style="color:var(--text-muted);font-size:17px;font-weight:600;margin-top:6px;">${lesson.titleAr}</p>
-      <span class="badge regular">${lesson.level}</span>
-      <span class="badge trennbar">${lesson.topic}</span>
+    <div style="text-align:center;margin-bottom:25px;">
+      <h2 style="font-size:28px;color:var(--primary-dark);">${lesson.emoji} ${lesson.title}</h2>
+      <p style="color:var(--text-muted);font-size:18px;font-weight:600;margin-top:8px;">${lesson.titleAr}</p>
+      <span class="badge regular" style="font-size:14px;">${lesson.level}</span>
+      <span class="badge trennbar" style="font-size:14px;">${lesson.topic}</span>
     </div>
+    
     <div class="section-title">📖 النص</div>
-    <div class="example-box" style="font-size:16px;line-height:2;">
-      <div style="direction:ltr;text-align:right;font-weight:700;">${lesson.text}</div>
-      <div class="trans" style="color:var(--accent);margin-top:10px;font-weight:600;">${lesson.textAr}</div>
-      <button class="audio-btn" style="position:static;display:inline-flex;width:36px;height:36px;margin-top:10px;"
-              onclick="speak('${lesson.text.replace(/'/g, "\\'")}')">🔊</button>
+    <div class="example-box" style="font-size:17px;line-height:2;padding:25px;">
+      <div style="direction:ltr;text-align:right;font-weight:700;color:var(--text-main);">${lesson.text}</div>
+      <div class="trans" style="color:var(--accent);margin-top:12px;font-weight:600;">${lesson.textAr}</div>
+      <button class="audio-btn" style="position:static;display:inline-flex;width:40px;height:40px;margin-top:12px;font-size:18px;" onclick="speak('${lesson.text.replace(/'/g, "\\'")}')">🔊</button>
     </div>
+    
     ${grammarHTML}
-    <div class="section-title">📦 كلمات الدرس (${allWords.length})</div>
-    <table>
-      <thead><tr><th>الكلمة</th><th>المعنى</th><th>معلومة</th></tr></thead>
-      <tbody>${rows}</tbody>
-    </table>
+    
+    <div class="section-title" style="margin-top:30px;">📦 كلمات الدرس (${allWords.length})</div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; margin-top:15px;">
+        <thead><tr style="background:#eff6ff;"><th style="padding:12px; color:var(--primary-dark);">الكلمة</th><th style="padding:12px; color:var(--primary-dark);">المعنى</th><th style="padding:12px; color:var(--primary-dark);">معلومة</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    
     ${exercisesHTML}
   `;
-    // إضافة كلاس التكبير للنافذة
+
+  // التعديل الحاسم: إضافة كلاس التكبير للنافذة وفتحها
   const modalContent = document.getElementById('modalContent');
-  if (modalContent) modalContent.classList.add('lesson-modal');
+  if (modalContent) {
+    modalContent.classList.add('lesson-modal'); // كلاس التكبير
+    modalContent.innerHTML = html;
+  }
+  document.getElementById('modal').classList.add('active');
   
-  openModal(html);
+  // التعديل الحاسم: استدعاء دالة عرض التمارين فوراً
+  if (lesson.exercises && lesson.exercises.length) {
+    renderLessonExercises(lesson.exercises);
+  }
+  
   applyTranslationVisibility();
 }
 
