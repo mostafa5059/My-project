@@ -148,6 +148,55 @@
   body.dark-mode .lesson-level{background:#1e3a8a;color:#93c5fd}
   body.dark-mode .lesson-topic{background:#064e3b;color:#6ee7b7}
   body.dark-mode .lesson-words-count{background:#78350f;color:#fcd34d}
+  
+    /* ============ بطاقات قواعد A1 ============ */
+  .grammar-a1-grid{display:flex;flex-direction:column;gap:14px;max-width:900px;margin:0 auto}
+  .grammar-card{background:var(--card-bg);border-radius:14px;border:1px solid var(--border-color);overflow:hidden;transition:var(--transition);border-right:6px solid var(--primary)}
+  .grammar-card.cat-basics{border-right-color:#8b5cf6}
+  .grammar-card.cat-communication{border-right-color:#3b82f6}
+  .grammar-card.cat-life{border-right-color:#10b981}
+  .grammar-card.cat-grammar{border-right-color:#f59e0b}
+  .grammar-card.cat-time{border-right-color:#ec4899}
+  .grammar-card:hover{box-shadow:0 6px 18px rgba(79,70,229,.1)}
+  .grammar-card-header{display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer;user-select:none;transition:var(--transition)}
+  .grammar-card-header:hover{background:#f8fafc}
+  body.dark-mode .grammar-card-header:hover{background:#0f172a}
+  .grammar-num{background:var(--primary);color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+  .grammar-icon{font-size:24px;flex-shrink:0}
+  .grammar-titles{flex-grow:1;min-width:0}
+  .grammar-title-de{font-weight:800;color:var(--primary-dark);font-size:16px;direction:ltr;text-align:right}
+  body.dark-mode .grammar-title-de{color:#a5b4fc}
+  .grammar-title-ar{font-size:13px;color:var(--text-muted);font-weight:600;margin-top:2px}
+  .grammar-level{background:#dcfce7;color:#166534;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:800;flex-shrink:0}
+  body.dark-mode .grammar-level{background:#064e3b;color:#6ee7b7}
+  .grammar-arrow{color:var(--primary);font-size:14px;transition:var(--transition);flex-shrink:0}
+  .grammar-card.open .grammar-arrow{transform:rotate(180deg)}
+  .grammar-content{display:none;padding:0 22px 22px;border-top:1px solid var(--border-color);margin-top:0}
+  .grammar-card.open .grammar-content{display:block;padding-top:20px}
+  .grammar-content h4{color:var(--primary);font-size:16px;font-weight:800;margin:18px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--border-color)}
+  .grammar-content h4:first-child{margin-top:0}
+  .grammar-content h5{color:var(--primary-dark);font-size:14px;font-weight:700;margin:14px 0 8px}
+  body.dark-mode .grammar-content h4{color:#a5b4fc;border-bottom-color:#334155}
+  body.dark-mode .grammar-content h5{color:#c7d2fe}
+  .grammar-content p{font-size:14.5px;line-height:1.9;margin-bottom:10px;color:var(--text-main)}
+  .grammar-content ul{padding-right:22px;margin-bottom:12px}
+  .grammar-content li{font-size:14.5px;line-height:1.9;margin-bottom:8px;color:var(--text-main)}
+  .grammar-content ul ul{padding-right:20px;margin-top:6px;margin-bottom:0}
+  .grammar-content strong{color:var(--primary-dark);font-weight:800}
+  body.dark-mode .grammar-content strong{color:#a5b4fc}
+  .grammar-content code{background:#eff6ff;color:var(--primary-dark);padding:2px 8px;border-radius:6px;font-family:'Courier New',monospace;font-weight:bold;font-size:13.5px;direction:ltr;display:inline-block}
+  body.dark-mode .grammar-content code{background:#1e293b;color:#a5b4fc}
+  .grammar-content table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;border:1px solid var(--border-color)}
+  .grammar-content th,.grammar-content td{border:1px solid var(--border-color);padding:9px 12px;text-align:center}
+  .grammar-content th{background:#eff6ff;color:var(--primary-dark);font-weight:700}
+  body.dark-mode .grammar-content table{border-color:#334155}
+  body.dark-mode .grammar-content th{background:#1e293b;color:#a5b4fc}
+  body.dark-mode .grammar-content td{border-color:#334155;color:#f1f5f9}
+  .grammar-tip{background:#fffbeb;border-right:4px solid #f59e0b;padding:12px 16px;border-radius:10px;font-size:14px;color:#92400e;margin-top:14px;font-weight:600}
+  body.dark-mode .grammar-tip{background:#78350f;color:#fcd34d}
+  .grammar-letters{background:#f8fafc;padding:16px 20px;border-radius:12px;font-family:'Courier New',monospace;font-size:15px;line-height:2.2;direction:ltr;text-align:left;letter-spacing:1.5px;color:var(--primary-dark);font-weight:700;border:1px solid var(--border-color)}
+  body.dark-mode .grammar-letters{background:#0f172a;color:#a5b4fc;border-color:#334155}
+  body.dark-mode .grammar-card{background:#1e293b;border-color:#334155}
 
   @media (max-width:768px){
     header{padding:25px 15px;padding-top:100px}
@@ -192,7 +241,8 @@
     <button class="tab" data-tab="dialogues">💬 المحادثات</button>
     <button class="tab" data-tab="progress">📊 لوحة التقدم</button>
     <button class="tab" data-tab="review">🎯 المراجعة اليومية</button>
-     <button class="tab" data-tab="lessons">📘 الدروس</button> 
+     <button class="tab" data-tab="lessons">🎓 الدروس</button>
+    <button class="tab" data-tab="grammar-a1">📖 قواعد A1</button>
     <button class="tab" data-tab="rules">📖 القواعد</button>
     <button class="tab" data-tab="reading">📖 القراءة</button>
     <button class="tab" data-tab="resources">📚 المصادر</button>
@@ -286,6 +336,7 @@
   <div id="tab-review" class="hidden"><div id="reviewContent"></div></div>
   <div id="tab-reading" class="hidden"><div id="readingContent"></div></div>
   <div id="tab-lessons" class="hidden"><div id="lessonsContent"></div></div>
+  <div id="tab-grammar-a1" class="hidden"><div id="grammarA1Content"></div></div>
   <div id="tab-rules" class="hidden"><div class="rules-container" id="rulesContent"></div></div>
   <div id="tab-resources" class="hidden">
     <div style="max-width:850px;margin:0 auto;">
@@ -311,6 +362,7 @@
 <script src="reading.js"></script>
 <script src="basics.js"></script>
 <script src="lessons.js"></script>
+<script src="grammar_a1.js"></script>
 
 <script>
 /* ==================== الحالة ==================== */
@@ -620,6 +672,7 @@ function switchTab(name) {
     else if (name === "reading") { if (typeof initReadingTab === 'function') initReadingTab(); }
     else if (name === "progress") { if (typeof initProgressTab === 'function') initProgressTab(); }
     else if (name === "lessons") { if (typeof initLessonsTab === 'function') initLessonsTab(); }
+    else if (name === "grammar-a1") { if (typeof initGrammarA1Tab === 'function') initGrammarA1Tab(); }
     else if (name === "rules") { if (typeof renderRules === 'function') renderRules(); else { const rc = document.getElementById("rulesContent"); if (rc) rc.innerHTML = (contentLanguage === 'en' && typeof RULES_HTML_EN !== 'undefined') ? RULES_HTML_EN : (typeof RULES_HTML !== 'undefined' ? RULES_HTML : ''); } }
     else if (name === "resources") { if (typeof renderResources === 'function') renderResources(); }
     else if (name === "review") { if (typeof initReviewTab === 'function') initReviewTab(); }
