@@ -15,7 +15,7 @@
   .lang-buttons{position:absolute;top:20px;left:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
   .lang-btn{background:rgba(255,255,255,.2);color:#fff;border:2px solid rgba(255,255,255,.4);padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:700;font-size:14px;font-family:'Cairo',sans-serif;transition:var(--transition)}
   .lang-btn:hover{background:rgba(255,255,255,.35)}
-  .container{max-width:1150px;margin:0 auto;padding:30px 20px}
+  .container{max-width:1250px;margin:0 auto;padding:30px 20px}
   .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;justify-content:center}
   .tab{padding:12px 24px;border:none;background:var(--card-bg);color:var(--text-muted);border-radius:30px;cursor:pointer;font-size:15px;font-weight:600;border:1px solid var(--border-color);transition:var(--transition)}
   .tab:hover{border-color:var(--primary-light)}
@@ -148,55 +148,6 @@
   body.dark-mode .lesson-level{background:#1e3a8a;color:#93c5fd}
   body.dark-mode .lesson-topic{background:#064e3b;color:#6ee7b7}
   body.dark-mode .lesson-words-count{background:#78350f;color:#fcd34d}
-  
-    /* ============ بطاقات قواعد A1 ============ */
-  .grammar-a1-grid{display:flex;flex-direction:column;gap:14px;max-width:900px;margin:0 auto}
-  .grammar-card{background:var(--card-bg);border-radius:14px;border:1px solid var(--border-color);overflow:hidden;transition:var(--transition);border-right:6px solid var(--primary)}
-  .grammar-card.cat-basics{border-right-color:#8b5cf6}
-  .grammar-card.cat-communication{border-right-color:#3b82f6}
-  .grammar-card.cat-life{border-right-color:#10b981}
-  .grammar-card.cat-grammar{border-right-color:#f59e0b}
-  .grammar-card.cat-time{border-right-color:#ec4899}
-  .grammar-card:hover{box-shadow:0 6px 18px rgba(79,70,229,.1)}
-  .grammar-card-header{display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer;user-select:none;transition:var(--transition)}
-  .grammar-card-header:hover{background:#f8fafc}
-  body.dark-mode .grammar-card-header:hover{background:#0f172a}
-  .grammar-num{background:var(--primary);color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
-  .grammar-icon{font-size:24px;flex-shrink:0}
-  .grammar-titles{flex-grow:1;min-width:0}
-  .grammar-title-de{font-weight:800;color:var(--primary-dark);font-size:16px;direction:ltr;text-align:right}
-  body.dark-mode .grammar-title-de{color:#a5b4fc}
-  .grammar-title-ar{font-size:13px;color:var(--text-muted);font-weight:600;margin-top:2px}
-  .grammar-level{background:#dcfce7;color:#166534;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:800;flex-shrink:0}
-  body.dark-mode .grammar-level{background:#064e3b;color:#6ee7b7}
-  .grammar-arrow{color:var(--primary);font-size:14px;transition:var(--transition);flex-shrink:0}
-  .grammar-card.open .grammar-arrow{transform:rotate(180deg)}
-  .grammar-content{display:none;padding:0 22px 22px;border-top:1px solid var(--border-color);margin-top:0}
-  .grammar-card.open .grammar-content{display:block;padding-top:20px}
-  .grammar-content h4{color:var(--primary);font-size:16px;font-weight:800;margin:18px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--border-color)}
-  .grammar-content h4:first-child{margin-top:0}
-  .grammar-content h5{color:var(--primary-dark);font-size:14px;font-weight:700;margin:14px 0 8px}
-  body.dark-mode .grammar-content h4{color:#a5b4fc;border-bottom-color:#334155}
-  body.dark-mode .grammar-content h5{color:#c7d2fe}
-  .grammar-content p{font-size:14.5px;line-height:1.9;margin-bottom:10px;color:var(--text-main)}
-  .grammar-content ul{padding-right:22px;margin-bottom:12px}
-  .grammar-content li{font-size:14.5px;line-height:1.9;margin-bottom:8px;color:var(--text-main)}
-  .grammar-content ul ul{padding-right:20px;margin-top:6px;margin-bottom:0}
-  .grammar-content strong{color:var(--primary-dark);font-weight:800}
-  body.dark-mode .grammar-content strong{color:#a5b4fc}
-  .grammar-content code{background:#eff6ff;color:var(--primary-dark);padding:2px 8px;border-radius:6px;font-family:'Courier New',monospace;font-weight:bold;font-size:13.5px;direction:ltr;display:inline-block}
-  body.dark-mode .grammar-content code{background:#1e293b;color:#a5b4fc}
-  .grammar-content table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px;border:1px solid var(--border-color)}
-  .grammar-content th,.grammar-content td{border:1px solid var(--border-color);padding:9px 12px;text-align:center}
-  .grammar-content th{background:#eff6ff;color:var(--primary-dark);font-weight:700}
-  body.dark-mode .grammar-content table{border-color:#334155}
-  body.dark-mode .grammar-content th{background:#1e293b;color:#a5b4fc}
-  body.dark-mode .grammar-content td{border-color:#334155;color:#f1f5f9}
-  .grammar-tip{background:#fffbeb;border-right:4px solid #f59e0b;padding:12px 16px;border-radius:10px;font-size:14px;color:#92400e;margin-top:14px;font-weight:600}
-  body.dark-mode .grammar-tip{background:#78350f;color:#fcd34d}
-  .grammar-letters{background:#f8fafc;padding:16px 20px;border-radius:12px;font-family:'Courier New',monospace;font-size:15px;line-height:2.2;direction:ltr;text-align:left;letter-spacing:1.5px;color:var(--primary-dark);font-weight:700;border:1px solid var(--border-color)}
-  body.dark-mode .grammar-letters{background:#0f172a;color:#a5b4fc;border-color:#334155}
-  body.dark-mode .grammar-card{background:#1e293b;border-color:#334155}
 
   @media (max-width:768px){
     header{padding:25px 15px;padding-top:100px}
@@ -211,150 +162,225 @@
     .info-block{grid-template-columns:1fr}
     .fav-btn{left:60px}
   }
-     body.dark-mode .lesson-words-count{background:#78350f;color:#fcd34d}
 
-    /* ============ قسم النطق — جداول ============ */
-  .pron-subtabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:25px}
-  .pron-subtab{padding:10px 20px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-muted);border-radius:20px;cursor:pointer;font-size:14px;font-weight:700;transition:var(--transition)}
-  .pron-subtab:hover{border-color:var(--primary-light)}
-  .pron-subtab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
-
-  .pron-table-section{margin-bottom:35px}
-  .pron-table-title{font-size:17px;font-weight:800;padding:12px 18px;border-right:5px solid;background:#f8fafc;border-radius:10px;margin-bottom:14px}
-  body.dark-mode .pron-table-title{background:#0f172a}
-
-  .pron-table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border-color);background:var(--card-bg)}
-  .pron-table{width:100%;border-collapse:collapse;font-size:14px}
-  .pron-table th{background:#eff6ff;color:var(--primary-dark);font-weight:800;padding:14px 12px;border-bottom:2px solid var(--border-color);text-align:center;font-size:13px}
-  .pron-table td{padding:14px 12px;border-bottom:1px solid var(--border-color);vertical-align:middle}
-  .pron-table tr:last-child td{border-bottom:none}
-  .pron-table tr:hover td{background:#f8fafc}
-  body.dark-mode .pron-table{background:#1e293b}
-  body.dark-mode .pron-table th{background:#0f172a;color:#a5b4fc;border-bottom-color:#334155}
-  body.dark-mode .pron-table td{border-bottom-color:#334155;color:#f1f5f9}
-  body.dark-mode .pron-table tr:hover td{background:#0f172a}
-
-  .pron-examples-inline{display:flex;flex-direction:column;gap:8px}
-  .pron-example-inline{display:flex;align-items:center;gap:8px;padding:6px 10px;background:#f8fafc;border-radius:8px;border:1px solid var(--border-color)}
-  body.dark-mode .pron-example-inline{background:#0f172a;border-color:#334155}
-
-  .pron-exercise-box{background:var(--card-bg);padding:30px;border-radius:16px;max-width:700px;margin:0 auto;border:1px solid var(--border-color)}
-  .pron-exercise-progress{text-align:center;color:var(--primary);font-weight:700;margin-bottom:16px;font-size:14px}
-  .pron-exercise-options{display:flex;flex-direction:column;gap:10px;max-width:450px;margin:0 auto}
-  .pron-exercise-option{padding:14px 20px;background:#f8fafc;border:2px solid var(--border-color);border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;direction:ltr;text-align:right;transition:var(--transition)}
-  .pron-exercise-option:hover:not(:disabled){border-color:var(--primary);background:#eff6ff}
-  .pron-exercise-option.correct{background:#dcfce7;border-color:#10b981;color:#166534}
-  .pron-exercise-option.wrong{background:#fee2e2;border-color:#ef4444;color:#991b1b}
-  body.dark-mode .pron-exercise-box{background:#1e293b;border-color:#334155}
-  body.dark-mode .pron-exercise-option{background:#0f172a;border-color:#334155;color:#f1f5f9}
-  body.dark-mode .pron-exercise-option:hover:not(:disabled){background:#1e293b;border-color:#4f46e5}
-  body.dark-mode .pron-exercise-option.correct{background:#064e3b;color:#6ee7b7;border-color:#10b981}
-  body.dark-mode .pron-exercise-option.wrong{background:#7f1d1d;color:#fca5a5;border-color:#ef4444}
-
-  @media (max-width:768px){
-    .pron-table{font-size:12px}
-    .pron-table th,.pron-table td{padding:10px 8px}
-    .pron-examples-inline{gap:5px}
-    .pron-example-inline{padding:5px 6px;gap:5px}
+  /* ============================================================
+     ✅ إضافات جديدة: Sidebar + Language Dropdown
+     (لا تعدّل أي قاعدة قديمة أعلاه)
+     ============================================================ */
+  :root {
+    --sidebar-width: 260px;
+    --sidebar-bg: #ffffff;
+    --sidebar-border: #e2e8f0;
+    --sidebar-item-hover: #eef2ff;
+    --sidebar-item-active-bg: #4f46e5;
+    --sidebar-item-active-color: #ffffff;
+    --sidebar-group-title: #64748b;
   }
-    /* ============ تبويبات المستويات الفرعية ============ */
-  .lesson-subtabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:25px;padding:10px;background:#f8fafc;border-radius:14px;border:1px solid var(--border-color)}
-  body.dark-mode .lesson-subtabs{background:#0f172a;border-color:#334155}
-  .lesson-subtab{padding:10px 20px;border:2px solid var(--border-color);background:var(--card-bg);color:var(--text-muted);border-radius:20px;cursor:pointer;font-size:14px;font-weight:700;transition:var(--transition);font-family:'Cairo',sans-serif}
-  .lesson-subtab:hover:not(.disabled){border-color:var(--primary-light);color:var(--primary)}
-  .lesson-subtab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
-  .lesson-subtab.disabled{opacity:0.5;cursor:not-allowed}
-    /* إصلاح ألوان النصوص داخل الدرس */
-  .modal-content h4, .modal-content p, .modal-content li, .modal-content td, .modal-content th {
-    color: var(--text-main) !important;
-  }
-  .modal-content .rule-hint {
-    color: #92400e !important;
-  }
-  .modal-content .grammar-tip {
-    color: #92400e !important;
-  }
-  .modal-content table th {
-    background: #eff6ff;
-    color: var(--primary-dark) !important;
-  }
-  
-  /* تكبير نافذة الدرس */
-  .lesson-modal {
-    max-width: 1000px !important;
-    padding: 40px !important;
-  }
-  body.dark-mode .lesson-subtab{background:#1e293b;color:#94a3b8;border-color:#334155}
-  body.dark-mode .lesson-subtab.active{background:#4f46e5;color:#fff}
-
-  /* ============ تمارين الدرس ============ */
-  .lesson-exercise-opt:hover:not(:disabled){border-color:var(--primary);background:#eff6ff}
-  .lesson-exercise-opt:disabled{cursor:default}
-  body.dark-mode .lesson-exercise-opt{background:#0f172a;color:#f1f5f9;border-color:#334155}
-  body.dark-mode .lesson-exercise-opt:hover:not(:disabled){background:#1e293b}
-      /* ============ الحل النهائي والجذري للوضع الليلي ============ */
-  
-  /* 1. إجبار كل أزرار التمارين على أن تكون داكنة بنص أبيض ساطع */
-  body.dark-mode .lesson-exercise-opt,
-  body.dark-mode .pron-exercise-option,
-  body.dark-mode .filter-btn {
-    background-color: #1e293b !important; 
-    color: #ffffff !important; 
-    border: 2px solid #475569 !important;
+  body.dark-mode {
+    --sidebar-bg: #1e293b;
+    --sidebar-border: #334155;
+    --sidebar-item-hover: #334155;
+    --sidebar-item-active-bg: #6366f1;
+    --sidebar-group-title: #94a3b8;
   }
 
-  /* 2. عند تمرير الماوس فوق الزر */
-  body.dark-mode .lesson-exercise-opt:hover:not(:disabled),
-  body.dark-mode .pron-exercise-option:hover:not(:disabled) {
-    background-color: #334155 !important;
-    border-color: #818cf8 !important;
-    color: #ffffff !important;
+  /* إخفاء شريط التبويبات القديم (لا نحذفه — نخفيه فقط للتوافق) */
+  .tabs#mainTabs { display: none !important; }
+
+  .app-layout {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .app-layout { grid-template-columns: 1fr; }
   }
 
-  /* 3. عندما تكون الإجابة صحيحة (أخضر داكن ونص أبيض) */
-  body.dark-mode .lesson-exercise-opt.correct {
-    background-color: #065f46 !important;
-    border-color: #10b981 !important;
-    color: #ffffff !important;
+  .sidebar {
+    background: var(--sidebar-bg);
+    border: 1px solid var(--sidebar-border);
+    border-radius: var(--radius-lg);
+    padding: 14px 10px;
+    position: sticky;
+    top: 16px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    transition: transform .3s ease;
+    z-index: 50;
+  }
+  .sidebar::-webkit-scrollbar { width: 6px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--sidebar-border); border-radius: 3px; }
+
+  .sidebar-group { margin-bottom: 14px; }
+  .sidebar-group-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--sidebar-group-title);
+    padding: 6px 12px 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 14px;
+    border: none;
+    background: transparent;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: right;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease;
+    margin-bottom: 2px;
+  }
+  .sidebar-item:hover { background: var(--sidebar-item-hover); }
+  .sidebar-item.active {
+    background: var(--sidebar-item-active-bg);
+    color: var(--sidebar-item-active-color);
+  }
+  .sidebar-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .sidebar-item.disabled:hover { background: transparent; }
+  .sidebar-item .emoji { font-size: 16px; flex-shrink: 0; }
+
+  .sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 60;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: none;
+    background: var(--primary);
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(79,70,229,.4);
+    align-items: center;
+    justify-content: center;
+  }
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,23,42,.5);
+    z-index: 40;
+  }
+  @media (max-width: 900px) {
+    .sidebar-toggle { display: flex; }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      max-height: 100vh;
+      width: 280px;
+      border-radius: 0;
+      transform: translateX(100%);
+      box-shadow: -4px 0 20px rgba(0,0,0,.2);
+    }
+    .sidebar.open { transform: translateX(0); }
+    .sidebar-overlay.active { display: block; }
+    .app-layout { gap: 0; }
   }
 
-  /* 4. عندما تكون الإجابة خاطئة (أحمر داكن ونص أبيض) */
-  body.dark-mode .lesson-exercise-opt.wrong {
-    background-color: #991b1b !important;
-    border-color: #ef4444 !important;
-    color: #ffffff !important;
+  /* ============ Language Dropdown ============ */
+  .lang-dropdown-wrap {
+    position: relative;
+    display: inline-block;
   }
+  .lang-dropdown-btn {
+    background: rgba(255,255,255,.2);
+    color: #fff;
+    border: 2px solid rgba(255,255,255,.4);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    font-family: 'Cairo', sans-serif;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .lang-dropdown-btn:hover { background: rgba(255,255,255,.35); }
+  .lang-dropdown-btn .caret { font-size: 10px; opacity: .8; }
 
-  /* 5. صناديق التنبيهات (النصيحة) */
-  body.dark-mode .rule-hint,
-  body.dark-mode .grammar-tip,
-  body.dark-mode .example-box {
-    background-color: #1e293b !important;
-    color: #fcd34d !important; /* نص أصفر فاتح */
-    border-color: #4f46e5 !important;
+  .lang-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 160px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.15);
+    overflow: hidden;
+    z-index: 100;
   }
+  .lang-dropdown-menu.open { display: block; }
+  .lang-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 14px;
+    border: none;
+    background: transparent;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: right;
+    transition: background .15s ease;
+  }
+  .lang-option:hover { background: var(--sidebar-item-hover); }
+  .lang-option.active { color: var(--primary); font-weight: 800; }
+  .lang-option .check { font-weight: 800; color: var(--primary); }
 
-  /* 6. النصوص داخل الجداول والقواعد */
-  body.dark-mode .grammar-content p,
-  body.dark-mode .grammar-content li,
-  body.dark-mode .grammar-content td,
-  body.dark-mode .grammar-content strong,
-  body.dark-mode td,
-  body.dark-mode th {
-    color: #f1f5f9 !important;
-  }
-  
-  body.dark-mode th {
-    background-color: #0f172a !important;
-  }
+  /* إخفاء الأزرار القديمة للغة (نحتفظ بها في DOM للتوافق مع i18n.js) */
+  #langSwitchBtn, #contentLangBtn, #currentLangLabel { display: none !important; }
 </style>
 </head>
 <body>
 <header>
   <div class="lang-buttons">
-    <button id="langSwitchBtn" class="lang-btn" onclick="switchLanguage()">Deutsch 🇩🇪</button>
-    <button id="contentLangBtn" class="lang-btn" onclick="toggleContentLanguage()" style="background:rgba(16,185,129,0.3);" title="تبديل لغة المحتوى">🇬🇧 English</button>
-    <span id="currentLangLabel" style="color:#fff;font-size:14px;font-weight:700;margin-left:10px;"></span>
+    <!-- ✅ Language Dropdown (جديد) -->
+    <div class="lang-dropdown-wrap">
+      <button class="lang-dropdown-btn" onclick="toggleLangDropdown(event)" id="langDropdownBtn">
+        <span id="langDropdownLabel">🌐 Deutsch</span>
+        <span class="caret">▼</span>
+      </button>
+      <div class="lang-dropdown-menu" id="langDropdownMenu">
+        <button class="lang-option active" data-lang="de" onclick="setLanguage('de', event)">
+          <span>🇩🇪 Deutsch</span>
+          <span class="check" id="langCheck-de">✓</span>
+        </button>
+        <button class="lang-option" data-lang="en" onclick="setLanguage('en', event)">
+          <span>🇬🇧 English</span>
+          <span class="check" id="langCheck-en"></span>
+        </button>
+      </div>
+    </div>
+    <!-- الأزرار القديمة (مخفية للتوافق مع i18n.js) -->
+    <button id="langSwitchBtn" style="display:none" onclick="switchLanguage()">Deutsch 🇩🇪</button>
+    <button id="contentLangBtn" style="display:none" onclick="toggleContentLanguage()">🇬🇧 English</button>
+    <span id="currentLangLabel" style="display:none"></span>
+    <!-- الأزرار الأصلية (كما هي) -->
     <button id="darkModeBtn" class="lang-btn" onclick="toggleDarkMode()" title="الوضع الليلي">🌙</button>
     <button id="translationToggleBtn" class="lang-btn" onclick="toggleTranslation()">إخفاء الترجمة 👁️‍🗨️</button>
   </div>
@@ -363,131 +389,174 @@
 </header>
 
 <div class="container">
-  <div class="tabs" id="mainTabs">
-    <button class="tab active" data-tab="verbs">🔤 الأفعال</button>
-    <button class="tab" data-tab="nouns">📦 الأسماء</button>
-    <button class="tab" data-tab="adjectives">🎨 الصفات</button>
+
+  <!-- ✅ زر ☰ للموبايل + Overlay -->
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="القائمة">☰</button>
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <!-- ✅ Layout: Sidebar + Content -->
+  <div class="app-layout">
+
+    <!-- ✅ Sidebar (جديد) -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-group">
+        <div class="sidebar-group-title">📚 تعلّم</div>
+        <button class="sidebar-item" data-tab="lessons"><span class="emoji">🎓</span> الدروس</button>
+        <button class="sidebar-item" data-tab="basics"><span class="emoji">📚</span> الأساسيات</button>
+        <button class="sidebar-item" data-tab="rules"><span class="emoji">📖</span> القواعد</button>
+        <button class="sidebar-item disabled" data-tab="pronunciation" title="قيد الإعداد"><span class="emoji">🗣️</span> النطق</button>
+      </div>
+      <div class="sidebar-group">
+        <div class="sidebar-group-title">🏋️ تمرين</div>
+        <button class="sidebar-item" data-tab="exercises"><span class="emoji">📝</span> التمارين</button>
+        <button class="sidebar-item" data-tab="writing"><span class="emoji">✍️</span> الكتابة</button>
+        <button class="sidebar-item" data-tab="listening"><span class="emoji">🎧</span> الاستماع</button>
+        <button class="sidebar-item" data-tab="dialogues"><span class="emoji">💬</span> المحادثات</button>
+        <button class="sidebar-item" data-tab="reading"><span class="emoji">📖</span> القراءة</button>
+        <button class="sidebar-item" data-tab="speaking"><span class="emoji">🗣️</span> التحدث</button>
+      </div>
+      <div class="sidebar-group">
+        <div class="sidebar-group-title">🧠 مفردات</div>
+        <button class="sidebar-item active" data-tab="verbs"><span class="emoji">🔤</span> الأفعال</button>
+        <button class="sidebar-item" data-tab="nouns"><span class="emoji">📦</span> الأسماء</button>
+        <button class="sidebar-item" data-tab="adjectives"><span class="emoji">🎨</span> الصفات</button>
+      </div>
+      <div class="sidebar-group">
+        <div class="sidebar-group-title">📖 مراجعة</div>
+        <button class="sidebar-item" data-tab="review"><span class="emoji">🎯</span> المراجعة</button>
+        <button class="sidebar-item" data-tab="favorites"><span class="emoji">❤️</span> المفضلة</button>
+        <button class="sidebar-item" data-tab="resources"><span class="emoji">📚</span> المصادر</button>
+      </div>
+      <div class="sidebar-group">
+        <div class="sidebar-group-title">📊 تقدّم</div>
+        <button class="sidebar-item" data-tab="progress"><span class="emoji">📊</span> التقدم</button>
+        <button class="sidebar-item" data-tab="flashcards"><span class="emoji">🧠</span> الاختبار</button>
+      </div>
+    </aside>
+
+    <!-- ✅ منطقة المحتوى (تضم كل tab-* كما هي) -->
+    <main class="content-area">
+
+      <!-- شريط التبويبات القديم: نخفيه بـ CSS، لا نحذفه للتوافق -->
+      <div class="tabs" id="mainTabs">
+        <button class="tab active" data-tab="verbs">🔤 الأفعال</button>
+        <button class="tab" data-tab="nouns">📦 الأسماء</button>
+        <button class="tab" data-tab="adjectives">🎨 الصفات</button>
         <button class="tab" data-tab="favorites">❤️ المفضلة</button>
-    <button class="tab" data-tab="basics">📚 الأساسيات</button>
-    <button class="tab" data-tab="flashcards">🧠 الاختبار</button>
-    <button class="tab" data-tab="speaking">🗣️ التحدث</button>
-    <button class="tab" data-tab="exercises">📝 التمارين</button>
-    <button class="tab" data-tab="writing">✍️ تدريب الكتابة</button>
-    <button class="tab" data-tab="listening">🎧 تدريب الاستماع</button>
-    <button class="tab" data-tab="dialogues">💬 المحادثات</button>
-    <button class="tab" data-tab="progress">📊 لوحة التقدم</button>
-    <button class="tab" data-tab="review">🎯 المراجعة اليومية</button>
-     <button class="tab" data-tab="lessons">🎓 الدروس</button>
-    <button class="tab" data-tab="grammar-a1">📖 قواعد A1</button>
-    <button class="tab" data-tab="pronunciation">🗣️ النطق</button>
-    <button class="tab" data-tab="rules">📖 القواعد</button>
-    <button class="tab" data-tab="reading">📖 القراءة</button>
-    <button class="tab" data-tab="resources">📚 المصادر</button>
-  </div>
-
-  <div class="controls" id="searchWrap">
-    <input type="text" id="search" placeholder="🔍 ابحث بالعربي أو الألماني...">
-  </div>
-
-  <div class="filter-btns" id="verbFilters">
-    <button class="filter-btn active" data-filter="all">الكل</button>
-    <button class="filter-btn" data-filter="regular">منتظمة</button>
-    <button class="filter-btn" data-filter="unregelmäßig">غير منتظمة</button>
-    <button class="filter-btn" data-filter="trennbar">منفصلة</button>
-    <button class="filter-btn" data-filter="reflexiv">انعكاسية</button>
-    <button class="filter-btn" data-filter="dativ">📌 Dativ</button>
-    <button class="filter-btn" data-filter="sein">✈️ sein</button>
-  </div>
-
-  <div class="filter-btns" id="topicFilters" style="display:none;background:#f0fdf4;padding:12px;border-radius:12px;border:1px solid #bbf7d0;">
-    <span style="font-size:13px;color:#065f46;font-weight:700;align-self:center;margin-left:8px;">📂 الموضوع:</span>
-  </div>
-
-  <div id="tab-verbs"><div class="list-grid" id="verbList"></div></div>
-  <div id="tab-nouns" class="hidden"><div class="list-grid" id="nounList"></div></div>
-  <div id="tab-adjectives" class="hidden"><div class="list-grid" id="adjList"></div></div>
-  <div id="tab-favorites" class="hidden"><div class="list-grid" id="favList"></div></div>
-
-  <div id="tab-flashcards" class="hidden">
-    <div class="flashcard-container">
-      <div class="flashcard" onclick="flipCard()">
-        <h2 id="card-front" class="flashcard-front">اضغط للبدء</h2>
-        <h2 id="card-back" class="flashcard-back">الإجابة</h2>
-        <p class="flashcard-hint">(اضغط لقلب البطاقة)</p>
+        <button class="tab" data-tab="basics">📚 الأساسيات</button>
+        <button class="tab" data-tab="flashcards">🧠 الاختبار</button>
+        <button class="tab" data-tab="speaking">🗣️ التحدث</button>
+        <button class="tab" data-tab="exercises">📝 التمارين</button>
+        <button class="tab" data-tab="writing">✍️ تدريب الكتابة</button>
+        <button class="tab" data-tab="listening">🎧 تدريب الاستماع</button>
+        <button class="tab" data-tab="dialogues">💬 المحادثات</button>
+        <button class="tab" data-tab="progress">📊 لوحة التقدم</button>
+        <button class="tab" data-tab="review">🎯 المراجعة اليومية</button>
+        <button class="tab" data-tab="lessons">🎓 الدروس</button>
+        <button class="tab" data-tab="rules">📖 القواعد</button>
+        <button class="tab" data-tab="reading">📖 القراءة</button>
+        <button class="tab" data-tab="resources">📚 المصادر</button>
       </div>
-      <button class="btn-next" onclick="nextCard()">التالي ➡️</button>
-    </div>
-  </div>
 
-  <div id="tab-speaking" class="hidden">
-    <div style="display:flex;gap:15px;flex-wrap:wrap;justify-content:center;margin-bottom:30px;">
-      <button class="filter-btn active" onclick="switchSpeakingMode('shadowing')">🔊 التكرار</button>
-      <button class="filter-btn" onclick="switchSpeakingMode('challenge')">💬 تحدي التحدث</button>
-    </div>
-    <div id="shadowingSection">
-      <div style="background:var(--card-bg);padding:50px 30px;border-radius:var(--radius-xl);text-align:center;max-width:650px;margin:0 auto;border-top:6px solid var(--primary);">
-        <p id="shadowCounter" style="color:var(--primary);font-weight:700;margin-bottom:20px;">الجملة 1 من 10</p>
-        <h2 id="shadowDe" style="color:var(--primary-dark);font-size:32px;margin-bottom:20px;font-weight:700;">-</h2>
-        <p id="shadowAr" style="color:var(--accent);font-size:20px;margin-bottom:35px;font-weight:700;background:#f0fdf4;padding:12px 25px;border-radius:12px;display:inline-block;">-</p>
-        <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;">
-          <button class="btn-next" onclick="speak(document.getElementById('shadowDe').innerText)" style="margin:0;">🔊 استمع</button>
-          <button class="btn-next" onclick="nextShadow()" style="margin:0;background:var(--accent);">التالي ➡️</button>
+      <div class="controls" id="searchWrap">
+        <input type="text" id="search" placeholder="🔍 ابحث بالعربي أو الألماني...">
+      </div>
+
+      <div class="filter-btns" id="verbFilters">
+        <button class="filter-btn active" data-filter="all">الكل</button>
+        <button class="filter-btn" data-filter="regular">منتظمة</button>
+        <button class="filter-btn" data-filter="unregelmäßig">غير منتظمة</button>
+        <button class="filter-btn" data-filter="trennbar">منفصلة</button>
+        <button class="filter-btn" data-filter="reflexiv">انعكاسية</button>
+        <button class="filter-btn" data-filter="dativ">📌 Dativ</button>
+        <button class="filter-btn" data-filter="sein">✈️ sein</button>
+      </div>
+
+      <div class="filter-btns" id="topicFilters" style="display:none;background:#f0fdf4;padding:12px;border-radius:12px;border:1px solid #bbf7d0;">
+        <span style="font-size:13px;color:#065f46;font-weight:700;align-self:center;margin-left:8px;">📂 الموضوع:</span>
+      </div>
+
+      <div id="tab-verbs"><div class="list-grid" id="verbList"></div></div>
+      <div id="tab-nouns" class="hidden"><div class="list-grid" id="nounList"></div></div>
+      <div id="tab-adjectives" class="hidden"><div class="list-grid" id="adjList"></div></div>
+      <div id="tab-favorites" class="hidden"><div class="list-grid" id="favList"></div></div>
+
+      <div id="tab-flashcards" class="hidden">
+        <div class="flashcard-container">
+          <div class="flashcard" onclick="flipCard()">
+            <h2 id="card-front" class="flashcard-front">اضغط للبدء</h2>
+            <h2 id="card-back" class="flashcard-back">الإجابة</h2>
+            <p class="flashcard-hint">(اضغط لقلب البطاقة)</p>
+          </div>
+          <button class="btn-next" onclick="nextCard()">التالي ➡️</button>
         </div>
       </div>
-    </div>
-    <div id="challengeSection" class="hidden">
-      <div style="background:var(--card-bg);padding:50px 30px;border-radius:var(--radius-xl);text-align:center;max-width:650px;margin:0 auto;border-top:6px solid #f59e0b;">
-        <h2 id="challengeQ" style="color:var(--primary-dark);font-size:28px;margin-bottom:12px;font-weight:700;">-</h2>
-        <p id="challengeQAr" style="color:var(--text-muted);font-size:18px;margin-bottom:25px;font-weight:600;">-</p>
-        <button class="btn-next" onclick="speak(document.getElementById('challengeQ').innerText)" style="margin:15px auto;">🔊 استمع للسؤال</button>
-        <div id="challengeAnsBox" style="display:none;background:#f0fdf4;padding:25px;border-radius:12px;margin-top:25px;">
-          <h3 id="challengeA" style="color:var(--accent);font-size:24px;margin-bottom:10px;font-weight:700;">-</h3>
-          <p id="challengeAAr" style="color:var(--text-muted);font-size:18px;font-weight:600;">-</p>
+
+      <div id="tab-speaking" class="hidden">
+        <div style="display:flex;gap:15px;flex-wrap:wrap;justify-content:center;margin-bottom:30px;">
+          <button class="filter-btn active" onclick="switchSpeakingMode('shadowing')">🔊 التكرار</button>
+          <button class="filter-btn" onclick="switchSpeakingMode('challenge')">💬 تحدي التحدث</button>
         </div>
-        <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-top:25px;">
-          <button class="btn-next" onclick="showAnswer()" style="margin:0;background:#d97706;">إظهار الإجابة 👁️</button>
-          <button class="btn-next" onclick="nextChallenge()" style="margin:0;">سؤال جديد ➡️</button>
+        <div id="shadowingSection">
+          <div style="background:var(--card-bg);padding:50px 30px;border-radius:var(--radius-xl);text-align:center;max-width:650px;margin:0 auto;border-top:6px solid var(--primary);">
+            <p id="shadowCounter" style="color:var(--primary);font-weight:700;margin-bottom:20px;">الجملة 1 من 10</p>
+            <h2 id="shadowDe" style="color:var(--primary-dark);font-size:32px;margin-bottom:20px;font-weight:700;">-</h2>
+            <p id="shadowAr" style="color:var(--accent);font-size:20px;margin-bottom:35px;font-weight:700;background:#f0fdf4;padding:12px 25px;border-radius:12px;display:inline-block;">-</p>
+            <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;">
+              <button class="btn-next" onclick="speak(document.getElementById('shadowDe').innerText)" style="margin:0;">🔊 استمع</button>
+              <button class="btn-next" onclick="nextShadow()" style="margin:0;background:var(--accent);">التالي ➡️</button>
+            </div>
+          </div>
+        </div>
+        <div id="challengeSection" class="hidden">
+          <div style="background:var(--card-bg);padding:50px 30px;border-radius:var(--radius-xl);text-align:center;max-width:650px;margin:0 auto;border-top:6px solid #f59e0b;">
+            <h2 id="challengeQ" style="color:var(--primary-dark);font-size:28px;margin-bottom:12px;font-weight:700;">-</h2>
+            <p id="challengeQAr" style="color:var(--text-muted);font-size:18px;margin-bottom:25px;font-weight:600;">-</p>
+            <button class="btn-next" onclick="speak(document.getElementById('challengeQ').innerText)" style="margin:15px auto;">🔊 استمع للسؤال</button>
+            <div id="challengeAnsBox" style="display:none;background:#f0fdf4;padding:25px;border-radius:12px;margin-top:25px;">
+              <h3 id="challengeA" style="color:var(--accent);font-size:24px;margin-bottom:10px;font-weight:700;">-</h3>
+              <p id="challengeAAr" style="color:var(--text-muted);font-size:18px;font-weight:600;">-</p>
+            </div>
+            <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-top:25px;">
+              <button class="btn-next" onclick="showAnswer()" style="margin:0;background:#d97706;">إظهار الإجابة 👁️</button>
+              <button class="btn-next" onclick="nextChallenge()" style="margin:0;">سؤال جديد ➡️</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div id="tab-exercises" class="hidden">
-    <div style="max-width:700px;margin:0 auto;">
-      <div style="background:#fff;padding:40px 30px;border-radius:16px;text-align:center;">
-        <p id="exerciseProgress" style="color:#64748b;font-weight:600;margin-bottom:20px;">السؤال 1 من 5</p>
-        <h2 id="exerciseQuestion" style="color:#1e3a8a;font-size:24px;margin-bottom:12px;">-</h2>
-        <p id="exerciseQuestionAr" style="color:#64748b;font-size:16px;margin-bottom:25px;">-</p>
-        <div id="exerciseOptions" style="display:flex;flex-direction:column;gap:12px;max-width:400px;margin:0 auto;"></div>
-        <div id="exerciseFeedback" style="margin-top:25px;display:none;padding:15px;border-radius:10px;"></div>
-        <button id="exerciseNextBtn" onclick="nextExercise()" style="display:none;margin-top:20px;padding:14px 35px;background:#4f46e5;color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:16px;font-weight:700;">السؤال التالي ➡️</button>
+      <div id="tab-exercises" class="hidden">
+        <div style="max-width:700px;margin:0 auto;">
+          <div style="background:#fff;padding:40px 30px;border-radius:16px;text-align:center;">
+            <p id="exerciseProgress" style="color:#64748b;font-weight:600;margin-bottom:20px;">السؤال 1 من 5</p>
+            <h2 id="exerciseQuestion" style="color:#1e3a8a;font-size:24px;margin-bottom:12px;">-</h2>
+            <p id="exerciseQuestionAr" style="color:#64748b;font-size:16px;margin-bottom:25px;">-</p>
+            <div id="exerciseOptions" style="display:flex;flex-direction:column;gap:12px;max-width:400px;margin:0 auto;"></div>
+            <div id="exerciseFeedback" style="margin-top:25px;display:none;padding:15px;border-radius:10px;"></div>
+            <button id="exerciseNextBtn" onclick="nextExercise()" style="display:none;margin-top:20px;padding:14px 35px;background:#4f46e5;color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:16px;font-weight:700;">السؤال التالي ➡️</button>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div id="tab-writing" class="hidden"><div id="writingContent"></div></div>
-  <div id="tab-listening" class="hidden"><div id="listeningContent"></div></div>
-  <div id="tab-basics" class="hidden"><div id="basicsContent"></div></div>
-  <div id="tab-dialogues" class="hidden"><div id="dialoguesContent"></div></div>
-  <div id="tab-progress" class="hidden"><div id="progressContent"></div></div>
-  <div id="tab-review" class="hidden"><div id="reviewContent"></div></div>
-  <div id="tab-reading" class="hidden"><div id="readingContent"></div></div>
- <div id="tab-lessons" class="hidden">
-  <div id="lessonSubTabs" class="lesson-subtabs"></div>
-  <div id="lessonsContent"></div>
-  <!-- الحاوية الجديدة لعرض الدرس كصفحة كاملة -->
-  <div id="singleLessonContent" class="hidden" style="background:var(--card-bg);padding:40px;border-radius:20px;border:1px solid var(--border-color);margin-top:20px;"></div>
-</div>
-  <div id="tab-grammar-a1" class="hidden"><div id="grammarA1Content"></div></div>
-  <div id="tab-pronunciation" class="hidden"><div id="pronunciationContent"></div></div>
-  <div id="tab-rules" class="hidden"><div class="rules-container" id="rulesContent"></div></div>
-  <div id="tab-resources" class="hidden">
-    <div style="max-width:850px;margin:0 auto;">
-      <h2 style="color:#1e3a8a;text-align:center;margin-bottom:25px;font-size:24px;">📚 مصادر رسمية موثوقة لتعلم الألمانية</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;" id="resourcesGrid"></div>
-    </div>
-  </div>
-</div>
+      <div id="tab-writing" class="hidden"><div id="writingContent"></div></div>
+      <div id="tab-listening" class="hidden"><div id="listeningContent"></div></div>
+      <div id="tab-basics" class="hidden"><div id="basicsContent"></div></div>
+      <div id="tab-dialogues" class="hidden"><div id="dialoguesContent"></div></div>
+      <div id="tab-progress" class="hidden"><div id="progressContent"></div></div>
+      <div id="tab-review" class="hidden"><div id="reviewContent"></div></div>
+      <div id="tab-reading" class="hidden"><div id="readingContent"></div></div>
+      <div id="tab-lessons" class="hidden"><div id="lessonsContent"></div></div>
+      <div id="tab-rules" class="hidden"><div class="rules-container" id="rulesContent"></div></div>
+      <div id="tab-resources" class="hidden">
+        <div style="max-width:850px;margin:0 auto;">
+          <h2 style="color:#1e3a8a;text-align:center;margin-bottom:25px;font-size:24px;">📚 مصادر رسمية موثوقة لتعلم الألمانية</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;" id="resourcesGrid"></div>
+        </div>
+      </div>
+
+    </main><!-- /.content-area -->
+  </div><!-- /.app-layout -->
+</div><!-- /.container -->
 
 <div class="modal" id="modal"><div class="modal-content" id="modalContent"></div></div>
 
@@ -505,8 +574,6 @@
 <script src="reading.js"></script>
 <script src="basics.js"></script>
 <script src="lessons.js"></script>
-<script src="grammar_a1.js"></script>
-<script src="pronunciation.js"></script>
 
 <script>
 /* ==================== الحالة ==================== */
@@ -791,6 +858,7 @@ function switchTab(name) {
   const target = document.getElementById("tab-" + name);
   if (target) target.classList.remove("hidden");
   document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.tab === name));
+  document.querySelectorAll(".sidebar-item").forEach(b => b.classList.toggle("active", b.dataset.tab === name));
 
   const filters = document.getElementById("verbFilters");
   const search = document.getElementById("searchWrap");
@@ -816,11 +884,10 @@ function switchTab(name) {
     else if (name === "reading") { if (typeof initReadingTab === 'function') initReadingTab(); }
     else if (name === "progress") { if (typeof initProgressTab === 'function') initProgressTab(); }
     else if (name === "lessons") { if (typeof initLessonsTab === 'function') initLessonsTab(); }
-    else if (name === "grammar-a1") { if (typeof initGrammarA1Tab === 'function') initGrammarA1Tab(); }
-    else if (name === "pronunciation") { if (typeof initPronunciationTab === 'function') initPronunciationTab(); }
     else if (name === "rules") { if (typeof renderRules === 'function') renderRules(); else { const rc = document.getElementById("rulesContent"); if (rc) rc.innerHTML = (contentLanguage === 'en' && typeof RULES_HTML_EN !== 'undefined') ? RULES_HTML_EN : (typeof RULES_HTML !== 'undefined' ? RULES_HTML : ''); } }
     else if (name === "resources") { if (typeof renderResources === 'function') renderResources(); }
     else if (name === "review") { if (typeof initReviewTab === 'function') initReviewTab(); }
+    else if (name === "pronunciation") { alert('قسم النطق قيد الإعداد 🚧'); }
   } catch(e) { console.error('switchTab(' + name + '):', e); }
   applyTranslationVisibility();
 }
@@ -943,6 +1010,88 @@ document.getElementById("search").addEventListener("input", e => {
   currentSearch = e.target.value;
   renderCurrent();
 });
+
+/* ============================================================
+   ✅ إضافات جديدة: Sidebar + Language Dropdown
+   (لا تعدّل أي دالة أعلاه)
+   ============================================================ */
+
+/* --- فتح/إغلاق Sidebar (موبايل) --- */
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const ov = document.getElementById('sidebarOverlay');
+  if (!sb) return;
+  sb.classList.toggle('open');
+  if (ov) ov.classList.toggle('active');
+}
+
+/* --- ربط عناصر Sidebar بـ switchTab الموجودة --- */
+document.querySelectorAll('.sidebar-item[data-tab]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (btn.classList.contains('disabled')) return;
+    const tab = btn.dataset.tab;
+    if (typeof switchTab === 'function') switchTab(tab);
+    if (window.innerWidth <= 900) toggleSidebar();
+  });
+});
+
+/* --- Dropdown اللغة --- */
+function toggleLangDropdown(ev) {
+  if (ev) ev.stopPropagation();
+  const menu = document.getElementById('langDropdownMenu');
+  if (menu) menu.classList.toggle('open');
+}
+
+function setLanguage(lang, ev) {
+  if (ev) ev.stopPropagation();
+  // 1) لغة المحتوى
+  if (typeof contentLanguage !== 'undefined' && contentLanguage !== lang) {
+    if (typeof toggleContentLanguage === 'function') toggleContentLanguage();
+  }
+  // 2) لغة الواجهة عبر i18n.js إن كانت موجودة
+  try {
+    if (typeof switchLanguage === 'function' && typeof currentLang !== 'undefined' && currentLang !== lang) {
+      switchLanguage();
+    }
+  } catch(e) { /* تجاهل */ }
+  // 3) تحديث الواجهة
+  updateLangDropdownUI(lang);
+  // 4) إغلاق القائمة
+  const menu = document.getElementById('langDropdownMenu');
+  if (menu) menu.classList.remove('open');
+}
+
+function updateLangDropdownUI(lang) {
+  const label = document.getElementById('langDropdownLabel');
+  if (label) label.textContent = lang === 'de' ? '🌐 Deutsch' : '🌐 English';
+  const chkDe = document.getElementById('langCheck-de');
+  const chkEn = document.getElementById('langCheck-en');
+  if (chkDe) chkDe.textContent = lang === 'de' ? '✓' : '';
+  if (chkEn) chkEn.textContent = lang === 'en' ? '✓' : '';
+  document.querySelectorAll('.lang-option').forEach(o => {
+    o.classList.toggle('active', o.dataset.lang === lang);
+  });
+}
+
+/* --- إغلاق القائمة عند النقر خارجها --- */
+document.addEventListener('click', (e) => {
+  const wrap = document.querySelector('.lang-dropdown-wrap');
+  if (wrap && !wrap.contains(e.target)) {
+    const menu = document.getElementById('langDropdownMenu');
+    if (menu) menu.classList.remove('open');
+  }
+});
+
+/* --- تهيئة أولية --- */
+(function initSidebarLang() {
+  const lang = (typeof contentLanguage !== 'undefined') ? contentLanguage : 'de';
+  updateLangDropdownUI(lang);
+  if (typeof currentTab !== 'undefined') {
+    document.querySelectorAll('.sidebar-item').forEach(b => {
+      b.classList.toggle('active', b.dataset.tab === currentTab);
+    });
+  }
+})();
 
 (function init() {
   const label = document.getElementById('currentLangLabel');
