@@ -256,6 +256,7 @@ function renderLessonsTab() {
 /* ========== فتح درس ========== */
 /* ========== فتح درس ========== */
 /* ========== فتح درس ========== */
+/* ========== فتح درس ========== */
 function openLesson(id) {
   const lesson = LESSONS.find(l => l.id === id);
   if (!lesson) return;
@@ -291,7 +292,6 @@ function openLesson(id) {
     <div id="lessonExercises" style="display:flex;flex-direction:column;gap:14px;"></div>
   ` : '';
 
-  // إضافة صورة الدرس إذا كانت موجودة
   const imageHTML = lesson.image ? `
     <div style="width:100%; height:300px; border-radius:16px; overflow:hidden; margin-bottom:25px; border:1px solid var(--border-color);">
       <img src="${lesson.image}" alt="${lesson.title}" style="width:100%; height:100%; object-fit:cover;">
@@ -334,18 +334,40 @@ function openLesson(id) {
     ${exercisesHTML}
   `;
 
+  // إخفاء القائمة وإظهار الدرس
   document.getElementById('lessonsContent').classList.add('hidden');
   document.getElementById('lessonSubTabs').classList.add('hidden');
   const lessonContainer = document.getElementById('singleLessonContent');
   lessonContainer.classList.remove('hidden');
   lessonContainer.innerHTML = html;
   
+  // استدعاء دالة التمارين بعد بناء الصفحة
   if (lesson.exercises && lesson.exercises.length) {
     renderLessonExercises(lesson.exercises);
   }
   
   window.scrollTo({ top: 0, behavior: 'smooth' });
   applyTranslationVisibility();
+}
+
+/* ========== دالة عرض التمارين ========== */
+function renderLessonExercises(exercises) {
+  const container = document.getElementById('lessonExercises');
+  if (!container) return;
+  
+  container.innerHTML = exercises.map((ex, idx) => `
+    <div class="lesson-exercise" data-idx="${idx}" style="background:var(--card-bg);padding:20px;border-radius:12px;border:1px solid var(--border-color);margin-bottom:10px;">
+      <div style="font-weight:700;color:var(--primary-dark);margin-bottom:15px;font-size:18px;">${idx + 1}. ${ex.question}</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        ${ex.options.map((opt, i) => `
+          <button class="lesson-exercise-opt" data-idx="${idx}" data-opt="${i}"
+                  style="padding:14px 18px;background:#f8fafc;border:2px solid var(--border-color);border-radius:10px;cursor:pointer;font-size:16px;font-weight:600;text-align:right;direction:ltr;transition:all 0.3s;"
+                  onclick="checkLessonExercise(${idx}, ${i})">${opt}</button>
+        `).join('')}
+      </div>
+      <div id="lessonFeedback-${idx}" style="display:none;margin-top:15px;padding:15px;border-radius:10px;font-weight:600;"></div>
+    </div>
+  `).join('');
 }
   
 // دالة جديدة للعودة
