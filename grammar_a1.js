@@ -778,14 +778,499 @@ const GRAMMAR_A1 = [
       <ul>
         <li>Ich möchte am Morgen um 7 Uhr <strong>aufstehen</strong>.</li>
         <li>Er will in München <strong>aussteigen</strong>.</li>
-        <li>Der Zug soll um 5 Uhr <strong>abfahren</strong>.</li>
+                       <li>Der Zug soll um 5 Uhr <strong>abfahren</strong>.</li>
         <li>Ich möchte gern heute <strong>einkaufen</strong>.</li>
       </ul>
     `
-  /* ============================================================
-   دوال العرض والتهيئة
-   ============================================================ */
+  },
+
+  /* ========== 21. Perfekt ========== */
+  {
+    id: "g21",
+    icon: "✅",
+    category: "grammar",
+    title: "Perfekt",
+    titleAr: "الماضي التام",
+    level: "A1",
+    html: `
+      <h4>1) الأفعال الضعيفة (schwache Verben)</h4>
+      <p>يتم الحصول عليها من خلال تصريف الفعل الضعيف مع المفرد / الجزء الأساسي للفعل مع إضافة <code>t</code> مع إضافة <code>ge</code> في بداية الكلمة.</p>
+      <ul>
+        <li>Er <strong>macht</strong> einen Drachen für die Kinder. → Er <strong>hat</strong> einen Drachen gestern für die Kinder <strong>gemacht</strong>.</li>
+        <li>machen → <strong>gemacht</strong></li>
+        <li>lachen → <strong>gelacht</strong></li>
+        <li>spielen → <strong>gespielt</strong></li>
+        <li>lernen → <strong>gelernt</strong></li>
+      </ul>
+
+      <h4>2) الأفعال التي تنتهي بالمقطع "ieren"</h4>
+      <p>gratulieren – studieren – passieren: عند تكوين Partizip، يكون نفس تصريف الفعل مع المفرد / الجزء الأساسي للفعل مع إضافة <code>t</code> بدون إضافة المقطع <code>ge</code> في البداية.</p>
+      <ul>
+        <li>gratulieren → <strong>gratuliert</strong> = ich habe ihm zum Geburtstag gratuliert.</li>
+        <li>studieren → <strong>studiert</strong> = er hat in Deutschland studiert.</li>
+        <li>passieren → <strong>passiert</strong> = was ist passiert?</li>
+      </ul>
+
+      <h4>3) الأفعال التي تبدأ بالمقاطع (er-ge-ent-be-zer-ver)</h4>
+      <p>يكون نفس تصريف الفعل مع المفرد بدون إضافة المقطع <code>ge</code> في البداية.</p>
+      <ul>
+        <li>erzählen → <strong>erzählt</strong> = sie hat von ihrem Vater erzählt.</li>
+        <li>entdecken → <strong>entdeckt</strong> = Er hat schon die Wirklichkeit entdeckt.</li>
+        <li>zerstören → <strong>zerstört</strong> = ein Erdbeben hat die ganze Stadt zerstört.</li>
+        <li>bezahlen → <strong>bezahlt</strong> = wer hat im Supermarkt bezahlt?</li>
+        <li>gehören → <strong>gehört</strong> = die Tasche hat mir gehört.</li>
+        <li>verkaufen → <strong>verkauft</strong> = Ich habe mein Auto verkauft.</li>
+        <li>verstehen → <strong>verstanden</strong> = ich habe dich gut verstanden.</li>
+      </ul>
+
+      <h4>4) الأفعال المنفصلة (trennbar)</h4>
+      <p>مثال: einkaufen → <strong>ein + ge + kauft</strong> = <strong>eingekauft</strong></p>
+      <ul>
+        <li>Ich kaufe nach der Arbeit im Supermarkt ein. → Ich habe nach der Arbeit im Supermarkt <strong>eingekauft</strong>.</li>
+        <li>anrufen → <strong>angerufen</strong></li>
+        <li>ankommen → <strong>angekommen</strong></li>
+        <li>aufräumen → <strong>aufgeräumt</strong></li>
+        <li>aufstehen → auf + ge + standen = <strong>aufgestanden</strong></li>
+        <li>Ich stehe jeden Morgen früh auf. → Gestern bin ich früh <strong>aufgestanden</strong>.</li>
+      </ul>
+    `
+  },
+
+  /* ========== 22. Jahreszahlen ========== */
+  {
+    id: "g22",
+    icon: "📆",
+    category: "time",
+    title: "Jahreszahlen",
+    titleAr: "قراءة السنوات",
+    level: "A1",
+    html: `
+      <ul>
+        <li>1946 = <strong>neunzehnhundertsechsundvierzig</strong></li>
+        <li>1459 = <strong>vierzehnhundertneunundfünfzig</strong></li>
+        <li>1977 = <strong>neunzehnhundertsiebenundsiebzig</strong></li>
+        <li>1697 = <strong>sechzehnhundertsiebenundneunzig</strong></li>
+        <li>1999 = <strong>neunzehnhundertneunundneunzig</strong></li>
+        <li>1788 = <strong>siebzehnhundertachtundachtzig</strong></li>
+        <li>2000 = <strong>zweitausend</strong></li>
+        <li>2001 = <strong>zweitausendundeins</strong></li>
+        <li>2011 = <strong>zweitausendundelf</strong></li>
+      </ul>
+      <h4>قراءة التواريخ</h4>
+      <ul>
+        <li>der 12. Januar = <strong>der zwölfte Januar</strong></li>
+        <li>am / den / vom 12. Januar = <strong>am / den / vom zwölften Januar</strong></li>
+      </ul>
+    `
+  },
+
+  /* ========== 23. Der Dativ ========== */
+  {
+    id: "g23",
+    icon: "🎯",
+    category: "grammar",
+    title: "Der Dativ",
+    titleAr: "حالة المجرور",
+    level: "A1",
+    html: `
+      <h4>1) Bestimmt (معرفة)</h4>
+      <table>
+        <tr><th>Nominativ</th><th>Akkusativ</th><th>Dativ</th></tr>
+        <tr><td>der</td><td>den</td><td>dem</td></tr>
+        <tr><td>das</td><td>das</td><td>dem</td></tr>
+        <tr><td>die</td><td>die</td><td>der</td></tr>
+        <tr><td>die (جمع)</td><td>die</td><td>den + n في نهاية الكلمة</td></tr>
+      </table>
+      <p>Die Kinder → <strong>den Kindern</strong></p>
+
+      <h4>2) Unbestimmt (نكرة)</h4>
+      <table>
+        <tr><th>Nominativ</th><th>Akkusativ</th><th>Dativ</th></tr>
+        <tr><td>ein</td><td>einen</td><td>einem</td></tr>
+        <tr><td>ein</td><td>ein</td><td>einem</td></tr>
+        <tr><td>eine</td><td>eine</td><td>einer</td></tr>
+      </table>
+      <p>Ich gehe mit Kindern.</p>
+
+      <h4>3) النفي</h4>
+      <table>
+        <tr><th>Nominativ</th><th>Akkusativ</th><th>Dativ</th></tr>
+        <tr><td>kein</td><td>keinen</td><td>keinem</td></tr>
+        <tr><td>kein</td><td>kein</td><td>keinem</td></tr>
+        <tr><td>keine</td><td>keine</td><td>keiner</td></tr>
+        <tr><td>keine (جمع)</td><td>keine</td><td>keinen + n في نهاية الكلمة</td></tr>
+      </table>
+
+      <h4>4) ضمائر الملكية</h4>
+      <table>
+        <tr><th>Nominativ</th><th>Akkusativ</th><th>Dativ</th></tr>
+        <tr><td>mein</td><td>meinen</td><td>meinem</td></tr>
+        <tr><td>mein</td><td>mein</td><td>meinem</td></tr>
+        <tr><td>meine</td><td>meine</td><td>meiner</td></tr>
+        <tr><td>meine (جمع)</td><td>meine</td><td>meinen + n في نهاية الكلمة</td></tr>
+      </table>
+
+      <h4>5) الضمائر الشخصية مع Dativ</h4>
+      <table>
+        <tr><th>Pronomen</th><th>Akkusativ</th><th>Dativ</th></tr>
+        <tr><td>ich</td><td>mich</td><td>mir</td></tr>
+        <tr><td>du</td><td>dich</td><td>dir</td></tr>
+        <tr><td>er</td><td>ihn</td><td>ihm</td></tr>
+        <tr><td>es</td><td>es</td><td>ihm</td></tr>
+        <tr><td>sie</td><td>sie</td><td>ihr</td></tr>
+        <tr><td>wir</td><td>uns</td><td>uns</td></tr>
+        <tr><td>ihr</td><td>euch</td><td>euch</td></tr>
+        <tr><td>Sie</td><td>Sie</td><td>Ihnen</td></tr>
+        <tr><td>sie</td><td>sie</td><td>ihnen</td></tr>
+      </table>
+
+      <h4>6) الأفعال التي تأتي مع Dativ</h4>
+      <p>antworten – danken – es geht – gefallen – gehören – gratulieren – helfen – passen – schmecken – fehlen</p>
+      <ul>
+        <li>Ich habe eine Frage, bitte antworten Sie <strong>mir</strong>.</li>
+        <li>Er dankt <strong>Ihnen</strong> für Ihre Hilfe.</li>
+        <li>Wie geht es <strong>dir</strong>? Wie geht es <strong>deinem Vater</strong> / <strong>deiner Mutter</strong> / <strong>deinen Kindern</strong>?</li>
+        <li>Das Wetter heute gefällt <strong>uns</strong> / <strong>ihr</strong> / <strong>der Frau</strong> sehr.</li>
+        <li>Das Buch gehört <strong>mir</strong> / <strong>dir</strong> / <strong>meinem Bruder</strong> / <strong>meiner Schwester</strong>.</li>
+        <li>Wir gratulieren <strong>dir</strong> zu deinem Geburtstag.</li>
+        <li>Kannst du <strong>mir</strong> helfen?</li>
+        <li>Das rote Kleid passt <strong>ihr</strong> nicht.</li>
+        <li>Das Essen heute schmeckt <strong>mir</strong> sehr gut.</li>
+        <li>Hier fehlt es <strong>mir</strong> ein Kino.</li>
+      </ul>
+    `
+  },
+
+  /* ========== 24. Präpositionen mit Dativ ========== */
+  {
+    id: "g24",
+    icon: "🔗",
+    category: "grammar",
+    title: "Präpositionen mit Dativ",
+    titleAr: "حروف الجر مع Dativ",
+    level: "A1",
+    html: `
+      <p><strong>aus – von – bei – mit – nach – zu – seit – gegenüber</strong></p>
+
+      <h4>aus (من)</h4>
+      <ul>
+        <li>من داخل شيء: Er kommt <strong>aus seinem</strong> Haus.</li>
+        <li>من البلد: Ich komme <strong>aus dem</strong> Irak / <strong>aus der</strong> Türkei.</li>
+        <li>من المادة: Der Ring ist <strong>aus Gold</strong> / Der Tisch ist <strong>aus Holz</strong>.</li>
+        <li>يدافع / بسبب: <strong>aus Freude</strong> / <strong>aus Liebe</strong> / <strong>aus Angst</strong>.</li>
+      </ul>
+
+      <h4>von (من عند)</h4>
+      <ul>
+        <li>من عند: Ich komme <strong>von der</strong> Schule / <strong>von zu Hause</strong>.</li>
+        <li>من شخص: Ich nehme das Buch <strong>von meinem</strong> Freund.</li>
+        <li>الملكية: der Vater <strong>von meinem</strong> Mann — أبو زوجي.</li>
+        <li>من قِبل: Das Buch ist <strong>von ihm</strong> verarbeitet.</li>
+      </ul>
+
+      <h4>bei (عند / لدى)</h4>
+      <ul>
+        <li>Ich warte hier <strong>bei dem</strong> Flughafen / Er ist noch <strong>bei dem</strong> Arzt.</li>
+        <li>Er wohnt <strong>bei seinem</strong> Onkel.</li>
+      </ul>
+
+      <h4>mit (مع / بواسطة)</h4>
+      <ul>
+        <li>Sie lebt noch <strong>mit ihrer</strong> Familie.</li>
+        <li>Ich gehe in die Schule <strong>mit dem</strong> Bus / Ich fahre zur Arbeit <strong>mit dem</strong> Auto.</li>
+      </ul>
+
+      <h4>nach (إلى / بعد)</h4>
+      <ul>
+        <li>إلى مكان بعيد (يستثني المنزل): Wir fahren morgen <strong>nach der</strong> alten Stadt / Ich gehe <strong>nach Hause</strong> / Er will <strong>nach</strong> Deutschland fahren.</li>
+        <li>الدول التي لها Artikel يُستخدم حرف الجر in بدلاً من nach: Ich fahre <strong>in die</strong> Türkei / <strong>in den</strong> Irak / <strong>in die</strong> Schweiz.</li>
+        <li>بعد: <strong>nach der</strong> Arbeit gehen die Leute zu dem Markt.</li>
+        <li>وفقاً / طبقاً: <strong>nach dem</strong> Bericht von dem Arzt muss er nach Deutschland fahren.</li>
+      </ul>
+
+      <h4>zu (إلى مكان قريب)</h4>
+      <ul>
+        <li>Wir fahren heute Abend <strong>zu unserem</strong> Großvater / Er muss heute <strong>zu dem</strong> Krankenhaus gehen.</li>
+      </ul>
+
+      <h4>seit (منذ)</h4>
+      <ul>
+        <li><strong>Seit dem</strong> Montag bin ich krank / <strong>Seit den</strong> alten Tagen habe ich ihn nicht gesehen.</li>
+      </ul>
+
+      <h4>gegenüber (مقابل)</h4>
+      <ul>
+        <li>Mein Haus ist <strong>gegenüber von der</strong> Schule / Mein Haus ist der Schule gegenüber.</li>
+      </ul>
+
+      <h4>اختصارات مهمة</h4>
+      <ul>
+        <li>zu + dem → <strong>zum</strong> = zu dem Arzt → zum Arzt</li>
+        <li>zu + der → <strong>zur</strong> = zu der Schule → zur Schule</li>
+        <li>von + dem → <strong>vom</strong> = von dem Mann → vom Mann</li>
+        <li>bei + dem → <strong>beim</strong> = bei dem Onkel → beim Onkel</li>
+        <li>in + dem → <strong>im</strong> = wir sind im Kino</li>
+        <li>an + dem → <strong>am</strong> = Ich warte am Bahnhof</li>
+      </ul>
+    `
+  },
+
+  /* ========== 25. Wechselpräpositionen ========== */
+  {
+    id: "g25",
+    icon: "🔄",
+    category: "grammar",
+    title: "Wechselpräpositionen",
+    titleAr: "حروف الجر المشتركة",
+    level: "A1",
+    html: `
+      <p><strong>an / auf</strong> على – <strong>über</strong> فوق – <strong>in</strong> في – <strong>hinter</strong> خلف – <strong>neben</strong> بجوار – <strong>unter</strong> أسفل – <strong>vor</strong> أمام – <strong>zwischen</strong> بين</p>
+
+      <h4>1) الاستخدام مع Dativ</h4>
+      <p>يتم تحليل الفعل في الجملة وعندها يتم التأكد من أن الفعل لا يدل على حركة أو انتقال أو تغيير المكان، ويدل على وضع ثابت فيتم وضع المفعول في حالة Dativ.</p>
+      <p><strong>أمثلة:</strong> stehen – liegen – hängen – stecken</p>
+      <ul>
+        <li>Das Buch steht <strong>auf dem</strong> Tisch.</li>
+        <li>Das Geld liegt <strong>in seiner</strong> Tasche.</li>
+        <li>Das Bild hängt <strong>an der</strong> Wand.</li>
+      </ul>
+      <div class="grammar-tip">💡 يتم السؤال عن هذه الحالات بـ <strong>Wo</strong> (أين).</div>
+    `
+  },
+
+  /* ========== 26. Der Imperativ ========== */
+  {
+    id: "g26",
+    icon: "📢",
+    category: "grammar",
+    title: "Der Imperativ",
+    titleAr: "صيغة الأمر",
+    level: "A1",
+    html: `
+      <p>ضمائر المخاطب هي: <strong>du, ihr, Sie</strong>.</p>
+
+      <h4>1) مع Sie</h4>
+      <ul>
+        <li>Sie arbeiten sehr viel zu Hause. → <strong>Arbeiten Sie</strong> sehr viel zu Hause!</li>
+        <li>Sie hören Musik jeden Morgen. → <strong>Hören Sie</strong> Musik jeden Morgen!</li>
+        <li>Sie gratulieren ihm zum Geburtstag. → <strong>Gratulieren Sie</strong> ihm zum Geburtstag!</li>
+      </ul>
+
+      <h4>2) مع du</h4>
+      <ul>
+        <li>Du arbeitest sehr viel zu Hause. → <strong>Arbeite</strong> sehr viel zu Hause!</li>
+        <li>Du hörst Musik jeden Morgen. → <strong>Hör</strong> Musik jeden Morgen!</li>
+        <li>Du gratulierst ihm zum Geburtstag. → <strong>Gratulier</strong> ihm zum Geburtstag!</li>
+      </ul>
+
+      <h4>3) مع ihr</h4>
+      <ul>
+        <li>Ihr arbeitet sehr viel zu Hause. → <strong>Arbeitet</strong> sehr viel zu Hause!</li>
+        <li>Ihr hört Musik jeden Morgen. → <strong>Hört</strong> Musik jeden Morgen!</li>
+      </ul>
+
+      <h4>4) مع الأفعال القوية (stark)</h4>
+      <p>مع كل من الضميرين Sie و ihr يُطبّق نفس القاعدة السابقة. لكن مع du يختلف الجزء الأساسي من الفعل Verbstamm:</p>
+      <ul>
+        <li>Sie sprechen Deutsch mit den Kollegen → <strong>Sprechen Sie</strong> Deutsch mit den Kollegen!</li>
+        <li>Ihr sprecht Deutsch mit den Kollegen → <strong>Sprecht</strong> Deutsch mit den Kollegen!</li>
+        <li>Du sprichst Deutsch mit den Kollegen → <strong>Sprich</strong> Deutsch mit den Kollegen!</li>
+        <li>Du siehst die Sonne am Morgen. → <strong>Sieh</strong> die Sonne am Morgen!</li>
+        <li>Du fährst das Auto nach Hause. → <strong>Fahr</strong> das Auto nach Hause!</li>
+        <li>Du liest das Buch gut. → <strong>Lies</strong> das Buch gut!</li>
+      </ul>
+
+      <h4>5) أفعال خاصة</h4>
+      <p><strong>sein:</strong></p>
+      <ul>
+        <li>Sie → <strong>Seien Sie</strong> höflich!</li>
+        <li>ihr → <strong>seid</strong> höflich!</li>
+        <li>du → <strong>sei</strong> höflich!</li>
+      </ul>
+      <p><strong>haben:</strong></p>
+      <ul>
+        <li>Sie → <strong>haben Sie</strong> Ihre Bücher!</li>
+        <li>ihr → <strong>habt</strong> eure Bücher!</li>
+        <li>du → <strong>hab</strong> deine Bücher!</li>
+      </ul>
+    `
+  },
+
+  /* ========== 27. müssen + Erlaubnis/Verbot ========== */
+  {
+    id: "g27",
+    icon: "🔐",
+    category: "grammar",
+    title: "müssen + Erlaubnis/Verbot",
+    titleAr: "müssen + الإذن والمنع",
+    level: "A1",
+    html: `
+      <h4>1) Erlaubnis (الإذن)</h4>
+      <p><strong>jdm. eine Erlaubnis erteilen</strong> — إعطاء إذن لشخص</p>
+      <ul>
+        <li>Das 12-jährige Mädchen <strong>darf</strong> heute ins Kino gehen. (Ihre Eltern haben es ihr erlaubt.)</li>
+        <li>Der Mitarbeiter <strong>darf</strong> heute früher nach Hause gehen. (Sein Chef hat es ihm erlaubt.)</li>
+        <li>Der Sohn <strong>darf</strong> heute länger aufbleiben. (Er fragt seine Mutter und sie sagt "ja".)</li>
+      </ul>
+
+      <h4>2) Verbot (المنع)</h4>
+      <p><strong>ein Verbot aussprechen / jdm. etwas verbieten</strong> (dürfen + Verneinung)</p>
+      <ul>
+        <li>Im Museum <strong>darf</strong> man <strong>nicht</strong> fotografieren. (Der Inhaber verbietet es.)</li>
+        <li>Das Kind <strong>darf</strong> heute <strong>nicht</strong> länger aufbleiben. (Die Mutter verbietet es ihm.)</li>
+        <li>Der Mitarbeiter <strong>darf</strong> heute <strong>nicht</strong> früher gehen. (Sein Chef hat es ihm verboten).</li>
+      </ul>
+
+      <h4>3) Modalverb "müssen"</h4>
+      <p>يُستخدم في الحالات التالية:</p>
+
+      <h5>أ) إصدار أمر (einen Befehl äußern)</h5>
+      <ul>
+        <li>Kinder, ihr <strong>müsst</strong> etwas essen, damit ihr bei Kräften bleibt.</li>
+        <li>Wenn Sie den Kredit haben wollen, <strong>müssen</strong> Sie diesen Vertrag unterschreiben.</li>
+        <li>Du <strong>musst</strong> jetzt gehen, sonst verpasst du noch deinen Zug.</li>
+      </ul>
+
+      <h5>ب) شيء غير ضروري (etwas nicht müssen)</h5>
+      <p>= Negation + <strong>brauchen zu + Infinitiv</strong></p>
+      <ul>
+        <li>Du bist schon 18. Du <strong>musst</strong> nicht mehr zur Schule gehen, aber du solltest. → Du <strong>brauchst</strong> nicht mehr zur Schule <strong>zu gehen</strong>, aber du solltest.</li>
+        <li>Wenn du nicht willst, <strong>musst</strong> du nicht den Teller leer essen. → Wenn du nicht willst, <strong>brauchst</strong> du nicht den Teller leer <strong>zu essen</strong>.</li>
+        <li>Du <strong>musst</strong> jetzt nicht gehen. Wenn du möchtest, kannst du heute bei mir bleiben. → Du <strong>brauchst</strong> jetzt nicht <strong>zu gehen</strong>. Wenn du möchtest, kannst du heute bei mir bleiben.</li>
+      </ul>
+
+      <h5>ج) ضرورة (eine Notwendigkeit)</h5>
+      <ul>
+        <li>Der Schüler <strong>muss</strong> täglich seine Hausaufgaben machen, wenn er Deutsch lernen will.</li>
+        <li>Ein Bäcker <strong>muss</strong> jeden Tag sehr früh aufstehen.</li>
+        <li>Ein Fußballspieler <strong>muss</strong> täglich hart trainieren, wenn er Erfolg haben will.</li>
+      </ul>
+    `
+  },
+
+  /* ========== 28. Komparativ und Superlativ ========== */
+  {
+    id: "g28",
+    icon: "📊",
+    category: "grammar",
+    title: "Komparativ und Superlativ",
+    titleAr: "المقارنة والتفضيل",
+    level: "A1",
+    html: `
+      <h4>المقارنة بين اثنين</h4>
+      <ul>
+        <li>Ahmed ist klein. Mohamed ist noch kleiner. → Mohamed ist <strong>kleiner als</strong> Ahmed.</li>
+        <li>Peter ist nett, aber Hubert ist noch <strong>netter</strong>.</li>
+        <li>Gestern war das Wetter schön, und heute wird es noch <strong>schöner</strong>.</li>
+      </ul>
+
+      <h4>المقارنة بين واحد مع المجموعة</h4>
+      <ul>
+        <li>Ute ist klein. Petra ist kleiner und Martina ist <strong>die kleinste</strong>.</li>
+        <li>Ein VW Golf ist teuer. Ein Audi A4 ist teurer und ein Porsche Carrera GT ist <strong>am teuersten</strong>.</li>
+      </ul>
+
+      <h4>طريقة التركيب</h4>
+      <p>Beim Komparativ erhält das Adjektiv die Endung <code>-er</code>. Den Superlativ bildet man mit <code>am ... -sten</code> oder mit dem bestimmten Artikel + <code>-(e)ste</code>.</p>
+
+      <table>
+        <tr><th>Positiv</th><th>Komparativ</th><th>Superlativ (am ... sten)</th><th>Superlativ (der/die/das ... ste)</th></tr>
+        <tr><td>faul</td><td>fauler</td><td>am faulsten</td><td>der/die/das faulste</td></tr>
+        <tr><td>langsam</td><td>langsamer</td><td>am langsamsten</td><td>der/die/das langsamste</td></tr>
+        <tr><td>lieb</td><td>lieber</td><td>am liebsten</td><td>der/die/das liebste</td></tr>
+        <tr><td>schnell</td><td>schneller</td><td>am schnellsten</td><td>der/die/das schnellste</td></tr>
+      </table>
+
+      <h4>حالات خاصة (Umlaut)</h4>
+      <table>
+        <tr><th>Positiv</th><th>Komparativ</th><th>Superlativ</th></tr>
+        <tr><td>alt</td><td>älter</td><td>am ältesten</td></tr>
+        <tr><td>arm</td><td>ärmer</td><td>am ärmsten</td></tr>
+        <tr><td>groß</td><td>größer</td><td>am größten</td></tr>
+        <tr><td>jung</td><td>jünger</td><td>am jüngsten</td></tr>
+        <tr><td>kalt</td><td>kälter</td><td>am kältesten</td></tr>
+        <tr><td>klug</td><td>klüger</td><td>am klügsten</td></tr>
+        <tr><td>kurz</td><td>kürzer</td><td>am kürzesten</td></tr>
+        <tr><td>lang</td><td>länger</td><td>am längsten</td></tr>
+      </table>
+      <p>صفات أخرى تعامل بالمثل: <strong>dumm, gesund, grob, hart, krank, rot, scharf, stark, schwach, warm</strong>.</p>
+
+      <h4>صفات شاذة (unregelmäßig)</h4>
+      <table>
+        <tr><th>Positiv</th><th>Komparativ</th><th>Superlativ</th></tr>
+        <tr><td>dunkel</td><td>dunkler</td><td>am dunkelsten</td></tr>
+        <tr><td>edel</td><td>edler</td><td>am edelsten</td></tr>
+        <tr><td>gern</td><td>lieber</td><td>am liebsten</td></tr>
+        <tr><td>gut</td><td>besser</td><td>am besten</td></tr>
+        <tr><td>hoch</td><td>höher</td><td>am höchsten</td></tr>
+        <tr><td>nah</td><td>näher</td><td>am nächsten</td></tr>
+        <tr><td>teuer</td><td>teurer</td><td>am teuersten</td></tr>
+        <tr><td>viel / sehr</td><td>mehr</td><td>am meisten</td></tr>
+      </table>
+
+      <h4>حالة التشابه</h4>
+      <p><strong>genauso + Adjektiv + wie</strong>:</p>
+      <ul>
+        <li>Ahmed ist <strong>genauso gut wie</strong> Ali.</li>
+        <li>Soha ist <strong>genauso schön wie</strong> Asmaa.</li>
+        <li>Kareem ist <strong>genauso groß wie</strong> Akram.</li>
+      </ul>
+    `
+  },
+
+  /* ========== 29. irreale Wünsche (Konjunktiv II) ========== */
+  {
+    id: "g29",
+    icon: "💭",
+    category: "grammar",
+    title: "irreale Wünsche",
+    titleAr: "التعبير عن الأمنيات",
+    level: "A1",
+    html: `
+      <p>نستخدم صيغة الـ <strong>Konjunktiv II</strong> من الفعل <strong>werden</strong> ومصدر الفعل للتعبير عن أمنية. الصيغة هي <strong>würden</strong> ويتم تصريفه كما يلي:</p>
+
+      <table>
+        <tr><th>Pronomen</th><th>würden</th></tr>
+        <tr><td>ich</td><td>würde</td></tr>
+        <tr><td>du</td><td>würdest</td></tr>
+        <tr><td>er/es/sie</td><td>würde</td></tr>
+        <tr><td>wir</td><td>würden</td></tr>
+        <tr><td>ihr</td><td>würdet</td></tr>
+        <tr><td>Sie/sie</td><td>würden</td></tr>
+      </table>
+
+      <h4>أمثلة</h4>
+      <ul>
+        <li>Ich <strong>würde</strong> gerne mit dir meinen Geburtstag <strong>feiern</strong>.</li>
+        <li>Anna und ich <strong>würden</strong> dich zu unserer Party <strong>einladen</strong>.</li>
+        <li>Du <strong>würdest</strong> am liebsten nach Deutschland <strong>fahren</strong>.</li>
+      </ul>
+    `
+  },
+
+  /* ========== 30. Datum lesen ========== */
+  {
+    id: "g30",
+    icon: "🗓️",
+    category: "time",
+    title: "Datum lesen",
+    titleAr: "قراءة التاريخ",
+    level: "A1",
+    html: `
+      <p>نستخدم الأرقام الترتيبية في قراءة التاريخ مع إضافة <code>en</code> في نهاية الرقم وقبله حرف الجر <code>am</code>.</p>
+
+      <ul>
+        <li>5.11 → <strong>am / vom fünften November</strong></li>
+        <li>der fünfte November</li>
+        <li>13.9 → <strong>am dreizehnten September</strong></li>
+        <li>11.5 → <strong>am elften Mai</strong></li>
+        <li>22.4 → <strong>am zweiundzwanzigsten April</strong></li>
+        <li>31.6 → <strong>am einunddreißigsten Juni</strong></li>
+      </ul>
+    `
+  }
 ];
+
 function initGrammarA1Tab() {
   renderGrammarA1();
 }
@@ -833,4 +1318,3 @@ function toggleGrammarCard(id) {
   if (!card) return;
   card.classList.toggle('open');
 }
-];
