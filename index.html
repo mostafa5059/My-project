@@ -257,6 +257,21 @@
     .pron-examples-inline{gap:5px}
     .pron-example-inline{padding:5px 6px;gap:5px}
   }
+    /* ============ تبويبات المستويات الفرعية ============ */
+  .lesson-subtabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:25px;padding:10px;background:#f8fafc;border-radius:14px;border:1px solid var(--border-color)}
+  body.dark-mode .lesson-subtabs{background:#0f172a;border-color:#334155}
+  .lesson-subtab{padding:10px 20px;border:2px solid var(--border-color);background:var(--card-bg);color:var(--text-muted);border-radius:20px;cursor:pointer;font-size:14px;font-weight:700;transition:var(--transition);font-family:'Cairo',sans-serif}
+  .lesson-subtab:hover:not(.disabled){border-color:var(--primary-light);color:var(--primary)}
+  .lesson-subtab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+  .lesson-subtab.disabled{opacity:0.5;cursor:not-allowed}
+  body.dark-mode .lesson-subtab{background:#1e293b;color:#94a3b8;border-color:#334155}
+  body.dark-mode .lesson-subtab.active{background:#4f46e5;color:#fff}
+
+  /* ============ تمارين الدرس ============ */
+  .lesson-exercise-opt:hover:not(:disabled){border-color:var(--primary);background:#eff6ff}
+  .lesson-exercise-opt:disabled{cursor:default}
+  body.dark-mode .lesson-exercise-opt{background:#0f172a;color:#f1f5f9;border-color:#334155}
+  body.dark-mode .lesson-exercise-opt:hover:not(:disabled){background:#1e293b}
 </style>
 </head>
 <body>
@@ -382,7 +397,10 @@
   <div id="tab-progress" class="hidden"><div id="progressContent"></div></div>
   <div id="tab-review" class="hidden"><div id="reviewContent"></div></div>
   <div id="tab-reading" class="hidden"><div id="readingContent"></div></div>
-  <div id="tab-lessons" class="hidden"><div id="lessonsContent"></div></div>
+ <div id="tab-lessons" class="hidden">
+  <div id="lessonSubTabs" class="lesson-subtabs"></div>
+  <div id="lessonsContent"></div>
+</div>
   <div id="tab-grammar-a1" class="hidden"><div id="grammarA1Content"></div></div>
   <div id="tab-pronunciation" class="hidden"><div id="pronunciationContent"></div></div>
   <div id="tab-rules" class="hidden"><div class="rules-container" id="rulesContent"></div></div>
