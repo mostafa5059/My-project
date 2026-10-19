@@ -727,39 +727,66 @@ function renderPronSounds() {
   Object.keys(categories).forEach(cat => {
     const items = PRONUNCIATION_DATA.filter(p => p.category === cat);
     if (!items.length) return;
-    html += `<div class="pron-category-block">
-      <h3 class="pron-category-title" style="color:${categories[cat].color};border-right-color:${categories[cat].color};">${categories[cat].label}</h3>
-      <div class="pron-sounds-grid">
-        ${items.map(p => `
-          <div class="pron-sound-card" onclick="openPronunciationDetail('${p.id}')" style="border-right-color:${categories[cat].color};">
-            <div class="pron-sound-icon">${p.icon}</div>
-            <div class="pron-sound-name">${p.sound}</div>
-            <div class="pron-sound-ar">${p.soundAr}</div>
-            <div class="pron-sound-count">${p.examples.length} أمثلة</div>
-          </div>
-        `).join('')}
+    html += `
+      <div class="pron-table-section">
+        <h3 class="pron-table-title" style="border-right-color:${categories[cat].color};color:${categories[cat].color};">${categories[cat].label}</h3>
+        <div class="pron-table-wrap">
+          <table class="pron-table">
+            <thead>
+              <tr>
+                <th style="width:60px;">#</th>
+                <th style="width:180px;">الصوت</th>
+                <th>القاعدة</th>
+                <th style="width:45%;">الأمثلة</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${items.map((p, i) => `
+                <tr>
+                  <td style="text-align:center;color:var(--text-muted);font-weight:700;">${i + 1}</td>
+                  <td style="text-align:center;">
+                    <div style="font-size:22px;margin-bottom:4px;">${p.icon}</div>
+                    <div style="font-weight:800;color:var(--primary-dark);direction:ltr;font-size:14px;">${p.sound}</div>
+                    <div style="font-size:12px;color:var(--text-muted);font-weight:600;margin-top:2px;">${p.soundAr}</div>
+                  </td>
+                  <td style="font-size:13.5px;line-height:1.7;">${p.rule}</td>
+                  <td>
+                    <div class="pron-examples-inline">
+                      ${p.examples.map(ex => `
+                        <div class="pron-example-inline">
+                          <button class="audio-btn" style="position:static;display:inline-flex;width:26px;height:26px;font-size:12px;flex-shrink:0;" onclick="speak('${ex.word.replace(/'/g, "\\'")}')">🔊</button>
+                          <div style="flex-grow:1;">
+                            <div style="direction:ltr;text-align:right;font-weight:700;color:var(--primary-dark);font-size:13.5px;">${ex.word} <span style="color:var(--text-muted);font-weight:400;font-size:11px;">${ex.ipa || ''}</span></div>
+                            <div style="font-size:12px;color:var(--text-muted);font-weight:600;">${ex.ar}</div>
+                          </div>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>`;
+    `;
   });
   return html;
 }
 
-/* ============================================================
-   2) عرض تفاصيل صوت (modal)
-   ============================================================ */
 function openPronunciationDetail(id) {
   const p = PRONUNCIATION_DATA.find(x => x.id === id);
   if (!p) return;
 
-  const examplesHTML = p.examples.map((ex, i) => `
-    <div class="pron-example-row">
-      <div class="pron-example-word">
-        <strong>${ex.word}</strong>
-        ${ex.ipa ? `<span class="pron-ipa">${ex.ipa}</span>` : ''}
-      </div>
-      <div class="pron-example-ar">${ex.ar}</div>
-      <button class="audio-btn" style="position:static;display:inline-flex;width:34px;height:34px;font-size:16px;" onclick="speak('${ex.word.replace(/'/g, "\\'")}')">🔊</button>
-    </div>
+  const examplesHTML = p.examples.map(ex => `
+    <tr>
+      <td style="direction:ltr;text-align:right;font-weight:700;color:var(--primary-dark);">
+        ${ex.word}
+        <button class="audio-btn" style="position:static;display:inline-flex;width:30px;height:30px;font-size:14px;margin-right:6px;" onclick="speak('${ex.word.replace(/'/g, "\\'")}')">🔊</button>
+      </td>
+      <td style="color:var(--text-muted);font-size:12px;direction:ltr;">${ex.ipa || '—'}</td>
+      <td>${ex.ar}</td>
+    </tr>
   `).join('');
 
   const html = `
@@ -771,22 +798,23 @@ function openPronunciationDetail(id) {
     </div>
     <div class="rule-hint">${p.rule}</div>
     <div class="section-title">🔊 الأمثلة (${p.examples.length})</div>
-    <div class="pron-examples-list">${examplesHTML}</div>
-    <div class="grammar-tip">💡 اضغط 🔊 بجانب أي كلمة لسماع نطقها.</div>
+    <table>
+      <thead>
+        <tr><th>الكلمة</th><th>IPA</th><th>المعنى</th></tr>
+      </thead>
+      <tbody>${examplesHTML}</tbody>
+    </table>
   `;
   openModal(html);
   applyTranslationVisibility();
 }
 
-/* ============================================================
-   3) عرض التمارين
-   ============================================================ */
 function renderPronExercises() {
   const ex = PRONUNCIATION_EXERCISES[pronCurrentExercise];
   if (!ex) return '<p style="text-align:center;">لا توجد تمارين.</p>';
 
   const optionsHTML = ex.audioOptions.map(opt => `
-    <button class="pron-exercise-option" onclick="checkPronExercise('${opt.replace(/'/g, "\\'")}')" id="opt-${opt.replace(/[^a-zA-Z0-9]/g, '')}">
+    <button class="pron-exercise-option" onclick="checkPronExercise('${opt.replace(/'/g, "\\'")}')">
       🔊 ${opt}
     </button>
   `).join('');
@@ -794,7 +822,11 @@ function renderPronExercises() {
   return `
     <div class="pron-exercise-box">
       <div class="pron-exercise-progress">السؤال ${pronCurrentExercise + 1} من ${PRONUNCIATION_EXERCISES.length}</div>
-      <h3 class="pron-exercise-question">${ex.question}</h3>
+      <table style="width:100%;border-collapse:collapse;margin-bottom:20px;">
+        <tr>
+          <td style="background:#eff6ff;padding:18px;border-radius:12px;border:1px solid var(--border-color);text-align:center;font-weight:700;color:var(--primary-dark);font-size:18px;">${ex.question}</td>
+        </tr>
+      </table>
       <div class="pron-exercise-options" id="pronExerciseOptions">
         ${optionsHTML}
       </div>
@@ -840,51 +872,80 @@ function nextPronExercise() {
   document.getElementById('pronSubContent').innerHTML = renderPronExercises();
 }
 
-/* ============================================================
-   4) عرض Minimalpaare
-   ============================================================ */
 function renderPronMinimal() {
   return `
-    <div class="pron-minimal-grid">
-      ${MINIMAL_PAIRS.map(m => `
-        <div class="pron-minimal-card">
-          <div class="pron-minimal-sound">${m.sound}</div>
-          <div class="pron-minimal-pair">
-            <div class="pron-minimal-word">
-              <strong>${m.pair[0]}</strong>
-              <button class="audio-btn" style="position:static;display:inline-flex;width:28px;height:28px;font-size:13px;" onclick="speak('${m.pair[0].replace(/'/g, "\\'")}')">🔊</button>
-            </div>
-            <div class="pron-minimal-ar">${m.ar[0]}</div>
-          </div>
-          <div class="pron-minimal-vs">vs</div>
-          <div class="pron-minimal-pair">
-            <div class="pron-minimal-word">
-              <strong>${m.pair[1]}</strong>
-              <button class="audio-btn" style="position:static;display:inline-flex;width:28px;height:28px;font-size:13px;" onclick="speak('${m.pair[1].replace(/'/g, "\\'")}')">🔊</button>
-            </div>
-            <div class="pron-minimal-ar">${m.ar[1]}</div>
-          </div>
-          <div class="pron-minimal-diff">${m.difference}</div>
-        </div>
-      `).join('')}
+    <div class="pron-table-wrap" style="max-width:900px;margin:0 auto;">
+      <table class="pron-table">
+        <thead>
+          <tr>
+            <th style="width:50px;">#</th>
+            <th>الكلمة 1</th>
+            <th>الكلمة 2</th>
+            <th style="width:200px;">الفرق</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${MINIMAL_PAIRS.map((m, i) => `
+            <tr>
+              <td style="text-align:center;color:var(--text-muted);font-weight:700;">${i + 1}</td>
+              <td>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <button class="audio-btn" style="position:static;display:inline-flex;width:28px;height:28px;font-size:13px;flex-shrink:0;" onclick="speak('${m.pair[0].replace(/'/g, "\\'")}')">🔊</button>
+                  <div>
+                    <div style="direction:ltr;text-align:right;font-weight:700;color:var(--primary-dark);font-size:14px;">${m.pair[0]}</div>
+                    <div style="font-size:12px;color:var(--text-muted);font-weight:600;">${m.ar[0]}</div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <button class="audio-btn" style="position:static;display:inline-flex;width:28px;height:28px;font-size:13px;flex-shrink:0;" onclick="speak('${m.pair[1].replace(/'/g, "\\'")}')">🔊</button>
+                  <div>
+                    <div style="direction:ltr;text-align:right;font-weight:700;color:var(--primary-dark);font-size:14px;">${m.pair[1]}</div>
+                    <div style="font-size:12px;color:var(--text-muted);font-weight:600;">${m.ar[1]}</div>
+                  </div>
+                </div>
+              </td>
+              <td style="font-size:12.5px;color:var(--text-muted);font-weight:600;text-align:center;">${m.difference}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
     </div>
   `;
 }
 
-/* ============================================================
-   5) عرض أعاصير اللسان
-   ============================================================ */
 function renderPronTwisters() {
   return `
-    <div class="pron-twisters-list">
-      ${TONGUE_TWISTERS.map(t => `
-        <div class="pron-twister-card">
-          <div class="pron-twister-focus">🎯 ${t.focus} · ${t.level}</div>
-          <div class="pron-twister-de">${t.de}</div>
-          <div class="pron-twister-ar">${t.ar}</div>
-          <button class="btn-next" style="margin:15px 0 0;padding:10px 24px;font-size:14px;" onclick="speak('${t.de.replace(/'/g, "\\'")}')">🔊 استمع</button>
-        </div>
-      `).join('')}
+    <div class="pron-table-wrap" style="max-width:900px;margin:0 auto;">
+      <table class="pron-table">
+        <thead>
+          <tr>
+            <th style="width:50px;">#</th>
+            <th>العبارة الألمانية</th>
+            <th>الترجمة</th>
+            <th style="width:130px;">التركيز</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${TONGUE_TWISTERS.map((t, i) => `
+            <tr>
+              <td style="text-align:center;color:var(--text-muted);font-weight:700;">${i + 1}</td>
+              <td>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <button class="audio-btn" style="position:static;display:inline-flex;width:30px;height:30px;font-size:14px;flex-shrink:0;" onclick="speak('${t.de.replace(/'/g, "\\'")}')">🔊</button>
+                  <div style="direction:ltr;text-align:right;font-weight:700;color:var(--primary-dark);font-size:14.5px;line-height:1.6;">${t.de}</div>
+                </div>
+              </td>
+              <td style="font-size:13px;color:var(--text-muted);font-weight:600;">${t.ar}</td>
+              <td style="text-align:center;">
+                <span style="display:inline-block;background:#ede9fe;color:#6d28d9;padding:4px 10px;border-radius:8px;font-size:11.5px;font-weight:800;">${t.focus}</span>
+                <div style="font-size:10.5px;color:var(--text-muted);font-weight:700;margin-top:4px;">${t.level}</div>
+              </td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
     </div>
   `;
 }
