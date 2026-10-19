@@ -347,7 +347,7 @@ function openLesson(id) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   applyTranslationVisibility();
 }
-
+  
 // دالة جديدة للعودة
 function closeSingleLesson() {
   document.getElementById('singleLessonContent').classList.add('hidden');
