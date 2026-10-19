@@ -211,6 +211,12 @@
     .info-block{grid-template-columns:1fr}
     .fav-btn{left:60px}
   }
+     body.dark-mode .lesson-words-count{background:#78350f;color:#fcd34d}
+
+  /* ============ قسم النطق ============ */
+  .pron-subtabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:25px}
+  /* ... باقي CSS ... */
+  body.dark-mode .pron-twister-card{background:#1e293b;border-color:#334155}
 </style>
 </head>
 <body>
@@ -243,6 +249,7 @@
     <button class="tab" data-tab="review">🎯 المراجعة اليومية</button>
      <button class="tab" data-tab="lessons">🎓 الدروس</button>
     <button class="tab" data-tab="grammar-a1">📖 قواعد A1</button>
+    <button class="tab" data-tab="pronunciation">🗣️ النطق</button>
     <button class="tab" data-tab="rules">📖 القواعد</button>
     <button class="tab" data-tab="reading">📖 القراءة</button>
     <button class="tab" data-tab="resources">📚 المصادر</button>
@@ -337,6 +344,7 @@
   <div id="tab-reading" class="hidden"><div id="readingContent"></div></div>
   <div id="tab-lessons" class="hidden"><div id="lessonsContent"></div></div>
   <div id="tab-grammar-a1" class="hidden"><div id="grammarA1Content"></div></div>
+  <div id="tab-pronunciation" class="hidden"><div id="pronunciationContent"></div></div>
   <div id="tab-rules" class="hidden"><div class="rules-container" id="rulesContent"></div></div>
   <div id="tab-resources" class="hidden">
     <div style="max-width:850px;margin:0 auto;">
@@ -363,6 +371,7 @@
 <script src="basics.js"></script>
 <script src="lessons.js"></script>
 <script src="grammar_a1.js"></script>
+<script src="pronunciation.js"></script>
 
 <script>
 /* ==================== الحالة ==================== */
@@ -673,6 +682,7 @@ function switchTab(name) {
     else if (name === "progress") { if (typeof initProgressTab === 'function') initProgressTab(); }
     else if (name === "lessons") { if (typeof initLessonsTab === 'function') initLessonsTab(); }
     else if (name === "grammar-a1") { if (typeof initGrammarA1Tab === 'function') initGrammarA1Tab(); }
+    else if (name === "pronunciation") { if (typeof initPronunciationTab === 'function') initPronunciationTab(); }
     else if (name === "rules") { if (typeof renderRules === 'function') renderRules(); else { const rc = document.getElementById("rulesContent"); if (rc) rc.innerHTML = (contentLanguage === 'en' && typeof RULES_HTML_EN !== 'undefined') ? RULES_HTML_EN : (typeof RULES_HTML !== 'undefined' ? RULES_HTML : ''); } }
     else if (name === "resources") { if (typeof renderResources === 'function') renderResources(); }
     else if (name === "review") { if (typeof initReviewTab === 'function') initReviewTab(); }
