@@ -190,7 +190,7 @@ function renderLessonsTab() {
       </div>
       <div class="lesson-body">
         <div class="lesson-level">${l.level}</div>
-        <h3 class="lesson-title">${l.title}</h3>
+       <h3 class="lesson-title">${l.emoji} ${l.title}</h3>
         <p class="lesson-title-ar">${l.titleAr}</p>
         <span class="lesson-topic">${l.topic}</span>
         <span class="lesson-words-count">${l.words.length + (l.newWords ? l.newWords.length : 0)} كلمة</span>
