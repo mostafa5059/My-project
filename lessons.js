@@ -275,10 +275,10 @@ function openLesson(id) {
     </tr>`;
   }).join('');
 
-  const grammarHTML = lesson.grammar ? `
-    <div class="section-title">📐 القاعدة: ${lesson.grammar.title}</div>
-    <div class="rule-hint">${lesson.grammar.titleAr}</div>
-    <div class="grammar-content" style="display:block;padding:20px;background:#f8fafc;border-radius:12px;border:1px solid var(--border-color);">
+    const grammarHTML = lesson.grammar ? `
+    <div class="section-title" style="margin-top:30px;">📐 القاعدة: ${lesson.grammar.title}</div>
+    <div class="rule-hint" style="font-size:16px; margin-bottom:20px;">${lesson.grammar.titleAr}</div>
+    <div class="grammar-content" style="display:block;padding:30px;background:var(--card-bg);border-radius:16px;border-right:6px solid var(--primary); box-shadow:0 4px 15px rgba(0,0,0,0.05);">
       ${lesson.grammar.explanation}
     </div>
   ` : '';
