@@ -264,6 +264,26 @@
   .lesson-subtab:hover:not(.disabled){border-color:var(--primary-light);color:var(--primary)}
   .lesson-subtab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
   .lesson-subtab.disabled{opacity:0.5;cursor:not-allowed}
+    /* إصلاح ألوان النصوص داخل الدرس */
+  .modal-content h4, .modal-content p, .modal-content li, .modal-content td, .modal-content th {
+    color: var(--text-main) !important;
+  }
+  .modal-content .rule-hint {
+    color: #92400e !important;
+  }
+  .modal-content .grammar-tip {
+    color: #92400e !important;
+  }
+  .modal-content table th {
+    background: #eff6ff;
+    color: var(--primary-dark) !important;
+  }
+  
+  /* تكبير نافذة الدرس */
+  .lesson-modal {
+    max-width: 1000px !important;
+    padding: 40px !important;
+  }
   body.dark-mode .lesson-subtab{background:#1e293b;color:#94a3b8;border-color:#334155}
   body.dark-mode .lesson-subtab.active{background:#4f46e5;color:#fff}
 
