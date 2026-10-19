@@ -124,6 +124,9 @@
     <button class="filter-btn" data-filter="dativ">📌 Dativ</button>
     <button class="filter-btn" data-filter="sein">✈️ sein</button>
   </div>
+  <div class="filter-btns" id="topicFilters" style="display:none; background:#f0fdf4; padding:12px; border-radius:12px; border:1px solid #bbf7d0;">
+    <span style="font-size:13px; color:#065f46; font-weight:700; align-self:center; margin-left:8px;">📂 الموضوع:</span>
+  </div>
   <div id="tab-verbs"><div class="list-grid" id="verbList"></div></div>
   <div id="tab-nouns" class="hidden"><div class="list-grid" id="nounList"></div></div>
   <div id="tab-adjectives" class="hidden"><div class="list-grid" id="adjList"></div></div>
@@ -213,7 +216,7 @@
 <script src="basics.js"></script>
 
 <script>
-  let contentLanguage = localStorage.getItem('content_language') || 'de';
+let contentLanguage = localStorage.getItem('content_language') || 'de';
 const pronouns = ["ich","du","er/sie/es","wir","ihr","sie/Sie"];
 const typeLabels = { regular:{text:"منتظم",cls:"regular"}, unregelmäßig:{text:"⚡ غير منتظم",cls:"unregelmäßig"}, trennbar:{text:"🔹 منفصل",cls:"trennbar"}, reflexiv:{text:"🔄 انعكاسي",cls:"reflexiv"} };
 const ruleHints = { unregelmäßig:"⚡ فعل غير منتظم: تتغير حركة الجذر في المضارع (du/er) وفي الماضي.", trennbar:"🔹 فعل منفصل: البادئة تُنقل لنهاية الجملة (مثل: stehe auf).", reflexiv:"🔄 فعل انعكاسي: يحتاج ضميراً انعكاسياً (mich/dich/sich...)." };
@@ -221,33 +224,60 @@ const ruleHints = { unregelmäßig:"⚡ فعل غير منتظم: تتغير ح�
 const isDativ = (de) => ["helfen", "danken", "gefallen", "gehören", "passen", "antworten", "zuhören", "empfehlen", "schmecken"].includes(de.replace(" (Dativ)", ""));
 const isSein = (de) => ["aufstehen", "ausgehen", "einsteigen", "aussteigen", "umsteigen", "ankommen", "mitkommen", "zurückkommen", "laufen", "reisen", "wandern", "gehen", "kommen", "fahren", "fliegen", "werden", "sein"].includes(de.replace(" (sein)", ""));
 
-let currentTab = "verbs", currentFilter = "all", currentSearch = "";
+let currentTab = "verbs", currentFilter = "all", currentSearch = "", currentTopic = "all";
 
 function speak(text) { if ('speechSynthesis' in window) { const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'de-DE'; utterance.rate = 0.9; window.speechSynthesis.speak(utterance); } }
+
+/* ============ بناء أزرار المواضيع ============ */
+function buildTopicFilters(tabName) {
+  const container = document.getElementById('topicFilters');
+  if (!container) return;
+  let sourceData = [];
+  if (tabName === 'verbs') sourceData = (contentLanguage === 'en' && typeof VERBS_EN !== 'undefined') ? VERBS_EN : (typeof VERBS !== 'undefined' ? VERBS : []);
+  else if (tabName === 'nouns') sourceData = (contentLanguage === 'en' && typeof NOUNS_EN !== 'undefined') ? NOUNS_EN : (typeof NOUNS !== 'undefined' ? NOUNS : []);
+  else { container.style.display = 'none'; return; }
+  const topics = [...new Set(sourceData.map(x => x.topic).filter(t => t))];
+  if (topics.length === 0) { container.style.display = 'none'; return; }
+  container.style.display = 'flex';
+  container.innerHTML = '<span style="font-size:13px; color:#065f46; font-weight:700; align-self:center; margin-left:8px;">📂 الموضوع:</span>';
+  const allBtn = document.createElement('button');
+  allBtn.className = 'filter-btn' + (currentTopic === 'all' ? ' active' : '');
+  if (currentTopic === 'all') allBtn.style.background = '#047857';
+  allBtn.textContent = 'الكل';
+  allBtn.onclick = () => switchTopic('all');
+  container.appendChild(allBtn);
+  topics.forEach(t => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn' + (currentTopic === t ? ' active' : '');
+    if (currentTopic === t) btn.style.background = '#047857';
+    btn.textContent = t;
+    btn.onclick = () => switchTopic(t);
+    container.appendChild(btn);
+  });
+}
+function switchTopic(topic) {
+  currentTopic = topic;
+  buildTopicFilters(currentTab);
+  if (currentTab === 'verbs') renderVerbs();
+  else if (currentTab === 'nouns') renderNouns();
+}
 
 function renderVerbs() {
   const f = currentSearch.trim().toLowerCase();
   const sourceData = contentLanguage === 'en' ? (typeof VERBS_EN !== 'undefined' ? VERBS_EN : []) : (typeof VERBS !== 'undefined' ? VERBS : []);
-  
   const filtered = sourceData.filter(v => {
     const word = contentLanguage === 'en' ? v.en : v.de;
     const matchSearch = word.toLowerCase().includes(f) || v.ar.includes(currentSearch.trim());
-    
     let matchFilter = true;
-    if (currentFilter === "all") {
-      matchFilter = true;
-    } else if (currentFilter === "dativ") {
-      matchFilter = contentLanguage === 'de' && isDativ(v.de);
-    } else if (currentFilter === "sein") {
-      matchFilter = contentLanguage === 'de' && isSein(v.de);
-    } else {
-      matchFilter = v.type === currentFilter;
-    }
-    
-    return matchSearch && matchFilter;
+    if (currentFilter === "all") matchFilter = true;
+    else if (currentFilter === "dativ") matchFilter = contentLanguage === 'de' && isDativ(v.de);
+    else if (currentFilter === "sein") matchFilter = contentLanguage === 'de' && isSein(v.de);
+    else matchFilter = v.type === currentFilter;
+    const matchTopic = (currentTopic === "all") || (v.topic === currentTopic);
+    return matchSearch && matchFilter && matchTopic;
   });
-  
   const list = document.getElementById("verbList");
+  if (!filtered.length) { list.innerHTML = '<p style="text-align:center;color:#64748b;grid-column:1/-1;">لا توجد نتائج</p>'; return; }
   list.innerHTML = filtered.map(v => {
     const word = contentLanguage === 'en' ? v.en : v.de;
     const idx = sourceData.indexOf(v);
@@ -261,9 +291,12 @@ function renderNouns() {
   const sourceData = contentLanguage === 'en' ? (typeof NOUNS_EN !== 'undefined' ? NOUNS_EN : []) : (typeof NOUNS !== 'undefined' ? NOUNS : []);
   const filtered = sourceData.filter(n => {
     const word = contentLanguage === 'en' ? n.en : n.de;
-    return word.toLowerCase().includes(f) || n.ar.includes(currentSearch.trim());
+    const matchSearch = word.toLowerCase().includes(f) || n.ar.includes(currentSearch.trim());
+    const matchTopic = (currentTopic === "all") || (n.topic === currentTopic);
+    return matchSearch && matchTopic;
   });
   const list = document.getElementById("nounList");
+  if (!filtered.length) { list.innerHTML = '<p style="text-align:center;color:#64748b;grid-column:1/-1;">لا توجد نتائج</p>'; return; }
   list.innerHTML = filtered.map(n => {
     const word = contentLanguage === 'en' ? n.en : n.de;
     const idx = sourceData.indexOf(n);
@@ -280,6 +313,7 @@ function renderAdjectives() {
     return word.toLowerCase().includes(f) || a.ar.includes(currentSearch.trim());
   });
   const list = document.getElementById("adjList");
+  if (!filtered.length) { list.innerHTML = '<p style="text-align:center;color:#64748b;grid-column:1/-1;">لا توجد نتائج</p>'; return; }
   list.innerHTML = filtered.map(a => {
     const word = contentLanguage === 'en' ? a.en : a.de;
     const idx = sourceData.indexOf(a);
@@ -290,17 +324,14 @@ function renderAdjectives() {
 }
 function openVerb(index) {
   const sourceData = contentLanguage === 'en' ? VERBS_EN : VERBS;
-  const v = sourceData[index];
-  if (!v) return;
+  const v = sourceData[index]; if (!v) return;
   const word = contentLanguage === 'en' ? v.en : v.de;
   const isEnglish = contentLanguage === 'en';
-  
   let content = '<button class="close-btn" onclick="closeModal()">✕</button>';
   content += '<div style="text-align:center; margin-bottom:20px;">';
   content += '<h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + word + '</h2>';
   content += ' <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + word + '\')">🔊</button>';
   content += '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + v.ar + '</div></div>';
-  
   if (isEnglish) {
     content += '<div class="section-title">📘 Past Tense</div><div class="conj-item"><span>' + v.past + '</span></div>';
     content += '<div class="section-title">✅ Past Participle</div><div class="conj-item"><span>' + v.pp + '</span></div>';
@@ -310,50 +341,41 @@ function openVerb(index) {
     content += '<div class="section-title">⏳ Präteritum (الماضي البسيط)</div><div class="conj-item"><span>' + v.präteritum + '</span></div>';
     content += '<div class="section-title">✅ Perfekt (الماضي التام)</div><div class="conj-item"><span>' + v.perfekt + '</span></div>';
   }
-  
   if (v.example) content += '<div class="section-title">💬 مثال</div><div class="example-box">' + v.example + '</div>';
-  
   document.getElementById("modalContent").innerHTML = content;
   document.getElementById("modal").classList.add("active");
   if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
 }
 function openNoun(index) {
   const sourceData = contentLanguage === 'en' ? (typeof NOUNS_EN !== 'undefined' ? NOUNS_EN : []) : (typeof NOUNS !== 'undefined' ? NOUNS : []);
-  const n = sourceData[index];
-  if (!n) return;
+  const n = sourceData[index]; if (!n) return;
   const word = contentLanguage === 'en' ? n.en : n.de;
   const isEnglish = contentLanguage === 'en';
-  
   let content = '<button class="close-btn" onclick="closeModal()">✕</button>';
   content += '<div style="text-align:center; margin-bottom:20px;">';
   content += '<h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + word + '</h2>';
   content += ' <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + word + '\')">🔊</button>';
   content += '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + n.ar + '</div></div>';
-  
   if (isEnglish) {
     content += '<div class="section-title">📦 Plural</div><div class="conj-item"><span>' + n.plural + '</span></div>';
   } else {
     content += '<div class="section-title">📦 الجمع</div><div class="conj-item"><span class="pron">Plural</span><span>' + n.plural + '</span></div>';
     content += '<div class="section-title">📐 الحالات الإعرابية</div><div class="info-block"><div class="info-item"><strong>Nominativ</strong>' + n.de + '</div><div class="info-item"><strong>Akkusativ</strong>' + n.akk + '</div><div class="info-item"><strong>Dativ</strong>' + n.dat + '</div></div>';
   }
-  
   document.getElementById("modalContent").innerHTML = content;
   document.getElementById("modal").classList.add("active");
   if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
 }
 function openAdjective(index) {
   const sourceData = contentLanguage === 'en' ? (typeof ADJECTIVES_EN !== 'undefined' ? ADJECTIVES_EN : []) : (typeof ADJECTIVES !== 'undefined' ? ADJECTIVES : []);
-  const a = sourceData[index];
-  if (!a) return;
+  const a = sourceData[index]; if (!a) return;
   const word = contentLanguage === 'en' ? a.en : a.de;
-  
   let content = '<button class="close-btn" onclick="closeModal()">✕</button>';
   content += '<div style="text-align:center; margin-bottom:20px;">';
   content += '<h2 style="display:inline-block; padding-left:0; margin-bottom:8px;">' + word + '</h2>';
   content += ' <button class="audio-btn" style="position:static; display:inline-flex; vertical-align:middle; width:42px; height:42px; font-size:20px;" onclick="speak(\'' + word + '\')">🔊</button>';
   content += '<div style="color:var(--text-muted); font-size:18px; font-weight:600; margin-top:5px;">' + a.ar + '</div></div>';
   content += '<div class="rule-hint">' + (contentLanguage === 'en' ? 'Adjectives describe nouns.' : 'الصفات تُصرَّف حسب الحالة والجنس والعدد عند استخدامها قبل الاسم.') + '</div>';
-  
   document.getElementById("modalContent").innerHTML = content;
   document.getElementById("modal").classList.add("active");
   if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
@@ -366,12 +388,13 @@ function switchTab(name) {
   const target = document.getElementById("tab-" + name);
   if (target) target.classList.remove("hidden");
   document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.getAttribute("data-tab") === name));
-  
   const filters = document.getElementById("verbFilters");
   const search = document.getElementById("search");
   if (filters) filters.style.display = (name === "verbs") ? "flex" : "none";
   if (search) search.style.display = (name === "verbs" || name === "nouns" || name === "adjectives") ? "block" : "none";
-
+  currentTopic = 'all';
+  if (name === 'verbs' || name === 'nouns') buildTopicFilters(name);
+  else { const tf = document.getElementById('topicFilters'); if (tf) tf.style.display = 'none'; }
   try {
     if (name === "flashcards") { if (typeof newCard === 'function') newCard(); }
     else if (name === "verbs" || name === "nouns" || name === "adjectives") renderCurrent();
@@ -390,7 +413,6 @@ function switchTab(name) {
     else if (name === "resources") { if (typeof renderResources === 'function') renderResources(); }
     else if (name === "review") { if (typeof initReviewTab === 'function') initReviewTab(); }
   } catch(e) { console.error('switchTab(' + name + '):', e); }
-  
   if (typeof applyTranslationVisibility === 'function') applyTranslationVisibility();
 }
 
@@ -414,26 +436,15 @@ function loadChallenge() { const c = SPEAKING_CHALLENGES[currentChallenge]; docu
 function showAnswer() { document.getElementById('challengeAnsBox').style.display = 'block'; }
 function nextChallenge() { currentChallenge = (currentChallenge + 1) % SPEAKING_CHALLENGES.length; loadChallenge(); }
 
-/* ✅ renderResources — يدعم اللغتين */
 function renderResources() {
   const container = document.getElementById('resourcesGrid');
   if (!container) return;
   const isEn = (typeof contentLanguage !== 'undefined' && contentLanguage === 'en');
-  const source = isEn
-    ? (typeof RESOURCES_EN !== 'undefined' ? RESOURCES_EN : [])
-    : (typeof RESOURCES !== 'undefined' ? RESOURCES : []);
-  if (!source || !source.length) {
-    container.innerHTML = '<p style="text-align:center; color:#dc2626;">⚠️ ملف المصادر غير محمّل.</p>';
-    return;
-  }
+  const source = isEn ? (typeof RESOURCES_EN !== 'undefined' ? RESOURCES_EN : []) : (typeof RESOURCES !== 'undefined' ? RESOURCES : []);
+  if (!source || !source.length) { container.innerHTML = '<p style="text-align:center; color:#dc2626;">⚠️ ملف المصادر غير محمّل.</p>'; return; }
   container.innerHTML = source.map(r => '<a href="' + r.url + '" target="_blank" rel="noopener" style="text-decoration:none;"><div style="background:#fff; padding:22px; border-radius:14px; border-right:5px solid #4f46e5; height:100%; display:flex; flex-direction:column;"><h3 style="color:#1e3a8a; font-size:18px; margin-bottom:10px; font-weight:700;">' + r.icon + ' ' + r.title + '</h3><p style="color:#64748b; font-size:14px; line-height:1.6; flex-grow:1;">' + r.description + '</p><span style="color:#4f46e5; font-weight:700; font-size:14px; margin-top:12px;">زيارة المصدر ↗️</span></div></a>').join('');
-  /* ✅ تحديث عنوان القسم حسب اللغة */
   const titleEl = container.parentElement.querySelector('h2');
-  if (titleEl) {
-    titleEl.textContent = isEn
-      ? '📚 مصادر رسمية موثوقة لتعلم الإنجليزية'
-      : '📚 مصادر رسمية موثوقة لتعلم الألمانية';
-  }
+  if (titleEl) titleEl.textContent = isEn ? '📚 مصادر رسمية موثوقة لتعلم الإنجليزية' : '📚 مصادر رسمية موثوقة لتعلم الألمانية';
 }
 
 document.getElementById("modal").addEventListener("click", e => { if (e.target.id === "modal") closeModal(); });
@@ -452,18 +463,12 @@ if (document.getElementById('currentLangLabel')) {
 function toggleContentLanguage() {
   contentLanguage = contentLanguage === 'de' ? 'en' : 'de';
   localStorage.setItem('content_language', contentLanguage);
-  
   const btn = document.getElementById('contentLangBtn');
   if (btn) btn.textContent = contentLanguage === 'de' ? '🇬🇧 English' : '🇩🇪 Deutsch';
-  
   const label = document.getElementById('currentLangLabel');
   if (label) label.textContent = contentLanguage === 'de' ? '(Deutsch)' : '(English)';
-  
   const filters = document.getElementById('verbFilters');
-  if (filters) {
-    filters.style.display = contentLanguage === 'en' ? 'none' : 'flex';
-  }
-  
+  if (filters) filters.style.display = contentLanguage === 'en' ? 'none' : 'flex';
   try {
     if (currentTab === 'verbs') renderVerbs();
     if (currentTab === 'nouns') renderNouns();
@@ -474,8 +479,11 @@ function toggleContentLanguage() {
     }
     if (currentTab === 'progress' && typeof initProgressTab === 'function') initProgressTab();
     if (currentTab === 'review' && typeof initReviewTab === 'function') initReviewTab();
-    /* ✅ إضافة: تحديث المصادر عند تبديل اللغة */
     if (currentTab === 'resources' && typeof renderResources === 'function') renderResources();
+    if (currentTab === 'verbs' || currentTab === 'nouns') {
+      currentTopic = 'all';
+      buildTopicFilters(currentTab);
+    }
   } catch (e) {
     console.error('Error in toggleContentLanguage:', e);
   }
