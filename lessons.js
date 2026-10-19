@@ -311,11 +311,12 @@ function openLesson(id) {
     </table>
     ${exercisesHTML}
   `;
+    // إضافة كلاس التكبير للنافذة
+  const modalContent = document.getElementById('modalContent');
+  if (modalContent) modalContent.classList.add('lesson-modal');
+  
   openModal(html);
   applyTranslationVisibility();
-  if (lesson.exercises && lesson.exercises.length) {
-    renderLessonExercises(lesson.exercises);
-  }
 }
 
 /* ========== عرض التمارين داخل الدرس ========== */
