@@ -258,9 +258,9 @@ function renderLessonsTab() {
 function openLesson(id) {
   const lesson = LESSONS.find(l => l.id === id);
   if (!lesson) return;
+  
   const allWords = [...(lesson.words || []), ...((lesson.newWords || []).map(w => w.de))];
   
-  // تجهيز جدول الكلمات
   const rows = allWords.map(w => {
     const d = getWordData(w);
     const clean = w.replace(/^(der|die|das) /, '');
@@ -277,44 +277,46 @@ function openLesson(id) {
     </tr>`;
   }).join('');
 
-  // تجهيز القاعدة النحوية
   const grammarHTML = lesson.grammar ? `
-    <div class="section-title" style="margin-top:30px;">📐 القاعدة: ${lesson.grammar.title}</div>
+    <div class="section-title" style="margin-top:30px; font-size: 22px;">📐 القاعدة: ${lesson.grammar.title}</div>
     <div class="rule-hint" style="font-size:16px; margin-bottom:20px;">${lesson.grammar.titleAr}</div>
-    <div class="grammar-content" style="display:block;padding:30px;background:var(--card-bg);border-radius:16px;border-right:6px solid var(--primary); box-shadow:0 4px 15px rgba(0,0,0,0.05);">
+    <div class="grammar-content" style="display:block;padding:30px;background:var(--card-bg);border-radius:16px;border-right:6px solid var(--primary); box-shadow:0 4px 15px rgba(0,0,0,0.05); font-size:16px; line-height:1.8;">
       ${lesson.grammar.explanation}
     </div>
   ` : '';
 
-  // تجهيز حاوية التمارين
   const exercisesHTML = (lesson.exercises && lesson.exercises.length) ? `
-    <div class="section-title" style="margin-top:30px;">📝 تمارين (${lesson.exercises.length})</div>
+    <div class="section-title" style="margin-top:30px; font-size: 22px;">📝 تمارين (${lesson.exercises.length})</div>
     <div id="lessonExercises" style="display:flex;flex-direction:column;gap:14px;"></div>
   ` : '';
 
-  // تجميع النافذة
   const html = `
-    <button class="close-btn" onclick="closeModal()">✕</button>
-    <div style="text-align:center;margin-bottom:25px;">
-      <h2 style="font-size:28px;color:var(--primary-dark);">${lesson.emoji} ${lesson.title}</h2>
-      <p style="color:var(--text-muted);font-size:18px;font-weight:600;margin-top:8px;">${lesson.titleAr}</p>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; flex-wrap:wrap; gap:15px;">
+      <button class="btn-next" style="margin:0; padding:10px 25px; font-size:15px; background:var(--text-muted);" onclick="closeSingleLesson()">← العودة للدروس</button>
+      <div style="text-align:left;">
+        <h2 style="font-size:32px;color:var(--primary-dark);margin-bottom:5px;">${lesson.emoji} ${lesson.title}</h2>
+        <p style="color:var(--text-muted);font-size:18px;font-weight:600;">${lesson.titleAr}</p>
+      </div>
+    </div>
+    
+    <div style="margin-bottom:25px; text-align:center;">
       <span class="badge regular" style="font-size:14px;">${lesson.level}</span>
       <span class="badge trennbar" style="font-size:14px;">${lesson.topic}</span>
     </div>
     
-    <div class="section-title">📖 النص</div>
-    <div class="example-box" style="font-size:17px;line-height:2;padding:25px;">
+    <div class="section-title" style="font-size: 22px;">📖 النص</div>
+    <div class="example-box" style="font-size:19px;line-height:2.2;padding:30px;">
       <div style="direction:ltr;text-align:right;font-weight:700;color:var(--text-main);">${lesson.text}</div>
       <div class="trans" style="color:var(--accent);margin-top:12px;font-weight:600;">${lesson.textAr}</div>
-      <button class="audio-btn" style="position:static;display:inline-flex;width:40px;height:40px;margin-top:12px;font-size:18px;" onclick="speak('${lesson.text.replace(/'/g, "\\'")}')">🔊</button>
+      <button class="audio-btn" style="position:static;display:inline-flex;width:45px;height:45px;margin-top:15px;font-size:20px;" onclick="speak('${lesson.text.replace(/'/g, "\\'")}')">🔊</button>
     </div>
     
     ${grammarHTML}
     
-    <div class="section-title" style="margin-top:30px;">📦 كلمات الدرس (${allWords.length})</div>
+    <div class="section-title" style="margin-top:30px; font-size: 22px;">📦 كلمات الدرس (${allWords.length})</div>
     <div style="overflow-x:auto;">
-      <table style="width:100%; border-collapse:collapse; margin-top:15px;">
-        <thead><tr style="background:#eff6ff;"><th style="padding:12px; color:var(--primary-dark);">الكلمة</th><th style="padding:12px; color:var(--primary-dark);">المعنى</th><th style="padding:12px; color:var(--primary-dark);">معلومة</th></tr></thead>
+      <table style="width:100%; border-collapse:collapse; margin-top:15px; font-size:16px;">
+        <thead><tr style="background:#eff6ff;"><th style="padding:14px; color:var(--primary-dark);">الكلمة</th><th style="padding:14px; color:var(--primary-dark);">المعنى</th><th style="padding:14px; color:var(--primary-dark);">معلومة</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
     </div>
@@ -322,39 +324,29 @@ function openLesson(id) {
     ${exercisesHTML}
   `;
 
-  // التعديل الحاسم: إضافة كلاس التكبير للنافذة وفتحها
-  const modalContent = document.getElementById('modalContent');
-  if (modalContent) {
-    modalContent.classList.add('lesson-modal'); // كلاس التكبير
-    modalContent.innerHTML = html;
-  }
-  document.getElementById('modal').classList.add('active');
+  // إخفاء القائمة وإظهار الدرس
+  document.getElementById('lessonsContent').classList.add('hidden');
+  document.getElementById('lessonSubTabs').classList.add('hidden');
+  const lessonContainer = document.getElementById('singleLessonContent');
+  lessonContainer.classList.remove('hidden');
+  lessonContainer.innerHTML = html;
   
-  // التعديل الحاسم: استدعاء دالة عرض التمارين فوراً
+  // عرض التمارين
   if (lesson.exercises && lesson.exercises.length) {
     renderLessonExercises(lesson.exercises);
   }
   
+  // التمرير لأعلى الصفحة
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   applyTranslationVisibility();
 }
 
-/* ========== عرض التمارين داخل الدرس ========== */
-function renderLessonExercises(exercises) {
-  const container = document.getElementById('lessonExercises');
-  if (!container) return;
-  container.innerHTML = exercises.map((ex, idx) => `
-    <div class="lesson-exercise" data-idx="${idx}" style="background:#fff;padding:18px;border-radius:12px;border:1px solid var(--border-color);">
-      <div style="font-weight:700;color:var(--primary-dark);margin-bottom:12px;">${idx + 1}. ${ex.question}</div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        ${ex.options.map((opt, i) => `
-          <button class="lesson-exercise-opt" data-idx="${idx}" data-opt="${i}"
-                  style="padding:12px 16px;background:#f8fafc;border:2px solid var(--border-color);border-radius:10px;cursor:pointer;font-size:15px;font-weight:600;text-align:right;direction:ltr;"
-                  onclick="checkLessonExercise(${idx}, ${i})">${opt}</button>
-        `).join('')}
-      </div>
-      <div id="lessonFeedback-${idx}" style="display:none;margin-top:12px;padding:12px;border-radius:10px;font-weight:600;"></div>
-    </div>
-  `).join('');
+// دالة جديدة للعودة
+function closeSingleLesson() {
+  document.getElementById('singleLessonContent').classList.add('hidden');
+  document.getElementById('lessonsContent').classList.remove('hidden');
+  document.getElementById('lessonSubTabs').classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function checkLessonExercise(exIdx, optIdx) {
