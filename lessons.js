@@ -20,7 +20,7 @@ const LESSONS = [
     titleAr: "جدي كان خبازاً أيضاً",
     topic: "عائلة ومهن",
     emoji: "👨‍🍳",
-    image: null,
+    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
     text: `Paul und Franka backen mit ihrem Großvater Brezeln. Paul findet es am Anfang kompliziert, aber sein Opa hilft ihm. Am Ende klappt es gut. Der Großvater erzählt: "Ich bin Opa. Aber das auf dem Foto, das war Opa. Ich habe auch einen Opa gehabt, und der war auch schon Bäcker."`,
     textAr: `بول وفرانكا يخبزان مع جدهما كعك البريتزل. يجد بول الأمر معقداً في البداية، لكن جده يساعده. في النهاية ينجح الأمر. يحكي الجد: "أنا الجد. لكن الذي في الصورة كان جدي. أنا أيضاً كان لي جد، وكان هو الآخر خبازاً."`,
     words: [
@@ -255,6 +255,7 @@ function renderLessonsTab() {
 
 /* ========== فتح درس ========== */
 /* ========== فتح درس ========== */
+/* ========== فتح درس ========== */
 function openLesson(id) {
   const lesson = LESSONS.find(l => l.id === id);
   if (!lesson) return;
@@ -290,6 +291,13 @@ function openLesson(id) {
     <div id="lessonExercises" style="display:flex;flex-direction:column;gap:14px;"></div>
   ` : '';
 
+  // إضافة صورة الدرس إذا كانت موجودة
+  const imageHTML = lesson.image ? `
+    <div style="width:100%; height:300px; border-radius:16px; overflow:hidden; margin-bottom:25px; border:1px solid var(--border-color);">
+      <img src="${lesson.image}" alt="${lesson.title}" style="width:100%; height:100%; object-fit:cover;">
+    </div>
+  ` : '';
+
   const html = `
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; flex-wrap:wrap; gap:15px;">
       <button class="btn-next" style="margin:0; padding:10px 25px; font-size:15px; background:var(--text-muted);" onclick="closeSingleLesson()">← العودة للدروس</button>
@@ -299,6 +307,8 @@ function openLesson(id) {
       </div>
     </div>
     
+    ${imageHTML}
+
     <div style="margin-bottom:25px; text-align:center;">
       <span class="badge regular" style="font-size:14px;">${lesson.level}</span>
       <span class="badge trennbar" style="font-size:14px;">${lesson.topic}</span>
@@ -324,19 +334,16 @@ function openLesson(id) {
     ${exercisesHTML}
   `;
 
-  // إخفاء القائمة وإظهار الدرس
   document.getElementById('lessonsContent').classList.add('hidden');
   document.getElementById('lessonSubTabs').classList.add('hidden');
   const lessonContainer = document.getElementById('singleLessonContent');
   lessonContainer.classList.remove('hidden');
   lessonContainer.innerHTML = html;
   
-  // عرض التمارين
   if (lesson.exercises && lesson.exercises.length) {
     renderLessonExercises(lesson.exercises);
   }
   
-  // التمرير لأعلى الصفحة
   window.scrollTo({ top: 0, behavior: 'smooth' });
   applyTranslationVisibility();
 }
