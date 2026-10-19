@@ -782,11 +782,10 @@ const GRAMMAR_A1 = [
         <li>Ich möchte gern heute <strong>einkaufen</strong>.</li>
       </ul>
     `
-  }
   /* ============================================================
    دوال العرض والتهيئة
    ============================================================ */
-
+];
 function initGrammarA1Tab() {
   renderGrammarA1();
 }
