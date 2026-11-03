@@ -392,24 +392,28 @@ function initLessonsTab() {
 function renderLessonsTab() {
   const container = document.getElementById('lessonsContent');
   if (!container) return;
+
   const lang = (typeof contentLanguage !== 'undefined') ? contentLanguage : 'de';
-if (lang !== 'de') {
-  container.innerHTML = `
-    <div style="text-align:center;padding:60px 20px;">
-      <div style="font-size:60px;margin-bottom:20px;">📚</div>
-      <h2 style="color:var(--primary-dark);font-size:24px;margin-bottom:15px;">الدروس متاحة بالألمانية فقط</h2>
-      <p style="color:var(--text-muted);font-size:16px;margin-bottom:25px;">دروس Menschen A2.1 مصممة لتعلم الألمانية — بدّل لغة المحتوى للمتابعة.</p>
-      <button onclick="toggleContentLanguage()" style="background:var(--primary);color:#fff;border:none;padding:14px 32px;border-radius:25px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;">
-        🇩🇪 التبديل إلى الألمانية
-      </button>
-    </div>
-  `;
-  return;
+  if (lang !== 'de') {
+    container.innerHTML = `
+      <div style="text-align:center;padding:60px 20px;">
+        <div style="font-size:60px;margin-bottom:20px;">📚</div>
+        <h2 style="color:var(--primary-dark);font-size:24px;margin-bottom:15px;">الدروس متاحة بالألمانية فقط</h2>
+        <p style="color:var(--text-muted);font-size:16px;margin-bottom:25px;">دروس Menschen A2.1 مصممة لتعلم الألمانية — بدّل لغة المحتوى للمتابعة.</p>
+        <button onclick="toggleContentLanguage()" style="background:var(--primary);color:#fff;border:none;padding:14px 32px;border-radius:25px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;">
+          🇩🇪 التبديل إلى الألمانية
+        </button>
+      </div>
+    `;
+    return;
+  }
+
   const filtered = LESSONS.filter(l => l.level === currentLessonLevel);
   if (!filtered.length) {
     container.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:40px;">📚 لا توجد دروس في هذا المستوى بعد.</p>';
     return;
   }
+
   const cards = filtered.map(l => `
     <div class="lesson-card" onclick="openLesson('${l.id}')">
       <div class="lesson-img-wrap">
@@ -426,6 +430,7 @@ if (lang !== 'de') {
       </div>
     </div>
   `).join('');
+
   container.innerHTML = `<div class="lessons-grid">${cards}</div>`;
 }
 
