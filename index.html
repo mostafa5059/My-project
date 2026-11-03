@@ -986,6 +986,119 @@ body.dark-mode .pron-twister-de { color: #a5b4fc; }
 .rule-section .rule-content {
   display: none !important;
 }
+  /* ============================================================
+   تنسيق احترافي ومميز للنافذة المنبثقة للقواعد
+   ============================================================ */
+
+/* 1. تحسين الخطوط والمسافات داخل النافذة */
+#grammarModalContent {
+  font-size: 17px;
+  line-height: 2;
+  color: #1e293b;
+}
+
+/* 2. جعل عناوين القواعد (مثل "bis (حتى)") واضحة جداً */
+#grammarModalContent h4, 
+#grammarModalContent strong {
+  display: inline-block;
+  background: #eff6ff;
+  color: #1e40af;
+  padding: 4px 12px;
+  border-radius: 8px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-weight: 800;
+  border-right: 4px solid #3b82f6;
+}
+
+/* 3. تحويل الأسطر العادية إلى بطاقات صغيرة مريحة للعين */
+#grammarModalContent p, 
+#grammarModalContent ul li {
+  background: #f8fafc;
+  padding: 12px 18px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #f1f5f9;
+  transition: all 0.2s ease;
+}
+
+#grammarModalContent ul li:hover {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* 4. عزل الكلمات الألمانية وإبرازها */
+#grammarModalContent b, 
+#grammarModalContent i {
+  color: #0f172a;
+  font-weight: bold;
+  direction: ltr;
+  display: inline-block;
+  padding: 0 4px;
+}
+
+/* 5. تنسيق الجداول لتكون عريضة وواضحة */
+#grammarModalContent table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 25px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+}
+
+#grammarModalContent th {
+  background: #1e3a8a; /* أزرق داكن */
+  color: #ffffff;
+  padding: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#grammarModalContent td {
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  background: #ffffff;
+}
+
+/* تلوين العمود الأول (الضمائر) ليكون مميزاً */
+#grammarModalContent td:first-child,
+#grammarModalContent th:first-child {
+  background: #f1f5f9;
+  font-weight: bold;
+  color: #0f172a;
+}
+
+/* تلوين الصفوف الزوجية لسهولة القراءة */
+#grammarModalContent tr:nth-child(even) td:not(:first-child) {
+  background: #f8fafc;
+}
+
+/* 6. الوضع الليلي (إذا كان مستخدماً) */
+body.dark-mode #grammarModal > div {
+  background: #1e293b;
+}
+body.dark-mode #grammarModalContent {
+  color: #f1f5f9;
+}
+body.dark-mode #grammarModalContent h4,
+body.dark-mode #grammarModalContent strong {
+  background: #1e3a8a;
+  color: #93c5fd;
+}
+body.dark-mode #grammarModalContent p,
+body.dark-mode #grammarModalContent ul li {
+  background: #0f172a;
+  border-color: #334155;
+}
+body.dark-mode #grammarModalContent td {
+  background: #0f172a;
+  border-color: #334155;
+}
 </style>
 </head>
 <body>
@@ -1760,11 +1873,17 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.style.overflow = 'auto'; 
   };
 
-  window.openGrammarModal = function(htmlContent) {
-    document.getElementById('grammarModalContent').innerHTML = htmlContent;
+window.openGrammarModal = function(htmlContent) {
+    const modalContent = document.getElementById('grammarModalContent');
+    modalContent.innerHTML = htmlContent;
+    
+    // إصلاح اتجاه النصوص المختلطة (عربي + ألماني)
+    modalContent.style.direction = 'rtl';
+    modalContent.style.textAlign = 'right';
+    
     document.getElementById('grammarModal').style.display = 'block';
     document.body.style.overflow = 'hidden'; 
-  };
+};
 
   // ننتظر حتى يتم رسم القواعد، ثم نربط الأزرار
   setTimeout(() => {
