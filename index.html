@@ -404,6 +404,7 @@
         <button class="sidebar-item" data-tab="lessons"><span class="emoji">🎓</span> الدروس</button>
         <button class="sidebar-item" data-tab="basics"><span class="emoji">📚</span> الأساسيات</button>
         <button class="sidebar-item" data-tab="rules"><span class="emoji">📖</span> القواعد</button>
+        <button class="sidebar-item" data-tab="grammar-a1"><span class="emoji">📖</span> قواعد A1 (شاملة)</button>
         <button class="sidebar-item disabled" data-tab="pronunciation" title="قيد الإعداد"><span class="emoji">🗣️</span> النطق</button>
       </div>
       <div class="sidebar-group">
@@ -547,6 +548,7 @@
       <div id="tab-reading" class="hidden"><div id="readingContent"></div></div>
       <div id="tab-lessons" class="hidden"><div id="lessonsContent"></div></div>
       <div id="tab-rules" class="hidden"><div class="rules-container" id="rulesContent"></div></div>
+      <div id="tab-grammar-a1" class="hidden"><div id="grammarA1Content"></div></div>
       <div id="tab-resources" class="hidden">
         <div style="max-width:850px;margin:0 auto;">
           <h2 style="color:#1e3a8a;text-align:center;margin-bottom:25px;font-size:24px;">📚 مصادر رسمية موثوقة لتعلم الألمانية</h2>
@@ -562,6 +564,7 @@
 
 <script src="verbs.js"></script>
 <script src="rules.js"></script>
+<script src="grammar_a1.js"></script>
 <script src="speaking.js"></script>
 <script src="exercises.js"></script>
 <script src="review.js"></script>
@@ -885,6 +888,7 @@ function switchTab(name) {
     else if (name === "progress") { if (typeof initProgressTab === 'function') initProgressTab(); }
     else if (name === "lessons") { if (typeof initLessonsTab === 'function') initLessonsTab(); }
     else if (name === "rules") { if (typeof renderRules === 'function') renderRules(); else { const rc = document.getElementById("rulesContent"); if (rc) rc.innerHTML = (contentLanguage === 'en' && typeof RULES_HTML_EN !== 'undefined') ? RULES_HTML_EN : (typeof RULES_HTML !== 'undefined' ? RULES_HTML : ''); } }
+      else if (name === "grammar-a1") { if (typeof initGrammarA1Tab === 'function') initGrammarA1Tab(); }
     else if (name === "resources") { if (typeof renderResources === 'function') renderResources(); }
     else if (name === "review") { if (typeof initReviewTab === 'function') initReviewTab(); }
     else if (name === "pronunciation") { alert('قسم النطق قيد الإعداد 🚧'); }
