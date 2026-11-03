@@ -1077,28 +1077,107 @@ body.dark-mode .pron-twister-de { color: #a5b4fc; }
 #grammarModalContent tr:nth-child(even) td:not(:first-child) {
   background: #f8fafc;
 }
+/* ============================================================
+   🎨 محرك الألوان الذكي الشامل (الوضع النهاري والليلي)
+   ============================================================ */
 
-/* 6. الوضع الليلي (إذا كان مستخدماً) */
-body.dark-mode #grammarModal > div {
-  background: #1e293b;
+/* 1. تعريف الألوان النهارية */
+:root {
+  --table-bg: #ffffff;
+  --table-text: #1e293b;
+  --table-border: #e2e8f0;
+  --table-th-bg: #1e3a8a;
+  --table-th-text: #ffffff;
+  --table-first-col-bg: #f1f5f9;
+  --table-even-bg: #f8fafc;
+  
+  --code-bg: #eff6ff;
+  --code-text: #1e40af;
+  --box-bg: #f8fafc;
+  --box-border: #f1f5f9;
 }
+
+/* 2. تعريف الألوان الليلية (تتغير تلقائياً) */
+body.dark-mode {
+  --table-bg: #0f172a;
+  --table-text: #f1f5f9;
+  --table-border: #334155;
+  --table-th-bg: #1e3a8a;
+  --table-th-text: #ffffff;
+  --table-first-col-bg: #1e293b;
+  --table-even-bg: #1e293b;
+  
+  --code-bg: #334155;
+  --code-text: #93c5fd;
+  --box-bg: #0f172a;
+  --box-border: #334155;
+}
+
+/* 3. تطبيق الألوان على جميع الجداول في الموقع (القديمة والجديدة) */
+table, .grammar-content table, #grammarModalContent table {
+  background: var(--table-bg) !important;
+  border-color: var(--table-border) !important;
+  color: var(--table-text) !important;
+}
+
+th, .grammar-content th, #grammarModalContent th {
+  background: var(--table-th-bg) !important;
+  color: var(--table-th-text) !important;
+  border-color: var(--table-border) !important;
+}
+
+td, .grammar-content td, #grammarModalContent td {
+  background: var(--table-bg) !important;
+  color: var(--table-text) !important;
+  border-color: var(--table-border) !important;
+}
+
+/* تلوين العمود الأول والصفوف الزوجية */
+td:first-child, .grammar-content td:first-child, #grammarModalContent td:first-child,
+th:first-child, .grammar-content th:first-child, #grammarModalContent th:first-child {
+  background: var(--table-first-col-bg) !important;
+  color: var(--table-text) !important;
+}
+
+tr:nth-child(even) td:not(:first-child), 
+.grammar-content tr:nth-child(even) td:not(:first-child),
+#grammarModalContent tr:nth-child(even) td:not(:first-child) {
+  background: var(--table-even-bg) !important;
+  color: var(--table-text) !important;
+}
+
+/* 4. إصلاح الصناديق والبطاقات والنصوص البرمجية (Code) */
+.grammar-content code, #grammarModalContent code, .rule-content code {
+  background: var(--code-bg) !important;
+  color: var(--code-text) !important;
+}
+
+#grammarModalContent p, 
+#grammarModalContent ul li,
+.grammar-content p,
+.grammar-content ul li {
+  background: var(--box-bg) !important;
+  border-color: var(--box-border) !important;
+  color: var(--table-text) !important;
+}
+
+/* إجبار النصوص العادية على أن تكون واضحة في الوضع الليلي */
+body.dark-mode .grammar-content,
+body.dark-mode .rule-content,
 body.dark-mode #grammarModalContent {
-  color: #f1f5f9;
+  color: var(--table-text) !important;
 }
+
+/* إصلاح عناوين القواعد (h4, strong) */
 body.dark-mode #grammarModalContent h4,
-body.dark-mode #grammarModalContent strong {
-  background: #1e3a8a;
-  color: #93c5fd;
+body.dark-mode #grammarModalContent strong,
+body.dark-mode .grammar-content h4,
+body.dark-mode .grammar-content strong,
+body.dark-mode .rule-content strong {
+  background: #1e3a8a !important;
+  color: #93c5fd !important;
 }
-body.dark-mode #grammarModalContent p,
-body.dark-mode #grammarModalContent ul li {
-  background: #0f172a;
-  border-color: #334155;
-}
-body.dark-mode #grammarModalContent td {
-  background: #0f172a;
-  border-color: #334155;
-}
+
 </style>
 </head>
 <body>
