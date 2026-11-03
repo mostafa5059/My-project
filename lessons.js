@@ -80,27 +80,116 @@ const LESSONS = [
     ]
   },
 
-  /* ============ Lektion 3 ============ */
+    /* ============ Lektion 3 (Custom) ============ */
   {
-    id: "M2-03", level: "A2.1", title: "Meine erste Liebe", titleAr: "حبي الأول", topic: "مشاعر وحياة", emoji: "💖",
-    image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    text: `Leo sitzt im Café und erinnert sich an seine erste Liebe. "Ich habe mich damals sofort verliebt", erzählt er. "Wir sind oft zusammen spazieren gegangen und haben stundenlang geredet. Aber eines Tages ist sie weggezogen." Er trinkt einen Schluck Kaffee und lächelt. "Ich habe sie nie vergessen."`,
-    textAr: `ليو يجلس في المقهى ويتذكر حبه الأول. يحكي: "لقد وقعت في الحب فوراً في ذلك الوقت. كنا غالباً نتمشى معاً ونتحدث لساعات. لكن في أحد الأيام انتقلت بعيداً." يأخذ رشفة من القهوة ويبتسم: "لم أنسها أبداً."`,
-    words: ["die Liebe", "verlieben", "erinnern", "spazieren", "vergessen"],
+    id: "M2-03",
+    level: "A2.1",
+    title: "Hier finden Sie Ruhe und Erholung",
+    titleAr: "هنا تجدون الهدوء والاسترخاء",
+    topic: "سفر وإجازات",
+    emoji: "🏖️",
+    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    text: `Viele Menschen fahren im Sommer ans Meer oder in die Berge, um sich zu erholen. Sie wollen dem Stress der Stadt entkommen. Ein beliebtes Reiseziel ist die Nordsee. Dort kann man lange Spaziergänge am Strand machen und die frische Luft genießen. Wer lieber wandert, fährt in die Alpen. Aber auch ein Kurzurlaub im Spa-Hotel ist eine gute Möglichkeit, um neue Energie zu tanken.`,
+    textAr: `كثير من الناس يسافرون في الصيف إلى البحر أو إلى الجبال للاسترخاء. إنهم يريدون الهروب من ضغط المدينة. من الوجهات السياحية الشهيرة هو بحر الشمال. هناك يمكنك القيام بنزهات طويلة على الشاطئ والاستمتاع بالهواء النقي. من يفضل المشي لمسافات طويلة، يسافر إلى جبال الألب. لكن الإجازة القصيرة في فندق صحي هي أيضاً وسيلة جيدة لشحن طاقة جديدة.`,
+    words: ["die Erholung", "der Strand", "das Meer", "die Berge", "die Reise", "wandern", "entspannen", "buchen"],
     newWords: [
-      w("das Gefühl", "الشعور", "مشاعر"), w("die Liebe", "الحب", "مشاعر"), w("der Freund", "الصديق / الحبيب", "علاقات"), w("die Freundin", "الصديقة / الحبيبة", "علاقات"), w("der Partner", "الشريك", "علاقات"), w("die Partnerschaft", "الشراكة / العلاقة", "علاقات"), w("das Herz", "القلب", "مشاعر"), w("der Kuss", "القبلة", "مشاعر"), w("die Hochzeit", "الزفاف", "مناسبات"), w("die Ehe", "الزواج", "حياة"), w("die Beziehung", "العلاقة", "علاقات"), w("der Streit", "الخلاف / الشجار", "علاقات"), w("die Entschuldigung", "الاعتذار", "تواصل"), w("das Date", "الموعد (الرومانسي)", "علاقات"), w("die Erinnerung", "الذكرى", "حياة"), w("das Glück", "الحظ / السعادة", "مشاعر"), w("der Traum", "الحلم", "حياة"), w("die Zukunft", "المستقبل", "حياة"), w("die Vergangenheit", "الماضي", "حياة"), w("der Moment", "اللحظة", "حياة"), w("das Jahr", "السنة", "وقت"), w("der Monat", "الشهر", "وقت"), w("die Woche", "الأسبوع", "وقت"), w("der Tag", "اليوم", "وقت"), w("der Brief", "الرسالة", "تواصل"), w("das Geschenk", "الهدية", "مناسبات"), w("das Blume", "الزهرة", "طبيعة"), w("der Ring", "الخاتم", "أثاث"), w("das Café", "المقهى", "أماكن"), w("der Ort", "المكان", "أماكن"),
-      v("sich verlieben", "يقع في الحب", ["verliebe mich","verliebst dich","verliebt sich","verlieben uns","verliebt euch","verlieben sich"], "verliebte sich", "hat sich verliebt", "مشاعر", "reflexiv"), v("sich erinnern", "يتذكر", ["erinnere mich","erinnerst dich","erinnert sich","erinnern uns","erinnert euch","erinnern sich"], "erinnerte sich", "hat sich erinnert", "حياة", "reflexiv"), v("kennenlernen", "يتعرف على", ["lerne kennen","lernst kennen","lernt kennen","lernen kennen","lernt kennen","lernen kennen"], "lernte kennen", "hat kennengelernt", "علاقات", "trennbar"), v("zusammen sein", "يكون معاً", ["bin zusammen","bist zusammen","ist zusammen","sind zusammen","seid zusammen","sind zusammen"], "war zusammen", "ist zusammen gewesen", "علاقات", "trennbar"), v("heiraten", "يتزوج", ["heirate","heiratest","heiratet","heiraten","heiratet","heiraten"], "heiratete", "hat geheiratet", "مناسبات"), v("verlassen", "يترك", ["verlasse","verlässt","verlässt","verlassen","verlasst","verlassen"], "verließ", "hat verlassen", "علاقات", "unregelmäßig"), v("vergessen", "ينسى", ["vergesse","vergisst","vergisst","vergessen","vergesst","vergessen"], "vergaß", "hat vergessen", "حياة", "unregelmäßig"), v("sich trennen", "ينفصل", ["trenne mich","trennst dich","trennt sich","trennen uns","trennt euch","trennen sich"], "trennte sich", "hat sich getrennt", "علاقات", "reflexiv"), v("wegziehen", "ينتقل بعيداً", ["ziehe weg","ziehst weg","zieht weg","ziehen weg","zieht weg","ziehen weg"], "zog weg", "ist weggezogen", "سكن", "trennbar"), v("streiten", "يتشاجر", ["streite","streitest","streitet","streiten","streitet","streiten"], "stritt", "hat gestritten", "علاقات", "unregelmäßig"), v("sich entschuldigen", "يعتذر", ["entschuldige mich","entschuldigst dich","entschuldigt sich","entschuldigen uns","entschuldigt euch","entschuldigen sich"], "entschuldigte sich", "hat sich entschuldigt", "تواصل", "reflexiv"), v("schenken", "يهدي", ["schenke","schenkst","schenkt","schenken","schenkt","schenken"], "schenkte", "hat geschenkt", "مناسبات"), v("küssen", "يقبل", ["küsse","küsst","küsst","küssen","küsst","küssen"], "küsste", "hat geküsst", "مشاعر"), v("träumen", "يحلم", ["träume","träumst","träumt","träumen","träumt","träumen"], "träumte", "hat geträumt", "حياة"), v("spazieren gehen", "يتمشى", ["gehe spazieren","gehst spazieren","geht spazieren","gehen spazieren","geht spazieren","gehen spazieren"], "ging spazieren", "ist spazieren gegangen", "حركة", "trennbar"),
-      w("glücklich", "سعيد", "صفات"), w("traurig", "حزين", "صفات"), w("verliebt", "واقع في الحب", "صفات"), w("eifersüchtig", "غيور", "صفات"), w("romantisch", "رومانسي", "صفات"), w("zusammen", "معاً", "ظروف"), w("getrennt", "منفصل", "صفات"), w("damals", "في ذلك الوقت", "ظروف"), w("früher", "سابقاً", "ظروف"), w("plötzlich", "فجأة", "ظروف"), w("leider", "للأسف", "ظروف"), w("zum Glück", "لحسن الحظ", "ظروف")
+      w("die Erholung", "الاسترخاء", "سفر"),
+      w("der Urlaub", "الإجازة", "سفر"),
+      w("die Reise", "الرحلة", "سفر"),
+      w("das Meer", "البحر", "طبيعة"),
+      w("der Strand", "الشاطئ", "طبيعة"),
+      w("die Berge", "الجبال", "طبيعة"),
+      w("der See", "البحيرة", "طبيعة"),
+      w("der Wald", "الغابة", "طبيعة"),
+      w("die Landschaft", "المنظر الطبيعي", "طبيعة"),
+      w("die Insel", "الجزيرة", "طبيعة"),
+      w("das Hotel", "الفندق", "سفر"),
+      w("die Pension", "بيت الضيافة", "سفر"),
+      w("das Zimmer", "الغرفة", "سكن"),
+      w("die Ferienwohnung", "شقة العطلات", "سفر"),
+      w("der Campingplatz", "مخيم", "سفر"),
+      w("die Nordsee", "بحر الشمال", "جغرافيا"),
+      w("die Ostsee", "بحر البلطيق", "جغرافيا"),
+      w("die Alpen", "جبال الألب", "جغرافيا"),
+      w("die Stadt", "المدينة", "أماكن"),
+      w("das Dorf", "القرية", "أماكن"),
+      w("die Natur", "الطبيعة", "طبيعة"),
+      w("die frische Luft", "الهواء النقي", "طبيعة"),
+      w("die Sonne", "الشمس", "طبيعة"),
+      w("der Regen", "المطر", "طبيعة"),
+      w("der Schnee", "الثلج", "طبيعة"),
+      w("das Wetter", "الطقس", "طبيعة"),
+      w("der Stress", "الضغط / التوتر", "حياة"),
+      w("die Energie", "الطاقة", "حياة"),
+      w("das Glück", "السعادة", "مشاعر"),
+      w("die Ruhe", "الهدوء", "مشاعر"),
+      w("der Traum", "الحلم", "حياة"),
+      
+      v("sich erholen", "يستريح", ["erhole mich","erholst dich","erholt sich","erholen uns","erholt euch","erholen sich"], "erholte sich", "hat sich erholt", "سفر", "reflexiv"),
+      v("reisen", "يسافر", ["reise","reist","reist","reisen","reist","reisen"], "reiste", "ist gereist", "سفر"),
+      v("fahren", "يسافر (بمركبة)", ["fahre","fährst","fährt","fahren","fahrt","fahren"], "fuhr", "ist gefahren", "حركة", "unregelmäßig"),
+      v("fliegen", "يطير", ["fliege","fliegst","fliegt","fliegen","fliegt","fliegen"], "flog", "ist geflogen", "حركة", "unregelmäßig"),
+      v("wandern", "يمشي لمسافات طويلة", ["wandere","wanderst","wandert","wandern","wandert","wandern"], "wanderte", "ist gewandert", "حركة"),
+      v("entspannen", "يسترخي", ["entspanne","entspannst","entspannt","entspannen","entspannt","entspannen"], "entspannte", "hat entspannt", "حياة"),
+      v("buchen", "يحجز", ["buche","buchst","bucht","buchen","bucht","buchen"], "buchte", "hat gebucht", "سفر"),
+      v("packen", "يحزم", ["packe","packst","packt","packen","packt","packen"], "packte", "hat gepackt", "سفر"),
+      v("abfahren", "يغادر (منفصل)", ["fahre ab","fährst ab","fährt ab","fahren ab","fahrt ab","fahren ab"], "fuhr ab", "ist abgefahren", "حركة", "trennbar"),
+      v("ankommen", "يصل (منفصل)", ["komme an","kommst an","kommt an","kommen an","kommt an","kommen an"], "kam an", "ist angekommen", "حركة", "trennbar"),
+      v("genießen", "يستمتع", ["genieße","genießt","genießt","genießen","genießt","genießen"], "genoss", "hat genossen", "حياة", "unregelmäßig"),
+      v("besuchen", "يزور", ["besuche","besuchst","besucht","besuchen","besucht","besuchen"], "besuchte", "hat besucht", "سفر"),
+      v("schwimmen", "يسبح", ["schwimme","schwimmst","schwimmt","schwimmen","schwimmt","schwimmen"], "schwamm", "ist geschwommen", "رياضة", "unregelmäßig"),
+      
+      w("sonnig", "مشمس", "طقس"),
+      w("regnerisch", "ممطر", "طقس"),
+      w("wunderschön", "جميل جداً", "صفات"),
+      w("ruhig", "هادئ", "صفات"),
+      w("voll", "ممتلئ", "صفات"),
+      w("günstig", "رخيص", "صفات"),
+      w("teuer", "غالي", "صفات"),
+      w("weit", "بعيد", "صفات"),
+      w("nah", "قريب", "صفات"),
+      w("draußen", "في الخارج", "ظروف"),
+      w("drinnen", "في الداخل", "ظروف"),
+      w("endlich", "أخيراً", "ظروف"),
+      w("unterwegs", "في الطريق", "ظروف")
     ],
     grammar: {
-      title: "Perfekt mit trennbaren Verben + Reflexive Verben", titleAr: "الماضي التام مع الأفعال المنفصلة + الأفعال الانعكاسية",
-      explanation: `<h4>1) Perfekt مع الأفعال المنفصلة (Trennbare Verben)</h4><p>في الماضي التام (Perfekt)، نضع <strong>-ge-</strong> بين البادئة والفعل الأصلي.</p><ul><li>kennenlernen → hat kennen<strong>ge</strong>lernt</li><li>wegziehen → ist weg<strong>ge</strong>zogen</li><li>spazieren gehen → ist spazieren <strong>ge</strong>gangen</li><li>einkaufen → hat ein<strong>ge</strong>kauft</li></ul><div class="grammar-tip">💡 الأفعال التي تبدأ بـ (be-, ge-, er-, ver-, ent-, emp-, zer-) لا تأخذ -ge- في الماضي التام (مثل: vergessen → hat vergessen).</div><h4>2) الأفعال الانعكاسية (Reflexive Verben)</h4><p>هي أفعال يحتاج فيها الفاعل إلى ضمير انعكاسي (sich).</p><table><tr><th>الضمير</th><th>الضمير الانعكاسي</th></tr><tr><td>ich</td><td>mich</td></tr><tr><td>du</td><td>dich</td></tr><tr><td>er/sie/es</td><td>sich</td></tr><tr><td>wir</td><td>uns</td></tr><tr><td>ihr</td><td>euch</td></tr><tr><td>sie/Sie</td><td>sich</td></tr></table><ul><li>sich verlieben → Ich habe mich verliebt.</li><li>sich erinnern → Er erinnert sich an sie.</li><li>sich treffen → Wir haben uns getroffen.</li></ul><h4>3) حروف الجر مع الأفعال الانعكاسية</h4><ul><li><strong>sich erinnern an + Akk</strong> — Ich erinnere mich an ihn. (أتذكره)</li><li><strong>sich verlieben in + Akk</strong> — Ich habe mich in sie verliebt. (وقعت في حبها)</li><li><strong>sich freuen auf + Akk</strong> — Ich freue mich auf den Urlaub. (أتشوق للعطلة)</li><li><strong>sich interessieren für + Akk</strong> — Er interessiert sich für Musik.</li></ul><div class="grammar-tip">⚠️ لاحظ: في Perfekt مع الأفعال الانعكاسية، الضمير الانعكاسي يبقى في مكانه بعد الفعل المساعد: Ich <strong>habe mich</strong> verliebt.</div>`
+      title: "Präpositionen mit Akkusativ/Dativ (Ort und Richtung) + Trennbare Verben",
+      titleAr: "حروف الجر مع الأماكن (أين؟ / إلى أين؟) + الأفعال المنفصلة",
+      explanation: `
+        <h4>1) حروف الجر مع الأماكن (Wo? / Wohin?)</h4>
+        <p>في هذا الدرس نركز على حروف الجر الخاصة بالأماكن (مثل: ans Meer, in die Berge, am Strand).</p>
+        <ul>
+          <li><strong>Wohin?</strong> (إلى أين؟) ➔ نستخدم <strong>Akkusativ</strong>: Ich fahre <strong>ans</strong> Meer (an + das). Ich fahre <strong>in die</strong> Berge.</li>
+          <li><strong>Wo?</strong> (أين؟) ➜ نستخدم <strong>Dativ</strong>: Ich bin <strong>am</strong> Strand (an + dem). Ich bin <strong>in den</strong> Bergen.</li>
+        </ul>
+        
+        <h4>2) الأفعال المنفصلة (Trennbare Verben)</h4>
+        <p>في المضارع، تنفصل البادئة وتذهب إلى نهاية الجملة.</p>
+        <ul>
+          <li>abfahren: Der Zug <strong>fährt</strong> um 8 Uhr <strong>ab</strong>.</li>
+          <li>ankommen: Wir <strong>kommen</strong> morgen <strong>an</strong>.</li>
+          <li>einkaufen: Ich <strong>kaufe</strong> im Supermarkt <strong>ein</strong>.</li>
+        </ul>
+        
+        <h4>3) الأفعال الانعكاسية (Reflexive Verben)</h4>
+        <p>مثل: sich erholen (يستريح).</p>
+        <ul>
+          <li>Ich <strong>erhole mich</strong> im Urlaub.</li>
+          <li>Er <strong>erholt sich</strong> am Strand.</li>
+        </ul>
+        <div class="grammar-tip">💡 تذكر: الفعل المساعد (sein) يُستخدم مع أفعال الحركة (reisen, fahren, fliegen, wandern) في الماضي التام (Perfekt).</div>
+      `
     },
     exercises: [
-      mc("Ich habe mich sofort in sie ___. (verlieben - Perfekt)", ["verliebt", "verlieben", "verliebte", "verliebe"], 0, "sich verlieben → hat sich verliebt."), mc("Wir sind gestern zusammen spazieren ___. (gehen - Perfekt)", ["gegangen", "gehen", "ging", "geht"], 0, "spazieren gehen → ist spazieren gegangen."), mc("Er hat sie nie ___. (vergessen - Perfekt)", ["vergessen", "gegessen", "vergaß", "vergisst"], 0, "vergessen → hat vergessen (بدون ge- لأنها تبدأ بـ ver-)."), mc("Ich erinnere ___ an meine Kindheit. (Reflexiv)", ["mich", "dich", "sich", "uns"], 0, "ich erinnere mich."), mc("Wann hast du sie ___? (kennenlernen - Perfekt)", ["kennengelernt", "kennen gelernt", "kennenlernte", "lernt kennen"], 0, "kennenlernen → hat kennengelernt (الـ ge- في المنتصف)."), mc("Sie hat ___ von ihm getrennt. (Reflexiv)", ["sich", "mich", "dich", "uns"], 0, "sie (هي) + sich getrennt.")
+      mc("Wohin fährst du im Sommer? — Ich fahre ___ Meer.", ["ans", "am", "in der", "auf dem"], 0, "Wohin? + das Meer → an + das = ans Meer."),
+      mc("Wo ist dein Hotel? — Es ist direkt ___ Strand.", ["am", "ans", "in den", "auf die"], 0, "Wo? + der Strand → an + dem = am Strand."),
+      mc("Wann ___ der Zug ___? (abfahren)", ["fährt ... ab", "abfährt", "fährt ab ...", "ab ... fährt"], 0, "فعل منفصل: الفعل في المركز والبادئة في النهاية."),
+      mc("Ich ___ mich im Urlaub sehr gut. (erholen)", ["erhole", "erholst", "erholt", "erholen"], 0, "ich + erhole mich (فعل انعكاسي)."),
+      mc("Wir sind letztes Jahr nach Italien ___. (reisen - Perfekt)", ["gereist", "gereisen", "reiste", "reisen"], 0, "reisen → ist gereist."),
+      mc("Die Wanderung in ___ war fantastisch. (Berge)", ["den Bergen", "die Berge", "der Berge", "dem Berge"], 0, "Wo? → Dativ جمع → in den Bergen.")
     ]
   }
-];
 
 /* ========== استخراج بيانات كلمة من المصادر ========== */
 function getWordData(word) {
