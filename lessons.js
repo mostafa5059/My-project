@@ -1,7 +1,7 @@
 /* ============================================================
    lessons.js — دروس Menschen A2.1
-   البنية: تبويبات فرعية للمستويات (A2.1, A2.2, B1...)
    ============================================================ */
+
 /* ============================================================
    محرك توليد البيانات (Data Generator) لتقصير الكود
    ============================================================ */
@@ -15,7 +15,7 @@ function w(word, ar, topic) {
     akk = "den " + word.replace("der ", "");
     dat = "dem " + word.replace("der ", "");
   } else if (word.startsWith("die ")) {
-    plural = "die " + word.replace("die ", "") + "en"; // افتراض الجمع بـ en (يُعدل يدوياً إذا لزم)
+    plural = "die " + word.replace("die ", "") + "en";
     akk = word;
     dat = "der " + word.replace("die ", "");
   } else if (word.startsWith("das ")) {
@@ -36,6 +36,7 @@ function v(verb, ar, präsens, präteritum, perfekt, topic, type="regular") {
 function mc(question, options, correctIndex, explanation) {
   return { type: "choose", question: question, options: options, correct: correctIndex, explanation: explanation };
 }
+
 const LESSON_LEVELS = [
   { id: "A2.1", label: "📚 Menschen A2.1", available: true },
   { id: "A2.2", label: "📚 Menschen A2.2", available: false },
@@ -59,7 +60,6 @@ const LESSONS = [
     textAr: `بول وفرانكا يخبزان مع جدهما كعك البريتزل. يجد بول الأمر معقداً في البداية، لكن جده يساعده. في النهاية ينجح الأمر. يحكي الجد: "أنا الجد. لكن الذي في الصورة كان جدي. أنا أيضاً كان لي جد، وكان هو الآخر خبازاً."`,
     words: ["der Großvater", "der Bäcker", "die Familie", "der Beruf", "backen", "arbeiten", "erzählen"],
     
-    // 👇 هنا الـ 40 كلمة كاملة، بسطر واحد لكل كلمة 👇
     newWords: [
       w("der Cousin", "ابن العم", "عائلة"),
       w("die Cousine", "ابنة العم", "عائلة"),
@@ -149,7 +149,7 @@ const LESSONS = [
           <tr><td>ich</td><td>war</td><td>hatte</td></tr>
           <tr><td>du</td><td>warst</td><td>hattest</td></tr>
           <tr><td>er/sie/es</td><td>war</td><td>hatte</td></tr>
-          <tr><th>wir</th><th>waren</th><th>hatten</th></tr>
+          <tr><td>wir</td><td>waren</td><td>hatten</td></tr>
           <tr><td>ihr</td><td>wart</td><td>hattet</td></tr>
           <tr><td>sie/Sie</td><td>waren</td><td>hatten</td></tr>
         </table>
@@ -165,7 +165,8 @@ const LESSONS = [
       mc("Früher ___ ich viel Zeit. (Präteritum von haben)", ["hatte", "habe", "hat", "hatten"], 0, "ich + hatte (Präteritum)."),
       mc("Mein Onkel ___ sehr lustig. (Präteritum von sein)", ["war", "ist", "waren", "bin"], 0, "er + war (Präteritum).")
     ]
-  },
+  }
+]; // 👈 تم إغلاق المصفوفة هنا بنجاح
 
 /* ========== استخراج بيانات كلمة من المصادر ========== */
 function getWordData(word) {
