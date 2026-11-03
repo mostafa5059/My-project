@@ -81,27 +81,116 @@ const LESSONS = [
     ]
   },
 
-  /* ============ Lektion 3 (Custom) ============ */
+   /* ============ Lektion 3 ============ */
   {
-    id: "M2-03", level: "A2.1", title: "Hier finden Sie Ruhe und Erholung", titleAr: "هنا تجدون الهدوء والاسترخاء", topic: "سفر وإجازات", emoji: "🏖️",
+    id: "M2-03",
+    level: "A2.1",
+    title: "Hier finden Sie Ruhe und Erholung",
+    titleAr: "هنا تجدون الهدوء والاسترخاء",
+    topic: "سفر وطبيعة",
+    emoji: "🏖️",
     image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    text: `Viele Menschen fahren im Sommer ans Meer oder in die Berge, um sich zu erholen. Sie wollen dem Stress der Stadt entkommen. Ein beliebtes Reiseziel ist die Nordsee. Dort kann man lange Spaziergänge am Strand machen und die frische Luft genießen. Wer lieber wandert, fährt in die Alpen. Aber auch ein Kurzurlaub im Spa-Hotel ist eine gute Möglichkeit, um neue Energie zu tanken.`,
-    textAr: `كثير من الناس يسافرون في الصيف إلى البحر أو إلى الجبال للاسترخاء. إنهم يريدون الهروب من ضغط المدينة. من الوجهات السياحية الشهيرة هو بحر الشمال. هناك يمكنك القيام بنزهات طويلة على الشاطئ والاستمتاع بالهواء النقي. من يفضل المشي لمسافات طويلة، يسافر إلى جبال الألب. لكن الإجازة القصيرة في فندق صحي هي أيضاً وسيلة جيدة لشحن طاقة جديدة.`,
-    words: ["die Erholung", "der Strand", "das Meer", "die Berge", "die Reise", "wandern", "entspannen", "buchen"],
+    text: `Zu viel Stress? Alles zu schnell? Stopp! Hier finden Sie Ruhe, Entspannung und Erholung. Auf dem Öko-Wellness-Bauernhof von Johanna und Theresia Lindthaler gehen die Uhren anders. Bei uns gibt es keine Termine. Hier muss nichts schnell gehen. Sie dürfen langsam sein. Wandern Sie über hellgrüne Wiesen, durch dunkelgrüne Wälder. Hier auf dem Lindthaler Hof ist die Welt noch in Ordnung.`,
+    textAr: `الكثير من التوتر؟ كل شيء سريع جداً؟ توقف! هنا تجدون الهدوء والاسترخاء والراحة. في مزرعة العافية العضوية الخاصة بجوانا وتيريزيا ليندثالر، تسير الساعات بشكل مختلف. ليس لدينا مواعيد هنا. لا شيء يجب أن يكون سريعاً هنا. يُسمح لك أن تكون بطيئاً. تمشَّ عبر المروج الخضراء الفاتحة، وعبر الغابات الخضراء الداكنة. هنا في مزرعة ليندثالر، لا يزال العالم على ما يرام.`,
+    words: ["die Ruhe", "die Erholung", "die Entspannung", "der Stress", "wandern", "die Wiese", "der Wald"],
     newWords: [
-      w("die Erholung", "الاسترخاء", "سفر"), w("der Urlaub", "الإجازة", "سفر"), w("die Reise", "الرحلة", "سفر"), w("das Meer", "البحر", "طبيعة"), w("der Strand", "الشاطئ", "طبيعة"), w("die Berge", "الجبال", "طبيعة"), w("der See", "البحيرة", "طبيعة"), w("der Wald", "الغابة", "طبيعة"), w("die Landschaft", "المنظر الطبيعي", "طبيعة"), w("die Insel", "الجزيرة", "طبيعة"), w("das Hotel", "الفندق", "سفر"), w("die Pension", "بيت الضيافة", "سفر"), w("das Zimmer", "الغرفة", "سكن"), w("die Ferienwohnung", "شقة العطلات", "سفر"), w("der Campingplatz", "مخيم", "سفر"), w("die Nordsee", "بحر الشمال", "جغرافيا"), w("die Ostsee", "بحر البلطيق", "جغرافيا"), w("die Alpen", "جبال الألب", "جغرافيا"), w("die Stadt", "المدينة", "أماكن"), w("das Dorf", "القرية", "أماكن"), w("die Natur", "الطبيعة", "طبيعة"), w("die frische Luft", "الهواء النقي", "طبيعة"), w("die Sonne", "الشمس", "طبيعة"), w("der Regen", "المطر", "طبيعة"), w("der Schnee", "الثلج", "طبيعة"), w("das Wetter", "الطقس", "طبيعة"), w("der Stress", "الضغط / التوتر", "حياة"), w("die Energie", "الطاقة", "حياة"), w("das Glück", "السعادة", "مشاعر"), w("die Ruhe", "الهدوء", "مشاعر"), w("der Traum", "الحلم", "حياة"),
-      v("sich erholen", "يستريح", ["erhole mich","erholst dich","erholt sich","erholen uns","erholt euch","erholen sich"], "erholte sich", "hat sich erholt", "سفر", "reflexiv"), v("reisen", "يسافر", ["reise","reist","reist","reisen","reist","reisen"], "reiste", "ist gereist", "سفر"), v("fahren", "يسافر (بمركبة)", ["fahre","fährst","fährt","fahren","fahrt","fahren"], "fuhr", "ist gefahren", "حركة", "unregelmäßig"), v("fliegen", "يطير", ["fliege","fliegst","fliegt","fliegen","fliegt","fliegen"], "flog", "ist geflogen", "حركة", "unregelmäßig"), v("wandern", "يمشي لمسافات طويلة", ["wandere","wanderst","wandert","wandern","wandert","wandern"], "wanderte", "ist gewandert", "حركة"), v("entspannen", "يسترخي", ["entspanne","entspannst","entspannt","entspannen","entspannt","entspannen"], "entspannte", "hat entspannt", "حياة"), v("buchen", "يحجز", ["buche","buchst","bucht","buchen","bucht","buchen"], "buchte", "hat gebucht", "سفر"), v("packen", "يحزم", ["packe","packst","packt","packen","packt","packen"], "packte", "hat gepackt", "سفر"), v("abfahren", "يغادر (منفصل)", ["fahre ab","fährst ab","fährt ab","fahren ab","fahrt ab","fahren ab"], "fuhr ab", "ist abgefahren", "حركة", "trennbar"), v("ankommen", "يصل (منفصل)", ["komme an","kommst an","kommt an","kommen an","kommt an","kommen an"], "kam an", "ist angekommen", "حركة", "trennbar"), v("genießen", "يستمتع", ["genieße","genießt","genießt","genießen","genießt","genießen"], "genoss", "hat genossen", "حياة", "unregelmäßig"), v("besuchen", "يزور", ["besuche","besuchst","besucht","besuchen","besucht","besuchen"], "besuchte", "hat besucht", "سفر"), v("schwimmen", "يسبح", ["schwimme","schwimmst","schwimmt","schwimmen","schwimmt","schwimmen"], "schwamm", "ist geschwommen", "رياضة", "unregelmäßig"),
-      w("sonnig", "مشمس", "طقس"), w("regnerisch", "ممطر", "طقس"), w("wunderschön", "جميل جداً", "صفات"), w("ruhig", "هادئ", "صفات"), w("voll", "ممتلئ", "صفات"), w("günstig", "رخيص", "صفات"), w("teuer", "غالي", "صفات"), w("weit", "بعيد", "صفات"), w("nah", "قريب", "صفات"), w("draußen", "في الخارج", "ظروف"), w("drinnen", "في الداخل", "ظروف"), w("endlich", "أخيراً", "ظروف"), w("unterwegs", "في الطريق", "ظروف")
+      w("die Ruhe", "الهدوء", "طبيعة"),
+      w("die Erholung", "الاسترخاء", "طبيعة"),
+      w("die Entspannung", "الاسترخاء / الراحة", "طبيعة"),
+      w("der Stress", "التوتر", "حياة"),
+      w("der Bauernhof", "المزرعة", "سفر"),
+      w("die Wiese", "المرج", "طبيعة"),
+      w("der Wald", "الغابة", "طبيعة"),
+      w("der Berg", "الجبل", "طبيعة"),
+      w("der See", "البحيرة", "طبيعة"),
+      w("der Fluss", "النهر", "طبيعة"),
+      w("das Meer", "البحر", "طبيعة"),
+      w("der Strand", "الشاطئ", "طبيعة"),
+      w("die Landschaft", "المنظر الطبيعي", "طبيعة"),
+      w("die Stadt", "المدينة", "أماكن"),
+      w("das Dorf", "القرية", "أماكن"),
+      w("der Ort", "المكان", "أماكن"),
+      w("die Natur", "الطبيعة", "طبيعة"),
+      w("die Region", "المنطقة", "جغرافيا"),
+      w("die Grenze", "الحدود", "جغرافيا"),
+      w("der Urlaub", "العطلة", "سفر"),
+      w("die Reise", "الرحلة", "سفر"),
+      w("das Angebot", "العرض", "تسوق"),
+      w("der Termin", "الموعد", "حياة"),
+      w("die Erfahrung", "الخبرة", "عمل"),
+      w("der Wanderer", "المُشاة", "سفر"),
+      w("die Beratung", "الاستشارة", "عمل"),
+      w("die Bewegung", "الحركة", "رياضة"),
+      w("die Übernachtung", "المبيت", "سفر"),
+      w("die Anmeldung", "التسجيل", "عمل"),
+      w("das Erlebnis", "التجربة", "حياة"),
+      w("die Unterkunft", "مكان الإقامة", "سفر"),
+      
+      v("wandern", "يمشي لمسافات طويلة", ["wandere","wanderst","wandert","wandern","wandert","wandern"], "wanderte", "ist gewandert", "سفر"),
+      v("erfahren", "يختبر / يعلم", ["erfahre","erfährst","erfährt","erfahren","erfahrt","erfahren"], "erfuhr", "hat erfahren", "حياة", "unregelmäßig"),
+      v("sich entspannen", "يسترخي", ["entspanne mich","entspannst dich","entspannt sich","entspannen uns","entspannt euch","entspannen sich"], "entspannte sich", "hat sich entspannt", "حياة", "reflexiv"),
+      v("sich erholen", "يستريح", ["erhole mich","erholst dich","erholt sich","erholen uns","erholt euch","erholen sich"], "erholte sich", "hat sich erholt", "حياة", "reflexiv"),
+      v("buchen", "يحجز", ["buche","buchst","bucht","buchen","bucht","buchen"], "buchte", "hat gebucht", "سفر"),
+      v("übernachten", "يبيت", ["übernachte","übernachtest","übernachtet","übernachten","übernachtet","übernachten"], "übernachtete", "hat übernachtet", "سفر"),
+      v("sich anmelden", "يسجل", ["melde mich an","meldest dich an","meldet sich an","melden uns an","meldet euch an","melden sich an"], "meldete sich an", "hat sich angemeldet", "عمل", "trennbar"),
+      v("beraten", "يقدم المشورة", ["berate","berätst","berät","beraten","beratet","beraten"], "beriet", "hat beraten", "عمل", "unregelmäßig"),
+      v("organisieren", "ينظم", ["organisiere","organisierst","organisiert","organisieren","organisiert","organisieren"], "organisierte", "hat organisiert", "عمل"),
+      
+      w("hellgrün", "أخضر فاتح", "ألوان"),
+      w("dunkelgrün", "أخضر داكن", "ألوان"),
+      w("ruhig", "هادئ", "صفات"),
+      w("schnell", "سريع", "صفات"),
+      w("langsam", "بطيء", "صفات"),
+      w("sympathisch", "لطيف / محبب", "صفات"),
+      w("aktiv", "نشط", "صفات"),
+      w("sportlich", "رياضي", "صفات"),
+      w("draußen", "في الخارج", "ظروف"),
+      w("endlich", "أخيراً", "ظروف"),
+      w("unterwegs", "في الطريق", "ظروف")
     ],
     grammar: {
-      title: "Präpositionen mit Akkusativ/Dativ (Ort und Richtung) + Trennbare Verben", titleAr: "حروف الجر مع الأماكن (أين؟ / إلى أين؟) + الأفعال المنفصلة",
-      explanation: `<h4>1) حروف الجر مع الأماكن (Wo? / Wohin?)</h4><p>في هذا الدرس نركز على حروف الجر الخاصة بالأماكن (مثل: ans Meer, in die Berge, am Strand).</p><ul><li><strong>Wohin?</strong> (إلى أين؟) ➔ نستخدم <strong>Akkusativ</strong>: Ich fahre <strong>ans</strong> Meer (an + das). Ich fahre <strong>in die</strong> Berge.</li><li><strong>Wo?</strong> (أين؟) ➜ نستخدم <strong>Dativ</strong>: Ich bin <strong>am</strong> Strand (an + dem). Ich bin <strong>in den</strong> Bergen.</li></ul><h4>2) الأفعال المنفصلة (Trennbare Verben)</h4><p>في المضارع، تنفصل البادئة وتذهب إلى نهاية الجملة.</p><ul><li>abfahren: Der Zug <strong>fährt</strong> um 8 Uhr <strong>ab</strong>.</li><li>ankommen: Wir <strong>kommen</strong> morgen <strong>an</strong>.</li><li>einkaufen: Ich <strong>kaufe</strong> im Supermarkt <strong>ein</strong>.</li></ul><h4>3) الأفعال الانعكاسية (Reflexive Verben)</h4><p>مثل: sich erholen (يستريح).</p><ul><li>Ich <strong>erhole mich</strong> im Urlaub.</li><li>Er <strong>erholt sich</strong> am Strand.</li></ul><div class="grammar-tip">💡 تذكر: الفعل المساعد (sein) يُستخدم مع أفعال الحركة (reisen, fahren, fliegen, wandern) في الماضي التام (Perfekt).</div>`
+      title: "Wortbildung: Verb → Nomen (تكوين الأسماء من الأفعال)",
+      titleAr: "كيف نحول الفعل إلى اسم؟ (إضافة -er أو -ung)",
+      explanation: `
+        <h4>1) Verb + -er → Nomen (الفاعل)</h4>
+        <p>عند إضافة <strong>-er</strong> إلى الفعل، نحصل على اسم يدل على <strong>الشخص الذي يقوم بالفعل</strong> (مذكر غالباً).</p>
+        <ul>
+          <li>wandern (يمشي) ➔ der Wander<strong>er</strong> (المُشاة)</li>
+          <li>fahren (يسافر) ➔ der Fahr<strong>er</strong> (السائق)</li>
+          <li>arbeiten (يعمل) ➔ der Arbeit<strong>er</strong> (العامل)</li>
+          <li>singen (يغني) ➔ der Säng<strong>er</strong> (المغني)</li>
+        </ul>
+        <div class="grammar-tip">💡 لاحظ: بعض الأفعال تتغير فيها حركة الجذر (مثل: singen ➔ Sänger)، والبعض الآخر يبقى كما هو (مثل: wandern ➔ Wanderer).</div>
+
+        <h4>2) Verb + -ung → Nomen (الحدث / النتيجة)</h4>
+        <p>عند إضافة <strong>-ung</strong> إلى الفعل، نحصل على اسم مؤنث (die) يدل على <strong>الحدث أو النتيجة</strong>.</p>
+        <ul>
+          <li>erfahren (يختبر) ➔ die Erfahr<strong>ung</strong> (الخبرة)</li>
+          <li>beraten (ينصح) ➔ die Berat<strong>ung</strong> (الاستشارة)</li>
+          <li>bestellen (يطلب) ➔ die Bestell<strong>ung</strong> (الطلب)</li>
+          <li>organisieren (ينظم) ➔ die Organisier<strong>ung</strong> (التنظيم)</li>
+        </ul>
+        <div class="grammar-tip">💡 لاحظ: جميع الأسماء التي تنتهي بـ -ung هي أسماء مؤنثة (die).</div>
+
+        <h4>3) أمثلة من الدرس:</h4>
+        <ul>
+          <li>der Wanderer (من wandern) — المُشاة</li>
+          <li>die Erfahrung (من erfahren) — الخبرة</li>
+          <li>die Beratung (من beraten) — الاستشارة</li>
+          <li>die Übernachtung (من übernachten) — المبيت</li>
+          <li>die Anmeldung (من anmelden) — التسجيل</li>
+        </ul>
+      `
     },
     exercises: [
-      mc("Wohin fährst du im Sommer? — Ich fahre ___ Meer.", ["ans", "am", "in der", "auf dem"], 0, "Wohin? + das Meer → an + das = ans Meer."), mc("Wo ist dein Hotel? — Es ist direkt ___ Strand.", ["am", "ans", "in den", "auf die"], 0, "Wo? + der Strand → an + dem = am Strand."), mc("Wann ___ der Zug ___? (abfahren)", ["fährt ... ab", "abfährt", "fährt ab ...", "ab ... fährt"], 0, "فعل منفصل: الفعل في المركز والبادئة في النهاية."), mc("Ich ___ mich im Urlaub sehr gut. (erholen)", ["erhole", "erholst", "erholt", "erholen"], 0, "ich + erhole mich (فعل انعكاسي)."), mc("Wir sind letztes Jahr nach Italien ___. (reisen - Perfekt)", ["gereist", "gereisen", "reiste", "reisen"], 0, "reisen → ist gereist."), mc("Die Wanderung in ___ war fantastisch. (Berge)", ["den Bergen", "die Berge", "der Berge", "dem Berge"], 0, "Wo? → Dativ جمع → in den Bergen.")
+      mc("wandern ➔ der ___", ["Wanderer", "Wanderung", "Wandern", "Gewander"], 0, "الفاعل (الشخص الذي يمشي) = Wanderer."),
+      mc("erfahren ➔ die ___", ["Erfahrung", "Erfahrer", "Erfahren", "Erfahrenheit"], 0, "الحدث/النتيجة (الخبرة) = Erfahrung."),
+      mc("beraten ➔ die ___", ["Beratung", "Berater", "Beraten", "Beratheit"], 0, "الحدث (الاستشارة) = Beratung."),
+      mc("Welches Nomen bedeutet 'الشخص الذي يسافر'؟", ["der Fahrer", "die Fahrung", "das Fahren", "die Fahrt"], 0, "الفاعل من fahren هو der Fahrer (السائق)."),
+      mc("Welches Nomen bedeutet 'التسجيل'؟", ["die Anmeldung", "der Anmelder", "das Anmelden", "die Anmeldheit"], 0, "الحدث من anmelden هو die Anmeldung."),
+      mc("Ich möchte einen Kurs buchen. Ich brauche eine ___.", ["Beratung", "Berater", "Beraten", "Berat"], 0, "تحتاج إلى استشارة (Beratung).")
     ]
   }
-];
 
 /* ========== الدوال المساعدة ========== */
 function getWordData(word) {
