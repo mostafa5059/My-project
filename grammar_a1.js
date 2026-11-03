@@ -1318,3 +1318,15 @@ function toggleGrammarCard(id) {
   if (!card) return;
   card.classList.toggle('open');
 }
+// دالة فتح القاعدة في النافذة المنبثقة
+function openGrammarModal(htmlContent, title) {
+  document.getElementById('grammarModalContent').innerHTML = htmlContent;
+  document.getElementById('grammarModal').style.display = 'block';
+  document.body.style.overflow = 'hidden'; 
+}
+
+// دالة إغلاق النافذة
+function closeGrammarModal() {
+  document.getElementById('grammarModal').style.display = 'none';
+  document.body.style.overflow = 'auto'; 
+}
