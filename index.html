@@ -981,6 +981,11 @@ body.dark-mode .pron-twister-de { color: #a5b4fc; }
   border-radius: 4px;
   font-weight: 700;
 }
+  /* إخفاء المحتوى المنسدل القديم نهائياً */
+.grammar-card .grammar-content,
+.rule-section .rule-content {
+  display: none !important;
+}
 </style>
 </head>
 <body>
@@ -1761,24 +1766,45 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('grammarModal').style.display = 'block';
     document.body.style.overflow = 'hidden'; 
   };
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  window.closeGrammarModal = function() {
+    document.getElementById('grammarModal').style.display = 'none';
+    document.body.style.overflow = 'auto'; 
+  };
 
-  setTimeout(() => {
-    const grammarCards = document.querySelectorAll('.grammar-card, .rule-card, .rule-item, .accordion-item');
-    grammarCards.forEach(card => {
-      card.addEventListener('click', function(e) {
-        const contentDiv = this.querySelector('.grammar-content, .rule-content, .accordion-content, .rule-explanation');
-        if (contentDiv) {
-          e.preventDefault();
-          e.stopPropagation();
-          const htmlToShow = contentDiv.innerHTML;
-          window.openGrammarModal(htmlToShow);
-        }
-      }, true);
-    });
-  }, 1000);
+  window.openGrammarModal = function(htmlContent) {
+    document.getElementById('grammarModalContent').innerHTML = htmlContent;
+    document.getElementById('grammarModal').style.display = 'block';
+    document.body.style.overflow = 'hidden'; 
+  };
+
+  // نظام التقاط الضغطات الجديد والمضمون 100%
+  document.body.addEventListener('click', function(e) {
+    const header = e.target.closest('.grammar-card-header, .rule-section h3');
+    
+    if (header) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      let contentDiv = null;
+      if (header.classList.contains('grammar-card-header')) {
+        contentDiv = header.parentElement.querySelector('.grammar-content');
+      } else if (header.tagName === 'H3') {
+        contentDiv = header.parentElement.querySelector('.rule-content');
+      }
+
+      if (contentDiv) {
+        window.openGrammarModal(contentDiv.innerHTML);
+      }
+    }
+  }, true);
 });
 </script>
 
 </body>
 </html>
+  
+
+
  
