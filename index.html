@@ -1755,17 +1755,7 @@ document.addEventListener('click', (e) => {
 
 <!-- 2. سكربت التشغيل -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  window.closeGrammarModal = function() {
-    document.getElementById('grammarModal').style.display = 'none';
-    document.body.style.overflow = 'auto'; 
-  };
-
-  window.openGrammarModal = function(htmlContent) {
-    document.getElementById('grammarModalContent').innerHTML = htmlContent;
-    document.getElementById('grammarModal').style.display = 'block';
-    document.body.style.overflow = 'hidden'; 
-  };
+<!-- ==================== سكربت التشغيل ==================== -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   window.closeGrammarModal = function() {
@@ -1779,26 +1769,28 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.style.overflow = 'hidden'; 
   };
 
-  // نظام التقاط الضغطات الجديد والمضمون 100%
-  document.body.addEventListener('click', function(e) {
-    const header = e.target.closest('.grammar-card-header, .rule-section h3');
+  // ننتظر حتى يتم رسم القواعد، ثم نربط الأزرار
+  setTimeout(() => {
+    const headers = document.querySelectorAll('.grammar-card-header, .rule-section h3');
     
-    if (header) {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      let contentDiv = null;
-      if (header.classList.contains('grammar-card-header')) {
-        contentDiv = header.parentElement.querySelector('.grammar-content');
-      } else if (header.tagName === 'H3') {
-        contentDiv = header.parentElement.querySelector('.rule-content');
-      }
+    headers.forEach(header => {
+      header.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        let contentDiv = null;
+        if (this.classList.contains('grammar-card-header')) {
+          contentDiv = this.parentElement.querySelector('.grammar-content');
+        } else if (this.tagName === 'H3') {
+          contentDiv = this.parentElement.querySelector('.rule-content');
+        }
 
-      if (contentDiv) {
-        window.openGrammarModal(contentDiv.innerHTML);
-      }
-    }
-  }, true);
+        if (contentDiv) {
+          window.openGrammarModal(contentDiv.innerHTML);
+        }
+      }, true); 
+    });
+  }, 1000);
 });
 </script>
 
