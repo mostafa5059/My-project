@@ -590,6 +590,323 @@ body.dark-mode .grammar-letters { background: #0f172a; color: #a5b4fc; }
   .grammar-content table { font-size: 12px; }
   .grammar-content th, .grammar-content td { padding: 6px 8px; }
 }
+  /* ============================================================
+   CSS لبطاقات النطق (pronunciation.js)
+   ============================================================ */
+
+/* التبويبات الفرعية */
+.pron-subtabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 28px;
+  padding: 8px;
+  background: var(--card-bg);
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+}
+.pron-subtab {
+  padding: 10px 20px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.pron-subtab:hover { background: var(--sidebar-item-hover); color: var(--text-main); }
+.pron-subtab.active { background: var(--primary); color: #fff; }
+
+/* عنوان الفئة */
+.pron-category-block { margin-bottom: 30px; }
+.pron-category-title {
+  font-size: 18px;
+  font-weight: 800;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  border-right: 5px solid var(--primary);
+  background: var(--card-bg);
+  border-radius: 10px;
+}
+
+/* شبكة الأصوات */
+.pron-sounds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+}
+.pron-sound-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-right: 5px solid var(--primary);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  text-align: center;
+  transition: all .25s ease;
+}
+.pron-sound-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(79,70,229,.15);
+}
+.pron-sound-icon { font-size: 32px; margin-bottom: 8px; }
+.pron-sound-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  direction: ltr;
+  margin-bottom: 6px;
+}
+.pron-sound-ar {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.pron-sound-count {
+  display: inline-block;
+  background: #eff6ff;
+  color: var(--primary-dark);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+/* تفاصيل صوت (modal) */
+.pron-examples-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pron-example-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+  background: #f8fafc;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+.pron-example-word {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  direction: ltr;
+  text-align: left;
+}
+.pron-example-word strong {
+  font-size: 16px;
+  color: var(--primary-dark);
+  font-weight: 800;
+}
+.pron-ipa {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+}
+.pron-example-ar {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* التمارين */
+.pron-exercise-box {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 30px;
+}
+.pron-exercise-progress {
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.pron-exercise-question {
+  color: var(--primary-dark);
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 22px;
+  line-height: 1.7;
+}
+.pron-exercise-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.pron-exercise-option {
+  padding: 14px 20px;
+  background: #f8fafc;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: right;
+  direction: ltr;
+  transition: all .2s ease;
+}
+.pron-exercise-option:hover:not(:disabled) {
+  border-color: var(--primary);
+  background: #eef2ff;
+}
+.pron-exercise-option.correct {
+  background: #dcfce7;
+  border-color: #10b981;
+  color: #166534;
+}
+.pron-exercise-option.wrong {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #991b1b;
+}
+.pron-exercise-option:disabled { cursor: not-allowed; opacity: .9; }
+
+/* Minimalpaare */
+.pron-minimal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.pron-minimal-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-right: 5px solid #f59e0b;
+  border-radius: 12px;
+  padding: 18px;
+}
+.pron-minimal-sound {
+  display: inline-block;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+.pron-minimal-pair {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border-color);
+}
+.pron-minimal-pair:last-of-type { border-bottom: none; }
+.pron-minimal-word {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  direction: ltr;
+}
+.pron-minimal-word strong {
+  font-size: 16px;
+  color: var(--primary-dark);
+  font-weight: 800;
+}
+.pron-minimal-ar {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.pron-minimal-vs {
+  text-align: center;
+  font-weight: 800;
+  color: var(--text-muted);
+  font-size: 12px;
+  margin: 6px 0;
+}
+.pron-minimal-diff {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  font-weight: 700;
+  color: #b45309;
+  text-align: center;
+}
+
+/* أعاصير اللسان */
+.pron-twisters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.pron-twister-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-right: 5px solid #8b5cf6;
+  border-radius: 14px;
+  padding: 22px 24px;
+}
+.pron-twister-focus {
+  display: inline-block;
+  background: #ede9fe;
+  color: #5b21b6;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+.pron-twister-de {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--primary-dark);
+  direction: ltr;
+  text-align: left;
+  margin-bottom: 8px;
+  line-height: 1.7;
+}
+.pron-twister-ar {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* ============ الوضع الليلي ============ */
+body.dark-mode .pron-subtabs { background: #1e293b; }
+body.dark-mode .pron-subtab { color: #94a3b8; }
+body.dark-mode .pron-subtab:hover { background: #334155; color: #f1f5f9; }
+body.dark-mode .pron-subtab.active { background: #4f46e5; color: #fff; }
+body.dark-mode .pron-sound-name { color: #a5b4fc; }
+body.dark-mode .pron-sound-count { background: #1e3a8a; color: #93c5fd; }
+body.dark-mode .pron-example-row { background: #0f172a; }
+body.dark-mode .pron-example-word strong { color: #a5b4fc; }
+body.dark-mode .pron-exercise-option { background: #0f172a; color: #f1f5f9; }
+body.dark-mode .pron-exercise-option:hover:not(:disabled) { background: #1e293b; }
+body.dark-mode .pron-exercise-question { color: #a5b4fc; }
+body.dark-mode .pron-minimal-word strong { color: #a5b4fc; }
+body.dark-mode .pron-minimal-sound { background: #78350f; color: #fcd34d; }
+body.dark-mode .pron-twister-focus { background: #4c1d95; color: #c4b5fd; }
+body.dark-mode .pron-twister-de { color: #a5b4fc; }
+
+/* ============ الموبايل ============ */
+@media (max-width: 600px) {
+  .pron-subtabs { gap: 6px; padding: 6px; }
+  .pron-subtab { padding: 8px 12px; font-size: 12px; }
+  .pron-sounds-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+  .pron-sound-card { padding: 12px; }
+  .pron-sound-icon { font-size: 26px; }
+  .pron-exercise-box { padding: 20px 16px; }
+  .pron-exercise-question { font-size: 17px; }
+  .pron-minimal-grid { grid-template-columns: 1fr; }
+  .pron-twister-de { font-size: 16px; }
+}
 </style>
 </head>
 <body>
@@ -641,7 +958,7 @@ body.dark-mode .grammar-letters { background: #0f172a; color: #a5b4fc; }
         <button class="sidebar-item" data-tab="basics"><span class="emoji">📚</span> الأساسيات</button>
         <button class="sidebar-item" data-tab="rules"><span class="emoji">📖</span> القواعد</button>
         <button class="sidebar-item" data-tab="grammar-a1"><span class="emoji">📖</span> قواعد A1 (شاملة)</button>
-        <button class="sidebar-item disabled" data-tab="pronunciation" title="قيد الإعداد"><span class="emoji">🗣️</span> النطق</button>
+        <button class="sidebar-item" data-tab="pronunciation"><span class="emoji">🗣️</span> النطق</button>
       </div>
       <div class="sidebar-group">
         <div class="sidebar-group-title">🏋️ تمرين</div>
@@ -783,6 +1100,7 @@ body.dark-mode .grammar-letters { background: #0f172a; color: #a5b4fc; }
       <div id="tab-review" class="hidden"><div id="reviewContent"></div></div>
       <div id="tab-reading" class="hidden"><div id="readingContent"></div></div>
       <div id="tab-lessons" class="hidden"><div id="lessonsContent"></div></div>
+      <div id="tab-pronunciation" class="hidden"><div id="pronunciationContent"></div></div>
       <div id="tab-rules" class="hidden"><div class="rules-container" id="rulesContent"></div></div>
       <div id="tab-grammar-a1" class="hidden"><div id="grammarA1Content"></div></div>
       <div id="tab-resources" class="hidden">
@@ -813,6 +1131,8 @@ body.dark-mode .grammar-letters { background: #0f172a; color: #a5b4fc; }
 <script src="reading.js"></script>
 <script src="basics.js"></script>
 <script src="lessons.js"></script>
+<script src="pronunciation.js"></script>
+  
 
 <script>
 /* ==================== الحالة ==================== */
@@ -1123,11 +1443,11 @@ function switchTab(name) {
     else if (name === "reading") { if (typeof initReadingTab === 'function') initReadingTab(); }
     else if (name === "progress") { if (typeof initProgressTab === 'function') initProgressTab(); }
     else if (name === "lessons") { if (typeof initLessonsTab === 'function') initLessonsTab(); }
+    else if (name === "pronunciation") { if (typeof initPronunciationTab === 'function') initPronunciationTab(); }
     else if (name === "rules") { if (typeof renderRules === 'function') renderRules(); else { const rc = document.getElementById("rulesContent"); if (rc) rc.innerHTML = (contentLanguage === 'en' && typeof RULES_HTML_EN !== 'undefined') ? RULES_HTML_EN : (typeof RULES_HTML !== 'undefined' ? RULES_HTML : ''); } }
       else if (name === "grammar-a1") { if (typeof initGrammarA1Tab === 'function') initGrammarA1Tab(); }
     else if (name === "resources") { if (typeof renderResources === 'function') renderResources(); }
     else if (name === "review") { if (typeof initReviewTab === 'function') initReviewTab(); }
-    else if (name === "pronunciation") { alert('قسم النطق قيد الإعداد 🚧'); }
   } catch(e) { console.error('switchTab(' + name + '):', e); }
   applyTranslationVisibility();
 }
