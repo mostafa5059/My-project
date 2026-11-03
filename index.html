@@ -1873,7 +1873,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.style.overflow = 'auto'; 
   };
 
-window.openGrammarModal = function(htmlContent) {
+  window.openGrammarModal = function(htmlContent) {
     const modalContent = document.getElementById('grammarModalContent');
     modalContent.innerHTML = htmlContent;
     
@@ -1883,30 +1883,42 @@ window.openGrammarModal = function(htmlContent) {
     
     document.getElementById('grammarModal').style.display = 'block';
     document.body.style.overflow = 'hidden'; 
-};
+  };
 
-  // ننتظر حتى يتم رسم القواعد، ثم نربط الأزرار
+  // ننتظر 1.5 ثانية لضمان تحميل القواعد من الملفات الخارجية
   setTimeout(() => {
-    const headers = document.querySelectorAll('.grammar-card-header, .rule-section h3');
-    
-    headers.forEach(header => {
-      header.addEventListener('click', function(e) {
+    document.body.addEventListener('click', function(e) {
+      // البحث عن رأس القاعدة الذي تم النقر عليه
+      const header = e.target.closest('.grammar-card-header, .rule-section h3');
+      
+      if (header) {
         e.preventDefault();
         e.stopPropagation();
         
         let contentDiv = null;
-        if (this.classList.contains('grammar-card-header')) {
-          contentDiv = this.parentElement.querySelector('.grammar-content');
-        } else if (this.tagName === 'H3') {
-          contentDiv = this.parentElement.querySelector('.rule-content');
+        
+        // في قواعد A1
+        if (header.classList.contains('grammar-card-header')) {
+          contentDiv = header.parentElement.querySelector('.grammar-content');
+        } 
+        // في القواعد القديمة
+        else if (header.tagName === 'H3') {
+          contentDiv = header.parentElement.querySelector('.rule-content');
         }
 
         if (contentDiv) {
-          window.openGrammarModal(contentDiv.innerHTML);
+          // نقوم بنسخ المحتوى (cloneNode) حتى لا يختفي من الصفحة الأصلية
+          const clone = contentDiv.cloneNode(true);
+          
+          // نجبره على الظهور في النافذة
+          clone.style.display = 'block'; 
+          
+          // نرسل الكود الداخلي للنافذة
+          window.openGrammarModal(clone.innerHTML);
         }
-      }, true); 
-    });
-  }, 1000);
+      }
+    }, true); 
+  }, 1500);
 });
 </script>
 
