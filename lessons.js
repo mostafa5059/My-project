@@ -406,4 +406,172 @@ function checkLessonExercise(exIdx, optIdx) {
     fb.style.color = isCorrect ? '#166534' : '#991b1b';
     fb.innerHTML = (isCorrect ? '✅ صحيح! ' : '❌ خطأ. ') + ex.explanation;
   }
+     ,
+  /* ============ Menschen A2.1 — Lektion 2 ============ */
+  {
+    id: "M2-02",
+    level: "A2.1",
+    title: "Wohin mit der Kommode?",
+    titleAr: "إلى أين نضع الخزانة؟",
+    topic: "سكن وأثاث",
+    emoji: "🪑",
+    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+    text: `Nina und Tom ziehen in eine neue Wohnung. Die Möbel stehen schon im Flur, aber sie wissen nicht, wohin sie sie stellen sollen. "Wohin kommt die Kommode?", fragt Tom. "Stell sie doch ins Schlafzimmer, neben das Bett", antwortet Nina. "Und wohin mit dem Regal?" — "Das Regal hängen wir an die Wand über den Schreibtisch." Am Ende steht alles am richtigen Platz, und die Wohnung sieht gemütlich aus.`,
+    textAr: `نينا وتوم ينتقلان إلى شقة جديدة. الأثاث يقف بالفعل في المدخل، لكنهما لا يعرفان أين يضعانه. يسأل توم: "إلى أين تذهب الخزانة؟" تجيب نينا: "ضعها في غرفة النوم، بجانب السرير." "وإلى أين نضع الرفوف؟" — "نعلّق الرفوف على الحائط فوق المكتب." في النهاية كل شيء في مكانه الصحيح، والشقة تبدو مريحة.`,
+    words: [
+      "die Kommode", "der Schrank", "das Regal", "das Sofa",
+      "der Schreibtisch", "die Wand", "stellen", "hängen"
+    ],
+    newWords: [
+      { de:"die Wohnung", ar:"الشقة", plural:"die Wohnungen", akk:"die Wohnung", dat:"der Wohnung", topic:"سكن" },
+      { de:"das Zimmer", ar:"الغرفة", plural:"die Zimmer", akk:"das Zimmer", dat:"dem Zimmer", topic:"سكن" },
+      { de:"das Schlafzimmer", ar:"غرفة النوم", plural:"die Schlafzimmer", akk:"das Schlafzimmer", dat:"dem Schlafzimmer", topic:"سكن" },
+      { de:"das Wohnzimmer", ar:"غرفة المعيشة", plural:"die Wohnzimmer", akk:"das Wohnzimmer", dat:"dem Wohnzimmer", topic:"سكن" },
+      { de:"die Küche", ar:"المطبخ", plural:"die Küchen", akk:"die Küche", dat:"der Küche", topic:"سكن" },
+      { de:"das Bad", ar:"الحمام", plural:"die Bäder", akk:"das Bad", dat:"dem Bad", topic:"سكن" },
+      { de:"der Flur", ar:"المدخل / الردهة", plural:"die Flure", akk:"den Flur", dat:"dem Flur", topic:"سكن" },
+      { de:"der Balkon", ar:"الشرفة", plural:"die Balkone", akk:"den Balkon", dat:"dem Balkon", topic:"سكن" },
+      { de:"die Kommode", ar:"الخزانة (أدراج)", plural:"die Kommoden", akk:"die Kommode", dat:"der Kommode", topic:"أثاث" },
+      { de:"der Schrank", ar:"الخزانة (ملابس)", plural:"die Schränke", akk:"den Schrank", dat:"dem Schrank", topic:"أثاث" },
+      { de:"das Regal", ar:"الرفوف", plural:"die Regale", akk:"das Regal", dat:"dem Regal", topic:"أثاث" },
+      { de:"das Bett", ar:"السرير", plural:"die Betten", akk:"das Bett", dat:"dem Bett", topic:"أثاث" },
+      { de:"das Sofa", ar:"الأريكة", plural:"die Sofas", akk:"das Sofa", dat:"dem Sofa", topic:"أثاث" },
+      { de:"der Tisch", ar:"الطاولة", plural:"die Tische", akk:"den Tisch", dat:"dem Tisch", topic:"أثاث" },
+      { de:"der Stuhl", ar:"الكرسي", plural:"die Stühle", akk:"den Stuhl", dat:"dem Stuhl", topic:"أثاث" },
+      { de:"der Schreibtisch", ar:"مكتب الكتابة", plural:"die Schreibtische", akk:"den Schreibtisch", dat:"dem Schreibtisch", topic:"أثاث" },
+      { de:"die Lampe", ar:"المصباح", plural:"die Lampen", akk:"die Lampe", dat:"der Lampe", topic:"أثاث" },
+      { de:"der Teppich", ar:"السجادة", plural:"die Teppiche", akk:"den Teppich", dat:"dem Teppich", topic:"أثاث" },
+      { de:"das Bild", ar:"الصورة", plural:"die Bilder", akk:"das Bild", dat:"dem Bild", topic:"ديكور" },
+      { de:"die Wand", ar:"الحائط", plural:"die Wände", akk:"die Wand", dat:"der Wand", topic:"سكن" },
+      { de:"die Decke", ar:"السقف", plural:"die Decken", akk:"die Decke", dat:"der Decke", topic:"سكن" },
+      { de:"der Boden", ar:"الأرضية", plural:"die Böden", akk:"den Boden", dat:"dem Boden", topic:"سكن" },
+      { de:"die Ecke", ar:"الزاوية", plural:"die Ecken", akk:"die Ecke", dat:"der Ecke", topic:"سكن" },
+      { de:"die Tür", ar:"الباب", plural:"die Türen", akk:"die Tür", dat:"der Tür", topic:"سكن" },
+      { de:"das Fenster", ar:"النافذة", plural:"die Fenster", akk:"das Fenster", dat:"dem Fenster", topic:"سكن" },
+      { de:"der Umzug", ar:"الانتقال", plural:"die Umzüge", akk:"den Umzug", dat:"dem Umzug", topic:"سكن" },
+      { de:"die Möbel", ar:"الأثاث", plural:"—", akk:"die Möbel", dat:"den Möbeln", topic:"أثاث" },
+      { de:"der Platz", ar:"المكان", plural:"die Plätze", akk:"den Platz", dat:"dem Platz", topic:"سكن" },
+      { de:"gemütlich", ar:"مريح / دافئ", topic:"صفات" },
+      { de:"neben", ar:"بجانب", topic:"حروف جر" },
+      { de:"über", ar:"فوق", topic:"حروف جر" },
+      { de:"unter", ar:"تحت", topic:"حروف جر" },
+      { de:"vor", ar:"أمام", topic:"حروف جر" },
+      { de:"hinter", ar:"خلف", topic:"حروف جر" },
+      { de:"zwischen", ar:"بين", topic:"حروف جر" },
+      { de:"an", ar:"على (ملاصق)", topic:"حروف جر" },
+      { de:"auf", ar:"على", topic:"حروف جر" },
+      { de:"in", ar:"في / داخل", topic:"حروف جر" },
+      { de:"stellen", ar:"يضع (أفقياً)", type:"regular", präsens:["stelle","stellst","stellt","stellen","stellt","stellen"], präteritum:"stellte", perfekt:"hat gestellt", partizip:"gestellt", topic:"حركة" },
+      { de:"legen", ar:"يضع (منبطحاً)", type:"regular", präsens:["lege","legst","legt","legen","legt","legen"], präteritum:"legte", perfekt:"hat gelegt", partizip:"gelegt", topic:"حركة" },
+      { de:"hängen", ar:"يعلّق", type:"regular", präsens:["hänge","hängst","hängt","hängen","hängt","hängen"], präteritum:"hängte", perfekt:"hat gehängt", partizip:"gehängt", topic:"حركة" },
+      { de:"stehen", ar:"يقف", type:"unregelmäßig", präsens:["stehe","stehst","steht","stehen","steht","stehen"], präteritum:"stand", perfekt:"hat gestanden", partizip:"gestanden", topic:"موقع" },
+      { de:"liegen", ar:"يستلقي", type:"unregelmäßig", präsens:["liege","liegst","liegt","liegen","liegt","liegen"], präteritum:"lag", perfekt:"hat gelegen", partizip:"gelegen", topic:"موقع" },
+      { de:"einziehen", ar:"ينتقل للسكن", type:"trennbar", präsens:["ziehe ein","ziehst ein","zieht ein","ziehen ein","zieht ein","ziehen ein"], präteritum:"zog ein", perfekt:"ist eingezogen", partizip:"eingezogen", topic:"سكن" }
+    ],
+    grammar: {
+      title: "Wechselpräpositionen: Wohin? + Akkusativ / Wo? + Dativ",
+      titleAr: "حروف الجر المتغيرة: إلى أين؟ + Akkusativ / أين؟ + Dativ",
+      explanation: `
+        <h4>1) ما هي Wechselpräpositionen؟</h4>
+        <p>هي 9 حروف جر تأخذ <strong>Akkusativ</strong> عند التعبير عن <strong>الحركة (Wohin?)</strong>، و<strong>Dativ</strong> عند التعبير عن <strong>الموقع الثابت (Wo?)</strong>.</p>
+        <table>
+          <tr><th>الحرف</th><th>المعنى</th></tr>
+          <tr><td>in</td><td>في</td></tr>
+          <tr><td>an</td><td>على (ملاصق)</td></tr>
+          <tr><td>auf</td><td>على</td></tr>
+          <tr><td>über</td><td>فوق</td></tr>
+          <tr><td>unter</td><td>تحت</td></tr>
+          <tr><td>vor</td><td>أمام</td></tr>
+          <tr><td>hinter</td><td>خلف</td></tr>
+          <tr><td>neben</td><td>بجانب</td></tr>
+          <tr><td>zwischen</td><td>بين</td></tr>
+        </table>
+
+        <h4>2) القاعدة الأساسية</h4>
+        <table>
+          <tr><th>السؤال</th><th>الحالة</th><th>مثال</th></tr>
+          <tr><td>Wohin? (إلى أين؟)</td><td><strong>Akkusativ</strong></td><td>Ich stelle die Kommode <strong>ins</strong> Schlafzimmer.</td></tr>
+          <tr><td>Wo? (أين؟)</td><td><strong>Dativ</strong></td><td>Die Kommode steht <strong>im</strong> Schlafzimmer.</td></tr>
+        </table>
+        <div class="grammar-tip">💡 اختصار: <strong>in + das = ins</strong>، <strong>in + dem = im</strong>، <strong>an + das = ans</strong>، <strong>an + dem = am</strong>.</div>
+
+        <h4>3) أدوات التعريف في الحالتين</h4>
+        <table>
+          <tr><th>الجنس</th><th>Nominativ</th><th>Akkusativ (Wohin?)</th><th>Dativ (Wo?)</th></tr>
+          <tr><td>مذكر</td><td>der</td><td><strong>den</strong></td><td><strong>dem</strong></td></tr>
+          <tr><td>مؤنث</td><td>die</td><td>die</td><td><strong>der</strong></td></tr>
+          <tr><td>محايد</td><td>das</td><td>das</td><td><strong>dem</strong></td></tr>
+          <tr><td>جمع</td><td>die</td><td>die</td><td><strong>den</strong> (+n)</td></tr>
+        </table>
+
+        <h4>4) أفعال الحركة (Wohin? → Akkusativ)</h4>
+        <ul>
+          <li><strong>stellen</strong> (يضع أفقياً) — Ich stelle den Tisch <strong>in die</strong> Küche.</li>
+          <li><strong>legen</strong> (يضع منبطحاً) — Ich lege das Buch <strong>auf den</strong> Tisch.</li>
+          <li><strong>hängen</strong> (يعلّق) — Ich hänge das Bild <strong>an die</strong> Wand.</li>
+          <li><strong>setzen</strong> (يجلس شخصاً) — Ich setze das Kind <strong>auf den</strong> Stuhl.</li>
+        </ul>
+
+        <h4>5) أفعال الموقع الثابت (Wo? → Dativ)</h4>
+        <ul>
+          <li><strong>stehen</strong> (يقف) — Der Tisch steht <strong>in der</strong> Küche.</li>
+          <li><strong>liegen</strong> (يستلقي) — Das Buch liegt <strong>auf dem</strong> Tisch.</li>
+          <li><strong>hängen</strong> (معلّق) — Das Bild hängt <strong>an der</strong> Wand.</li>
+          <li><strong>sitzen</strong> (يجلس) — Das Kind sitzt <strong>auf dem</strong> Stuhl.</li>
+        </ul>
+        <div class="grammar-tip">⚠️ لاحظ: <strong>hängen</strong> يمكن أن يأخذ Akkusativ (فعل حركة) أو Dativ (فعل موقع) حسب السياق — Ich hänge (Akk) vs Das Bild hängt (Dat).</div>
+
+        <h4>6) أمثلة من الدرس</h4>
+        <ul>
+          <li>Wohin kommt die Kommode? — Stell sie <strong>ins</strong> Schlafzimmer, <strong>neben das</strong> Bett.</li>
+          <li>Wohin mit dem Regal? — Wir hängen das Regal <strong>an die</strong> Wand <strong>über den</strong> Schreibtisch.</li>
+          <li>Wo steht die Kommode? — Sie steht <strong>im</strong> Schlafzimmer, <strong>neben dem</strong> Bett.</li>
+        </ul>
+      `
+    },
+    exercises: [
+      {
+        type: "choose",
+        question: "Ich stelle die Kommode ___ Schlafzimmer. (Wohin?)",
+        options: ["ins", "im", "in der", "in dem"],
+        correct: 0,
+        explanation: "Wohin? → Akkusativ → in + das = ins."
+      },
+      {
+        type: "choose",
+        question: "Die Kommode steht ___ Schlafzimmer. (Wo?)",
+        options: ["im", "ins", "in die", "in den"],
+        correct: 0,
+        explanation: "Wo? → Dativ → in + dem = im."
+      },
+      {
+        type: "choose",
+        question: "Wir hängen das Bild ___ Wand. (Wohin?)",
+        options: ["an die", "an der", "auf die", "in die"],
+        correct: 0,
+        explanation: "Wohin? → Akkusativ. Wand مؤنث → an die Wand."
+      },
+      {
+        type: "choose",
+        question: "Das Bild hängt ___ Wand. (Wo?)",
+        options: ["an der", "an die", "auf der", "in der"],
+        correct: 0,
+        explanation: "Wo? → Dativ. Wand مؤنث → an der Wand."
+      },
+      {
+        type: "choose",
+        question: "Wohin legst du das Buch? — Ich lege es ___ Tisch.",
+        options: ["auf den", "auf dem", "auf der", "auf das"],
+        correct: 0,
+        explanation: "Wohin? + Tisch مذكر → Akkusativ → auf den Tisch."
+      },
+      {
+        type: "choose",
+        question: "Wo liegt das Buch? — Es liegt ___ Tisch.",
+        options: ["auf dem", "auf den", "auf der", "auf die"],
+        correct: 0,
+        explanation: "Wo? + Tisch مذكر → Dativ → auf dem Tisch."
+      }
+    ]
+  }
 }
