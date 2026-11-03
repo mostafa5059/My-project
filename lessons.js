@@ -405,7 +405,6 @@ if (lang !== 'de') {
     </div>
   `;
   return;
-}
   const filtered = LESSONS.filter(l => l.level === currentLessonLevel);
   if (!filtered.length) {
     container.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:40px;">📚 لا توجد دروس في هذا المستوى بعد.</p>';
