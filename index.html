@@ -1557,11 +1557,6 @@ function flipCard() {
 }
 function nextCard() { newCard(); }
 
-/* ==================== القواعد ==================== */
-document.addEventListener('click', e => {
-  if (e.target.tagName === 'H3' && e.target.parentElement && e.target.parentElement.classList.contains('rule-section'))
-    e.target.parentElement.classList.toggle('open');
-});
 
 /* ==================== التحدث ==================== */
 let currentShadow = 0, currentChallenge = 0;
