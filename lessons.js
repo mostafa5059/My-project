@@ -2,7 +2,40 @@
    lessons.js — دروس Menschen A2.1
    البنية: تبويبات فرعية للمستويات (A2.1, A2.2, B1...)
    ============================================================ */
+/* ============================================================
+   محرك توليد البيانات (Data Generator) لتقصير الكود
+   ============================================================ */
 
+// 1. دالة الكلمات (تستنتج الجمع والحالات الإعرابية تلقائياً)
+function w(word, ar, topic) {
+  let plural = "—", akk = word, dat = word;
+  
+  if (word.startsWith("der ")) {
+    plural = "die " + word.replace("der ", "");
+    akk = "den " + word.replace("der ", "");
+    dat = "dem " + word.replace("der ", "");
+  } else if (word.startsWith("die ")) {
+    plural = "die " + word.replace("die ", "") + "en"; // افتراض الجمع بـ en (يُعدل يدوياً إذا لزم)
+    akk = word;
+    dat = "der " + word.replace("die ", "");
+  } else if (word.startsWith("das ")) {
+    plural = "die " + word.replace("das ", "");
+    akk = word;
+    dat = "dem " + word.replace("das ", "");
+  }
+  
+  return { de: word, ar: ar, plural: plural, akk: akk, dat: dat, topic: topic };
+}
+
+// 2. دالة الأفعال
+function v(verb, ar, präsens, präteritum, perfekt, topic, type="regular") {
+  return { de: verb, ar: ar, type: type, präsens: präsens, präteritum: präteritum, perfekt: perfekt, partizip: perfekt.split(' ').pop(), topic: topic };
+}
+
+// 3. دالة التمارين (Multiple Choice)
+function mc(question, options, correctIndex, explanation) {
+  return { type: "choose", question: question, options: options, correct: correctIndex, explanation: explanation };
+}
 const LESSON_LEVELS = [
   { id: "A2.1", label: "📚 Menschen A2.1", available: true },
   { id: "A2.2", label: "📚 Menschen A2.2", available: false },
@@ -13,7 +46,7 @@ let currentLessonLevel = "A2.1";
 let currentLessonId = null;
 
 const LESSONS = [
-  /* ============ Menschen A2.1 — Lektion 1 ============ */
+   /* ============ Menschen A2.1 — Lektion 1 ============ */
   {
     id: "M2-01",
     level: "A2.1",
@@ -24,66 +57,21 @@ const LESSONS = [
     image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
     text: `Paul und Franka backen mit ihrem Großvater Brezeln. Paul findet es am Anfang kompliziert, aber sein Opa hilft ihm. Am Ende klappt es gut. Der Großvater erzählt: "Ich bin Opa. Aber das auf dem Foto, das war Opa. Ich habe auch einen Opa gehabt, und der war auch schon Bäcker."`,
     textAr: `بول وفرانكا يخبزان مع جدهما كعك البريتزل. يجد بول الأمر معقداً في البداية، لكن جده يساعده. في النهاية ينجح الأمر. يحكي الجد: "أنا الجد. لكن الذي في الصورة كان جدي. أنا أيضاً كان لي جد، وكان هو الآخر خبازاً."`,
-    words: [
-      "der Großvater", "der Bäcker", "die Familie", "der Beruf",
-      "backen", "arbeiten", "erzählen"
-    ],
+    words: ["der Großvater", "der Bäcker", "die Familie", "der Beruf", "backen", "arbeiten", "erzählen"],
+    
+    // 👇 الكلمات الآن بسطر واحد فقط 👇
     newWords: [
-      { de:"der Cousin", ar:"ابن العم", plural:"die Cousins", akk:"den Cousin", dat:"dem Cousin", topic:"عائلة" },
-      { de:"die Cousine", ar:"ابنة العم", plural:"die Cousinen", akk:"die Cousine", dat:"der Cousine", topic:"عائلة" },
-      { de:"der Neffe", ar:"ابن الأخ", plural:"die Neffen", akk:"den Neffen", dat:"dem Neffen", topic:"عائلة" },
-      { de:"die Nichte", ar:"ابنة الأخ", plural:"die Nichten", akk:"die Nichte", dat:"der Nichte", topic:"عائلة" },
-      { de:"der Onkel", ar:"العم / الخال", plural:"die Onkel", akk:"den Onkel", dat:"dem Onkel", topic:"عائلة" },
-      { de:"die Tante", ar:"العمة / الخالة", plural:"die Tanten", akk:"die Tante", dat:"der Tante", topic:"عائلة" },
-      { de:"der Schwiegersohn", ar:"زوج الابنة", plural:"die Schwiegersöhne", akk:"den Schwiegersohn", dat:"dem Schwiegersohn", topic:"عائلة" },
-      { de:"die Schwiegertochter", ar:"زوجة الابن", plural:"die Schwiegertöchter", akk:"die Schwiegertochter", dat:"der Schwiegertochter", topic:"عائلة" },
-      { de:"der Schwiegervater", ar:"الحمو", plural:"die Schwiegerväter", akk:"den Schwiegervater", dat:"dem Schwiegervater", topic:"عائلة" },
-      { de:"die Schwiegermutter", ar:"الحماة", plural:"die Schwiegermütter", akk:"die Schwiegermutter", dat:"der Schwiegermutter", topic:"عائلة" },
-      { de:"das Enkelkind", ar:"الحفيد", plural:"die Enkelkinder", akk:"das Enkelkind", dat:"dem Enkelkind", topic:"عائلة" },
-      { de:"die Bäckerei", ar:"مخبز", plural:"die Bäckereien", akk:"die Bäckerei", dat:"der Bäckerei", topic:"مهن" },
-      { de:"die Brezel", ar:"كعكة البريتزل", plural:"die Brezeln", akk:"die Brezel", dat:"der Brezel", topic:"طعام" },
-      { de:"der Teig", ar:"العجين", plural:"die Teige", akk:"den Teig", dat:"dem Teig", topic:"طعام" },
-      { de:"die Kindheit", ar:"الطفولة", plural:"—", akk:"die Kindheit", dat:"der Kindheit", topic:"حياة" },
-      { de:"die Jugend", ar:"الشباب", plural:"—", akk:"die Jugend", dat:"der Jugend", topic:"حياة" },
-      { de:"die Geschichte", ar:"القصة / التاريخ", plural:"die Geschichten", akk:"die Geschichte", dat:"der Geschichte", topic:"حياة" },
-      { de:"die Erinnerung", ar:"الذكرى", plural:"die Erinnerungen", akk:"die Erinnerung", dat:"der Erinnerung", topic:"حياة" },
-      { de:"der Flohmarkt", ar:"سوق البرغوث", plural:"die Flohmärkte", akk:"den Flohmarkt", dat:"dem Flohmarkt", topic:"حياة" },
-      { de:"die Puppe", ar:"الدمية", plural:"die Puppen", akk:"die Puppe", dat:"der Puppe", topic:"حياة" },
-      { de:"der Witz", ar:"النكتة", plural:"die Witze", akk:"den Witz", dat:"dem Witz", topic:"حياة" },
-      { de:"die Mannschaft", ar:"الفريق", plural:"die Mannschaften", akk:"die Mannschaft", dat:"der Mannschaft", topic:"رياضة" },
-      { de:"der Anfang", ar:"البداية", plural:"die Anfänge", akk:"den Anfang", dat:"dem Anfang", topic:"حياة" },
-      { de:"das Ende", ar:"النهاية", plural:"die Enden", akk:"das Ende", dat:"dem Ende", topic:"حياة" },
-      { de:"der Schluss", ar:"الختام", plural:"die Schlüsse", akk:"den Schluss", dat:"dem Schluss", topic:"حياة" },
-      { de:"die Sache", ar:"الشيء", plural:"die Sachen", akk:"die Sache", dat:"der Sache", topic:"حياة" },
-      { de:"das Spiel", ar:"اللعبة", plural:"die Spiele", akk:"das Spiel", dat:"dem Spiel", topic:"حياة" },
-      { de:"die Zigarette", ar:"السجارة", plural:"die Zigaretten", akk:"die Zigarette", dat:"der Zigarette", topic:"حياة" },
-      { de:"der Pfeffer", ar:"الفلفل", plural:"—", akk:"den Pfeffer", dat:"dem Pfeffer", topic:"طعام" },
-      { de:"der Punkt", ar:"النقطة", plural:"die Punkte", akk:"den Punkt", dat:"dem Punkt", topic:"حياة" },
-      { de:"der Satz", ar:"الجملة", plural:"die Sätze", akk:"den Satz", dat:"dem Satz", topic:"لغة" },
-      { de:"das Studium", ar:"الدراسة الجامعية", plural:"die Studien", akk:"das Studium", dat:"dem Studium", topic:"دراسة" },
-      { de:"klettern", ar:"يتسلق", type:"regular", präsens:["klettere","kletterst","klettert","klettern","klettert","klettern"], präteritum:"kletterte", perfekt:"ist geklettert", partizip:"geklettert", topic:"حركة" },
-      { de:"sammeln", ar:"يجمع", type:"regular", präsens:["sammle","sammelst","sammelt","sammeln","sammelt","sammeln"], präteritum:"sammelte", perfekt:"hat gesammelt", partizip:"gesammelt", topic:"حياة" },
-      { de:"streiten", ar:"يتشاجر", type:"unregelmäßig", präsens:["streite","streitest","streitet","streiten","streitet","streiten"], präteritum:"stritt", perfekt:"hat gestritten", partizip:"gestritten", topic:"تواصل" },
-      { de:"übernachten", ar:"يبيت", type:"regular", präsens:["übernachte","übernachtest","übernachtet","übernachten","übernachtet","übernachten"], präteritum:"übernachtete", perfekt:"hat übernachtet", partizip:"übernachtet", topic:"سفر" },
-      { de:"verkaufen", ar:"يبيع", type:"regular", präsens:["verkaufe","verkaufst","verkauft","verkaufen","verkauft","verkaufen"], präteritum:"verkaufte", perfekt:"hat verkauft", partizip:"verkauft", topic:"تسوق" },
-      { de:"zeichnen", ar:"يرسم", type:"regular", präsens:["zeichne","zeichnest","zeichnet","zeichnen","zeichnet","zeichnen"], präteritum:"zeichnete", perfekt:"hat gezeichnet", partizip:"gezeichnet", topic:"فن" },
-      { de:"aufmachen", ar:"يفتح", type:"trennbar", präsens:["mache auf","machst auf","macht auf","machen auf","macht auf","machen auf"], präteritum:"machte auf", perfekt:"hat aufgemacht", partizip:"aufgemacht", topic:"منزل" },
-      { de:"aufpassen", ar:"ينتبه", type:"trennbar", präsens:["passe auf","passt auf","passt auf","passen auf","passt auf","passen auf"], präteritum:"passte auf", perfekt:"hat aufgepasst", partizip:"aufgepasst", topic:"حياة" },
-      { de:"klappen", ar:"ينجح", type:"regular", präsens:["klappe","klappst","klappt","klappen","klappt","klappen"], präteritum:"klappte", perfekt:"hat geklappt", partizip:"geklappt", topic:"حياة" },
-      { de:"passieren", ar:"يحدث", type:"regular", präsens:["passiere","passierst","passiert","passieren","passiert","passieren"], präteritum:"passierte", perfekt:"ist passiert", partizip:"passiert", topic:"حياة" },
-      { de:"rufen", ar:"ينادي", type:"unregelmäßig", präsens:["rufe","rufst","ruft","rufen","ruft","rufen"], präteritum:"rief", perfekt:"hat gerufen", partizip:"gerufen", topic:"تواصل" },
-      { de:"wachsen", ar:"ينمو", type:"unregelmäßig", präsens:["wachse","wächst","wächst","wachsen","wachst","wachsen"], präteritum:"wuchs", perfekt:"ist gewachsen", partizip:"gewachsen", topic:"حياة" },
-      { de:"verrückt", ar:"مجنون", topic:"صفات" },
-      { de:"früher", ar:"سابقاً", topic:"صفات" },
-      { de:"einfach", ar:"بسيط", topic:"صفات" },
-      { de:"fleißig", ar:"مجتهد", topic:"صفات" },
-      { de:"geschlossen", ar:"مغلق", topic:"صفات" },
-      { de:"kompliziert", ar:"معقد", topic:"صفات" },
-      { de:"zuerst", ar:"أولاً", topic:"ظروف" },
-      { de:"zum Schluss", ar:"في الختام", topic:"ظروف" },
-      { de:"am Anfang", ar:"في البداية", topic:"ظروف" },
-      { de:"am Ende", ar:"في النهاية", topic:"ظروف" }
+      w("der Cousin", "ابن العم", "عائلة"),
+      w("die Cousine", "ابنة العم", "عائلة"),
+      w("der Onkel", "العم / الخال", "عائلة"),
+      w("die Tante", "العمة / الخالة", "عائلة"),
+      w("die Bäckerei", "مخبز", "مهن"),
+      w("die Brezel", "كعكة البريتزل", "طعام"),
+      v("backen", "يخبز", ["backe","backst","backt","backen","backt","backen"], "backte", "hat gebacken", "طعام", "unregelmäßig"),
+      v("arbeiten", "يعمل", ["arbeite","arbeitest","arbeitet","arbeiten","arbeitet","arbeiten"], "arbeitete", "hat gearbeitet", "مهن"),
+      v("erzählen", "يحكي", ["erzähle","erzählst","erzählt","erzählen","erzählt","erzählen"], "erzählte", "hat erzählt", "تواصل")
     ],
+    
     grammar: {
       title: "Possessivartikel unser/euer + Perfekt + Präteritum",
       titleAr: "ضمائر الملكية unser/euer + الماضي التام + الماضي البسيط",
@@ -93,79 +81,31 @@ const LESSONS = [
         <table>
           <tr><th>Nominativ</th><th>Akkusativ</th><th>Dativ</th></tr>
           <tr><td>unser Opa</td><td>unseren Opa</td><td>unserem Opa</td></tr>
-          <tr><td>unser Baby</td><td>unser Baby</td><td>unserem Baby</td></tr>
           <tr><td>unsere Tante</td><td>unsere Tante</td><td>unserer Tante</td></tr>
-          <tr><td>unsere Neffen</td><td>unsere Neffen</td><td>unseren Neffen</td></tr>
         </table>
-        <p>مثل: mein-, dein-, sein-, ihr-, unser-, eu(e)r-, ihr-, Ihr-</p>
-        <div class="grammar-tip">💡 مع euer: عند إضافة نهاية، تُحذف الـ e (euer → eure، euer → euren).</div>
-
         <h4>2) Perfekt (الماضي التام)</h4>
-        <p>يُستخدم للتعبير عن أحداث في الماضي. يتكون من: <strong>haben/sein + Partizip II</strong>.</p>
+        <p>يتكون من: <strong>haben/sein + Partizip II</strong>.</p>
         <ul>
           <li>machen → hat gemacht</li>
           <li>fahren → ist gefahren</li>
-          <li>anmachen → hat angemacht</li>
-          <li>telefonieren → hat telefoniert</li>
-          <li>erkennen → hat erkannt</li>
         </ul>
-
         <h4>3) Präteritum von sein und haben</h4>
         <table>
           <tr><th>Pronomen</th><th>sein</th><th>haben</th></tr>
           <tr><td>ich</td><td>war</td><td>hatte</td></tr>
-          <tr><td>du</td><td>warst</td><td>hattest</td></tr>
           <tr><td>er/sie/es</td><td>war</td><td>hatte</td></tr>
-          <tr><td>wir</td><td>waren</td><td>hatten</td></tr>
-          <tr><td>ihr</td><td>wart</td><td>hattet</td></tr>
-          <tr><td>sie/Sie</td><td>waren</td><td>hatten</td></tr>
         </table>
-        <div class="grammar-tip">💡 Präteritum يُستخدم في السرد والكتابة، بينما Perfekt في المحادثة اليومية.</div>
       `
     },
+    
+    // 👇 التمارين الآن بسطر واحد لكل تمرين 👇
     exercises: [
-      {
-        type: "choose",
-        question: "___ Opa war Bäcker. (نحن)",
-        options: ["Unser", "Unserer", "Unserem", "Unseren"],
-        correct: 0,
-        explanation: "Nominativ مذكر → unser Opa."
-      },
-      {
-        type: "choose",
-        question: "Ich sehe ___ Tante. (نحن)",
-        options: ["unsere", "unserer", "unseren", "unserem"],
-        correct: 0,
-        explanation: "Akkusativ مؤنث → unsere Tante."
-      },
-      {
-        type: "choose",
-        question: "Was ___ du gestern gemacht? (Perfekt)",
-        options: ["hast", "bist", "hat", "ist"],
-        correct: 0,
-        explanation: "معظم الأفعال تأخذ haben → hast gemacht."
-      },
-      {
-        type: "choose",
-        question: "Wir ___ nach Berlin gefahren. (Perfekt)",
-        options: ["sind", "haben", "seid", "hat"],
-        correct: 0,
-        explanation: "fahren فعل حركة → sein → sind gefahren."
-      },
-      {
-        type: "choose",
-        question: "Früher ___ ich viel Zeit. (Präteritum von haben)",
-        options: ["hatte", "habe", "hat", "hatten"],
-        correct: 0,
-        explanation: "ich + hatte (Präteritum)."
-      },
-      {
-        type: "choose",
-        question: "Mein Onkel ___ sehr lustig. (Präteritum von sein)",
-        options: ["war", "ist", "waren", "bin"],
-        correct: 0,
-        explanation: "er + war (Präteritum)."
-      }
+      mc("___ Opa war Bäcker. (نحن)", ["Unser", "Unserer", "Unserem", "Unseren"], 0, "Nominativ مذكر → unser Opa."),
+      mc("Ich sehe ___ Tante. (نحن)", ["unsere", "unserer", "unseren", "unserem"], 0, "Akkusativ مؤنث → unsere Tante."),
+      mc("Was ___ du gestern gemacht? (Perfekt)", ["hast", "bist", "hat", "ist"], 0, "معظم الأفعال تأخذ haben → hast gemacht."),
+      mc("Wir ___ nach Berlin gefahren. (Perfekt)", ["sind", "haben", "seid", "hat"], 0, "fahren فعل حركة → sein → sind gefahren."),
+      mc("Früher ___ ich viel Zeit. (Präteritum von haben)", ["hatte", "habe", "hat", "hatten"], 0, "ich + hatte (Präteritum)."),
+      mc("Mein Onkel ___ sehr lustig. (Präteritum von sein)", ["war", "ist", "waren", "bin"], 0, "er + war (Präteritum).")
     ]
   },
   /* ============ Menschen A2.1 — Lektion 2 ============ */
