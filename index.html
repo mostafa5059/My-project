@@ -1743,7 +1743,7 @@ document.addEventListener('click', (e) => {
 })();
 </script>
 
-<!-- ==================== كود النافذة المنبثقة (Modal) ==================== -->
+<!-- ==================== كود النافذة المنبثقة للقواعد ==================== -->
 
 <!-- 1. نافذة HTML -->
 <div id="grammarModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15, 23, 42, 0.85); z-index:9999; backdrop-filter:blur(5px); overflow-y:auto;">
@@ -1755,6 +1755,52 @@ document.addEventListener('click', (e) => {
 
 <!-- 2. سكربت التشغيل -->
 <script>
+document.addEventListener("DOMContentLoaded", function() {
+  // دالة الإغلاق
+  window.closeGrammarModal = function() {
+    document.getElementById('grammarModal').style.display = 'none';
+    document.body.style.overflow = 'auto'; 
+  };
+
+  // دالة الفتح
+  window.openGrammarModal = function(htmlContent) {
+    document.getElementById('grammarModalContent').innerHTML = htmlContent;
+    document.getElementById('grammarModal').style.display = 'block';
+    document.body.style.overflow = 'hidden'; 
+  };
+
+  // ننتظر تحميل القواعد ثم نعترض الضغطات
+  setInterval(() => {
+    const headers = document.querySelectorAll('.grammar-card-header, .rule-section h3');
+    
+    headers.forEach(header => {
+      // نتأكد أننا لم نضف الحدث مسبقاً
+      if (header.dataset.modalAttached) return;
+      header.dataset.modalAttached = "true";
+
+      header.addEventListener('click', function(e) {
+        let contentDiv = null;
+        
+        if (this.classList.contains('grammar-card-header')) {
+          contentDiv = this.parentElement.querySelector('.grammar-content');
+        } else if (this.tagName === 'H3') {
+          contentDiv = this.parentElement.querySelector('.rule-content');
+        }
+
+        if (contentDiv) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          window.openGrammarModal(contentDiv.innerHTML);
+          
+          // لمنع الأكورديون القديم من الفتح
+          this.parentElement.classList.remove('open');
+        }
+      }, true); 
+    });
+  }, 500);
+});
+</script>
 document.addEventListener("DOMContentLoaded", function() {
   window.closeGrammarModal = function() {
     document.getElementById('grammarModal').style.display = 'none';
