@@ -10,6 +10,7 @@ const LESSON_LEVELS = [
 ];
 
 let currentLessonLevel = "A2.1";
+let currentLessonId = null;
 
 const LESSONS = [
   /* ============ Menschen A2.1 — Lektion 1 ============ */
@@ -166,247 +167,7 @@ const LESSONS = [
         explanation: "er + war (Präteritum)."
       }
     ]
-  }
-];
-
-/* ========== استخراج بيانات كلمة من المصادر ========== */
-function getWordData(word) {
-  const clean = word.replace(/^(der|die|das) /, '').trim();
-
-  if (typeof NOUNS !== 'undefined') {
-    const n = NOUNS.find(x => x.de === word || x.de.replace(/^(der|die|das) /, '') === clean);
-    if (n) return { ...n, source: 'NOUNS', kind: 'noun' };
-  }
-  if (typeof VERBS !== 'undefined') {
-    const v = VERBS.find(x => x.de === word || x.de.replace(/ \(.*\)/, '') === clean);
-    if (v) return { ...v, source: 'VERBS', kind: 'verb' };
-  }
-  if (typeof ADJECTIVES !== 'undefined') {
-    const a = ADJECTIVES.find(x => x.de === word);
-    if (a) return { ...a, source: 'ADJECTIVES', kind: 'adj' };
-  }
-  for (const lesson of LESSONS) {
-    if (!lesson.newWords) continue;
-    const nw = lesson.newWords.find(x => x.de === word);
-    if (nw) return { ...nw, source: 'LESSON', kind: nw.type ? 'verb' : 'noun' };
-  }
-  return { de: word, ar: '—', source: 'UNKNOWN' };
-}
-
-/* ========== التبويبات الفرعية ========== */
-function renderLessonSubTabs() {
-  const container = document.getElementById('lessonSubTabs');
-  if (!container) return;
-  const tabs = LESSON_LEVELS.map(lv => {
-    const cls = 'lesson-subtab' + (lv.id === currentLessonLevel ? ' active' : '') + (lv.available ? '' : ' disabled');
-    const onclick = lv.available ? `onclick="switchLessonLevel('${lv.id}')"` : `onclick="showComingSoon('${lv.label}')"`;
-    return `<button class="${cls}" ${onclick}>${lv.label}</button>`;
-  }).join('');
-  container.innerHTML = tabs;
-}
-
-function switchLessonLevel(level) {
-  currentLessonLevel = level;
-  renderLessonSubTabs();
-  renderLessonsTab();
-}
-
-function showComingSoon(label) {
-  alert(label + ' — قيد الإعداد');
-}
-
-/* ========== عرض التبويب ========== */
-function initLessonsTab() {
-  renderLessonSubTabs();
-  renderLessonsTab();
-}
-
-function renderLessonsTab() {
-  const container = document.getElementById('lessonsContent');
-  if (!container) return;
-  const lang = (typeof contentLanguage !== 'undefined') ? contentLanguage : 'de';
-if (lang !== 'de') {
-  container.innerHTML = `
-    <div style="text-align:center;padding:60px 20px;">
-      <div style="font-size:60px;margin-bottom:20px;">📚</div>
-      <h2 style="color:var(--primary-dark);font-size:24px;margin-bottom:15px;">الدروس متاحة بالألمانية فقط</h2>
-      <p style="color:var(--text-muted);font-size:16px;margin-bottom:25px;">دروس Menschen A2.1 مصممة لتعلم الألمانية — بدّل لغة المحتوى للمتابعة.</p>
-      <button onclick="toggleContentLanguage()" style="background:var(--primary);color:#fff;border:none;padding:14px 32px;border-radius:25px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;">
-        🇩🇪 التبديل إلى الألمانية
-      </button>
-    </div>
-  `;
-  return;
-}
-  const filtered = LESSONS.filter(l => l.level === currentLessonLevel);
-  if (!filtered.length) {
-    container.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:40px;">📚 لا توجد دروس في هذا المستوى بعد.</p>';
-    return;
-  }
-  const cards = filtered.map(l => `
-    <div class="lesson-card" onclick="openLesson('${l.id}')">
-      <div class="lesson-img-wrap">
-        ${l.image
-          ? `<img src="${l.image}" alt="${l.title}" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'font-size:60px;\\'>${l.emoji}</span>';" />`
-          : `<span style="font-size:60px;">${l.emoji}</span>`}
-      </div>
-      <div class="lesson-body">
-        <div class="lesson-level">${l.level}</div>
-        <h3 class="lesson-title">${l.emoji} ${l.title}</h3>
-        <p class="lesson-title-ar">${l.titleAr}</p>
-        <span class="lesson-topic">${l.topic}</span>
-        <span class="lesson-words-count">${(l.words ? l.words.length : 0) + (l.newWords ? l.newWords.length : 0)} كلمة</span>
-      </div>
-    </div>
-  `).join('');
-  container.innerHTML = `<div class="lessons-grid">${cards}</div>`;
-}
-
-/* ========== فتح درس ========== */
-/* ========== فتح درس ========== */
-/* ========== فتح درس ========== */
-/* ========== فتح درس ========== */
-function openLesson(id) {
-  const lesson = LESSONS.find(l => l.id === id);
-  if (!lesson) return;
-  
-  const allWords = [...(lesson.words || []), ...((lesson.newWords || []).map(w => w.de))];
-  
-  const rows = allWords.map(w => {
-    const d = getWordData(w);
-    const clean = w.replace(/^(der|die|das) /, '');
-    let extra = '';
-    if (d.kind === 'noun' && d.plural) extra = `الجمع: ${d.plural}`;
-    else if (d.kind === 'verb' && d.präteritum) extra = `الماضي: ${d.präteritum} — Perfekt: ${d.perfekt}`;
-    return `<tr>
-      <td style="font-weight:700;color:var(--primary-dark);direction:ltr;text-align:right;padding:12px;">
-        ${w}
-        <button class="audio-btn" style="position:static;display:inline-flex;width:30px;height:30px;font-size:14px;margin-right:8px;" onclick="speak('${clean.replace(/'/g, "\\'")}')">🔊</button>
-      </td>
-      <td style="padding:12px;">${d.ar || '—'}</td>
-      <td style="font-size:13px;color:var(--text-muted);padding:12px;">${extra}</td>
-    </tr>`;
-  }).join('');
-
-  const grammarHTML = lesson.grammar ? `
-    <div class="section-title" style="margin-top:30px; font-size: 22px;">📐 القاعدة: ${lesson.grammar.title}</div>
-    <div class="rule-hint" style="font-size:16px; margin-bottom:20px;">${lesson.grammar.titleAr}</div>
-    <div class="grammar-content" style="display:block;padding:30px;background:var(--card-bg);border-radius:16px;border-right:6px solid var(--primary); box-shadow:0 4px 15px rgba(0,0,0,0.05); font-size:16px; line-height:1.8;">
-      ${lesson.grammar.explanation}
-    </div>
-  ` : '';
-
-  const exercisesHTML = (lesson.exercises && lesson.exercises.length) ? `
-    <div class="section-title" style="margin-top:30px; font-size: 22px;">📝 تمارين (${lesson.exercises.length})</div>
-    <div id="lessonExercises" style="display:flex;flex-direction:column;gap:14px;"></div>
-  ` : '';
-
-  const imageHTML = lesson.image ? `
-    <div style="width:100%; height:300px; border-radius:16px; overflow:hidden; margin-bottom:25px; border:1px solid var(--border-color);">
-      <img src="${lesson.image}" alt="${lesson.title}" style="width:100%; height:100%; object-fit:cover;">
-    </div>
-  ` : '';
-
-  const html = `
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; flex-wrap:wrap; gap:15px;">
-      <button class="btn-next" style="margin:0; padding:10px 25px; font-size:15px; background:var(--text-muted);" onclick="closeSingleLesson()">← العودة للدروس</button>
-      <div style="text-align:left;">
-        <h2 style="font-size:32px;color:var(--primary-dark);margin-bottom:5px;">${lesson.emoji} ${lesson.title}</h2>
-        <p style="color:var(--text-muted);font-size:18px;font-weight:600;">${lesson.titleAr}</p>
-      </div>
-    </div>
-    
-    ${imageHTML}
-
-    <div style="margin-bottom:25px; text-align:center;">
-      <span class="badge regular" style="font-size:14px;">${lesson.level}</span>
-      <span class="badge trennbar" style="font-size:14px;">${lesson.topic}</span>
-    </div>
-    
-    <div class="section-title" style="font-size: 22px;">📖 النص</div>
-    <div class="example-box" style="font-size:19px;line-height:2.2;padding:30px;">
-      <div style="direction:ltr;text-align:right;font-weight:700;color:var(--text-main);">${lesson.text}</div>
-      <div class="trans" style="color:var(--accent);margin-top:12px;font-weight:600;">${lesson.textAr}</div>
-      <button class="audio-btn" style="position:static;display:inline-flex;width:45px;height:45px;margin-top:15px;font-size:20px;" onclick="speak('${lesson.text.replace(/'/g, "\\'")}')">🔊</button>
-    </div>
-    
-    ${grammarHTML}
-    
-    <div class="section-title" style="margin-top:30px; font-size: 22px;">📦 كلمات الدرس (${allWords.length})</div>
-    <div style="overflow-x:auto;">
-      <table style="width:100%; border-collapse:collapse; margin-top:15px; font-size:16px;">
-        <thead><tr style="background:#eff6ff;"><th style="padding:14px; color:var(--primary-dark);">الكلمة</th><th style="padding:14px; color:var(--primary-dark);">المعنى</th><th style="padding:14px; color:var(--primary-dark);">معلومة</th></tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-    
-    ${exercisesHTML}
-  `;
-
-  // إخفاء القائمة وإظهار الدرس
-  document.getElementById('lessonsContent').classList.add('hidden');
-  document.getElementById('lessonSubTabs').classList.add('hidden');
-  const lessonContainer = document.getElementById('singleLessonContent');
-  lessonContainer.classList.remove('hidden');
-  lessonContainer.innerHTML = html;
-  
-  // استدعاء دالة التمارين بعد بناء الصفحة
-  if (lesson.exercises && lesson.exercises.length) {
-    renderLessonExercises(lesson.exercises);
-  }
-  
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  applyTranslationVisibility();
-}
-
-/* ========== دالة عرض التمارين ========== */
-function renderLessonExercises(exercises) {
-  const container = document.getElementById('lessonExercises');
-  if (!container) return;
-  
-  container.innerHTML = exercises.map((ex, idx) => `
-    <div class="lesson-exercise" data-idx="${idx}" style="background:var(--card-bg);padding:20px;border-radius:12px;border:1px solid var(--border-color);margin-bottom:10px;">
-      <div style="font-weight:700;color:var(--primary-dark);margin-bottom:15px;font-size:18px;">${idx + 1}. ${ex.question}</div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        ${ex.options.map((opt, i) => `
-          <button class="lesson-exercise-opt" data-idx="${idx}" data-opt="${i}"
-                  style="padding:14px 18px;background:#f8fafc;border:2px solid var(--border-color);border-radius:10px;cursor:pointer;font-size:16px;font-weight:600;text-align:right;direction:ltr;transition:all 0.3s;"
-                  onclick="checkLessonExercise(${idx}, ${i})">${opt}</button>
-        `).join('')}
-      </div>
-      <div id="lessonFeedback-${idx}" style="display:none;margin-top:15px;padding:15px;border-radius:10px;font-weight:600;"></div>
-    </div>
-  `).join('');
-}
-  
-// دالة جديدة للعودة
-function closeSingleLesson() {
-  document.getElementById('singleLessonContent').classList.add('hidden');
-  document.getElementById('lessonsContent').classList.remove('hidden');
-  document.getElementById('lessonSubTabs').classList.remove('hidden');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function checkLessonExercise(exIdx, optIdx) {
-  const lesson = LESSONS.find(l => l.id === 'M2-01');  // يمكن تحسينها لاحقاً
-  if (!lesson || !lesson.exercises) return;
-  const ex = lesson.exercises[exIdx];
-  if (!ex) return;
-  const isCorrect = optIdx === ex.correct;
-  const btns = document.querySelectorAll(`.lesson-exercise-opt[data-idx="${exIdx}"]`);
-  btns.forEach(b => {
-    b.disabled = true;
-    if (+b.dataset.opt === ex.correct) b.style.background = '#dcfce7', b.style.borderColor = '#10b981';
-    else if (+b.dataset.opt === optIdx && !isCorrect) b.style.background = '#fee2e2', b.style.borderColor = '#ef4444';
-  });
-  const fb = document.getElementById('lessonFeedback-' + exIdx);
-  if (fb) {
-    fb.style.display = 'block';
-    fb.style.background = isCorrect ? '#dcfce7' : '#fee2e2';
-    fb.style.color = isCorrect ? '#166534' : '#991b1b';
-    fb.innerHTML = (isCorrect ? '✅ صحيح! ' : '❌ خطأ. ') + ex.explanation;
-  }
-     ,
+  },
   /* ============ Menschen A2.1 — Lektion 2 ============ */
   {
     id: "M2-02",
@@ -573,5 +334,244 @@ function checkLessonExercise(exIdx, optIdx) {
         explanation: "Wo? + Tisch مذكر → Dativ → auf dem Tisch."
       }
     ]
+  }
+];
+
+/* ========== استخراج بيانات كلمة من المصادر ========== */
+function getWordData(word) {
+  const clean = word.replace(/^(der|die|das) /, '').trim();
+
+  if (typeof NOUNS !== 'undefined') {
+    const n = NOUNS.find(x => x.de === word || x.de.replace(/^(der|die|das) /, '') === clean);
+    if (n) return { ...n, source: 'NOUNS', kind: 'noun' };
+  }
+  if (typeof VERBS !== 'undefined') {
+    const v = VERBS.find(x => x.de === word || x.de.replace(/ \(.*\)/, '') === clean);
+    if (v) return { ...v, source: 'VERBS', kind: 'verb' };
+  }
+  if (typeof ADJECTIVES !== 'undefined') {
+    const a = ADJECTIVES.find(x => x.de === word);
+    if (a) return { ...a, source: 'ADJECTIVES', kind: 'adj' };
+  }
+  for (const lesson of LESSONS) {
+    if (!lesson.newWords) continue;
+    const nw = lesson.newWords.find(x => x.de === word);
+    if (nw) return { ...nw, source: 'LESSON', kind: nw.type ? 'verb' : 'noun' };
+  }
+  return { de: word, ar: '—', source: 'UNKNOWN' };
+}
+
+/* ========== التبويبات الفرعية ========== */
+function renderLessonSubTabs() {
+  const container = document.getElementById('lessonSubTabs');
+  if (!container) return;
+  const tabs = LESSON_LEVELS.map(lv => {
+    const cls = 'lesson-subtab' + (lv.id === currentLessonLevel ? ' active' : '') + (lv.available ? '' : ' disabled');
+    const onclick = lv.available ? `onclick="switchLessonLevel('${lv.id}')"` : `onclick="showComingSoon('${lv.label}')"`;
+    return `<button class="${cls}" ${onclick}>${lv.label}</button>`;
+  }).join('');
+  container.innerHTML = tabs;
+}
+
+function switchLessonLevel(level) {
+  currentLessonLevel = level;
+  renderLessonSubTabs();
+  renderLessonsTab();
+}
+
+function showComingSoon(label) {
+  alert(label + ' — قيد الإعداد');
+}
+
+/* ========== عرض التبويب ========== */
+function initLessonsTab() {
+  renderLessonSubTabs();
+  renderLessonsTab();
+}
+
+function renderLessonsTab() {
+  const container = document.getElementById('lessonsContent');
+  if (!container) return;
+  const lang = (typeof contentLanguage !== 'undefined') ? contentLanguage : 'de';
+if (lang !== 'de') {
+  container.innerHTML = `
+    <div style="text-align:center;padding:60px 20px;">
+      <div style="font-size:60px;margin-bottom:20px;">📚</div>
+      <h2 style="color:var(--primary-dark);font-size:24px;margin-bottom:15px;">الدروس متاحة بالألمانية فقط</h2>
+      <p style="color:var(--text-muted);font-size:16px;margin-bottom:25px;">دروس Menschen A2.1 مصممة لتعلم الألمانية — بدّل لغة المحتوى للمتابعة.</p>
+      <button onclick="toggleContentLanguage()" style="background:var(--primary);color:#fff;border:none;padding:14px 32px;border-radius:25px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;">
+        🇩🇪 التبديل إلى الألمانية
+      </button>
+    </div>
+  `;
+  return;
+}
+  const filtered = LESSONS.filter(l => l.level === currentLessonLevel);
+  if (!filtered.length) {
+    container.innerHTML = '<p style="text-align:center;color:var(--text-muted);padding:40px;">📚 لا توجد دروس في هذا المستوى بعد.</p>';
+    return;
+  }
+  const cards = filtered.map(l => `
+    <div class="lesson-card" onclick="openLesson('${l.id}')">
+      <div class="lesson-img-wrap">
+        ${l.image
+          ? `<img src="${l.image}" alt="${l.title}" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'font-size:60px;\\'>${l.emoji}</span>';" />`
+          : `<span style="font-size:60px;">${l.emoji}</span>`}
+      </div>
+      <div class="lesson-body">
+        <div class="lesson-level">${l.level}</div>
+        <h3 class="lesson-title">${l.emoji} ${l.title}</h3>
+        <p class="lesson-title-ar">${l.titleAr}</p>
+        <span class="lesson-topic">${l.topic}</span>
+        <span class="lesson-words-count">${(l.words ? l.words.length : 0) + (l.newWords ? l.newWords.length : 0)} كلمة</span>
+      </div>
+    </div>
+  `).join('');
+  container.innerHTML = `<div class="lessons-grid">${cards}</div>`;
+}
+
+/* ========== فتح درس ========== */
+function openLesson(id) {
+  const lesson = LESSONS.find(l => l.id === id);
+  if (!lesson) return;
+  
+  const allWords = [...(lesson.words || []), ...((lesson.newWords || []).map(w => w.de))];
+  
+  const rows = allWords.map(w => {
+    const d = getWordData(w);
+    const clean = w.replace(/^(der|die|das) /, '');
+    let extra = '';
+    if (d.kind === 'noun' && d.plural) extra = `الجمع: ${d.plural}`;
+    else if (d.kind === 'verb' && d.präteritum) extra = `الماضي: ${d.präteritum} — Perfekt: ${d.perfekt}`;
+    return `<tr>
+      <td style="font-weight:700;color:var(--primary-dark);direction:ltr;text-align:right;padding:12px;">
+        ${w}
+        <button class="audio-btn" style="position:static;display:inline-flex;width:30px;height:30px;font-size:14px;margin-right:8px;" onclick="speak('${clean.replace(/'/g, "\\'")}')">🔊</button>
+      </td>
+      <td style="padding:12px;">${d.ar || '—'}</td>
+      <td style="font-size:13px;color:var(--text-muted);padding:12px;">${extra}</td>
+    </tr>`;
+  }).join('');
+
+  const grammarHTML = lesson.grammar ? `
+    <div class="section-title" style="margin-top:30px; font-size: 22px;">📐 القاعدة: ${lesson.grammar.title}</div>
+    <div class="rule-hint" style="font-size:16px; margin-bottom:20px;">${lesson.grammar.titleAr}</div>
+    <div class="grammar-content" style="display:block;padding:30px;background:var(--card-bg);border-radius:16px;border-right:6px solid var(--primary); box-shadow:0 4px 15px rgba(0,0,0,0.05); font-size:16px; line-height:1.8;">
+      ${lesson.grammar.explanation}
+    </div>
+  ` : '';
+
+  const exercisesHTML = (lesson.exercises && lesson.exercises.length) ? `
+    <div class="section-title" style="margin-top:30px; font-size: 22px;">📝 تمارين (${lesson.exercises.length})</div>
+    <div id="lessonExercises" style="display:flex;flex-direction:column;gap:14px;"></div>
+  ` : '';
+
+  const imageHTML = lesson.image ? `
+    <div style="width:100%; height:300px; border-radius:16px; overflow:hidden; margin-bottom:25px; border:1px solid var(--border-color);">
+      <img src="${lesson.image}" alt="${lesson.title}" style="width:100%; height:100%; object-fit:cover;">
+    </div>
+  ` : '';
+
+  const html = `
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; flex-wrap:wrap; gap:15px;">
+      <button class="btn-next" style="margin:0; padding:10px 25px; font-size:15px; background:var(--text-muted);" onclick="closeSingleLesson()">← العودة للدروس</button>
+      <div style="text-align:left;">
+        <h2 style="font-size:32px;color:var(--primary-dark);margin-bottom:5px;">${lesson.emoji} ${lesson.title}</h2>
+        <p style="color:var(--text-muted);font-size:18px;font-weight:600;">${lesson.titleAr}</p>
+      </div>
+    </div>
+    
+    ${imageHTML}
+
+    <div style="margin-bottom:25px; text-align:center;">
+      <span class="badge regular" style="font-size:14px;">${lesson.level}</span>
+      <span class="badge trennbar" style="font-size:14px;">${lesson.topic}</span>
+    </div>
+    
+    <div class="section-title" style="font-size: 22px;">📖 النص</div>
+    <div class="example-box" style="font-size:19px;line-height:2.2;padding:30px;">
+      <div style="direction:ltr;text-align:right;font-weight:700;color:var(--text-main);">${lesson.text}</div>
+      <div class="trans" style="color:var(--accent);margin-top:12px;font-weight:600;">${lesson.textAr}</div>
+      <button class="audio-btn" style="position:static;display:inline-flex;width:45px;height:45px;margin-top:15px;font-size:20px;" onclick="speak('${lesson.text.replace(/'/g, "\\'")}')">🔊</button>
+    </div>
+    
+    ${grammarHTML}
+    
+    <div class="section-title" style="margin-top:30px; font-size: 22px;">📦 كلمات الدرس (${allWords.length})</div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; margin-top:15px; font-size:16px;">
+        <thead><tr style="background:#eff6ff;"><th style="padding:14px; color:var(--primary-dark);">الكلمة</th><th style="padding:14px; color:var(--primary-dark);">المعنى</th><th style="padding:14px; color:var(--primary-dark);">معلومة</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    
+    ${exercisesHTML}
+  `;
+
+  // إخفاء القائمة وإظهار الدرس
+  document.getElementById('lessonsContent').classList.add('hidden');
+  document.getElementById('lessonSubTabs').classList.add('hidden');
+  const lessonContainer = document.getElementById('singleLessonContent');
+  lessonContainer.classList.remove('hidden');
+  lessonContainer.innerHTML = html;
+
+  // تثبيت الدرس الحالي (لأجل التمارين)
+  currentLessonId = id;
+
+  // استدعاء دالة التمارين بعد بناء الصفحة
+  if (lesson.exercises && lesson.exercises.length) {
+    renderLessonExercises(lesson.exercises);
+  }
+  
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  applyTranslationVisibility();
+}
+
+/* ========== دالة عرض التمارين ========== */
+function renderLessonExercises(exercises) {
+  const container = document.getElementById('lessonExercises');
+  if (!container) return;
+  
+  container.innerHTML = exercises.map((ex, idx) => `
+    <div class="lesson-exercise" data-idx="${idx}" style="background:var(--card-bg);padding:20px;border-radius:12px;border:1px solid var(--border-color);margin-bottom:10px;">
+      <div style="font-weight:700;color:var(--primary-dark);margin-bottom:15px;font-size:18px;">${idx + 1}. ${ex.question}</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        ${ex.options.map((opt, i) => `
+          <button class="lesson-exercise-opt" data-idx="${idx}" data-opt="${i}"
+                  style="padding:14px 18px;background:#f8fafc;border:2px solid var(--border-color);border-radius:10px;cursor:pointer;font-size:16px;font-weight:600;text-align:right;direction:ltr;transition:all 0.3s;"
+                  onclick="checkLessonExercise(${idx}, ${i})">${opt}</button>
+        `).join('')}
+      </div>
+      <div id="lessonFeedback-${idx}" style="display:none;margin-top:15px;padding:15px;border-radius:10px;font-weight:600;"></div>
+    </div>
+  `).join('');
+}
+  
+// دالة جديدة للعودة
+function closeSingleLesson() {
+  document.getElementById('singleLessonContent').classList.add('hidden');
+  document.getElementById('lessonsContent').classList.remove('hidden');
+  document.getElementById('lessonSubTabs').classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function checkLessonExercise(exIdx, optIdx) {
+  const lesson = LESSONS.find(l => l.id === currentLessonId);
+  if (!lesson || !lesson.exercises) return;
+  const ex = lesson.exercises[exIdx];
+  if (!ex) return;
+  const isCorrect = optIdx === ex.correct;
+  const btns = document.querySelectorAll(`.lesson-exercise-opt[data-idx="${exIdx}"]`);
+  btns.forEach(b => {
+    b.disabled = true;
+    if (+b.dataset.opt === ex.correct) b.style.background = '#dcfce7', b.style.borderColor = '#10b981';
+    else if (+b.dataset.opt === optIdx && !isCorrect) b.style.background = '#fee2e2', b.style.borderColor = '#ef4444';
+  });
+  const fb = document.getElementById('lessonFeedback-' + exIdx);
+  if (fb) {
+    fb.style.display = 'block';
+    fb.style.background = isCorrect ? '#dcfce7' : '#fee2e2';
+    fb.style.color = isCorrect ? '#166534' : '#991b1b';
+    fb.innerHTML = (isCorrect ? '✅ صحيح! ' : '❌ خطأ. ') + ex.explanation;
   }
 }
