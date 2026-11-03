@@ -907,6 +907,81 @@ body.dark-mode .pron-twister-de { color: #a5b4fc; }
   .pron-minimal-grid { grid-template-columns: 1fr; }
   .pron-twister-de { font-size: 16px; }
 }
+  /* 1. إصلاح مشكلة الخطوط والنصوص المقطوعة */
+.grammar-content {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Cairo', 'Amiri';
+  line-height: 1.8 !important; /* زيادة المسافة بين الأسطر */
+  color: #334155;
+}
+
+/* 2. تنسيق الجداول (ألماني LTR + عربي RTL) */
+.grammar-content table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 20px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  direction: ltr; /* الجدول ألماني */
+}
+
+.grammar-content th {
+  background: #e0f2fe; /* أزرق فاتح جداً */
+  color: #0369a1;
+  padding: 14px 10px;
+  font-weight: 700;
+  text-align: center;
+  border-bottom: 2px solid #bae6fd;
+}
+
+.grammar-content td {
+  padding: 12px 10px;
+  text-align: center;
+  border-bottom: 1px solid #f1f5f9;
+  background: #ffffff;
+  font-weight: 500;
+}
+
+.grammar-content tr:last-child td {
+  border-bottom: none;
+}
+
+.grammar-content tr:hover td {
+  background: #f8fafc; /* تأثير عند تمرير الماوس */
+}
+
+/* 3. تنسيق النصوص العربية داخل الجدول (إذا وجدت) */
+.grammar-content td[dir="rtl"], 
+.grammar-content th[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+  font-weight: 600;
+}
+
+/* 4. تنسيق الأمثلة (أمثلة من الدرس) */
+.grammar-content ul li {
+  margin-bottom: 8px;
+  padding-right: 15px; /* مسافة للعربية */
+  position: relative;
+}
+
+.grammar-content ul li::before {
+  content: '•';
+  color: #3b82f6;
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+}
+
+/* 5. تنسيق النص المائل أو القواعد المهمة */
+.grammar-content strong, .grammar-content b {
+  color: #1e40af;
+  background: #eff6ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
 </style>
 </head>
 <body>
