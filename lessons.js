@@ -46,7 +46,7 @@ let currentLessonLevel = "A2.1";
 let currentLessonId = null;
 
 const LESSONS = [
-   /* ============ Menschen A2.1 — Lektion 1 ============ */
+    /* ============ Menschen A2.1 — Lektion 1 ============ */
   {
     id: "M2-01",
     level: "A2.1",
@@ -59,17 +59,62 @@ const LESSONS = [
     textAr: `بول وفرانكا يخبزان مع جدهما كعك البريتزل. يجد بول الأمر معقداً في البداية، لكن جده يساعده. في النهاية ينجح الأمر. يحكي الجد: "أنا الجد. لكن الذي في الصورة كان جدي. أنا أيضاً كان لي جد، وكان هو الآخر خبازاً."`,
     words: ["der Großvater", "der Bäcker", "die Familie", "der Beruf", "backen", "arbeiten", "erzählen"],
     
-    // 👇 الكلمات الآن بسطر واحد فقط 👇
+    // 👇 هنا الـ 40 كلمة كاملة، بسطر واحد لكل كلمة 👇
     newWords: [
       w("der Cousin", "ابن العم", "عائلة"),
       w("die Cousine", "ابنة العم", "عائلة"),
+      w("der Neffe", "ابن الأخ", "عائلة"),
+      w("die Nichte", "ابنة الأخ", "عائلة"),
       w("der Onkel", "العم / الخال", "عائلة"),
       w("die Tante", "العمة / الخالة", "عائلة"),
+      w("der Schwiegersohn", "زوج الابنة", "عائلة"),
+      w("die Schwiegertochter", "زوجة الابن", "عائلة"),
+      w("der Schwiegervater", "الحمو", "عائلة"),
+      w("die Schwiegermutter", "الحماة", "عائلة"),
+      w("das Enkelkind", "الحفيد", "عائلة"),
       w("die Bäckerei", "مخبز", "مهن"),
       w("die Brezel", "كعكة البريتزل", "طعام"),
-      v("backen", "يخبز", ["backe","backst","backt","backen","backt","backen"], "backte", "hat gebacken", "طعام", "unregelmäßig"),
-      v("arbeiten", "يعمل", ["arbeite","arbeitest","arbeitet","arbeiten","arbeitet","arbeiten"], "arbeitete", "hat gearbeitet", "مهن"),
-      v("erzählen", "يحكي", ["erzähle","erzählst","erzählt","erzählen","erzählt","erzählen"], "erzählte", "hat erzählt", "تواصل")
+      w("der Teig", "العجين", "طعام"),
+      w("die Kindheit", "الطفولة", "حياة"),
+      w("die Jugend", "الشباب", "حياة"),
+      w("die Geschichte", "القصة / التاريخ", "حياة"),
+      w("die Erinnerung", "الذكرى", "حياة"),
+      w("der Flohmarkt", "سوق البرغوث", "حياة"),
+      w("die Puppe", "الدمية", "حياة"),
+      w("der Witz", "النكتة", "حياة"),
+      w("die Mannschaft", "الفريق", "رياضة"),
+      w("der Anfang", "البداية", "حياة"),
+      w("das Ende", "النهاية", "حياة"),
+      w("der Schluss", "الختام", "حياة"),
+      w("die Sache", "الشيء", "حياة"),
+      w("das Spiel", "اللعبة", "حياة"),
+      w("die Zigarette", "السجارة", "حياة"),
+      w("der Pfeffer", "الفلفل", "طعام"),
+      w("der Punkt", "النقطة", "حياة"),
+      w("der Satz", "الجملة", "لغة"),
+      w("das Studium", "الدراسة الجامعية", "دراسة"),
+      v("klettern", "يتسلق", ["klettere","kletterst","klettert","klettern","klettert","klettern"], "kletterte", "ist geklettert", "حركة"),
+      v("sammeln", "يجمع", ["sammle","sammelst","sammelt","sammeln","sammelt","sammeln"], "sammelte", "hat gesammelt", "حياة"),
+      v("streiten", "يتشاجر", ["streite","streitest","streitet","streiten","streitet","streiten"], "stritt", "hat gestritten", "تواصل", "unregelmäßig"),
+      v("übernachten", "يبيت", ["übernachte","übernachtest","übernachtet","übernachten","übernachtet","übernachten"], "übernachtete", "hat übernachtet", "سفر"),
+      v("verkaufen", "يبيع", ["verkaufe","verkaufst","verkauft","verkaufen","verkauft","verkaufen"], "verkaufte", "hat verkauft", "تسوق"),
+      v("zeichnen", "يرسم", ["zeichne","zeichnest","zeichnet","zeichnen","zeichnet","zeichnen"], "zeichnete", "hat gezeichnet", "فن"),
+      v("aufmachen", "يفتح", ["mache auf","machst auf","macht auf","machen auf","macht auf","machen auf"], "machte auf", "hat aufgemacht", "منزل", "trennbar"),
+      v("aufpassen", "ينتبه", ["passe auf","passt auf","passt auf","passen auf","passt auf","passen auf"], "passte auf", "hat aufgepasst", "حياة", "trennbar"),
+      v("klappen", "ينجح", ["klappe","klappst","klappt","klappen","klappt","klappen"], "klappte", "hat geklappt", "حياة"),
+      v("passieren", "يحدث", ["passiere","passierst","passiert","passieren","passiert","passieren"], "passierte", "ist passiert", "حياة"),
+      v("rufen", "ينادي", ["rufe","rufst","ruft","rufen","ruft","rufen"], "rief", "hat gerufen", "تواصل", "unregelmäßig"),
+      v("wachsen", "ينمو", ["wachse","wächst","wächst","wachsen","wachst","wachsen"], "wuchs", "ist gewachsen", "حياة", "unregelmäßig"),
+      w("verrückt", "مجنون", "صفات"),
+      w("früher", "سابقاً", "صفات"),
+      w("einfach", "بسيط", "صفات"),
+      w("fleißig", "مجتهد", "صفات"),
+      w("geschlossen", "مغلق", "صفات"),
+      w("kompliziert", "معقد", "صفات"),
+      w("zuerst", "أولاً", "ظروف"),
+      w("zum Schluss", "في الختام", "ظروف"),
+      w("am Anfang", "في البداية", "ظروف"),
+      w("am Ende", "في النهاية", "ظروف")
     ],
     
     grammar: {
@@ -81,24 +126,37 @@ const LESSONS = [
         <table>
           <tr><th>Nominativ</th><th>Akkusativ</th><th>Dativ</th></tr>
           <tr><td>unser Opa</td><td>unseren Opa</td><td>unserem Opa</td></tr>
+          <tr><td>unser Baby</td><td>unser Baby</td><td>unserem Baby</td></tr>
           <tr><td>unsere Tante</td><td>unsere Tante</td><td>unserer Tante</td></tr>
+          <tr><td>unsere Neffen</td><td>unsere Neffen</td><td>unseren Neffen</td></tr>
         </table>
+        <p>مثل: mein-, dein-, sein-, ihr-, unser-, eu(e)r-, ihr-, Ihr-</p>
+        <div class="grammar-tip">💡 مع euer: عند إضافة نهاية، تُحذف الـ e (euer → eure، euer → euren).</div>
+
         <h4>2) Perfekt (الماضي التام)</h4>
-        <p>يتكون من: <strong>haben/sein + Partizip II</strong>.</p>
+        <p>يُستخدم للتعبير عن أحداث في الماضي. يتكون من: <strong>haben/sein + Partizip II</strong>.</p>
         <ul>
           <li>machen → hat gemacht</li>
           <li>fahren → ist gefahren</li>
+          <li>anmachen → hat angemacht</li>
+          <li>telefonieren → hat telefoniert</li>
+          <li>erkennen → hat erkannt</li>
         </ul>
+
         <h4>3) Präteritum von sein und haben</h4>
         <table>
           <tr><th>Pronomen</th><th>sein</th><th>haben</th></tr>
           <tr><td>ich</td><td>war</td><td>hatte</td></tr>
+          <tr><td>du</td><td>warst</td><td>hattest</td></tr>
           <tr><td>er/sie/es</td><td>war</td><td>hatte</td></tr>
+          <tr><th>wir</th><th>waren</th><th>hatten</th></tr>
+          <tr><td>ihr</td><td>wart</td><td>hattet</td></tr>
+          <tr><td>sie/Sie</td><td>waren</td><td>hatten</td></tr>
         </table>
+        <div class="grammar-tip">💡 Präteritum يُستخدم في السرد والكتابة، بينما Perfekt في المحادثة اليومية.</div>
       `
     },
     
-    // 👇 التمارين الآن بسطر واحد لكل تمرين 👇
     exercises: [
       mc("___ Opa war Bäcker. (نحن)", ["Unser", "Unserer", "Unserem", "Unseren"], 0, "Nominativ مذكر → unser Opa."),
       mc("Ich sehe ___ Tante. (نحن)", ["unsere", "unserer", "unseren", "unserem"], 0, "Akkusativ مؤنث → unsere Tante."),
@@ -108,174 +166,6 @@ const LESSONS = [
       mc("Mein Onkel ___ sehr lustig. (Präteritum von sein)", ["war", "ist", "waren", "bin"], 0, "er + war (Präteritum).")
     ]
   },
-  /* ============ Menschen A2.1 — Lektion 2 ============ */
-  {
-    id: "M2-02",
-    level: "A2.1",
-    title: "Wohin mit der Kommode?",
-    titleAr: "إلى أين نضع الخزانة؟",
-    topic: "سكن وأثاث",
-    emoji: "🪑",
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-    text: `Nina und Tom ziehen in eine neue Wohnung. Die Möbel stehen schon im Flur, aber sie wissen nicht, wohin sie sie stellen sollen. "Wohin kommt die Kommode?", fragt Tom. "Stell sie doch ins Schlafzimmer, neben das Bett", antwortet Nina. "Und wohin mit dem Regal?" — "Das Regal hängen wir an die Wand über den Schreibtisch." Am Ende steht alles am richtigen Platz, und die Wohnung sieht gemütlich aus.`,
-    textAr: `نينا وتوم ينتقلان إلى شقة جديدة. الأثاث يقف بالفعل في المدخل، لكنهما لا يعرفان أين يضعانه. يسأل توم: "إلى أين تذهب الخزانة؟" تجيب نينا: "ضعها في غرفة النوم، بجانب السرير." "وإلى أين نضع الرفوف؟" — "نعلّق الرفوف على الحائط فوق المكتب." في النهاية كل شيء في مكانه الصحيح، والشقة تبدو مريحة.`,
-    words: [
-      "die Kommode", "der Schrank", "das Regal", "das Sofa",
-      "der Schreibtisch", "die Wand", "stellen", "hängen"
-    ],
-    newWords: [
-      { de:"die Wohnung", ar:"الشقة", plural:"die Wohnungen", akk:"die Wohnung", dat:"der Wohnung", topic:"سكن" },
-      { de:"das Zimmer", ar:"الغرفة", plural:"die Zimmer", akk:"das Zimmer", dat:"dem Zimmer", topic:"سكن" },
-      { de:"das Schlafzimmer", ar:"غرفة النوم", plural:"die Schlafzimmer", akk:"das Schlafzimmer", dat:"dem Schlafzimmer", topic:"سكن" },
-      { de:"das Wohnzimmer", ar:"غرفة المعيشة", plural:"die Wohnzimmer", akk:"das Wohnzimmer", dat:"dem Wohnzimmer", topic:"سكن" },
-      { de:"die Küche", ar:"المطبخ", plural:"die Küchen", akk:"die Küche", dat:"der Küche", topic:"سكن" },
-      { de:"das Bad", ar:"الحمام", plural:"die Bäder", akk:"das Bad", dat:"dem Bad", topic:"سكن" },
-      { de:"der Flur", ar:"المدخل / الردهة", plural:"die Flure", akk:"den Flur", dat:"dem Flur", topic:"سكن" },
-      { de:"der Balkon", ar:"الشرفة", plural:"die Balkone", akk:"den Balkon", dat:"dem Balkon", topic:"سكن" },
-      { de:"die Kommode", ar:"الخزانة (أدراج)", plural:"die Kommoden", akk:"die Kommode", dat:"der Kommode", topic:"أثاث" },
-      { de:"der Schrank", ar:"الخزانة (ملابس)", plural:"die Schränke", akk:"den Schrank", dat:"dem Schrank", topic:"أثاث" },
-      { de:"das Regal", ar:"الرفوف", plural:"die Regale", akk:"das Regal", dat:"dem Regal", topic:"أثاث" },
-      { de:"das Bett", ar:"السرير", plural:"die Betten", akk:"das Bett", dat:"dem Bett", topic:"أثاث" },
-      { de:"das Sofa", ar:"الأريكة", plural:"die Sofas", akk:"das Sofa", dat:"dem Sofa", topic:"أثاث" },
-      { de:"der Tisch", ar:"الطاولة", plural:"die Tische", akk:"den Tisch", dat:"dem Tisch", topic:"أثاث" },
-      { de:"der Stuhl", ar:"الكرسي", plural:"die Stühle", akk:"den Stuhl", dat:"dem Stuhl", topic:"أثاث" },
-      { de:"der Schreibtisch", ar:"مكتب الكتابة", plural:"die Schreibtische", akk:"den Schreibtisch", dat:"dem Schreibtisch", topic:"أثاث" },
-      { de:"die Lampe", ar:"المصباح", plural:"die Lampen", akk:"die Lampe", dat:"der Lampe", topic:"أثاث" },
-      { de:"der Teppich", ar:"السجادة", plural:"die Teppiche", akk:"den Teppich", dat:"dem Teppich", topic:"أثاث" },
-      { de:"das Bild", ar:"الصورة", plural:"die Bilder", akk:"das Bild", dat:"dem Bild", topic:"ديكور" },
-      { de:"die Wand", ar:"الحائط", plural:"die Wände", akk:"die Wand", dat:"der Wand", topic:"سكن" },
-      { de:"die Decke", ar:"السقف", plural:"die Decken", akk:"die Decke", dat:"der Decke", topic:"سكن" },
-      { de:"der Boden", ar:"الأرضية", plural:"die Böden", akk:"den Boden", dat:"dem Boden", topic:"سكن" },
-      { de:"die Ecke", ar:"الزاوية", plural:"die Ecken", akk:"die Ecke", dat:"der Ecke", topic:"سكن" },
-      { de:"die Tür", ar:"الباب", plural:"die Türen", akk:"die Tür", dat:"der Tür", topic:"سكن" },
-      { de:"das Fenster", ar:"النافذة", plural:"die Fenster", akk:"das Fenster", dat:"dem Fenster", topic:"سكن" },
-      { de:"der Umzug", ar:"الانتقال", plural:"die Umzüge", akk:"den Umzug", dat:"dem Umzug", topic:"سكن" },
-      { de:"die Möbel", ar:"الأثاث", plural:"—", akk:"die Möbel", dat:"den Möbeln", topic:"أثاث" },
-      { de:"der Platz", ar:"المكان", plural:"die Plätze", akk:"den Platz", dat:"dem Platz", topic:"سكن" },
-      { de:"gemütlich", ar:"مريح / دافئ", topic:"صفات" },
-      { de:"neben", ar:"بجانب", topic:"حروف جر" },
-      { de:"über", ar:"فوق", topic:"حروف جر" },
-      { de:"unter", ar:"تحت", topic:"حروف جر" },
-      { de:"vor", ar:"أمام", topic:"حروف جر" },
-      { de:"hinter", ar:"خلف", topic:"حروف جر" },
-      { de:"zwischen", ar:"بين", topic:"حروف جر" },
-      { de:"an", ar:"على (ملاصق)", topic:"حروف جر" },
-      { de:"auf", ar:"على", topic:"حروف جر" },
-      { de:"in", ar:"في / داخل", topic:"حروف جر" },
-      { de:"stellen", ar:"يضع (أفقياً)", type:"regular", präsens:["stelle","stellst","stellt","stellen","stellt","stellen"], präteritum:"stellte", perfekt:"hat gestellt", partizip:"gestellt", topic:"حركة" },
-      { de:"legen", ar:"يضع (منبطحاً)", type:"regular", präsens:["lege","legst","legt","legen","legt","legen"], präteritum:"legte", perfekt:"hat gelegt", partizip:"gelegt", topic:"حركة" },
-      { de:"hängen", ar:"يعلّق", type:"regular", präsens:["hänge","hängst","hängt","hängen","hängt","hängen"], präteritum:"hängte", perfekt:"hat gehängt", partizip:"gehängt", topic:"حركة" },
-      { de:"stehen", ar:"يقف", type:"unregelmäßig", präsens:["stehe","stehst","steht","stehen","steht","stehen"], präteritum:"stand", perfekt:"hat gestanden", partizip:"gestanden", topic:"موقع" },
-      { de:"liegen", ar:"يستلقي", type:"unregelmäßig", präsens:["liege","liegst","liegt","liegen","liegt","liegen"], präteritum:"lag", perfekt:"hat gelegen", partizip:"gelegen", topic:"موقع" },
-      { de:"einziehen", ar:"ينتقل للسكن", type:"trennbar", präsens:["ziehe ein","ziehst ein","zieht ein","ziehen ein","zieht ein","ziehen ein"], präteritum:"zog ein", perfekt:"ist eingezogen", partizip:"eingezogen", topic:"سكن" }
-    ],
-    grammar: {
-      title: "Wechselpräpositionen: Wohin? + Akkusativ / Wo? + Dativ",
-      titleAr: "حروف الجر المتغيرة: إلى أين؟ + Akkusativ / أين؟ + Dativ",
-      explanation: `
-        <h4>1) ما هي Wechselpräpositionen؟</h4>
-        <p>هي 9 حروف جر تأخذ <strong>Akkusativ</strong> عند التعبير عن <strong>الحركة (Wohin?)</strong>، و<strong>Dativ</strong> عند التعبير عن <strong>الموقع الثابت (Wo?)</strong>.</p>
-        <table>
-          <tr><th>الحرف</th><th>المعنى</th></tr>
-          <tr><td>in</td><td>في</td></tr>
-          <tr><td>an</td><td>على (ملاصق)</td></tr>
-          <tr><td>auf</td><td>على</td></tr>
-          <tr><td>über</td><td>فوق</td></tr>
-          <tr><td>unter</td><td>تحت</td></tr>
-          <tr><td>vor</td><td>أمام</td></tr>
-          <tr><td>hinter</td><td>خلف</td></tr>
-          <tr><td>neben</td><td>بجانب</td></tr>
-          <tr><td>zwischen</td><td>بين</td></tr>
-        </table>
-
-        <h4>2) القاعدة الأساسية</h4>
-        <table>
-          <tr><th>السؤال</th><th>الحالة</th><th>مثال</th></tr>
-          <tr><td>Wohin? (إلى أين؟)</td><td><strong>Akkusativ</strong></td><td>Ich stelle die Kommode <strong>ins</strong> Schlafzimmer.</td></tr>
-          <tr><td>Wo? (أين؟)</td><td><strong>Dativ</strong></td><td>Die Kommode steht <strong>im</strong> Schlafzimmer.</td></tr>
-        </table>
-        <div class="grammar-tip">💡 اختصار: <strong>in + das = ins</strong>، <strong>in + dem = im</strong>، <strong>an + das = ans</strong>، <strong>an + dem = am</strong>.</div>
-
-        <h4>3) أدوات التعريف في الحالتين</h4>
-        <table>
-          <tr><th>الجنس</th><th>Nominativ</th><th>Akkusativ (Wohin?)</th><th>Dativ (Wo?)</th></tr>
-          <tr><td>مذكر</td><td>der</td><td><strong>den</strong></td><td><strong>dem</strong></td></tr>
-          <tr><td>مؤنث</td><td>die</td><td>die</td><td><strong>der</strong></td></tr>
-          <tr><td>محايد</td><td>das</td><td>das</td><td><strong>dem</strong></td></tr>
-          <tr><td>جمع</td><td>die</td><td>die</td><td><strong>den</strong> (+n)</td></tr>
-        </table>
-
-        <h4>4) أفعال الحركة (Wohin? → Akkusativ)</h4>
-        <ul>
-          <li><strong>stellen</strong> (يضع أفقياً) — Ich stelle den Tisch <strong>in die</strong> Küche.</li>
-          <li><strong>legen</strong> (يضع منبطحاً) — Ich lege das Buch <strong>auf den</strong> Tisch.</li>
-          <li><strong>hängen</strong> (يعلّق) — Ich hänge das Bild <strong>an die</strong> Wand.</li>
-          <li><strong>setzen</strong> (يجلس شخصاً) — Ich setze das Kind <strong>auf den</strong> Stuhl.</li>
-        </ul>
-
-        <h4>5) أفعال الموقع الثابت (Wo? → Dativ)</h4>
-        <ul>
-          <li><strong>stehen</strong> (يقف) — Der Tisch steht <strong>in der</strong> Küche.</li>
-          <li><strong>liegen</strong> (يستلقي) — Das Buch liegt <strong>auf dem</strong> Tisch.</li>
-          <li><strong>hängen</strong> (معلّق) — Das Bild hängt <strong>an der</strong> Wand.</li>
-          <li><strong>sitzen</strong> (يجلس) — Das Kind sitzt <strong>auf dem</strong> Stuhl.</li>
-        </ul>
-        <div class="grammar-tip">⚠️ لاحظ: <strong>hängen</strong> يمكن أن يأخذ Akkusativ (فعل حركة) أو Dativ (فعل موقع) حسب السياق — Ich hänge (Akk) vs Das Bild hängt (Dat).</div>
-
-        <h4>6) أمثلة من الدرس</h4>
-        <ul>
-          <li>Wohin kommt die Kommode? — Stell sie <strong>ins</strong> Schlafzimmer, <strong>neben das</strong> Bett.</li>
-          <li>Wohin mit dem Regal? — Wir hängen das Regal <strong>an die</strong> Wand <strong>über den</strong> Schreibtisch.</li>
-          <li>Wo steht die Kommode? — Sie steht <strong>im</strong> Schlafzimmer, <strong>neben dem</strong> Bett.</li>
-        </ul>
-      `
-    },
-    exercises: [
-      {
-        type: "choose",
-        question: "Ich stelle die Kommode ___ Schlafzimmer. (Wohin?)",
-        options: ["ins", "im", "in der", "in dem"],
-        correct: 0,
-        explanation: "Wohin? → Akkusativ → in + das = ins."
-      },
-      {
-        type: "choose",
-        question: "Die Kommode steht ___ Schlafzimmer. (Wo?)",
-        options: ["im", "ins", "in die", "in den"],
-        correct: 0,
-        explanation: "Wo? → Dativ → in + dem = im."
-      },
-      {
-        type: "choose",
-        question: "Wir hängen das Bild ___ Wand. (Wohin?)",
-        options: ["an die", "an der", "auf die", "in die"],
-        correct: 0,
-        explanation: "Wohin? → Akkusativ. Wand مؤنث → an die Wand."
-      },
-      {
-        type: "choose",
-        question: "Das Bild hängt ___ Wand. (Wo?)",
-        options: ["an der", "an die", "auf der", "in der"],
-        correct: 0,
-        explanation: "Wo? → Dativ. Wand مؤنث → an der Wand."
-      },
-      {
-        type: "choose",
-        question: "Wohin legst du das Buch? — Ich lege es ___ Tisch.",
-        options: ["auf den", "auf dem", "auf der", "auf das"],
-        correct: 0,
-        explanation: "Wohin? + Tisch مذكر → Akkusativ → auf den Tisch."
-      },
-      {
-        type: "choose",
-        question: "Wo liegt das Buch? — Es liegt ___ Tisch.",
-        options: ["auf dem", "auf den", "auf der", "auf die"],
-        correct: 0,
-        explanation: "Wo? + Tisch مذكر → Dativ → auf dem Tisch."
-      }
-    ]
-  }
-];
 
 /* ========== استخراج بيانات كلمة من المصادر ========== */
 function getWordData(word) {
