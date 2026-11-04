@@ -31,8 +31,14 @@ const GRAMMAR_A2 = [
         <tr><th>Nominativ (الفاعل)</th><th>Dativ (الشخص)</th><th>Akkusativ (الشيء)</th></tr>
         <tr><td>Die Kellnerin serviert</td><td>den Leuten</td><td>die Getränke.</td></tr>
         <tr><td>Heute bringt der Chef</td><td>den Gästen</td><td>das Frühstück.</td></tr>
-      </table>
-    `
+          </table>
+    `,
+    exercises: [
+      mc("Der Kellner trinkt ___ Saft.", ["ein", "einen", "einem", "eines"], 1, "الفعل trinken يأخذ Akkusativ، و Saft مذكر -> einen."),
+      mc("Der Mann schenkt ___ Frau Blumen.", ["die", "der", "den", "dem"], 1, "الفعل schenken يحتاج إلى شخص في Dativ (der Frau) وشيء في Akkusativ (Blumen)."),
+      mc("Ich liebe ___ Kind.", ["das", "dem", "den", "der"], 0, "الفعل lieben يأخذ Akkusativ، و Kind محايد -> das."),
+      mc("Er lacht. (ما هو نوع هذا الفعل؟)", ["فعل يحتاج Dativ", "فعل يحتاج Akkusativ", "فعل لا يحتاج مفعول به (Nominativ)"], 2, "الفعل lachen لا يحتاج إلى مفعول به، الفاعل فقط هو من يقوم بالفعل."),
+    ]
   },
   // --- الكابيتل 22 ---
   {
@@ -57,7 +63,12 @@ const GRAMMAR_A2 = [
         <li><b>passen</b> (يناسب): Die Schuhe passen <b>der Frau</b> (Dativ) gut.</li>
         <li><b>gehören</b> (يمتلك): Das Auto gehört <b>dem Chef</b> (Dativ).</li>
       </ul>
-    `
+    `,
+        exercises: [
+      mc("Ich helfe ___.", ["dich", "dir", "du", "deiner"], 1, "الفعل helfen يأخذ Dativ، والضمير المناسب لـ ich هو dir."),
+      mc("Das Haus gefällt ___ Leuten.", ["die", "der", "den", "dem"], 2, "الفعل gefallen يأخذ Dativ، والجمع (Leuten) في Dativ يصبح den."),
+      mc("Die Schuhe passen ___ Frau gut.", ["die", "der", "den", "dem"], 1, "الفعل passen يأخذ Dativ، والمؤنث (Frau) في Dativ يصبح der."),
+    ]
   },
     // --- الكابيتل 23 ---
   {
@@ -85,7 +96,12 @@ const GRAMMAR_A2 = [
         <li><b>Präteritum:</b> Ich <b>war</b> ledig. Ich <b>hatte</b> keine Kinder. (كنت أعزب. لم يكن لدي أطفال).</li>
         <li><b>Präsens:</b> Ich <b>bin</b> verheiratet. Ich <b>habe</b> vier Kinder. (أنا متزوج. لدي أربعة أطفال).</li>
       </ul>
-    `
+    `,
+        exercises: [
+      mc("Ich ___ gestern krank.", ["bin", "war", "habe", "hatte"], 1, "الماضي البسيط من sein مع ich هو war."),
+      mc("Wir ___ früher ein Haus.", ["waren", "hatten", "sind", "haben"], 1, "الماضي البسيط من haben مع wir هو hatten."),
+      mc("___ du gestern Zeit?", ["Warst", "Hattest", "Bist", "Hast"], 1, "الماضي البسيط من haben مع du هو hattest."),
+    ]
   },
   
   // --- الكابيتل 24 ---
@@ -122,7 +138,12 @@ const GRAMMAR_A2 = [
         <li>trinken -> ge<b>trunk</b>en</li>
         <li>lesen -> ge<b>les</b>en</li>
       </ul>
-    `
+    `,
+        exercises: [
+      mc("Ich ___ gestern Pizza ___.", ["habe / gegessen", "bin / gegessen", "habe / geessen", "bin / geessen"], 0, "الفعل essen يأخذ haben، والـ Partizip هو gegessen."),
+      mc("Er ___ zehn Stunden ___.", ["hat / gearbeitet", "ist / gearbeitet", "hat / gearbeitet", "ist / gearbeitet"], 0, "الفعل arbeiten يأخذ haben، والـ Partizip هو gearbeitet."),
+      mc("___ du das Buch ___?", ["Hast / gelesen", "Bist / gelesen", "Hast / gelest", "Bist / gelest"], 0, "الفعل lesen يأخذ haben، والـ Partizip هو gelesen."),
+    ]
   },
     // --- الكابيتل 25 ---
   {
@@ -161,7 +182,12 @@ const GRAMMAR_A2 = [
         <tr><td>ihr</td><td>seid</td><td>aufgestanden</td></tr>
         <tr><td>sie/Sie</td><td>sind</td><td>geblieben</td></tr>
       </table>
-    `
+    `,
+        exercises: [
+      mc("Ich ___ nach Berlin ___.", ["habe / gefahren", "bin / gefahren", "habe / gefahrt", "bin / gefahrt"], 1, "الفعل fahren (حركة) يأخذ sein، والـ Partizip هو gefahren."),
+      mc("Er ___ zu Hause ___.", ["hat / geblieben", "ist / geblieben", "hat / gebliebt", "ist / gebliebt"], 1, "الفعل bleiben (ثبات) يأخذ sein، والـ Partizip هو geblieben."),
+      mc("Wir ___ um 7 Uhr ___.", ["haben / aufgestanden", "sind / aufgestanden", "haben / aufgesteht", "sind / aufgesteht"], 1, "الفعل aufstehen (حركة) يأخذ sein، والـ Partizip هو aufgestanden."),
+    ]
   },
 
   // --- الكابيتل 26 ---
@@ -211,7 +237,13 @@ const GRAMMAR_A2 = [
         <li>telefonieren -> telefoniert</li>
         <li>studieren -> studiert</li>
       </ul>
-    `
+    `,
+        exercises: [
+      mc("Partizip Perfekt من الفعل 'kaufen' هو:", ["gekauft", "kaufte", "gekauften", "kauft"], 0, "الفعل منتظم: ge + kauf + t = gekauft."),
+      mc("Partizip Perfekt من الفعل 'verstehen' هو:", ["geverstanden", "verstanden", "verstand", "geversteht"], 1, "الفعل يبدأ بـ ver- (غير منفصل)، لذا لا نضيف ge-: verstanden."),
+      mc("Partizip Perfekt من الفعل 'telefonieren' هو:", ["getelefoniert", "telefoniert", "telefonierte", "ge telefoniert"], 1, "الأفعال المنتهية بـ -ieren لا تأخذ ge-: telefoniert."),
+      mc("Partizip Perfekt من الفعل 'einkaufen' هو:", ["geeinkauft", "eingekauft", "einkaufte", "eingekauft"], 1, "الفعل منفصل (ein-)، لذا نضع ge- بين البادئة والفعل: eingekauft."),
+    ]
   },
     // --- الكابيتل 27 ---
   {
