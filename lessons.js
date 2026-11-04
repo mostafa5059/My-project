@@ -191,7 +191,7 @@ const LESSONS = [
       mc("Ich möchte einen Kurs buchen. Ich brauche eine ___.", ["Beratung", "Berater", "Beraten", "Berat"], 0, "تحتاج إلى استشارة (Beratung).")
     ]
   }
-
+  ];
 /* ========== الدوال المساعدة ========== */
 function getWordData(word) {
   const clean = word.replace(/^(der|die|das) /, '').trim();
