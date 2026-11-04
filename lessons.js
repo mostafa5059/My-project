@@ -475,7 +475,16 @@ history.pushState({ lessonId: id }, "", "#lesson-" + id);
       </div>
     `;
   }
-
+    // 👇 إضافة قسم قطعة الدرس (Lesetext)
+  let lessonTextHTML = '';
+  if (lesson.text || lesson.lesetext) {
+    lessonTextHTML = `
+      <div class="section-title" style="margin-top:30px; font-size: 22px;">📖 قطعة الدرس (Lesetext)</div>
+      <div class="example-box" style="margin-top:15px; font-size: 18px; line-height: 2; direction: ltr; text-align: left; padding: 25px; background: var(--card-bg); border-right: 6px solid var(--accent);">
+        ${lesson.text || lesson.lesetext}
+      </div>
+    `;
+  }
   const exercisesHTML = (lesson.exercises && lesson.exercises.length) ? `
     <div class="section-title" style="margin-top:30px; font-size: 22px;">📝 التمارين (${lesson.exercises.length})</div>
     <div style="display:flex;flex-direction:column;gap:15px;margin-top:15px;">
