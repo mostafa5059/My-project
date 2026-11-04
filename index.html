@@ -1101,6 +1101,10 @@ function renderFavorites() {
 
 /* ==================== التبويبات ==================== */
 function switchTab(name) {
+    // تسجيل التبويب في تاريخ المتصفح لدعم زر الرجوع
+  if (!history.state || history.state.tab !== name) {
+    history.pushState({ tab: name }, "", "#" + name);
+  }
   currentTab = name;
   document.querySelectorAll('[id^="tab-"]').forEach(el => el.classList.add("hidden"));
   const target = document.getElementById("tab-" + name);
@@ -1450,23 +1454,36 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 1000); 
   });
 </script>
- <script>
+<script>
   document.addEventListener('DOMContentLoaded', function() {
-    // 1. التحقق من وجود رقم درس في الرابط (لفتح الدرس مباشرة إذا تم نسخ رابطه)
+    // 1. فتح الدرس مباشرة إذا كان في الرابط
     if (window.location.hash.startsWith('#lesson-')) {
         const lessonId = window.location.hash.replace('#lesson-', '');
         setTimeout(() => {
             if (typeof openLesson === 'function') openLesson(lessonId);
-        }, 1000); // ننتظر تحميل ملف الدروس
+        }, 1000); 
+    } else if (window.location.hash) {
+        // فتح التبويب مباشرة إذا كان في الرابط (مثلاً #nouns)
+        const tabName = window.location.hash.replace('#', '');
+        setTimeout(() => {
+            if (typeof switchTab === 'function') switchTab(tabName);
+        }, 500);
     }
 
-    // 2. دعم زر الرجوع في المتصفح
+    // 2. دعم زر الرجوع للخلف في المتصفح (لكل الموقع)
     window.addEventListener('popstate', function(event) {
       const singleLesson = document.getElementById('singleLessonContent');
+      
+      // إذا كنا في درس ونضغط رجوع، نغلق الدرس ونعود للقائمة
       if (singleLesson && !singleLesson.classList.contains('hidden')) {
-        if (typeof closeSingleLesson === 'function') {
-          closeSingleLesson();
-        }
+        if (typeof closeSingleLesson === 'function') closeSingleLesson();
+      } 
+      // إذا كنا في تبويب ونضغط رجوع، نعود للتبويب السابق
+      else if (event.state && event.state.tab) {
+        if (typeof switchTab === 'function') switchTab(event.state.tab);
+      } else {
+        // العودة للتبويب الافتراضي (الأفعال) إذا لم تكن هناك حالة
+        if (typeof switchTab === 'function') switchTab('verbs');
       }
     });
   });
