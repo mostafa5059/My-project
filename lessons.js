@@ -439,6 +439,136 @@ const LESSONS = [
     w("toll", "رائع", "صفات"),
     w("schick", "أنيق", "صفات")
   ]
+},
+   // ==========================================
+// Lektion 6: Meine Lieblingsveranstaltung
+// ==========================================
+{
+  id: "lektion-6",
+  level: "A2.1",
+  title: "Meine Lieblingsveranstaltung",
+  titleAr: "فعاليتي المفضلة (المناسبات والحفلات)",
+  topic: "مناسبات", 
+  description: "في هذا الدرس نتعلم كيف نتحدث عن الفعاليات والحفلات، كيف نقترح خططاً على أصدقائنا (وندعوهم أو نعتذر)، وكيف نحدد الفترات الزمنية باستخدام حروف الجر.",
+  image: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=800&q=80", // صورة حفل موسيقي
+  
+  // ----------------------------------------------------
+  // قطعة الدرس (Lesetext) - تم دمج القطع الأربعة من الصورة 1
+  // ----------------------------------------------------
+  text: `
+    <h4>Tolle Events in Deutschland, Österreich und in der Schweiz</h4>
+    <p>Leserinnen und Leser stellen ihre Lieblingsveranstaltungen im Sommer vor.</p>
+    
+    <div style="margin-top: 15px; border-right: 4px solid var(--primary); padding-right: 15px;">
+      <p><b>A - OPEN AIR FRAUENFELD</b><br>
+      Vom 8. bis zum 10. Juli bin ich auf dem Open Air Frauenfeld. Das ist das größte Hip-Hop-Fest in Europa. Es findet seit 1985 jedes Jahr im Sommer statt. Ich bin schon dreimal dort gewesen und habe viele tolle Konzerte erlebt.</p>
+      
+      <p><b>B - KIELER WOCHE</b><br>
+      Nächste Woche fahre ich nach Kiel. Von morgen an findet dort die berühmte Kieler Woche statt. Das ist eines der größten Segelsportereignisse weltweit. Aber neben dem Segeln steht auch die Musik im Mittelpunkt, mit 300 Konzerten auf 16 Bühnen.</p>
+      
+      <p><b>C - ARS ELECTRONICA</b><br>
+      Die Ars Electronica ist das weltweit wichtigste Festival für digitale Kunst. Sie findet seit 1979 jedes Jahr in Linz statt, dieses Jahr vom 31. August bis zum 6. September. Es gibt viele Ausstellungen, Konzerte, Performances und Diskussionsrunden.</p>
+      
+      <p><b>D - LANDSHUTER HOCHZEIT</b><br>
+      Ich liebe historische Feste, mit Musik, Tanz und Originalkostümen. Besonders schön ist die Landshuter Hochzeit. Sie hat die polnische Königs-tochter Hedwig 1475 den bayerischen Herzog Georg geheiratet. Die Hochzeitsfeier hat sechs Tage lang gedauert.</p>
+    </div>
+  `,
+  
+  // ----------------------------------------------------
+  // القاعدة النحوية (Grammar) - حروف الجر الزمنية
+  // ----------------------------------------------------
+  grammarTitle: "Temporale Präpositionen (حروف الجر الزمنية)",
+  grammar: `
+    <h4>💡 الفكرة ببساطة:</h4>
+    <p>عندما نريد التحدث عن وقت حدوث شيء ما (من متى؟ إلى متى؟ منذ متى؟)، نستخدم حروف جر معينة تتبعها حالة <b>Dativ</b> أو <b>Akkusativ</b>.</p>
+
+    <h4>🔹 1. لحالات "من ... إلى" و "منذ":</h4>
+    <ul>
+      <li><b>von ... bis</b> (من ... إلى): يستخدم لتحديد فترة زمنية. <br>مثال: <b>Vom</b> 8. <b>bis zum</b> 10. Juli. (من 8 إلى 10 يوليو - كلاهما Dativ).</li>
+      <li><b>ab</b> (اعتباراً من): لتحديد بداية شيء في المستقبل. <br>مثال: <b>Ab</b> morgen. (اعتباراً من الغد - Dativ).</li>
+      <li><b>an</b> (في/عند): تستخدم مع الأيام والأجزاء. <br>مثال: <b>am</b> Samstagabend (في مساء السبت - Dativ).</li>
+      <li><b>seit</b> (منذ): لشيء بدأ في الماضي ومستمر حتى الآن. <br>مثال: <b>Seit</b> 1985. (منذ عام 1985 - Dativ).</li>
+    </ul>
+
+    <h4>🔹 2. لحالات "كم المدة؟" (Wie lange?):</h4>
+    <ul>
+      <li><b>über + Akkusativ</b> (لمدة/أكثر من): <br>مثال: <b>über</b> 30 Jahre (منذ أكثر من 30 عاماً).</li>
+      <li>أو بدون حرف جر (للمدة المباشرة): <br>مثال: <b>zwei Jahre</b> (لمدة عامين).</li>
+    </ul>
+
+    <h4>📊 جدول توضيحي:</h4>
+    <table>
+      <tr><th>السؤال</th><th>حرف الجر</th><th>مثال</th></tr>
+      <tr><td>Ab wann? (من متى؟)</td><td>ab / von ... an</td><td>Ab morgen / Vom 1. Januar an</td></tr>
+      <tr><td>Wie lange? (إلى متى؟)</td><td>bis / von...bis</td><td>Bis 18 Uhr / Vom 8. bis 10. Juli</td></tr>
+      <tr><td>Seit wann? (منذ متى؟)</td><td>seit</td><td>Seit 1985</td></tr>
+      <tr><td>Wie lange? (كم المدة؟)</td><td>über (+ Akk)</td><td>Über 30 Jahre</td></tr>
+    </table>
+  `,
+
+  // ----------------------------------------------------
+  // التمارين (Exercises)
+  // ----------------------------------------------------
+  exercises: [
+    mc("Ich lerne Deutsch ___ einem Jahr.", ["von", "seit", "ab", "an"], 1, "هنا نعبر عن شيء بدأ في الماضي (منذ سنة) ومستمر، نستخدم seit."),
+    mc("Das Festival findet ___ 8. ___ 10. Juli statt.", ["von / bis zum", "ab / bis", "seit / bis", "an / an"], 0, "للتعبير عن فترة من...إلى، نستخدم von... bis zum."),
+    mc("___ morgen an fange ich an zu lernen.", ["Von", "Seit", "Ab", "An"], 0, "عندما نستخدم an للتعبير عن البداية، نأتي بـ von قبل الوقت (Vom morgen an)."),
+    mc("Er wartet ___ zwei Stunden auf mich.", ["seit", "über", "bis", "ab"], 1, "للتعبير عن مدة زمنية (أكثر من/لمدة ساعتين)، نستخدم über + Akkusativ."),
+    mc("Das Konzert ist ___ 20 Uhr.", ["ab", "an", "bis", "über"], 2, "للإشارة إلى وقت الانتهاء (حتى الساعة 20)، نستخدم bis."),
+    mc("Wir treffen uns ___ Samstagabend.", ["an", "am", "ab", "seit"], 1, "للتحدث عن يوم محدد، نستخدم an + اليوم، وهنا Samstagabend مذكر، فتصبح am."),
+    mc("___ 1979 gibt es dieses Festival.", ["Von", "Seit", "Ab", "Über"], 1, "هنا نعبر عن شيء بدأ في الماضي، الصحيح هو seit."),
+  ],
+
+  // ----------------------------------------------------
+  // المفردات (Vocabulary)
+  // ----------------------------------------------------
+  newWords: [
+    // الأفعال
+    v("stattfinden", "يقام / يحدث", "مناسبات", "fand statt", "stattgefunden"),
+    v("erleben", "يعيش/يختبر", "مناسبات", "erlebte", "erlebt"),
+    v("mitkommen", "يأتي مع (شخص)", "تواصل", "kam mit", "mitgekommen"),
+    v("vorschlagen", "يقترح", "تواصل", "schlug vor", "vorgeschlagen"),
+    v("zustimmen", "يوافق", "تواصل", "stimmte zu", "zugestimmt"),
+    v("ablehnen", "يرفض", "تواصل", "lehnte ab", "abgelehnt"),
+    v("sich verabreden", "يتواعد/يتفق مع", "تواصل", "verabredete sich", "verabredet"),
+    v("ausmachen", "يحدد/يتفق على", "تواصل", "machte aus", "ausgemacht"),
+    v("stattfinden", "يُعقد/يقام", "مناسبات", "fand statt", "stattgefunden"),
+    v("dauern", "يستمر/يدوم", "وقت", "dauerte", "gedauert"),
+    v("stattfinden", "يقام", "مناسبات", "fand statt", "stattgefunden"),
+    v("erleben", "يعيش/يشهد", "مناسبات", "erlebte", "erlebt"),
+
+    // الأسماء
+    w("die Veranstaltung", "الفعالية / المناسبة", "مناسبات"),
+    w("das Festival", "المهرجان", "مناسبات"),
+    w("das Konzert", "الحفل الموسيقي", "فن"),
+    w("die Bühne", "المسرح / المنصة", "فن"),
+    w("der Star", "النجم", "فن"),
+    w("der Eintritt", "الدخول (رسوم الدخول)", "مناسبات"),
+    w("die Eintrittskarte", "تذكرة الدخول", "مناسبات"),
+    w("die Ermäßigung", "الخصم / التخفيض", "تسوق"),
+    w("der Künstler", "الفنان", "فن"),
+    w("die Kunst", "الفن", "فن"),
+    w("der Vortrag", "المحاضرة", "دراسة"),
+    w("die Diskussionsrunde", "حلقة نقاش", "تواصل"),
+    w("das Kostüm", "الزي التنكري", "مناسبات"),
+    w("das Fest", "الاحتفال / العيد", "مناسبات"),
+    w("die Ausstellung", "المعرض", "فن"),
+    w("das Theaterstück", "المسرحية", "فن"),
+    w("die Hochzeit", "حفل الزفاف", "مناسبات"),
+    w("der Sommer", "الصيف", "طبيعة"),
+    w("die Woche", "الأسبوع", "وقت"),
+    w("der Tag", "اليوم", "وقت"),
+    w("das Jahr", "السنة", "وقت"),
+
+    // الصفات
+    w("toll", "رائع", "صفات"),
+    w("berühmt", "شهير", "صفات"),
+    w("spannend", "مثير/مشوق", "صفات"),
+    w("langweilig", "ممل", "صفات"),
+    w("historisch", "تاريخي", "صفات"),
+    w("digital", "رقمي", "صفات"),
+    w("international", "دولي", "صفات")
+  ]
 }
   ];
 
