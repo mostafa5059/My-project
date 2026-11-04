@@ -1177,7 +1177,59 @@ body.dark-mode .rule-content strong {
   background: #1e3a8a !important;
   color: #93c5fd !important;
 }
+function buildTopicFilters(tabName) {
+  const container = document.getElementById('topicFilters');
+  if (!container) return;
+  
+  // إذا كان هناك موضوع مختار، لا نعرض البطاقات
+  if (currentTopic !== "all") {
+    container.style.display = 'none';
+    return;
+  }
 
+  let sourceData = [];
+  if (tabName === 'verbs') sourceData = (contentLanguage === 'en' && typeof VERBS_EN !== 'undefined') ? VERBS_EN : (typeof VERBS !== 'undefined' ? VERBS : []);
+  else if (tabName === 'nouns') sourceData = (contentLanguage === 'en' && typeof NOUNS_EN !== 'undefined') ? NOUNS_EN : (typeof NOUNS !== 'undefined' ? NOUNS : []);
+  else if (tabName === 'adjectives') sourceData = (typeof ADJECTIVES !== 'undefined' ? ADJECTIVES : []);
+  else { container.style.display = 'none'; return; }
+
+  // تجميع المواضيع وعدد الكلمات في كل موضوع
+  const topics = {};
+  sourceData.forEach(item => {
+    const t = item.topic || 'عام';
+    if (!topics[t]) topics[t] = 0;
+    topics[t]++;
+  });
+
+  if (Object.keys(topics).length === 0) { container.style.display = 'none'; return; }
+
+  container.style.display = 'block';
+  
+  // رموز تعبيرية للمواضيع
+  const icons = {
+    'عائلة': '👨‍👩‍👧', 'مهن': '💼', 'طعام': '🍔', 'حياة': '🌱', 'رياضة': '⚽', 
+    'لغة': '📚', 'دراسة': '🎓', 'حركة': '🏃', 'تواصل': '💬', 'سفر': '✈️', 
+    'تسوق': '🛒', 'فن': '🎨', 'منزل': '🏠', 'صفات': '✨', 'ظروف': '🕒',
+    'سكن': '🏡', 'أثاث': '🛋️', 'حروف جر': '🔗', 'مشاعر': '❤️', 'علاقات': '🤝',
+    'مناسبات': '🎉', 'وقت': '⏱️', 'أماكن': '📍', 'طبيعة': '🌳', 'جغرافيا': '🗺️',
+    'عمل': '💼', 'ألوان': '🎨', 'طقس': '🌤️'
+  };
+
+  let html = '<div class="topic-grid">';
+  Object.keys(topics).forEach(t => {
+    const icon = icons[t] || '📁';
+    html += `
+      <div class="topic-card" onclick="switchTopic('${t}')">
+        <div class="topic-icon">${icon}</div>
+        <div class="topic-name">${t}</div>
+        <div class="topic-count">${topics[t]} كلمة</div>
+      </div>
+    `;
+  });
+  html += '</div>';
+  
+  container.innerHTML = html;
+}
 </style>
 </head>
 <body>
@@ -1469,34 +1521,77 @@ function toggleFavorite(key, btnEl) {
 function buildTopicFilters(tabName) {
   const container = document.getElementById('topicFilters');
   if (!container) return;
+  
+  // إذا كان هناك موضوع مختار، لا نعرض البطاقات
+  if (currentTopic !== "all") {
+    container.style.display = 'none';
+    return;
+  }
+
   let sourceData = [];
   if (tabName === 'verbs') sourceData = (contentLanguage === 'en' && typeof VERBS_EN !== 'undefined') ? VERBS_EN : (typeof VERBS !== 'undefined' ? VERBS : []);
   else if (tabName === 'nouns') sourceData = (contentLanguage === 'en' && typeof NOUNS_EN !== 'undefined') ? NOUNS_EN : (typeof NOUNS !== 'undefined' ? NOUNS : []);
+  else if (tabName === 'adjectives') sourceData = (typeof ADJECTIVES !== 'undefined' ? ADJECTIVES : []);
   else { container.style.display = 'none'; return; }
-  const topics = [...new Set(sourceData.map(x => x.topic).filter(t => t))];
-  if (topics.length === 0) { container.style.display = 'none'; return; }
-  container.style.display = 'flex';
-  container.innerHTML = '<span style="font-size:13px;color:#065f46;font-weight:700;align-self:center;margin-left:8px;">📂 الموضوع:</span>';
-  const allBtn = document.createElement('button');
-  allBtn.className = 'filter-btn' + (currentTopic === 'all' ? ' active' : '');
-  if (currentTopic === 'all') allBtn.style.background = '#047857';
-  allBtn.textContent = 'الكل';
-  allBtn.onclick = () => switchTopic('all');
-  container.appendChild(allBtn);
-  topics.forEach(t => {
-    const btn = document.createElement('button');
-    btn.className = 'filter-btn' + (currentTopic === t ? ' active' : '');
-    if (currentTopic === t) btn.style.background = '#047857';
-    btn.textContent = t;
-    btn.onclick = () => switchTopic(t);
-    container.appendChild(btn);
+
+  // تجميع المواضيع وعدد الكلمات في كل موضوع
+  const topics = {};
+  sourceData.forEach(item => {
+    const t = item.topic || 'عام';
+    if (!topics[t]) topics[t] = 0;
+    topics[t]++;
   });
+
+  if (Object.keys(topics).length === 0) { container.style.display = 'none'; return; }
+
+  container.style.display = 'block';
+  
+  // رموز تعبيرية للمواضيع
+  const icons = {
+    'عائلة': '👨‍👩‍👧', 'مهن': '💼', 'طعام': '🍔', 'حياة': '🌱', 'رياضة': '⚽', 
+    'لغة': '📚', 'دراسة': '🎓', 'حركة': '🏃', 'تواصل': '💬', 'سفر': '✈️', 
+    'تسوق': '🛒', 'فن': '🎨', 'منزل': '🏠', 'صفات': '✨', 'ظروف': '🕒',
+    'سكن': '🏡', 'أثاث': '🛋️', 'حروف جر': '🔗', 'مشاعر': '❤️', 'علاقات': '🤝',
+    'مناسبات': '🎉', 'وقت': '⏱️', 'أماكن': '📍', 'طبيعة': '🌳', 'جغرافيا': '🗺️',
+    'عمل': '💼', 'ألوان': '🎨', 'طقس': '🌤️'
+  };
+
+  let html = '<div class="topic-grid">';
+  Object.keys(topics).forEach(t => {
+    const icon = icons[t] || '📁';
+    html += `
+      <div class="topic-card" onclick="switchTopic('${t}')">
+        <div class="topic-icon">${icon}</div>
+        <div class="topic-name">${t}</div>
+        <div class="topic-count">${topics[t]} كلمة</div>
+      </div>
+    `;
+  });
+  html += '</div>';
+  
+  container.innerHTML = html;
 }
 function switchTopic(topic) {
   currentTopic = topic;
-  buildTopicFilters(currentTab);
+  
+  // إذا اخترنا موضوعاً، نعرض زر "العودة للمواضيع"
+  const container = document.getElementById('topicFilters');
+  if (topic !== "all") {
+    container.style.display = 'block';
+    container.innerHTML = `
+      <button class="filter-btn" onclick="switchTopic('all')" style="background:var(--primary);color:#fff;border:none;padding:10px 20px;border-radius:20px;font-weight:700;cursor:pointer;margin-bottom:15px;display:inline-flex;align-items:center;gap:8px;">
+        ← العودة لكل المواضيع
+      </button>
+      <span style="font-weight:800;font-size:18px;color:var(--primary-dark);">📂 ${topic}</span>
+    `;
+  } else {
+    container.innerHTML = '';
+    buildTopicFilters(currentTab);
+  }
+
   if (currentTab === 'verbs') renderVerbs();
   else if (currentTab === 'nouns') renderNouns();
+  else if (currentTab === 'adjectives') renderAdjectives();
 }
 
 /* ==================== الأفعال ==================== */
