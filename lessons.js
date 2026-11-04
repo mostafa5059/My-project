@@ -440,7 +440,7 @@ history.pushState({ lessonId: id }, "", "#lesson-" + id);
     
     // استخراج الكلمة بذكاء (إذا كانت نصاً أو كائناً)
     const wordText = typeof w === 'string' ? w : (w.de || w.word || '');
-    const translation = typeof w === 'string' ? '' : (w.ar || w.translation || '');
+    const translation = typeof w === 'string' ? '' : (w.ar || w.translation || w.arabic || '');
     
     const d = typeof getWordData === 'function' ? getWordData(w) : { kind: 'other' };
     const clean = wordText.replace(/^(der|die|das) /, '');
@@ -499,6 +499,7 @@ history.pushState({ lessonId: id }, "", "#lesson-" + id);
      <button class="filter-btn" onclick="closeSingleLesson()" style="margin-bottom:20px;">← العودة للدروس</button>
       <h2 style="color:var(--primary-dark);font-size:28px;margin-bottom:5px;">${lesson.title}</h2>
       <h3 style="color:var(--text-muted);font-size:20px;margin-bottom:15px;">${lesson.titleAr || ''}</h3>
+              ${lesson.image ? `<div style="text-align:center; margin-bottom: 20px;"><img src="${lesson.image}" alt="${lesson.title}" style="width:100%; max-width:400px; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.1); object-fit:cover;"></div>` : ''}
 ${(lesson.description || lesson.desc) ? `
   <div class="example-box" style="margin-bottom: 25px; border-right: 5px solid var(--primary); background: var(--card-bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); border-left: 1px solid var(--border-color);">
     <strong>💡 نبذة عن الدرس:</strong><br>
