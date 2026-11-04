@@ -1230,6 +1230,44 @@ function buildTopicFilters(tabName) {
   
   container.innerHTML = html;
 }
+            /* =========================================
+           التعديلات الجديدة (الماوس + الوضع الليلي)
+           ========================================= */
+
+        /* 1. تغيير شكل الماوس ليكون يد عند الوقوف على البطاقات */
+        .topic-card, 
+        .sidebar-menu-item, 
+        button, 
+        a {
+            cursor: pointer;
+        }
+
+        /* 2. تأثير حركي جميل عند الوقوف على بطاقة الموضوع (اختياري) */
+        .topic-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .topic-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* 3. إصلاح الوضع الليلي (Dark Mode) */
+        /* استبدل .dark-mode بالكلاس الذي تستخدمه إذا كان مختلفاً */
+        body.dark-mode .topic-card {
+            background-color: #2d3748 !important; /* لون خلفية البطاقة في الوضع الليلي */
+            border: 1px solid #4a5568 !important;
+        }
+
+        body.dark-mode .topic-card .topic-name,
+        body.dark-mode .topic-card .topic-count,
+        body.dark-mode .topic-card .topic-icon {
+            color: #ffffff !important; /* جعل النص والأيقونة بيضاء لتظهر بوضوح */
+        }
+        
+        /* إصلاح أي نصوص أخرى قد تختفي في الوضع الليلي */
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 {
+            color: #ffffff !important;
+        }
 </style>
 </head>
 <body>
