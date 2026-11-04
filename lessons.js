@@ -431,7 +431,8 @@ function renderLessonsTab() {
 function openLesson(id) {
   const lesson = LESSONS.find(l => l.id === id);
   if (!lesson) return;
-
+  // إضافة حالة للمتصفح لدعم زر الرجوع
+history.pushState({ lessonId: id }, "", "#lesson-" + id);
   // تأمين المصفوفات في حال كانت فارغة
   const allWords = [...(lesson.words || []), ...(lesson.newWords || [])];
   const rows = allWords.map(w => {
@@ -495,7 +496,7 @@ function openLesson(id) {
   const container = document.getElementById('singleLessonContent');
   if (container) {
     container.innerHTML = `
-      <button class="filter-btn" onclick="initLessonsTab()" style="margin-bottom:20px;">← العودة للدروس</button>
+     <button class="filter-btn" onclick="closeSingleLesson()" style="margin-bottom:20px;">← العودة للدروس</button>
       <h2 style="color:var(--primary-dark);font-size:28px;margin-bottom:5px;">${lesson.title}</h2>
       <h3 style="color:var(--text-muted);font-size:20px;margin-bottom:25px;">${lesson.titleAr || ''}</h3>
       
@@ -573,4 +574,13 @@ function checkLessonExercise(exIdx, optIdx) {
     fb.style.color = isCorrect ? '#166534' : '#991b1b';
     fb.innerHTML = (isCorrect ? '✅ صحيح! ' : '❌ خطأ. ') + ex.explanation;
   }
+}
+// دالة إغلاق الدرس المفرد والعودة للقائمة
+function closeSingleLesson() {
+  document.getElementById('singleLessonContent').classList.add('hidden');
+  document.getElementById('lessonsContent').classList.remove('hidden');
+  document.getElementById('lessonSubTabs').classList.remove('hidden');
+  
+  // مسح الهاش من الرابط
+  history.pushState({}, "", window.location.pathname + window.location.search);
 }
