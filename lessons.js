@@ -569,6 +569,706 @@ const LESSONS = [
     w("digital", "رقمي", "صفات"),
     w("international", "دولي", "صفات")
   ]
+},
+   // ==========================================
+// Lektion 7: Wir könnten montags joggen gehen!
+// ==========================================
+{
+  id: "lektion-7",
+  level: "A2.1",
+  title: "Wir könnten montags joggen gehen!",
+  titleAr: "يمكننا الذهاب للركض أيام الاثنين! (الرياضة والاقتراحات)",
+  topic: "رياضة", 
+  description: "في هذا الدرس نتعلم كيف نتحدث عن الرياضة، نقدم اقتراحات لبعضنا البعض، نعطي نصائح، ونتحدث عن خططنا الأسبوعية.",
+  image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=800&q=80", // صورة رياضة/جري
+  
+  // ----------------------------------------------------
+  // قطعة الدرس (Lesetext) - قصة الكلب الداخلي
+  // ----------------------------------------------------
+  text: `
+    <h4>Der innere Schweinehund</h4>
+    <p>Was nehmen Sie sich immer wieder vor und schaffen es nicht? Notieren Sie.</p>
+    <div style="margin-top: 15px; border-right: 4px solid var(--primary); padding-right: 15px;">
+      <p><b>Mein innerer Schweinehund</b><br>
+      <i>weniger Computerspiele spielen</i><br>
+      <i>immer sport treiben</i><br>
+      <i>mehr Fahrrad fahren</i><br>
+      <i>mehr Obst essen</i><br>
+      <i>fast immer gleich offen und barfuß laufen</i></p>
+      
+      <p style="margin-top: 15px;"><b>Vergleichen Sie:</b></p>
+      <p>- Ich würde gern mehr Fahrrad fahren. Das macht fit und ist gesund.<br>
+      - Ja, das stimmt. Ich fahre jeden Tag Fahrrad.<br>
+      - Ich fahre nur selten Fahrrad. Ich laufe lieber oder nehme den Bus.</p>
+    </div>
+  `,
+  
+  // ----------------------------------------------------
+  // القاعدة النحوية (Grammar) - Konjunktiv II للاقتراحات
+  // ----------------------------------------------------
+  grammarTitle: "Konjunktiv II (können, sollen) للاقتراحات والنصائح",
+  grammar: `
+    <h4>💡 الفكرة ببساطة:</h4>
+    <p>عندما نريد أن نقترح شيئاً بلطف على صديق (مثل: يمكننا أن نذهب للركض)، أو نعطي نصيحة (مثل: يجب عليك أن ترتاح)، نستخدم صيغة خاصة تسمى <b>Konjunktiv II</b>.</p>
+    <p>هذه الصيغة تجعل الجملة تبدو غير آمرة، بل مجرد "اقتراح" أو "فكرة" لطيفة.</p>
+
+    <h4>🔹 1. الفعل können (يستطيع / يمكن):</h4>
+    <p>نستخدمه لاقتراح فكرة (يمكننا أن نفعل...).</p>
+    <ul>
+      <li>ich <b>könnte</b> (أنا يمكنني)</li>
+      <li>du <b>könntest</b> (أنت يمكنك)</li>
+      <li>er/sie/es <b>könnte</b></li>
+      <li>wir <b>könnten</b> (نحن يمكننا) - <i>الأكثر استخداماً للاقتراحات!</i></li>
+      <li>ihr <b>könntet</b></li>
+      <li>sie/Sie <b>könnten</b></li>
+    </ul>
+    <div class="example-box" style="margin-top:10px;">
+      <p><b>Wir könnten</b> montags joggen gehen. (يمكننا الذهاب للركض أيام الاثنين).</p>
+    </div>
+
+    <h4>🔹 2. الفعل sollen (يجب / ينبغي):</h4>
+    <p>نستخدمه لإعطاء نصيحة (يجب عليك أن تفعل...).</p>
+    <ul>
+      <li>ich <b>sollte</b> (يجب عليّ)</li>
+      <li>du <b>solltest</b> (يجب عليك)</li>
+      <li>er/sie/es <b>sollte</b></li>
+      <li>wir <b>sollten</b> (يجب علينا)</li>
+      <li>ihr <b>solltet</b></li>
+      <li>sie/Sie <b>sollten</b></li>
+    </ul>
+    <div class="example-box" style="margin-top:10px;">
+      <p><b>Du solltest</b> mehr Obst essen. (يجب عليك أكل المزيد من الفاكهة).</p>
+    </div>
+    
+    <h4>🔹 3. حروف الجر الزمنية مع Dativ:</h4>
+    <p>للتعبير عن الأوقات نستخدم: <code>zwischen</code> (بين) و <code>abends</code> (مساءً).</p>
+  `,
+
+  // ----------------------------------------------------
+  // التمارين (Exercises)
+  // ----------------------------------------------------
+  exercises: [
+    mc("___ wir am Wochenende zusammen schwimmen? (اقتراح)", ["Können", "Könnten", "Sollten", "Müssen"], 1, "للاقتراح اللطيف نستخدم Konjunktiv II من الفعل können -> könnten."),
+    mc("Du ___ mehr schlafen, du siehst müde aus. (نصيحة)", ["solltest", "sollte", "könnte", "könntest"], 0, "لإعطاء نصيحة نستخدم sollen في صيغة Konjunktiv II -> solltest."),
+    mc("Was ist richtig? - Ich ___ gern mehr Sport machen.", ["werde", "würde", "wurde", "wirst"], 1, "نستخدم würde + المصدر للتعبير عن الرغبة (أود أن...)."),
+    mc("Wir treffen uns ___ 18 und 19 Uhr.", ["ab", "von", "zwischen", "seit"], 2, "بين وقتين نستخدم zwischen + Dativ."),
+    mc("Er möchte abnehmen. Er ___ weniger Süßigkeiten essen.", ["sollte", "könnte", "würde", "müsste"], 0, "النصيحة هنا تكون بـ sollte (يجب عليه)."),
+    mc("Ich habe keine Zeit. ___ wir uns morgen treffen?", ["Könnten", "Sollten", "Müssten", "Würden"], 0, "اقتراح بديل: هل يمكننا أن نتقابل غداً؟"),
+  ],
+
+  // ----------------------------------------------------
+  // المفردات (Vocabulary)
+  // ----------------------------------------------------
+  newWords: [
+    // الأفعال
+    v("joggen", "يمارس الركض", "رياضة", "joggte", "gejoggt"),
+    v("abnehmen", "يفقد الوزن", "رياضة", "nahm ab", "abgenommen"),
+    v("zunehmen", "يزيد الوزن", "رياضة", "nahm zu", "zugenommen"),
+    v("trainieren", "يتدرب", "رياضة", "trainierte", "trainiert"),
+    v("sich treffen", "يتقابل", "تواصل", "traf sich", "getroffen"),
+    v("empfehlen", "ينصح", "تواصل", "empfahl", "empfohlen"),
+    v("vorschlagen", "يقترح", "تواصل", "schlug vor", "vorgeschlagen"),
+    v("einladen", "يدعو", "تواصل", "lud ein", "eingeladen"),
+    v("schlafen", "ينام", "حياة", "schlief", "geschlafen"),
+    v("aufstehen", "يستيقظ", "حركة", "stand auf", "aufgestanden"),
+
+    // الأسماء
+    w("der Sport", "الرياضة", "رياضة"),
+    w("der Sportplatz", "ملعب رياضي", "رياضة"),
+    w("das Fitnessstudio", "صالة رياضية", "رياضة"),
+    w("das Training", "التدريب", "رياضة"),
+    w("der Muskel", "العضلة", "رياضة"),
+    w("die Gesundheit", "الصحة", "حياة"),
+    w("das Obst", "الفاكهة", "طعام"),
+    w("das Gemüse", "الخضروات", "طعام"),
+    w("der Schweinehund", "الكسل (حرفياً: كلب الخنزير)", "مشاعر"),
+    w("der Tipp", "النصيحة", "تواصل"),
+    w("der Vorschlag", "الاقتراح", "تواصل"),
+    w("die Freizeit", "وقت الفراغ", "وقت"),
+    w("der Termin", "الموعد", "وقت"),
+    w("die Woche", "الأسبوع", "وقت"),
+
+    // الصفات
+    w("fit", "لائق بدنياً", "صفات"),
+    w("gesund", "صحي", "صفات"),
+    w("ungesund", "غير صحي", "صفات"),
+    w("müde", "متعب", "صفات"),
+    w("sportlich", "رياضي", "صفات"),
+    w("faul", "كسول", "صفات")
+  ]
+},
+   // ==========================================
+// Lektion 8: Hoffentlich ist es nicht das Herz!
+// ==========================================
+{
+  id: "lektion-8",
+  level: "A2.1",
+  title: "Hoffentlich ist es nicht das Herz!",
+  titleAr: "أتمنى ألا يكون القلب! (الصحة والأمراض)",
+  topic: "صحة", 
+  description: "في هذا الدرس نتعلم كيف نصف الأمراض والأعراض، كيف نعبر عن القلق والتعاطف، وكيف نربط الجمل باستخدام (weil) و (deshalb).",
+  image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80", // صورة طبيب/مستشفى
+  
+  // ----------------------------------------------------
+  // قطعة الدرس (Lesetext) - من نصوص الصور
+  // ----------------------------------------------------
+  text: `
+    <h4>Wer kann mir helfen?</h4>
+    <p>Vielleicht ist es ja auch ein Virus.</p>
+    <div style="margin-top: 15px; border-right: 4px solid var(--primary); padding-right: 15px;">
+      <p><b>Caritas 23:</b> Ich habe starke Kopfschmerzen und mein Herz rast. Ich habe das Gefühl, dass ich keine Luft mehr bekomme.</p>
+      <p><b>SEELE0711:</b> Oh, das tut mir leid. Vielleicht hast du einfach zu viel Stress. Du solltest mal eine Pause machen!</p>
+      <p><b>INDI:</b> Ich gehe morgen zum Arzt. Ich habe solche Angst vor dem Ergebnis.</p>
+    </div>
+    
+    <h4 style="margin-top: 20px;">Der Unfall</h4>
+    <p>Gestern hatte ich einen Unfall mit dem Fahrrad. Eine Frau hat den Unfall gesehen und hat mir geholfen. Sie hat einen Krankenwagen gerufen. Der Notarzt hat mich ins Krankenhaus gebracht. Ich hatte großes Glück.</p>
+  `,
+  
+  // ----------------------------------------------------
+  // القاعدة النحوية (Grammar) - الجمل الثانوية
+  // ----------------------------------------------------
+  grammarTitle: "Nebensätze mit weil und deshalb (الجمل الثانوية)",
+  grammar: `
+    <h4>💡 الفكرة ببساطة:</h4>
+    <p>عندما نريد أن نشرح "السبب" أو "النتيجة" نستخدم أدوات ربط. في الألمانية، ترتيب الكلمات يتغير حسب أداة الربط.</p>
+
+    <h4>🔹 1. أداة الربط weil (لأن / بسبب):</h4>
+    <p>عند استخدام <b>weil</b>، يذهب الفعل المُصرّف إلى <b>نهاية الجملة</b>.</p>
+    <ul>
+      <li><b>السبب:</b> Ich bleibe heute im Bett, <b>weil</b> ich <b>krank bin</b>. (أبقى في السرير اليوم لأنني مريض).</li>
+      <li>لاحظ أن الفعل (bin) جاء في النهاية بعد الفاعل (ich).</li>
+    </ul>
+
+    <h4>🔹 2. أداة الربط deshalb (لذلك / لهذا السبب):</h4>
+    <p>عند استخدام <b>deshalb</b>، تبدأ الجملة بها (تحتل المركز الأول)، ثم يأتي الفعل المُصرّف مباشرة بعدها، ثم الفاعل.</p>
+    <ul>
+      <li><b>النتيجة:</b> Ich bin krank, <b>deshalb bleibe</b> ich heute im Bett. (أنا مريض، لذلك أبقى في السرير اليوم).</li>
+      <li>لاحظ أن الفعل (bleibe) جاء قبل الفاعل (ich).</li>
+    </ul>
+
+    <h4>📊 مقارنة سريعة:</h4>
+    <table>
+      <tr><th>السبب</th><th>النتيجة</th></tr>
+      <tr><td>Ich lerne Deutsch, <b>weil</b> ich in Deutschland arbeiten will.</td><td>Ich will in Deutschland arbeiten, <b>deshalb lerne</b> ich Deutsch.</td></tr>
+    </table>
+  `,
+
+  // ----------------------------------------------------
+  // التمارين (Exercises)
+  // ----------------------------------------------------
+  exercises: [
+    mc("Ich kann nicht kommen, ___ ich krank bin.", ["weil", "deshalb", "dass", "wenn"], 0, "الأداة weil تشرح السبب، والفعل (bin) يذهب للنهاية."),
+    mc("Ich habe Zahnschmerzen, ___ gehe ich zum Zahnarzt.", ["weil", "deshalb", "dass", "wenn"], 1, "الأداة deshalb تعبر عن النتيجة، ويأتي الفعل (gehe) بعدها مباشرة."),
+    mc("___ ich starke Kopfschmerzen habe, bleibe ich zu Hause.", ["Weil", "Deshalb", "Wenn", "Dass"], 0, "بدأنا بالسبب (weil)، والفعل (habe) في النهاية."),
+    mc("Ich habe keine Zeit, ___ komme ich nicht mit.", ["weil", "deshalb", "dass", "ob"], 1, "النتيجة (لهذا السبب) -> deshalb."),
+    mc("Er ist sehr müde, ___ er gestern schlecht geschlafen hat.", ["weil", "deshalb", "dass", "wann"], 0, "السبب هو (weil)، والفعل (hat) في النهاية."),
+    mc("Ich habe so schlimme Rückenschmerzen. - Oh, das tut mir ___!", ["gut", "leid", "schlecht", "wichtig"], 1, "التعبير عن التعاطف: Das tut mir leid (يؤسفني ذلك)."),
+  ],
+
+  // ----------------------------------------------------
+  // المفردات (Vocabulary)
+  // ----------------------------------------------------
+  newWords: [
+    // الأفعال
+    v("sich verletzen", "يُصاب (بجرح)", "صحة", "verletzte sich", "verletzt"),
+    v("untersuchen", "يفحص (طبيب)", "صحة", "untersuchte", "untersucht"),
+    v("operieren", "يجري عملية جراحية", "صحة", "operierte", "operiert"),
+    v("bluten", "ينزف", "صحة", "blutete", "geblutet"),
+    v("hoffen", "يأمل", "مشاعر", "hoffte", "gehofft"),
+    v("sich fühlen", "يشعر", "مشاعر", "fühlte sich", "gefühlt"),
+    v("wehtun", "يؤلم", "صحة", "tat weh", "wehgetan"),
+
+    // الأسماء
+    w("der Unfall", "حادث", "صحة"),
+    w("der Krankenwagen", "سيارة الإسعاف", "صحة"),
+    w("der Notarzt", "طبيب الطوارئ", "صحة"),
+    w("das Krankenhaus", "المستشفى", "صحة"),
+    w("der Zahnarzt", "طبيب الأسنان", "صحة"),
+    w("der Zahn", "السن", "صحة"),
+    w("die Zahnschmerzen", "ألم الأسنان", "صحة"),
+    w("das Herz", "القلب", "صحة"),
+    w("der Magen", "المعدة", "صحة"),
+    w("der Kopf", "الرأس", "صحة"),
+    w("das Knie", "الركبة", "صحة"),
+    w("der Rücken", "الظهر", "صحة"),
+    w("die Operation", "العملية الجراحية", "صحة"),
+    w("die Verletzung", "الإصابة", "صحة"),
+    w("die Krankheit", "المرض", "صحة"),
+    w("das Fieber", "الحمى", "صحة"),
+    w("der Stress", "التوتر", "مشاعر"),
+    w("die Angst", "الخوف", "مشاعر"),
+    w("das Mitleid", "التعاطف", "مشاعر"),
+    w("das Glück", "الحظ", "حياة"),
+
+    // الصفات
+    w("krank", "مريض", "صفات"),
+    w("gesund", "صحي / سليم", "صفات"),
+    w("schlimm", "سيء / خطير", "صفات"),
+    w("gefährlich", "خطير", "صفات"),
+    w("müde", "متعب", "صفات")
+  ]
+},
+   // ==========================================
+// Lektion 9: Bei guten Autos sind wir ganz vorn
+// ==========================================
+{
+  id: "lektion-9",
+  level: "A2.1",
+  title: "Bei guten Autos sind wir ganz vorn",
+  titleAr: "في السيارات الجيدة نحن في المقدمة (العمل والمهن)",
+  topic: "عمل", 
+  description: "في هذا الدرس نتعلم كيف نتحدث عن المهن، المصانع، ونقرأ نصوصاً عن شركة أودي. كما نتعلم كيف نصف الأشياء بدون استخدام أدوات.",
+  image: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=800&q=80", // صورة مصنع سيارات
+  
+  // ----------------------------------------------------
+  // قطعة الدرس (Lesetext) - من نصوص أودي
+  // ----------------------------------------------------
+  text: `
+    <h4>Mensch und Maschine</h4>
+    <p>Die deutsche Automobilindustrie war schon in den 1970er- und 80er-Jahren sehr effektiv. Doch neue Technologien haben die Produktivität weiter verbessert. Frank Heidenreichs Dokumentarfilm „Mensch und Maschine" zeigt dies am Beispiel von Audi in Ingolstadt.</p>
+    
+    <p><b>A</b> - Alonsa Beerl gilt bald in Audi. Sie fast 40 Jahren arbeitet er bei Audi. Am Fließband hat er gesehen, wie sich die Produktion verändert hat. In den vergangenen Jahrzehnten war hier in Ingolstadt sehr viel. 1980 haben 80 Prozent der Beschäftigten im Auto produziert, jetzt sind es nur 30 Prozent. „Heute machen wir in dieser Fabrik 2.300 Autos am Tag. Das sind über 1.100.000 Autos im Jahr", sagt Alonsa Beerl.</p>
+    
+    <p><b>B</b> - 1980 haben 35% aller Mitarbeiter im Auto produziert. Im Jahr 2010 sind es 75% der Beschäftigten, die nicht mehr im Auto produzieren. Der Erfolg hat zwei Seiten. Einerseits sind die Arbeitsplätze sehr sicher, andererseits gibt es immer weniger Arbeitsplätze für ungelernte Arbeiter.</p>
+  `,
+  
+  // ----------------------------------------------------
+  // القاعدة النحوية (Grammar) - تصريف الصفات بدون أداة
+  // ----------------------------------------------------
+  grammarTitle: "Adjektivdeklination nach Nullartikel (تصريف الصفات بدون أداة)",
+  grammar: `
+    <h4>💡 الفكرة ببساطة:</h4>
+    <p>ماذا يحدث عندما نصف اسماً <b>بدون</b> أداة تعريف (der/die/das) أو أداة نكرة (ein/eine)؟ في هذه الحالة، الصفة تأخذ النهاية التي كانت من المفترض أن تأخذها أداة التعريف!</p>
+
+    <h4>🔹 القاعدة الذهبية (في حالة Nominativ):</h4>
+    <p>الصفة تأخذ نهاية أداة التعريف (er, es, e).</p>
+    <ul>
+      <li>مذكر: <b>guter</b> Lohn (راتب جيد) -> (لأن der Lohn مذكر، فأخذت الصفة -er).</li>
+      <li>محايد: <b>großes</b> Lager (مستودع كبير) -> (لأن das Lager محايد، فأخذت الصفة -es).</li>
+      <li>مؤنث: <b>flexible</b> Arbeitszeit (وقت عمل مرن) -> (لأن die Arbeitszeit مؤنث، فأخذت الصفة -e).</li>
+    </ul>
+
+    <h4>🔹 في حالة Akkusativ و Dativ:</h4>
+    <p>تماماً كما في القواعد السابقة: في Akkusativ المذكر فقط يتغير إلى <code>-en</code>، وفي Dativ كل الصفات تأخذ <code>-en</code>.</p>
+
+    <h4>📊 جدول توضيحي (بدون أداة):</h4>
+    <table>
+      <tr><th>الجنس</th><th>Nominativ</th><th>Akkusativ</th><th>Dativ</th></tr>
+      <tr><td>مذكر (Lohn)</td><td>guter Lohn</td><td>guten Lohn</td><td>gutem Lohn</td></tr>
+      <tr><td>محايد (Lager)</td><td>großes Lager</td><td>großes Lager</td><td>großem Lager</td></tr>
+      <tr><td>مؤنث (Arbeitszeit)</td><td>flexible Arbeitszeit</td><td>flexible Arbeitszeit</td><td>flexibler Arbeitszeit</td></tr>
+    </table>
+  `,
+
+  // ----------------------------------------------------
+  // التمارين (Exercises)
+  // ----------------------------------------------------
+  exercises: [
+    mc("Ich suche einen Job mit gut___ Lohn.", ["gut", "guter", "guten", "gutem"], 2, "هنا نستخدم Akkusativ مع أداة النكرة (einen Job mit...). ولكن انتبه: بعد 'mit' نستخدم Dativ. الصحيح هو 'mit gutem Lohn'. (تم تعديل الخيارات لتوضيح القاعدة)."),
+    mc("Ich möchte flexible___ Arbeitszeit haben.", ["flexibel", "flexibler", "flexible", "flexibles"], 2, "كلمة Arbeitszeit مؤنث (die). بدون أداة في حالة Akkusativ تأخذ الصفة -e."),
+    mc("Das ist ein gut___ Angebot.", ["gut", "guter", "gutes", "guten"], 2, "كلمة Angebot محايد (das). مع أداة النكرة (ein) في حالة Nominativ تأخذ الصفة -es."),
+    mc("Er sucht ein groß___ Lager.", ["groß", "großes", "großer", "großen"], 1, "كلمة Lager محايد (das). في حالة Akkusativ مع ein تأخذ الصفة -es."),
+    mc("Wir haben einen gut___ Lohn.", ["gut", "gutes", "guten", "guter"], 2, "كلمة Lohn مذكر (der). في حالة Akkusativ مع einen تأخذ الصفة -en."),
+    mc("Das ist ein sehr interessant___ Beruf.", ["interessant", "interessante", "interessanter", "interessantes"], 2, "كلمة Beruf مذكر (der). مع أداة النكرة (ein) في حالة Nominativ تأخذ الصفة -er."),
+  ],
+
+  // ----------------------------------------------------
+  // المفردات (Vocabulary)
+  // ----------------------------------------------------
+  newWords: [
+    // الأفعال
+    v("produzieren", "ينتج", "عمل", "produzierte", "produziert"),
+    v("arbeiten", "يعمل", "عمل", "arbeitete", "gearbeitet"),
+    v("sich verändern", "يتغير", "عمل", "veränderte sich", "verändert"),
+    v("suchen", "يبحث", "عمل", "suchte", "gesucht"),
+    v("bieten", "يقدم/يعرض", "عمل", "bot", "geboten"),
+    v("verdienen", "يكسب (مالاً)", "عمل", "verdiente", "verdient"),
+    v("verbessern", "يحسن", "عمل", "verbesserte", "verbessert"),
+    v("zeigen", "يُظهر", "تواصل", "zeigte", "gezeigt"),
+
+    // الأسماء
+    w("die Firma", "الشركة", "عمل"),
+    w("die Fabrik", "المصنع", "عمل"),
+    w("die Maschine", "الآلة", "عمل"),
+    w("der Mitarbeiter", "الموظف", "عمل"),
+    w("der Arbeiter", "العامل", "عمل"),
+    w("die Produktion", "الإنتاج", "عمل"),
+    w("der Lohn", "الأجر/الراتب", "عمل"),
+    w("die Arbeitszeit", "وقت العمل", "عمل"),
+    w("der Arbeitsplatz", "مكان العمل/الوظيفة", "عمل"),
+    w("das Lager", "المستودع", "عمل"),
+    w("das Büro", "المكتب", "عمل"),
+    w("der Beruf", "المهنة", "عمل"),
+    w("die Bewerbung", "طلب التوظيف", "عمل"),
+    w("der Erfolg", "النجاح", "عمل"),
+    w("die Technologie", "التكنولوجيا", "عمل"),
+    w("das Auto", "السيارة", "حركة"),
+    w("die Industrie", "الصناعة", "عمل"),
+    w("der Kontakt", "التواصل", "تواصل"),
+    w("die Anzeige", "الإعلان (في الجريدة)", "تواصل"),
+
+    // الصفات
+    w("gut", "جيد", "صفات"),
+    w("flexibel", "مرن", "صفات"),
+    w("groß", "كبير", "صفات"),
+    w("wichtig", "مهم", "صفات"),
+    w("interessant", "مثير للاهتمام", "صفات"),
+    w("effektiv", "فعال", "صفات"),
+    w("sicher", "آمن", "صفات")
+  ]
+},
+   // ==========================================
+// Lektion 10: Gut, dass du reserviert hast
+// ==========================================
+{
+  id: "lektion-10",
+  level: "A2.1",
+  title: "Gut, dass du reserviert hast",
+  titleAr: "من الجيد أنك حجزت (في المطعم)",
+  topic: "طعام", 
+  description: "في هذا الدرس نتعلم كيف نطلب الطعام في المطعم، نبدي ملاحظاتنا (إذا كان الطعام بارداً أو غير طازج)، وندفع الحساب. كما نتعلم كيفية استخدام أداة الربط (dass).",
+  image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80", // صورة مطعم
+  
+  // ----------------------------------------------------
+  // قطعة الدرس (Lesetext) - حوار في المطعم
+  // ----------------------------------------------------
+  text: `
+    <h4>Im Restaurant</h4>
+    <p><b>Kellner:</b> Guten Abend! Haben Sie reserviert?</p>
+    <p><b>Gast:</b> Ja, wir haben einen Tisch für zwei Personen reserviert. Auf den Namen Julia.</p>
+    <p><b>Kellner:</b> Einen Moment bitte... Ah ja, hier entlang. Was kann ich Ihnen bringen?</p>
+    <p><b>Gast:</b> Ich hätte gern das Schnitzel mit Kartoffelsalat. Und ich nehme ein Wasser.</p>
+    <p><b>Kellner:</b> Und was möchten Sie trinken?</p>
+    <p><b>Gast:</b> Ich möchte einen Apfelsaft, bitte. Und bringen Sie uns bitte noch etwas Brot.</p>
+    <p><b>Kellner:</b> Sehr gerne. Kommt sofort.</p>
+    <p><i>(Etwas später)</i></p>
+    <p><b>Gast:</b> Entschuldigung, aber das Schnitzel ist kalt. Könnten Sie es bitte wieder warm machen?</p>
+    <p><b>Kellner:</b> Oh, das tut mir leid. Natürlich, ich gebe es sofort an die Küche weiter.</p>
+    <p><b>Gast:</b> Danke. Und wir möchten dann auch bald zahlen.</p>
+    <p><b>Kellner:</b> Zusammen oder getrennt? <br><b>Gast:</b> Getrennt, bitte.</p>
+  `,
+  
+  // ----------------------------------------------------
+  // القاعدة النحوية (Grammar) - أداة الربط dass
+  // ----------------------------------------------------
+  grammarTitle: "Nebensätze mit dass (الجمل الثانوية باستخدام dass)",
+  grammar: `
+    <h4>💡 الفكرة ببساطة:</h4>
+    <p>نستخدم أداة الربط <b>dass</b> (أن) لربط جملتين. الجملة الأولى تعبر عن شعور أو رأي (أعتقد، آمل، يؤسفني، من الجيد)، والجملة الثانية توضح ما هو هذا الرأي.</p>
+    
+    <h4>🔹 القاعدة الذهبية:</h4>
+    <p>عند استخدام <b>dass</b>، يذهب الفعل المُصرّف إلى <b>نهاية الجملة</b> (تماماً مثل weil).</p>
+
+    <h4>🔹 أهم التعبيرات المستخدمة مع dass:</h4>
+    <ul>
+      <li><b>Ich hoffe, dass...</b> (أنا آمل أن...)</li>
+      <li><b>Ich glaube, dass...</b> (أنا أعتقد أن...)</li>
+      <li><b>Ich denke, dass...</b> (أنا أفكر/أظن أن...)</li>
+      <li><b>Schade, dass...</b> (من المؤسف أن...)</li>
+      <li><b>Gut, dass...</b> (من الجيد أن...)</li>
+    </ul>
+
+    <h4>📝 أمثلة من الدرس:</h4>
+    <div class="example-box">
+      <p>Ich hoffe, <b>dass</b> du gut <b>geschlafen hast</b>. (آمل أنك نمت جيداً).</p>
+      <p>Schade, <b>dass</b> es keine Pizza mehr <b>gibt</b>. (من المؤسف أنه لم يعد هناك بيتزا).</p>
+      <p>Gut, <b>dass</b> du einen Tisch <b>reserviert hast</b>. (من الجيد أنك حجزت طاولة).</p>
+    </div>
+  `,
+
+  // ----------------------------------------------------
+  // التمارين (Exercises)
+  // ----------------------------------------------------
+  exercises: [
+    mc("Ich glaube, ___ er heute nicht kommt.", ["weil", "dass", "deshalb", "wenn"], 1, "نستخدم dass للتعبير عن الاعتقاد (أعتقد أن...)."),
+    mc("___ , dass du mir hilfst! (من الجيد أنك تساعدني)", ["Gut", "Schlecht", "Schade", "Traurig"], 0, "التعبير 'Gut, dass...' يعني من الجيد أن..."),
+    mc("Ich hoffe, dass es dir gut ___.", ["geht", "gehst", "gehen", "ging"], 0, "الفعل مع es (هو) في المضارع يأخذ -t، ويأتي في النهاية بسبب dass."),
+    mc("Entschuldigung, das Essen ist kalt. Könnten Sie es ___ machen?", ["kalt", "warm", "schnell", "lecker"], 1, "عند تقديم شكوى بأن الطعام بارد، نطلب إعادة تسخينه (warm machen)."),
+    mc("Zahlen bitte! - Zusammen oder ___?", ["einzeln", "getrennt", "allein", "zusammen"], 1, "عند سؤال النادل عن طريقة الدفع: هل الحساب مجتمع أم منفصل (getrennt)؟"),
+    mc("Schade, ___ es keine Pizza gibt.", ["weil", "dass", "deshalb", "wenn"], 1, "بعد Schade (من المؤسف) نستخدم dass، والفعل (gibt) يذهب للنهاية."),
+  ],
+
+  // ----------------------------------------------------
+  // المفردات (Vocabulary)
+  // ----------------------------------------------------
+  newWords: [
+    // الأفعال
+    v("reservieren", "يحجز", "طعام", "reservierte", "reserviert"),
+    v("bestellen", "يطلب", "طعام", "bestellte", "bestellt"),
+    v("bringen", "يجلب/يحضر", "طعام", "brachte", "gebracht"),
+    v("schmecken", "يكون طعمه جيداً", "طعام", "schmeckte", "geschmeckt"),
+    v("zahlen", "يدفع", "طعام", "zahlte", "gezahlt"),
+    v("reklamieren", "يقدم شكوى/يعترض", "طعام", "reklamierte", "reklamiert"),
+    v("empfehlen", "يوصي/ينصح", "تواصل", "empfahl", "empfohlen"),
+    v("dauern", "يستمر", "وقت", "dauerte", "gedauert"),
+
+    // الأسماء
+    w("der Kellner", "النادل", "طعام"),
+    w("die Kellnerin", "النادلة", "طعام"),
+    w("das Restaurant", "المطعم", "طعام"),
+    w("die Speisekarte", "قائمة الطعام", "طعام"),
+    w("das Gericht", "الطبق (الأكلة)", "طعام"),
+    w("die Rechnung", "الفاتورة/الحساب", "طعام"),
+    w("das Trinkgeld", "البقشيش", "طعام"),
+    w("das Messer", "السكين", "طعام"),
+    w("die Gabel", "الشوكة", "طعام"),
+    w("der Teller", "الصحن", "طعام"),
+    w("das Glas", "الكأس/الزجاج", "طعام"),
+    w("die Tasse", "الفنجان", "طعام"),
+    w("das Salz", "الملح", "طعام"),
+    w("der Pfeffer", "الفلفل (الأسود)", "طعام"),
+    w("das Öl", "الزيت", "طعام"),
+    w("der Essig", "الخل", "طعام"),
+    w("die Serviette", "المنديل", "طعام"),
+    w("das Brot", "الخبز", "طعام"),
+    w("die Kartoffeln", "البطاطس", "طعام"),
+    w("der Salat", "السلطة", "طعام"),
+    w("das Fleisch", "اللحم", "طعام"),
+    w("der Fisch", "السمك", "طعام"),
+    w("die Suppe", "الحساء/الشوربة", "طعام"),
+
+    // الصفات
+    w("kalt", "بارد", "صفات"),
+    w("warm", "دافئ", "صفات"),
+    w("lecker", "لذيذ", "صفات"),
+    w("frisch", "طازج", "صفات"),
+    w("salzig", "مالح", "صفات"),
+    w("scharf", "حار", "صفات"),
+    w("getrennt", "منفصل", "صفات"),
+    w("zusammen", "معاً", "صفات")
+  ]
+},
+   // ==========================================
+// Lektion 11: Ich freue mich so
+// ==========================================
+{
+  id: "lektion-11",
+  level: "A2.1",
+  title: "Ich freue mich so",
+  titleAr: "أنا سعيد جداً (المشاعر والأفعال الانعكاسية)",
+  topic: "مشاعر", 
+  description: "في هذا الدرس نتعلم كيف نعبر عن مشاعرنا (الفرح، الغضب، الإعجاب)، نستخدم الأفعال الانعكاسية، ونكتب رسائل تهنئة أو تعليقات على صفحات الشركات.",
+  image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80", // صورة أشخاص سعداء/احتفال
+  
+  // ----------------------------------------------------
+  // قطعة الدرس (Lesetext) - مقال الصحيفة عن الشركة
+  // ----------------------------------------------------
+  text: `
+    <h4>Zehn Jahre „Restlos glücklich"</h4>
+    <p>Zwei Gedanken sind der gelernten Buchhändlerin Luisa Bauer immer wieder durch den Kopf gegangen: „Es ist traurig, dass so viele Jugendliche keinen guten Job bekommen" und „Es ist Wahnsinn, dass wir so viele Dinge auf dem Müll werfen". Deshalb hat sie vor zehn Jahren die <i>Restlos glücklich GmbH</i> gegründet. Ihre Geschäftsidee: Aus Alt mach Neu.</p>
+    <p>In ihren Werkstätten wird Altpapier zu bunten Briefumschlägen, Briefpapier, Postkarten, Notizblöcken und Geschenkpapier. Getränkeverpackungen, Plastiktüten und Textilreste werden zu neuen Geldbörsen, Rucksäcken und Aktentaschen. Aus Second-Hand-Kleidern wird topmoderne Mode und aus langweiligen alten Schränken und Tischen werden interessante neue Designermöbel. Die Produkte kann man im Werkstattladen, auf Messen und natürlich auch online ansehen und kaufen.</p>
+    <p>Mit zwei jungen Helfern hat die 26-Jährige angefangen. Heute hat Luisa Bauer 45 Mitarbeiterinnen und Mitarbeiter. Das Betriebsklima ist sehr gut, weil die Arbeit so vielseitig und interessant ist. Deshalb hat Bürgermeister Ludger Rennert die Unternehmerin auf der Feier zum zehnjährigen Firmenjubiläum besonders gelobt: „Ihr Engagement, liebe Frau Bauer, ist so wichtig, weil es zeigt, dass Umweltschutz, soziales Engagement und wirtschaftlicher Erfolg prima zusammenpassen."</p>
+  `,
+  
+  // ----------------------------------------------------
+  // القاعدة النحوية (Grammar) - الأفعال الانعكاسية
+  // ----------------------------------------------------
+  grammarTitle: "Reflexive Verben (الأفعال الانعكاسية)",
+  grammar: `
+    <h4>💡 الفكرة ببساطة:</h4>
+    <p>الأفعال الانعكاسية هي أفعال لا تكتمل جملتها إلا بوجود "ضمير انعكاسي" (مثل: نفسي، نفسك، نفسه). في اللغة العربية نقول "أنا سعيد"، لكن في الألمانية نقول حرفياً "أنا أُسعد نفسي" (Ich freue mich).</p>
+
+    <h4>🔹 1. الضمائر الانعكاسية (Reflexivpronomen):</h4>
+    <p>تأتي هذه الضمائر في حالة <b>Akkusativ</b> غالباً (مثل mich, dich, uns...):</p>
+    <ul>
+      <li>ich freue <b>mich</b> (أنا سعيد)</li>
+      <li>du freust <b>dich</b> (أنت سعيد)</li>
+      <li>er/sie/es freut <b>sich</b> (هو/هي سعيد)</li>
+      <li>wir freuen <b>uns</b> (نحن سعداء)</li>
+      <li>ihr freut <b>euch</b> (أنتم سعداء)</li>
+      <li>sie/Sie freuen <b>sich</b> (هم/أنتم سعداء)</li>
+    </ul>
+
+    <h4>🔹 2. أشهر الأفعال الانعكاسية في هذا الدرس:</h4>
+    <ul>
+      <li><b>sich freuen</b> (يفرح / يكون سعيداً)</li>
+      <li><b>sich ärgern</b> (يغضب / ينزعج)</li>
+      <li><b>sich erinnern</b> (يتذكر)</li>
+      <li><b>sich entschuldigen</b> (يعتذر)</li>
+      <li><b>sich bedanken</b> (يشكر)</li>
+    </ul>
+    
+    <h4>🔹 3. حروف الجر مع الأفعال الانعكاسية:</h4>
+    <p>بعض الأفعال تحتاج حرف جر ثابت:</p>
+    <ul>
+      <li>sich freuen <b>auf</b> (+ Akk) -> متحمس لشيء قادم.</li>
+      <li>sich freuen <b>über</b> (+ Akk) -> سعيد بشيء حدث.</li>
+      <li>sich ärgern <b>über</b> (+ Akk) -> غاضب من شيء.</li>
+      <li>sich erinnern <b>an</b> (+ Akk) -> يتذكر شيئاً.</li>
+    </ul>
+  `,
+
+  // ----------------------------------------------------
+  // التمارين (Exercises)
+  // ----------------------------------------------------
+  exercises: [
+    mc("Ich freue ___ auf den Urlaub.", ["mich", "dich", "sich", "uns"], 0, "الفعل sich freuen مع الضمير ich يأخذ الضمير الانعكاسي mich."),
+    mc("Er ärgert ___ über seinen Chef.", ["mich", "dich", "sich", "uns"], 2, "الفعل sich ärgern مع الضمير er (هو) يأخذ الضمير الانعكاسي sich."),
+    mc("Wir bedanken ___ für das Geschenk.", ["mich", "euch", "sich", "uns"], 3, "الفعل sich bedanken مع الضمير wir (نحن) يأخذ الضمير الانعكاسي uns."),
+    mc("Erinnern Sie ___ an den Termin?", ["dich", "sich", "mich", "euch"], 1, "الفعل sich erinnern مع حضرتك (Sie) يأخذ الضمير الانعكاسي sich."),
+    mc("Ich finde es traurig, ___ so viele Jugendliche keinen Job haben.", ["weil", "dass", "wenn", "deshalb"], 1, "نستخدم dass للتعبير عن الرأي (أجد أنه من المحزن أن...)."),
+    mc("Herzlichen Glückwunsch ___ 10-jährigen Jubiläum!", ["zum", "zur", "im", "am"], 0, "كلمة Jubiläum محايدة (das)، وفي حالة Dativ مع حرف الجر zu تصبح zum."),
+  ],
+
+  // ----------------------------------------------------
+  // المفردات (Vocabulary)
+  // ----------------------------------------------------
+  newWords: [
+    // الأفعال الانعكاسية
+    v("sich freuen", "يفرح / يكون سعيداً", "مشاعر", "freute sich", "sich gefreut"),
+    v("sich ärgern", "يغضب / ينزعج", "مشاعر", "ärgerte sich", "sich geärgert"),
+    v("sich erinnern", "يتذكر", "مشاعر", "erinnerte sich", "sich erinnert"),
+    v("sich entschuldigen", "يعتذر", "تواصل", "entschuldigte sich", "sich entschuldigt"),
+    v("sich bedanken", "يشكر", "تواصل", "bedankte sich", "sich bedankt"),
+    // أفعال عادية
+    v("gründen", "يؤسس", "عمل", "gründete", "gegründet"),
+    v("loben", "يمدح / يثني على", "عمل", "lobte", "gelobt"),
+    v("organisieren", "ينظم", "عمل", "organisierte", "organisiert"),
+    v("verlieren", "يفقد / يخسر", "عمل", "verlor", "verloren"),
+    v("werfen", "يرمي", "حياة", "warf", "geworfen"),
+
+    // الأسماء
+    w("die Firma", "الشركة", "عمل"),
+    w("der Mitarbeiter", "الموظف", "عمل"),
+    w("der Jugendliche", "الشاب/المراهق", "حياة"),
+    w("der Müll", "القمامة", "حياة"),
+    w("das Altpapier", "الورق المستعمل", "حياة"),
+    w("der Umschlag", "المظروف", "تواصل"),
+    w("das Geschenkpapier", "ورق الهدايا", "تسوق"),
+    w("die Tasche", "الحقيبة", "تسوق"),
+    w("der Rucksack", "حقيبة الظهر", "تسوق"),
+    w("das Möbelstück", "قطعة أثاث", "منزل"),
+    w("die Umfrage", "استطلاع الرأي", "تواصل"),
+    w("die Meinung", "الرأي", "تواصل"),
+    w("das Engagement", "الالتزام / المشاركة", "عمل"),
+    w("der Umweltschutz", "حماية البيئة", "طبيعة"),
+    w("der Erfolg", "النجاح", "عمل"),
+    w("das Jubiläum", "اليوبيل / الذكرى السنوية", "مناسبات"),
+    w("der Glückwunsch", "التهنئة", "مناسبات"),
+
+    // الصفات
+    w("glücklich", "سعيد", "مشاعر"),
+    w("traurig", "حزين", "مشاعر"),
+    w("froh", "مسرور / مبتهج", "مشاعر"),
+    w("wichtig", "مهم", "صفات"),
+    w("vielseitig", "متعدد الجوانب", "صفات"),
+    w("prima", "ممتاز", "صفات")
+  ]
+},
+   // ==========================================
+// Lektion 12: Wenn es warm ist, essen wir meist Salat
+// ==========================================
+{
+  id: "lektion-12",
+  level: "A2.1",
+  title: "Wenn es warm ist, essen wir meist Salat",
+  titleAr: "عندما يكون الجو دافئاً، نأكل عادةً سلطة (عادات الأكل)",
+  topic: "طعام", 
+  description: "في هذا الدرس نتعلم كيف نتحدث عن عادات الأكل والشرب، نقرأ إحصاءات عن استهلاك الطعام في ألمانيا، ونستخدم أداة الربط (wenn) للتعبير عن الشروط.",
+  image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80", // صورة طعام/سلطة
+  
+  // ----------------------------------------------------
+  // قطعة الدرس (Lesetext) - إحصاءات استهلاك الطعام
+  // ----------------------------------------------------
+  text: `
+    <h4>Der Lebensmittel-Konsum in Deutschland</h4>
+    <p><i>Wie sieht die Ernährung der Deutschen aus? Essen sie genügend Obst? Wie viel Alkohol trinken sie? Und wie viel Fleisch essen sie pro Tag?</i></p>
+    <p>Das Bundesministerium hat dazu eine Umfrage unter Jugendlichen und Erwachsenen gemacht und einige interessante Ergebnisse herausgefunden:</p>
+    <p>Am häufigsten essen die Deutschen <b>Brot und Getreideprodukte</b>.</p>
+    <p>Männer essen doppelt so viel Fleisch und Wurstwaren wie Frauen – 103g pro Tag. Bei Frauen sind es dagegen nur 53g pro Tag. Die empfohlene Menge sind 300g bis 600g pro Woche.</p>
+    <p>Die Deutschen essen kaum Fisch. Durchschnittlich essen Männer nur 29g Fisch pro Tag und Frauen 23g pro Tag. Am meisten Fisch essen die Hamburger, und ältere Menschen essen mehr Fisch als jüngere.</p>
+    <p>Die Deutschen essen zu wenig Obst und Gemüse: 87% essen zu wenig Gemüse und 59% essen zu wenig Obst. Frauen essen durchschnittlich mehr Obst als Männer. Aber auch 54% der Frauen schaffen die empfohlene Menge (250g pro Tag) nicht. Am meisten Obst essen die Deutschen nicht im Sommer oder Herbst, sondern in den Wintermonaten von November bis Januar.</p>
+    <p>Pro Tag soll man 1,5 Liter Nicht-Alkoholisches trinken. Das machen die meisten Deutschen auch. Positiv: Wasser macht davon etwa die Hälfte aus. Kaffee, schwarzer und grüner Tee stehen an Platz 2. Ansonsten trinken Frauen mehr Kräuter- und Früchtetees, Männer häufiger Limonade.</p>
+    <p>Männer trinken mit rund 30g Alkohol am Tag fast 4-mal mehr als Frauen. Davon sind 80% Bier und nur 15% Wein. Frauen trinken zu 50% Bier und Wein. Spirituosen trinken vor allem jüngere Männer zwischen 19 und 24 Jahren.</p>
+  `,
+  
+  // ----------------------------------------------------
+  // القاعدة النحوية (Grammar) - الجمل الشرطية باستخدام wenn
+  // ----------------------------------------------------
+  grammarTitle: "Konditionalsätze mit wenn (الجمل الشرطية)",
+  grammar: `
+    <h4>💡 الفكرة ببساطة:</h4>
+    <p>نستخدم أداة الربط <b>wenn</b> (إذا / عندما) للتعبير عن شرط. إذا حدث الشيء الأول (الشرط)، فسيحدث الشيء الثاني (النتيجة).</p>
+
+    <h4>🔹 1. عندما تبدأ الجملة بـ Wenn:</h4>
+    <p>إذا بدأت الجملة بـ Wenn، فإن الفعل المُصرّف يذهب إلى <b>نهاية الجملة الأولى</b> (الجملة الثانوية). وفي الجملة الثانية (الرئيسية)، يأتي الفعل مباشرة بعد الفاصلة.</p>
+    <div class="example-box">
+      <p><b>Wenn</b> es warm <b>ist</b>, <b>essen</b> wir meist Salat. <br>(عندما يكون الجو دافئاً، نأكل عادةً سلطة).</p>
+    </div>
+
+    <h4>🔹 2. عندما تأتي Wenn في المنتصف:</h4>
+    <p>إذا بدأنا بالنتيجة أولاً، ثم أتت (wenn) في المنتصف، يرجع الفعل في نهاية الجملة إلى النهاية كالمعتاد.</p>
+    <div class="example-box">
+      <p>Wir <b>essen</b> meist Salat, <b>wenn</b> es warm <b>ist</b>. <br>(نحن نأكل عادةً سلطة عندما يكون الجو دافئاً).</p>
+    </div>
+
+    <h4>📊 مقارنة سريعة:</h4>
+    <table>
+      <tr><th>الشرط أولاً (Wenn...)</th><th>النتيجة أولاً</th></tr>
+      <tr><td>Wenn es schnell gehen muss, gibt es Pizza.</td><td>Es gibt Pizza, wenn es schnell gehen muss.</td></tr>
+    </table>
+  `,
+
+  // ----------------------------------------------------
+  // التمارين (Exercises)
+  // ----------------------------------------------------
+  exercises: [
+    mc("___ es warm ist, essen wir Salat.", ["Weil", "Wenn", "Dass", "Deshalb"], 1, "نستخدم wenn للتعبير عن الشرط (عندما/إذا). الفعل (ist) في النهاية."),
+    mc("Ich trinke Kaffee, ___ ich müde bin.", ["weil", "wenn", "dass", "deshalb"], 1, "نستخدم wenn هنا بمعنى 'عندما' (كلما شعرت بالنعاس)."),
+    mc("___ ich Geburtstag habe, backe ich einen Kuchen.", ["Wenn", "Weil", "Dass", "Deshalb"], 0, "الجملة الشرطية تبدأ بـ Wenn، والفعل (habe) في النهاية."),
+    mc("Es überrascht mich, ___ die Deutschen so viel Brot essen.", ["wenn", "weil", "dass", "deshalb"], 2, "بعد التعبير عن الدهشة (Es überrascht mich) نستخدم dass."),
+    mc("Männer essen doppelt so ___ Fleisch wie Frauen.", ["viel", "viele", "mehr", "meiste"], 0, "التعبير 'doppelt so viel' يعني ضعف الكمية."),
+    mc("Die Hälfte ___ 50 Prozent.", ["sind", "ist", "haben", "hat"], 1, "كلمة die Hälfte (النصف) تعامل معاملة المفرد المؤنث، لذا نستخدم ist."),
+  ],
+
+  // ----------------------------------------------------
+  // المفردات (Vocabulary)
+  // ----------------------------------------------------
+  newWords: [
+    // الأفعال
+    v("überraschen", "يفاجئ", "مشاعر", "überraschte", "überrascht"),
+    v("vergleichen", "يقارن", "تواصل", "verglich", "verglichen"),
+    v("empfehlen", "ينصح/يوصي", "تواصل", "empfahl", "empfohlen"),
+    v("backen", "يخبز", "طعام", "backte", "gebacken"),
+    v("kochen", "يطبخ", "طعام", "kochte", "gekocht"),
+    v("bemerken", "يلاحظ", "مشاعر", "bemerkte", "bemerkt"),
+    v("zunehmen", "يزيد (الوزن)", "صحة", "nahm zu", "zugenommen"),
+    v("abnehmen", "ينقص (الوزن)", "صحة", "nahm ab", "abgenommen"),
+
+    // الأسماء
+    w("das Lebensmittel", "المواد الغذائية", "طعام"),
+    w("die Ernährung", "التغذية", "طعام"),
+    w("das Getreide", "الحبوب", "طعام"),
+    w("das Brot", "الخبز", "طعام"),
+    w("das Fleisch", "اللحم", "طعام"),
+    w("die Wurst", "النقانق", "طعام"),
+    w("der Fisch", "السمك", "طعام"),
+    w("das Obst", "الفاكهة", "طعام"),
+    w("das Gemüse", "الخضروات", "طعام"),
+    w("der Salat", "السلطة", "طعام"),
+    w("das Wasser", "الماء", "طعام"),
+    w("der Kaffee", "القهوة", "طعام"),
+    w("der Tee", "الشاي", "طعام"),
+    w("der Alkohol", "الكحول", "طعام"),
+    w("das Bier", "البيرة", "طعام"),
+    w("der Wein", "النبيذ", "طعام"),
+    w("die Umfrage", "استطلاع الرأي", "تواصل"),
+    w("das Ergebnis", "النتيجة", "دراسة"),
+    w("die Menge", "الكمية", "طعام"),
+    w("die Hälfte", "النصف", "طعام"),
+    w("das Prozent", "بالمئة", "دراسة"),
+    w("der Tag", "اليوم", "وقت"),
+    w("die Woche", "الأسبوع", "وقت"),
+    w("der Monat", "الشهر", "وقت"),
+
+    // الصفات
+    w("warm", "دافئ", "طقس"),
+    w("kalt", "بارد", "طقس"),
+    w("gesund", "صحي", "صحة"),
+    w("lecker", "لذيذ", "صفات"),
+    w("empfohlen", "موصى به", "صفات")
+  ]
 }
   ];
 
