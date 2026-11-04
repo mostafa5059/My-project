@@ -410,78 +410,102 @@ function renderLessonsTab() {
 function openLesson(id) {
   const lesson = LESSONS.find(l => l.id === id);
   if (!lesson) return;
-  const allWords = [...(lesson.words || []), ...((lesson.newWords || []).map(w => w.de))];
+
+  // تأمين المصفوفات في حال كانت فارغة
+  const allWords = [...(lesson.words || []), ...(lesson.newWords || [])];
   const rows = allWords.map(w => {
-    const d = getWordData(w);
-    const clean = w.replace(/^(der|die|das) /, '');
+    if (!w) return ''; // تخطي الكلمات الفارغة
+    
+    // استخراج الكلمة بذكاء (إذا كانت نصاً أو كائناً)
+    const wordText = typeof w === 'string' ? w : (w.de || w.word || '');
+    const translation = typeof w === 'string' ? '' : (w.ar || w.translation || '');
+    
+    const d = typeof getWordData === 'function' ? getWordData(w) : { kind: 'other' };
+    const clean = wordText.replace(/^(der|die|das) /, '');
+    
     let extra = '';
-    if (d.kind === 'noun' && d.plural) extra = `الجمع: ${d.plural}`;
-    else if (d.kind === 'verb' && d.präteritum) extra = `الماضي: ${d.präteritum} — Perfekt: ${d.perfekt}`;
-    return `<tr>
-      <td style="font-weight:700;color:var(--primary-dark);direction:ltr;text-align:right;padding:12px;">
-        ${w}
-        <button class="audio-btn" style="position:static;display:inline-flex;width:30px;height:30px;font-size:14px;margin-right:8px;" onclick="speak('${clean.replace(/'/g, "\\'")}')">🔊</button>
-      </td>
-      <td style="padding:12px;">${d.ar || '—'}</td>
-      <td style="font-size:13px;color:var(--text-muted);padding:12px;">${extra}</td>
-    </tr>`;
+    if (d.kind === 'noun' && d.plural) extra = ` | الجمع: ${d.plural}`;
+    else if (d.kind === 'verb' && d.präteritum) extra = ` | الماضي: ${d.präteritum} | التام: ${d.perfekt}`;
+
+    return `
+      <tr>
+        <td style="font-weight:700;color:var(--primary-dark);direction:ltr;text-align:right;padding:12px;">
+          ${wordText}
+          <button class="audio-btn" style="position:static;display:inline-flex;width:30px;height:30px;font-size:14px;margin-right:8px;" onclick="speak('${clean.replace(/'/g, "\\'")}')">🔊</button>
+        </td>
+        <td style="padding:12px;">${translation}</td>
+        <td style="font-size:13px;color:var(--text-muted);padding:12px;">${extra}</td>
+      </tr>`;
   }).join('');
-  const grammarHTML = lesson.grammar ? `
-    <div class="section-title" style="margin-top:30px; font-size: 22px;">📐 القاعدة: ${lesson.grammar.title}</div>
-    <div class="rule-hint" style="font-size:16px; margin-bottom:20px;">${lesson.grammar.titleAr}</div>
-    <div class="grammar-content" style="display:block;padding:30px;background:var(--card-bg);border-radius:16px;border-right:6px solid var(--primary); box-shadow:0 4px 15px rgba(0,0,0,0.05); font-size:16px; line-height:1.8;">
-      ${lesson.grammar.explanation}
-    </div>
-  ` : '';
-  const exercisesHTML = (lesson.exercises && lesson.exercises.length) ? `
-    <div class="section-title" style="margin-top:30px; font-size: 22px;">📝 تمارين (${lesson.exercises.length})</div>
-    <div id="lessonExercises" style="display:flex;flex-direction:column;gap:14px;"></div>
-  ` : '';
-  const imageHTML = lesson.image ? `
-    <div style="width:100%; height:300px; border-radius:16px; overflow:hidden; margin-bottom:25px; border:1px solid var(--border-color);">
-      <img src="${lesson.image}" alt="${lesson.title}" style="width:100%; height:100%; object-fit:cover;">
-    </div>
-  ` : '';
-  const html = `
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; flex-wrap:wrap; gap:15px;">
-      <button class="btn-next" style="margin:0; padding:10px 25px; font-size:15px; background:var(--text-muted);" onclick="closeSingleLesson()">← العودة للدروس</button>
-      <div style="text-align:left;">
-        <h2 style="font-size:32px;color:var(--primary-dark);margin-bottom:5px;">${lesson.emoji} ${lesson.title}</h2>
-        <p style="color:var(--text-muted);font-size:18px;font-weight:600;">${lesson.titleAr}</p>
+
+  // التعامل مع القواعد (يدعم الطريقتين القديمة والجديدة)
+  let grammarHTML = '';
+  if (lesson.grammar) {
+    const gTitle = lesson.grammar.title || lesson.grammarTitle || 'قاعدة الدرس';
+    const gTitleAr = lesson.grammar.titleAr || '';
+    const gContent = lesson.grammar.explanation || lesson.grammar || '';
+    
+    grammarHTML = `
+      <div class="section-title" style="margin-top:30px; font-size: 22px;">📘 القاعدة: ${gTitle}</div>
+      ${gTitleAr ? `<div class="rule-hint" style="font-size:16px; margin-bottom:20px;">${gTitleAr}</div>` : ''}
+      <div class="grammar-content" style="display:block;padding:30px;background:var(--card-bg);border-radius:16px;border-right:6px solid var(--primary);">
+        ${gContent}
       </div>
-    </div>
-    ${imageHTML}
-    <div style="margin-bottom:25px; text-align:center;">
-      <span class="badge regular" style="font-size:14px;">${lesson.level}</span>
-      <span class="badge trennbar" style="font-size:14px;">${lesson.topic}</span>
-    </div>
-    <div class="section-title" style="font-size: 22px;">📖 النص</div>
-    <div class="example-box" style="font-size:19px;line-height:2.2;padding:30px;">
-      <div style="direction:ltr;text-align:right;font-weight:700;color:var(--text-main);">${lesson.text}</div>
-      <div class="trans" style="color:var(--accent);margin-top:12px;font-weight:600;">${lesson.textAr}</div>
-      <button class="audio-btn" style="position:static;display:inline-flex;width:45px;height:45px;margin-top:15px;font-size:20px;" onclick="speak('${lesson.text.replace(/'/g, "\\'")}')">🔊</button>
-    </div>
-    ${grammarHTML}
-    <div class="section-title" style="margin-top:30px; font-size: 22px;">📦 كلمات الدرس (${allWords.length})</div>
-    <div style="overflow-x:auto;">
-      <table style="width:100%; border-collapse:collapse; margin-top:15px; font-size:16px;">
-        <thead><tr style="background:#eff6ff;"><th style="padding:14px; color:var(--primary-dark);">الكلمة</th><th style="padding:14px; color:var(--primary-dark);">المعنى</th><th style="padding:14px; color:var(--primary-dark);">معلومة</th></tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-    ${exercisesHTML}
-  `;
-  document.getElementById('lessonsContent').classList.add('hidden');
-  document.getElementById('lessonSubTabs').classList.add('hidden');
-  const lessonContainer = document.getElementById('singleLessonContent');
-  lessonContainer.classList.remove('hidden');
-  lessonContainer.innerHTML = html;
-  currentLessonId = id;
-  if (lesson.exercises && lesson.exercises.length) {
-    renderLessonExercises(lesson.exercises);
+    `;
   }
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  applyTranslationVisibility();
+
+  const exercisesHTML = (lesson.exercises && lesson.exercises.length) ? `
+    <div class="section-title" style="margin-top:30px; font-size: 22px;">📝 التمارين (${lesson.exercises.length})</div>
+    <div style="display:flex;flex-direction:column;gap:15px;margin-top:15px;">
+      ${lesson.exercises.map((ex, i) => `
+        <div style="background:var(--card-bg);padding:20px;border-radius:12px;border:1px solid var(--border-color);">
+          <p style="font-weight:700;margin-bottom:10px;">${i+1}. ${ex.q || ex.question}</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            ${(ex.options || ex.opts || []).map((opt, optIdx) => `
+              <button class="filter-btn" onclick="checkLessonExercise(this, ${optIdx}, ${ex.answer !== undefined ? ex.answer : ex.correct})">${opt}</button>
+            `).join('')}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  ` : '';
+
+  // عرض المحتوى في الشاشة (تأكد من وجود هذا العنصر في الـ HTML)
+  const container = document.getElementById('singleLessonContent');
+  if (container) {
+    container.innerHTML = `
+      <button class="filter-btn" onclick="initLessonsTab()" style="margin-bottom:20px;">← العودة للدروس</button>
+      <h2 style="color:var(--primary-dark);font-size:28px;margin-bottom:5px;">${lesson.title}</h2>
+      <h3 style="color:var(--text-muted);font-size:20px;margin-bottom:25px;">${lesson.titleAr || ''}</h3>
+      
+      ${allWords.length ? `
+        <div class="section-title" style="font-size:22px;">📖 المفردات</div>
+        <table style="width:100%;border-collapse:collapse;margin-top:15px;background:var(--card-bg);border-radius:12px;overflow:hidden;">
+          <thead><tr style="background:var(--primary-dark);color:#fff;"><th style="padding:12px;">الكلمة</th><th style="padding:12px;">المعنى</th><th style="padding:12px;">معلومات إضافية</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      ` : ''}
+      
+      ${grammarHTML}
+      ${exercisesHTML}
+    `;
+    container.classList.remove('hidden');
+    document.getElementById('lessonsContent').classList.add('hidden');
+    document.getElementById('lessonSubTabs').classList.add('hidden');
+  }
+}
+
+// دالة مساعدة للتحقق من إجابات تمارين الدروس
+function checkLessonExercise(btn, selected, correct) {
+  if (selected === correct) {
+    btn.style.background = '#10b981';
+    btn.style.color = '#fff';
+    btn.style.borderColor = '#10b981';
+  } else {
+    btn.style.background = '#ef4444';
+    btn.style.color = '#fff';
+    btn.style.borderColor = '#ef4444';
+  }
 }
 
 function renderLessonExercises(exercises) {
