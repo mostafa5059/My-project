@@ -165,7 +165,6 @@
 
   /* ============================================================
      ✅ إضافات جديدة: Sidebar + Language Dropdown
-     (لا تعدّل أي قاعدة قديمة أعلاه)
      ============================================================ */
   :root {
     --sidebar-width: 260px;
@@ -184,7 +183,6 @@
     --sidebar-group-title: #94a3b8;
   }
 
-  /* إخفاء شريط التبويبات القديم (لا نحذفه — نخفيه فقط للتوافق) */
   .tabs#mainTabs { display: none !important; }
 
   .app-layout {
@@ -244,10 +242,7 @@
     background: var(--sidebar-item-active-bg);
     color: var(--sidebar-item-active-color);
   }
-  .sidebar-item.disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+  .sidebar-item.disabled { opacity: 0.5; cursor: not-allowed; }
   .sidebar-item.disabled:hover { background: transparent; }
   .sidebar-item .emoji { font-size: 16px; flex-shrink: 0; }
 
@@ -295,10 +290,7 @@
   }
 
   /* ============ Language Dropdown ============ */
-  .lang-dropdown-wrap {
-    position: relative;
-    display: inline-block;
-  }
+  .lang-dropdown-wrap { position: relative; display: inline-block; }
   .lang-dropdown-btn {
     background: rgba(255,255,255,.2);
     color: #fff;
@@ -352,944 +344,229 @@
   .lang-option.active { color: var(--primary); font-weight: 800; }
   .lang-option .check { font-weight: 800; color: var(--primary); }
 
-  /* إخفاء الأزرار القديمة للغة (نحتفظ بها في DOM للتوافق مع i18n.js) */
   #langSwitchBtn, #contentLangBtn, #currentLangLabel { display: none !important; }
+
   /* ============================================================
    CSS لبطاقات القواعد A1 (grammar_a1.js)
    ============================================================ */
+  .grammar-a1-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-top: 10px; }
+  .grammar-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; overflow: hidden; transition: all .25s ease; border-right: 5px solid var(--primary); }
+  .grammar-card:hover { box-shadow: 0 6px 18px rgba(79,70,229,.12); transform: translateY(-2px); }
+  .grammar-card.cat-basics { border-right-color: #3b82f6; }
+  .grammar-card.cat-grammar { border-right-color: #8b5cf6; }
+  .grammar-card.cat-communication { border-right-color: #10b981; }
+  .grammar-card.cat-life { border-right-color: #f59e0b; }
+  .grammar-card.cat-time { border-right-color: #ec4899; }
+  .grammar-card-header { display: flex; align-items: center; gap: 12px; padding: 14px 16px; cursor: pointer; user-select: none; background: #f8fafc; transition: background .2s ease; }
+  .grammar-card-header:hover { background: #eef2ff; }
+  .grammar-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: #fff; font-size: 13px; font-weight: 800; flex-shrink: 0; }
+  .grammar-icon { font-size: 22px; flex-shrink: 0; }
+  .grammar-titles { flex: 1; min-width: 0; }
+  .grammar-title-de { font-size: 15px; font-weight: 800; color: var(--primary-dark); direction: ltr; text-align: right; margin-bottom: 2px; }
+  .grammar-title-ar { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+  .grammar-level { display: inline-block; background: #dbeafe; color: #1e40af; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 8px; flex-shrink: 0; }
+  .grammar-arrow { font-size: 12px; color: var(--primary); transition: transform .25s ease; flex-shrink: 0; }
+  .grammar-card.open .grammar-arrow { transform: rotate(180deg); }
+  .grammar-content { display: none; padding: 18px 20px; background: var(--card-bg); border-top: 1px solid var(--border-color); font-size: 15px; line-height: 1.9; }
+  .grammar-card.open .grammar-content { display: block; }
+  .grammar-content h4 { color: var(--primary-dark); font-size: 16px; font-weight: 800; margin: 16px 0 10px; padding-bottom: 6px; border-bottom: 2px solid var(--border-color); }
+  .grammar-content h4:first-child { margin-top: 0; }
+  .grammar-content p { margin-bottom: 12px; color: var(--text-main); }
+  .grammar-content ul { padding-right: 22px; margin-bottom: 14px; }
+  .grammar-content ul ul { padding-right: 20px; margin-top: 6px; margin-bottom: 6px; }
+  .grammar-content li { margin-bottom: 8px; color: var(--text-main); line-height: 1.8; }
+  .grammar-content code { background: #eff6ff; color: var(--primary-dark); padding: 3px 9px; border-radius: 6px; font-family: 'Courier New', monospace; font-weight: bold; font-size: 13px; direction: ltr; display: inline-block; }
+  .grammar-content strong { color: var(--primary-dark); font-weight: 800; }
+  .grammar-content { overflow-x: auto !important; width: 100%; padding-bottom: 10px; }
+  .grammar-content table { width: 100%; min-width: 600px; border-collapse: collapse; margin: 20px 0; direction: ltr; background: #fff; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+  .grammar-content th, .grammar-content td { padding: 12px 8px; text-align: center; border: 1px solid #e2e8f0; white-space: nowrap; }
+  .grammar-content th { background: #f8fafc; color: #1e40af; font-weight: bold; }
+  .grammar-content td:first-child, .grammar-content th:first-child { background: #f8fafc; font-weight: bold; color: #334155; position: sticky; left: 0; z-index: 2; }
+  .grammar-content tr:nth-child(even) td { background-color: #fcfcfc; }
+  body.dark-mode .grammar-card-header { background: #0f172a; }
+  body.dark-mode .grammar-card-header:hover { background: #1e293b; }
+  body.dark-mode .grammar-title-de { color: #a5b4fc; }
+  body.dark-mode .grammar-level { background: #1e3a8a; color: #93c5fd; }
+  body.dark-mode .grammar-content h4 { color: #a5b4fc; border-bottom-color: #334155; }
+  body.dark-mode .grammar-content code { background: #0f172a; color: #a5b4fc; }
+  body.dark-mode .grammar-content strong { color: #a5b4fc; }
+  body.dark-mode .grammar-content th { background: #0f172a; color: #a5b4fc; }
+  body.dark-mode .grammar-content tr:nth-child(even) td { background: #0f172a; }
+  body.dark-mode .grammar-tip { background: #78350f; color: #fcd34d; }
+  body.dark-mode .grammar-letters { background: #0f172a; color: #a5b4fc; }
 
-/* الحاوية الرئيسية */
-.grammar-a1-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 16px;
-  margin-top: 10px;
-}
+  @media (max-width: 600px) {
+    .grammar-a1-grid { grid-template-columns: 1fr; gap: 12px; }
+    .grammar-card-header { padding: 12px 14px; gap: 8px; }
+    .grammar-num { width: 24px; height: 24px; font-size: 12px; }
+    .grammar-icon { font-size: 18px; }
+    .grammar-title-de { font-size: 14px; }
+    .grammar-title-ar { font-size: 12px; }
+    .grammar-content { padding: 14px 16px; font-size: 14px; }
+    .grammar-content table { font-size: 12px; }
+    .grammar-content th, .grammar-content td { padding: 6px 8px; }
+  }
 
-/* البطاقة */
-.grammar-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: all .25s ease;
-  border-right: 5px solid var(--primary);
-}
-.grammar-card:hover {
-  box-shadow: 0 6px 18px rgba(79,70,229,.12);
-  transform: translateY(-2px);
-}
-
-/* ألوان حسب الفئة */
-.grammar-card.cat-basics { border-right-color: #3b82f6; }
-.grammar-card.cat-grammar { border-right-color: #8b5cf6; }
-.grammar-card.cat-communication { border-right-color: #10b981; }
-.grammar-card.cat-life { border-right-color: #f59e0b; }
-.grammar-card.cat-time { border-right-color: #ec4899; }
-
-/* رأس البطاقة (قابل للنقر) */
-.grammar-card-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
-  cursor: pointer;
-  user-select: none;
-  background: #f8fafc;
-  transition: background .2s ease;
-}
-.grammar-card-header:hover { background: #eef2ff; }
-
-.grammar-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--primary);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 800;
-  flex-shrink: 0;
-}
-.grammar-icon {
-  font-size: 22px;
-  flex-shrink: 0;
-}
-.grammar-titles {
-  flex: 1;
-  min-width: 0;
-}
-.grammar-title-de {
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--primary-dark);
-  direction: ltr;
-  text-align: right;
-  margin-bottom: 2px;
-}
-.grammar-title-ar {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-.grammar-level {
-  display: inline-block;
-  background: #dbeafe;
-  color: #1e40af;
-  font-size: 11px;
-  font-weight: 800;
-  padding: 2px 8px;
-  border-radius: 8px;
-  flex-shrink: 0;
-}
-.grammar-arrow {
-  font-size: 12px;
-  color: var(--primary);
-  transition: transform .25s ease;
-  flex-shrink: 0;
-}
-.grammar-card.open .grammar-arrow { transform: rotate(180deg); }
-
-/* محتوى البطاقة (مخفي افتراضياً) */
-.grammar-content {
-  display: none;
-  padding: 18px 20px;
-  background: var(--card-bg);
-  border-top: 1px solid var(--border-color);
-  font-size: 15px;
-  line-height: 1.9;
-}
-.grammar-card.open .grammar-content { display: block; }
-
-/* عناوين داخل المحتوى */
-.grammar-content h4 {
-  color: var(--primary-dark);
-  font-size: 16px;
-  font-weight: 800;
-  margin: 16px 0 10px;
-  padding-bottom: 6px;
-  border-bottom: 2px solid var(--border-color);
-}
-.grammar-content h4:first-child { margin-top: 0; }
-
-.grammar-content p {
-  margin-bottom: 12px;
-  color: var(--text-main);
-}
-
-.grammar-content ul {
-  padding-right: 22px;
-  margin-bottom: 14px;
-}
-.grammar-content ul ul {
-  padding-right: 20px;
-  margin-top: 6px;
-  margin-bottom: 6px;
-}
-.grammar-content li {
-  margin-bottom: 8px;
-  color: var(--text-main);
-  line-height: 1.8;
-}
-
-.grammar-content code {
-  background: #eff6ff;
-  color: var(--primary-dark);
-  padding: 3px 9px;
-  border-radius: 6px;
-  font-family: 'Courier New', monospace;
-  font-weight: bold;
-  font-size: 13px;
-  direction: ltr;
-  display: inline-block;
-}
-
-.grammar-content strong {
-  color: var(--primary-dark);
-  font-weight: 800;
-}
-
-/* الجداول داخل القواعد */
-/* ===== إصلاح مشكلة اختفاء أعمدة الجدول ===== */
-.grammar-content {
-  overflow-x: auto !important; /* يسمح بالتمرير الأفقي إذا كان الجدول عريضاً */
-  width: 100%;
-  padding-bottom: 10px;
-}
-
-.grammar-content table {
-  width: 100%;
-  min-width: 600px; /* يمنع ضغط الأعمدة فوق بعضها */
-  border-collapse: collapse; /* تغيير من separate إلى collapse لضمان عدم وجود فراغات */
-  margin: 20px 0;
-  direction: ltr; /* الجدول ألماني من اليسار لليمين */
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-/* تنسيق الخلايا */
-.grammar-content th, 
-.grammar-content td {
-  padding: 12px 8px;
-  text-align: center;
-  border: 1px solid #e2e8f0;
-  white-space: nowrap; /* يمنع كسر الكلمة الألمانية في الجدول */
-}
-
-/* رأس الجدول */
-.grammar-content th {
-  background: #f8fafc;
-  color: #1e40af;
-  font-weight: bold;
-}
-
-/* العمود الأول (الضمائر) */
-.grammar-content td:first-child,
-.grammar-content th:first-child {
-  background: #f8fafc;
-  font-weight: bold;
-  color: #334155;
-  position: sticky; /* يثبت العمود الأول أثناء التمرير */
-  left: 0;
-  z-index: 2;
-}
-
-/* تلوين الصفوف بالتناوب */
-.grammar-content tr:nth-child(even) td {
-  background-color: #fcfcfc;
-}
-
-/* ============ الوضع الليلي ============ */
-body.dark-mode .grammar-card-header { background: #0f172a; }
-body.dark-mode .grammar-card-header:hover { background: #1e293b; }
-body.dark-mode .grammar-title-de { color: #a5b4fc; }
-body.dark-mode .grammar-level { background: #1e3a8a; color: #93c5fd; }
-body.dark-mode .grammar-content h4 { color: #a5b4fc; border-bottom-color: #334155; }
-body.dark-mode .grammar-content code { background: #0f172a; color: #a5b4fc; }
-body.dark-mode .grammar-content strong { color: #a5b4fc; }
-body.dark-mode .grammar-content th { background: #0f172a; color: #a5b4fc; }
-body.dark-mode .grammar-content tr:nth-child(even) td { background: #0f172a; }
-body.dark-mode .grammar-tip { background: #78350f; color: #fcd34d; }
-body.dark-mode .grammar-letters { background: #0f172a; color: #a5b4fc; }
-
-/* ============ الموبايل ============ */
-@media (max-width: 600px) {
-  .grammar-a1-grid { grid-template-columns: 1fr; gap: 12px; }
-  .grammar-card-header { padding: 12px 14px; gap: 8px; }
-  .grammar-num { width: 24px; height: 24px; font-size: 12px; }
-  .grammar-icon { font-size: 18px; }
-  .grammar-title-de { font-size: 14px; }
-  .grammar-title-ar { font-size: 12px; }
-  .grammar-content { padding: 14px 16px; font-size: 14px; }
-  .grammar-content table { font-size: 12px; }
-  .grammar-content th, .grammar-content td { padding: 6px 8px; }
-}
   /* ============================================================
    CSS لبطاقات النطق (pronunciation.js)
    ============================================================ */
+  .pron-subtabs { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 28px; padding: 8px; background: var(--card-bg); border-radius: 14px; border: 1px solid var(--border-color); }
+  .pron-subtab { padding: 10px 20px; border: none; background: transparent; color: var(--text-muted); font-family: inherit; font-size: 14px; font-weight: 700; border-radius: 10px; cursor: pointer; transition: all .2s ease; }
+  .pron-subtab:hover { background: var(--sidebar-item-hover); color: var(--text-main); }
+  .pron-subtab.active { background: var(--primary); color: #fff; }
+  .pron-category-block { margin-bottom: 30px; }
+  .pron-category-title { font-size: 18px; font-weight: 800; padding: 10px 16px; margin-bottom: 16px; border-right: 5px solid var(--primary); background: var(--card-bg); border-radius: 10px; }
+  .pron-sounds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+  .pron-sound-card { background: var(--card-bg); border: 1px solid var(--border-color); border-right: 5px solid var(--primary); border-radius: 12px; padding: 16px; cursor: pointer; text-align: center; transition: all .25s ease; }
+  .pron-sound-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(79,70,229,.15); }
+  .pron-sound-icon { font-size: 32px; margin-bottom: 8px; }
+  .pron-sound-name { font-size: 16px; font-weight: 800; color: var(--primary-dark); direction: ltr; margin-bottom: 6px; }
+  .pron-sound-ar { font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
+  .pron-sound-count { display: inline-block; background: #eff6ff; color: var(--primary-dark); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 10px; }
+  .pron-examples-list { display: flex; flex-direction: column; gap: 10px; }
+  .pron-example-row { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; background: #f8fafc; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border-color); }
+  .pron-example-word { display: flex; flex-direction: column; gap: 2px; direction: ltr; text-align: left; }
+  .pron-example-word strong { font-size: 16px; color: var(--primary-dark); font-weight: 800; }
+  .pron-ipa { font-size: 12px; color: var(--text-muted); font-family: 'Courier New', monospace; }
+  .pron-example-ar { font-size: 14px; font-weight: 600; color: var(--text-main); }
+  .pron-exercise-box { max-width: 700px; margin: 0 auto; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; }
+  .pron-exercise-progress { color: var(--text-muted); font-weight: 700; font-size: 14px; margin-bottom: 12px; }
+  .pron-exercise-question { color: var(--primary-dark); font-size: 20px; font-weight: 800; margin-bottom: 22px; line-height: 1.7; }
+  .pron-exercise-options { display: flex; flex-direction: column; gap: 12px; }
+  .pron-exercise-option { padding: 14px 20px; background: #f8fafc; border: 2px solid var(--border-color); border-radius: 12px; cursor: pointer; font-family: inherit; font-size: 16px; font-weight: 700; text-align: right; direction: ltr; transition: all .2s ease; }
+  .pron-exercise-option:hover:not(:disabled) { border-color: var(--primary); background: #eef2ff; }
+  .pron-exercise-option.correct { background: #dcfce7; border-color: #10b981; color: #166534; }
+  .pron-exercise-option.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
+  .pron-exercise-option:disabled { cursor: not-allowed; opacity: .9; }
+  .pron-minimal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .pron-minimal-card { background: var(--card-bg); border: 1px solid var(--border-color); border-right: 5px solid #f59e0b; border-radius: 12px; padding: 18px; }
+  .pron-minimal-sound { display: inline-block; background: #fef3c7; color: #92400e; font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 8px; margin-bottom: 14px; }
+  .pron-minimal-pair { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px dashed var(--border-color); }
+  .pron-minimal-pair:last-of-type { border-bottom: none; }
+  .pron-minimal-word { display: flex; align-items: center; gap: 8px; direction: ltr; }
+  .pron-minimal-word strong { font-size: 16px; color: var(--primary-dark); font-weight: 800; }
+  .pron-minimal-ar { font-size: 13px; color: var(--text-muted); font-weight: 600; }
+  .pron-minimal-vs { text-align: center; font-weight: 800; color: var(--text-muted); font-size: 12px; margin: 6px 0; }
+  .pron-minimal-diff { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border-color); font-size: 13px; font-weight: 700; color: #b45309; text-align: center; }
+  .pron-twisters-list { display: flex; flex-direction: column; gap: 18px; max-width: 800px; margin: 0 auto; }
+  .pron-twister-card { background: var(--card-bg); border: 1px solid var(--border-color); border-right: 5px solid #8b5cf6; border-radius: 14px; padding: 22px 24px; }
+  .pron-twister-focus { display: inline-block; background: #ede9fe; color: #5b21b6; font-size: 12px; font-weight: 800; padding: 4px 12px; border-radius: 10px; margin-bottom: 12px; }
+  .pron-twister-de { font-size: 18px; font-weight: 800; color: var(--primary-dark); direction: ltr; text-align: left; margin-bottom: 8px; line-height: 1.7; }
+  .pron-twister-ar { font-size: 14px; color: var(--text-muted); font-weight: 600; margin-bottom: 10px; }
+  body.dark-mode .pron-subtabs { background: #1e293b; }
+  body.dark-mode .pron-subtab { color: #94a3b8; }
+  body.dark-mode .pron-subtab:hover { background: #334155; color: #f1f5f9; }
+  body.dark-mode .pron-subtab.active { background: #4f46e5; color: #fff; }
+  body.dark-mode .pron-sound-name { color: #a5b4fc; }
+  body.dark-mode .pron-sound-count { background: #1e3a8a; color: #93c5fd; }
+  body.dark-mode .pron-example-row { background: #0f172a; }
+  body.dark-mode .pron-example-word strong { color: #a5b4fc; }
+  body.dark-mode .pron-exercise-option { background: #0f172a; color: #f1f5f9; }
+  body.dark-mode .pron-exercise-option:hover:not(:disabled) { background: #1e293b; }
+  body.dark-mode .pron-exercise-question { color: #a5b4fc; }
+  body.dark-mode .pron-minimal-word strong { color: #a5b4fc; }
+  body.dark-mode .pron-minimal-sound { background: #78350f; color: #fcd34d; }
+  body.dark-mode .pron-twister-focus { background: #4c1d95; color: #c4b5fd; }
+  body.dark-mode .pron-twister-de { color: #a5b4fc; }
+  @media (max-width: 600px) {
+    .pron-subtabs { gap: 6px; padding: 6px; }
+    .pron-subtab { padding: 8px 12px; font-size: 12px; }
+    .pron-sounds-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+    .pron-sound-card { padding: 12px; }
+    .pron-sound-icon { font-size: 26px; }
+    .pron-exercise-box { padding: 20px 16px; }
+    .pron-exercise-question { font-size: 17px; }
+    .pron-minimal-grid { grid-template-columns: 1fr; }
+    .pron-twister-de { font-size: 16px; }
+  }
+  .grammar-content { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Cairo', 'Amiri'; line-height: 1.8 !important; color: #334155; }
+  .grammar-content table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); direction: ltr; }
+  .grammar-content th { background: #e0f2fe; color: #0369a1; padding: 14px 10px; font-weight: 700; text-align: center; border-bottom: 2px solid #bae6fd; }
+  .grammar-content td { padding: 12px 10px; text-align: center; border-bottom: 1px solid #f1f5f9; background: #ffffff; font-weight: 500; }
+  .grammar-content tr:last-child td { border-bottom: none; }
+  .grammar-content tr:hover td { background: #f8fafc; }
+  .grammar-content td[dir="rtl"], .grammar-content th[dir="rtl"] { direction: rtl; text-align: right; font-weight: 600; }
+  .grammar-content ul li { margin-bottom: 8px; padding-right: 15px; position: relative; }
+  .grammar-content ul li::before { content: '•'; color: #3b82f6; font-weight: bold; position: absolute; right: 0; }
+  .grammar-content strong, .grammar-content b { color: #1e40af; background: #eff6ff; padding: 2px 6px; border-radius: 4px; font-weight: 700; }
+  .grammar-card .grammar-content, .rule-section .rule-content { display: none !important; }
+  #grammarModalContent { font-size: 17px; line-height: 2; color: #1e293b; }
+  #grammarModalContent h4, #grammarModalContent strong { display: inline-block; background: #eff6ff; color: #1e40af; padding: 4px 12px; border-radius: 8px; margin-top: 15px; margin-bottom: 10px; font-weight: 800; border-right: 4px solid #3b82f6; }
+  #grammarModalContent p, #grammarModalContent ul li { background: #f8fafc; padding: 12px 18px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #f1f5f9; transition: all 0.2s ease; }
+  #grammarModalContent ul li:hover { background: #ffffff; border-color: #cbd5e1; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+  #grammarModalContent b, #grammarModalContent i { color: #0f172a; font-weight: bold; direction: ltr; display: inline-block; padding: 0 4px; }
+  #grammarModalContent table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 25px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+  #grammarModalContent th { background: #1e3a8a; color: #ffffff; padding: 16px; font-weight: bold; text-align: center; }
+  #grammarModalContent td { padding: 14px; border: 1px solid #e2e8f0; text-align: center; background: #ffffff; }
+  #grammarModalContent td:first-child, #grammarModalContent th:first-child { background: #f1f5f9; font-weight: bold; color: #0f172a; }
+  #grammarModalContent tr:nth-child(even) td:not(:first-child) { background: #f8fafc; }
 
-/* التبويبات الفرعية */
-.pron-subtabs {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 28px;
-  padding: 8px;
-  background: var(--card-bg);
-  border-radius: 14px;
-  border: 1px solid var(--border-color);
-}
-.pron-subtab {
-  padding: 10px 20px;
-  border: none;
-  background: transparent;
-  color: var(--text-muted);
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 700;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all .2s ease;
-}
-.pron-subtab:hover { background: var(--sidebar-item-hover); color: var(--text-main); }
-.pron-subtab.active { background: var(--primary); color: #fff; }
-
-/* عنوان الفئة */
-.pron-category-block { margin-bottom: 30px; }
-.pron-category-title {
-  font-size: 18px;
-  font-weight: 800;
-  padding: 10px 16px;
-  margin-bottom: 16px;
-  border-right: 5px solid var(--primary);
-  background: var(--card-bg);
-  border-radius: 10px;
-}
-
-/* شبكة الأصوات */
-.pron-sounds-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 14px;
-}
-.pron-sound-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-right: 5px solid var(--primary);
-  border-radius: 12px;
-  padding: 16px;
-  cursor: pointer;
-  text-align: center;
-  transition: all .25s ease;
-}
-.pron-sound-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(79,70,229,.15);
-}
-.pron-sound-icon { font-size: 32px; margin-bottom: 8px; }
-.pron-sound-name {
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--primary-dark);
-  direction: ltr;
-  margin-bottom: 6px;
-}
-.pron-sound-ar {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-bottom: 8px;
-}
-.pron-sound-count {
-  display: inline-block;
-  background: #eff6ff;
-  color: var(--primary-dark);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 10px;
-}
-
-/* تفاصيل صوت (modal) */
-.pron-examples-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.pron-example-row {
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 12px;
-  align-items: center;
-  background: #f8fafc;
-  padding: 12px 16px;
-  border-radius: 10px;
-  border: 1px solid var(--border-color);
-}
-.pron-example-word {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  direction: ltr;
-  text-align: left;
-}
-.pron-example-word strong {
-  font-size: 16px;
-  color: var(--primary-dark);
-  font-weight: 800;
-}
-.pron-ipa {
-  font-size: 12px;
-  color: var(--text-muted);
-  font-family: 'Courier New', monospace;
-}
-.pron-example-ar {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-main);
-}
-
-/* التمارين */
-.pron-exercise-box {
-  max-width: 700px;
-  margin: 0 auto;
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: 30px;
-}
-.pron-exercise-progress {
-  color: var(--text-muted);
-  font-weight: 700;
-  font-size: 14px;
-  margin-bottom: 12px;
-}
-.pron-exercise-question {
-  color: var(--primary-dark);
-  font-size: 20px;
-  font-weight: 800;
-  margin-bottom: 22px;
-  line-height: 1.7;
-}
-.pron-exercise-options {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.pron-exercise-option {
-  padding: 14px 20px;
-  background: #f8fafc;
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 700;
-  text-align: right;
-  direction: ltr;
-  transition: all .2s ease;
-}
-.pron-exercise-option:hover:not(:disabled) {
-  border-color: var(--primary);
-  background: #eef2ff;
-}
-.pron-exercise-option.correct {
-  background: #dcfce7;
-  border-color: #10b981;
-  color: #166534;
-}
-.pron-exercise-option.wrong {
-  background: #fee2e2;
-  border-color: #ef4444;
-  color: #991b1b;
-}
-.pron-exercise-option:disabled { cursor: not-allowed; opacity: .9; }
-
-/* Minimalpaare */
-.pron-minimal-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-}
-.pron-minimal-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-right: 5px solid #f59e0b;
-  border-radius: 12px;
-  padding: 18px;
-}
-.pron-minimal-sound {
-  display: inline-block;
-  background: #fef3c7;
-  color: #92400e;
-  font-size: 12px;
-  font-weight: 800;
-  padding: 3px 10px;
-  border-radius: 8px;
-  margin-bottom: 14px;
-}
-.pron-minimal-pair {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px dashed var(--border-color);
-}
-.pron-minimal-pair:last-of-type { border-bottom: none; }
-.pron-minimal-word {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  direction: ltr;
-}
-.pron-minimal-word strong {
-  font-size: 16px;
-  color: var(--primary-dark);
-  font-weight: 800;
-}
-.pron-minimal-ar {
-  font-size: 13px;
-  color: var(--text-muted);
-  font-weight: 600;
-}
-.pron-minimal-vs {
-  text-align: center;
-  font-weight: 800;
-  color: var(--text-muted);
-  font-size: 12px;
-  margin: 6px 0;
-}
-.pron-minimal-diff {
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid var(--border-color);
-  font-size: 13px;
-  font-weight: 700;
-  color: #b45309;
-  text-align: center;
-}
-
-/* أعاصير اللسان */
-.pron-twisters-list {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-.pron-twister-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-right: 5px solid #8b5cf6;
-  border-radius: 14px;
-  padding: 22px 24px;
-}
-.pron-twister-focus {
-  display: inline-block;
-  background: #ede9fe;
-  color: #5b21b6;
-  font-size: 12px;
-  font-weight: 800;
-  padding: 4px 12px;
-  border-radius: 10px;
-  margin-bottom: 12px;
-}
-.pron-twister-de {
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--primary-dark);
-  direction: ltr;
-  text-align: left;
-  margin-bottom: 8px;
-  line-height: 1.7;
-}
-.pron-twister-ar {
-  font-size: 14px;
-  color: var(--text-muted);
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-/* ============ الوضع الليلي ============ */
-body.dark-mode .pron-subtabs { background: #1e293b; }
-body.dark-mode .pron-subtab { color: #94a3b8; }
-body.dark-mode .pron-subtab:hover { background: #334155; color: #f1f5f9; }
-body.dark-mode .pron-subtab.active { background: #4f46e5; color: #fff; }
-body.dark-mode .pron-sound-name { color: #a5b4fc; }
-body.dark-mode .pron-sound-count { background: #1e3a8a; color: #93c5fd; }
-body.dark-mode .pron-example-row { background: #0f172a; }
-body.dark-mode .pron-example-word strong { color: #a5b4fc; }
-body.dark-mode .pron-exercise-option { background: #0f172a; color: #f1f5f9; }
-body.dark-mode .pron-exercise-option:hover:not(:disabled) { background: #1e293b; }
-body.dark-mode .pron-exercise-question { color: #a5b4fc; }
-body.dark-mode .pron-minimal-word strong { color: #a5b4fc; }
-body.dark-mode .pron-minimal-sound { background: #78350f; color: #fcd34d; }
-body.dark-mode .pron-twister-focus { background: #4c1d95; color: #c4b5fd; }
-body.dark-mode .pron-twister-de { color: #a5b4fc; }
-
-/* ============ الموبايل ============ */
-@media (max-width: 600px) {
-  .pron-subtabs { gap: 6px; padding: 6px; }
-  .pron-subtab { padding: 8px 12px; font-size: 12px; }
-  .pron-sounds-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
-  .pron-sound-card { padding: 12px; }
-  .pron-sound-icon { font-size: 26px; }
-  .pron-exercise-box { padding: 20px 16px; }
-  .pron-exercise-question { font-size: 17px; }
-  .pron-minimal-grid { grid-template-columns: 1fr; }
-  .pron-twister-de { font-size: 16px; }
-}
-  /* 1. إصلاح مشكلة الخطوط والنصوص المقطوعة */
-.grammar-content {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Cairo', 'Amiri';
-  line-height: 1.8 !important; /* زيادة المسافة بين الأسطر */
-  color: #334155;
-}
-
-/* 2. تنسيق الجداول (ألماني LTR + عربي RTL) */
-.grammar-content table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 20px 0;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  direction: ltr; /* الجدول ألماني */
-}
-
-.grammar-content th {
-  background: #e0f2fe; /* أزرق فاتح جداً */
-  color: #0369a1;
-  padding: 14px 10px;
-  font-weight: 700;
-  text-align: center;
-  border-bottom: 2px solid #bae6fd;
-}
-
-.grammar-content td {
-  padding: 12px 10px;
-  text-align: center;
-  border-bottom: 1px solid #f1f5f9;
-  background: #ffffff;
-  font-weight: 500;
-}
-
-.grammar-content tr:last-child td {
-  border-bottom: none;
-}
-
-.grammar-content tr:hover td {
-  background: #f8fafc; /* تأثير عند تمرير الماوس */
-}
-
-/* 3. تنسيق النصوص العربية داخل الجدول (إذا وجدت) */
-.grammar-content td[dir="rtl"], 
-.grammar-content th[dir="rtl"] {
-  direction: rtl;
-  text-align: right;
-  font-weight: 600;
-}
-
-/* 4. تنسيق الأمثلة (أمثلة من الدرس) */
-.grammar-content ul li {
-  margin-bottom: 8px;
-  padding-right: 15px; /* مسافة للعربية */
-  position: relative;
-}
-
-.grammar-content ul li::before {
-  content: '•';
-  color: #3b82f6;
-  font-weight: bold;
-  position: absolute;
-  right: 0;
-}
-
-/* 5. تنسيق النص المائل أو القواعد المهمة */
-.grammar-content strong, .grammar-content b {
-  color: #1e40af;
-  background: #eff6ff;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-weight: 700;
-}
-  /* إخفاء المحتوى المنسدل القديم نهائياً */
-.grammar-card .grammar-content,
-.rule-section .rule-content {
-  display: none !important;
-}
   /* ============================================================
-   تنسيق احترافي ومميز للنافذة المنبثقة للقواعد
-   ============================================================ */
+     🎨 محرك الألوان الذكي الشامل (الوضع النهاري والليلي)
+     ============================================================ */
+  :root {
+    --table-bg: #ffffff; --table-text: #1e293b; --table-border: #e2e8f0; --table-th-bg: #1e3a8a; --table-th-text: #ffffff; --table-first-col-bg: #f1f5f9; --table-even-bg: #f8fafc;
+    --code-bg: #eff6ff; --code-text: #1e40af; --box-bg: #f8fafc; --box-border: #f1f5f9;
+  }
+  body.dark-mode {
+    --table-bg: #0f172a; --table-text: #f1f5f9; --table-border: #334155; --table-th-bg: #1e3a8a; --table-th-text: #ffffff; --table-first-col-bg: #1e293b; --table-even-bg: #1e293b;
+    --code-bg: #334155; --code-text: #93c5fd; --box-bg: #0f172a; --box-border: #334155;
+  }
+  table, .grammar-content table, #grammarModalContent table { background: var(--table-bg) !important; border-color: var(--table-border) !important; color: var(--table-text) !important; }
+  th, .grammar-content th, #grammarModalContent th { background: var(--table-th-bg) !important; color: var(--table-th-text) !important; border-color: var(--table-border) !important; }
+  td, .grammar-content td, #grammarModalContent td { background: var(--table-bg) !important; color: var(--table-text) !important; border-color: var(--table-border) !important; }
+  td:first-child, .grammar-content td:first-child, #grammarModalContent td:first-child, th:first-child, .grammar-content th:first-child, #grammarModalContent th:first-child { background: var(--table-first-col-bg) !important; color: var(--table-text) !important; }
+  tr:nth-child(even) td:not(:first-child), .grammar-content tr:nth-child(even) td:not(:first-child), #grammarModalContent tr:nth-child(even) td:not(:first-child) { background: var(--table-even-bg) !important; color: var(--table-text) !important; }
+  .grammar-content code, #grammarModalContent code, .rule-content code { background: var(--code-bg) !important; color: var(--code-text) !important; }
+  #grammarModalContent p, #grammarModalContent ul li, .grammar-content p, .grammar-content ul li { background: var(--box-bg) !important; border-color: var(--box-border) !important; color: var(--table-text) !important; }
+  body.dark-mode .grammar-content, body.dark-mode .rule-content, body.dark-mode #grammarModalContent { color: var(--table-text) !important; }
+  body.dark-mode #grammarModalContent h4, body.dark-mode #grammarModalContent strong, body.dark-mode .grammar-content h4, body.dark-mode .grammar-content strong, body.dark-mode .rule-content strong { background: #1e3a8a !important; color: #93c5fd !important; }
 
-/* 1. تحسين الخطوط والمسافات داخل النافذة */
-#grammarModalContent {
-  font-size: 17px;
-  line-height: 2;
-  color: #1e293b;
-}
+  /* ============ التعديلات الجديدة (الماوس + الوضع الليلي + التصميم الأفقي) ============ */
+  .topic-card, .sidebar-menu-item, button, a { cursor: pointer; }
 
-/* 2. جعل عناوين القواعد (مثل "bis (حتى)") واضحة جداً */
-#grammarModalContent h4, 
-#grammarModalContent strong {
-  display: inline-block;
-  background: #eff6ff;
-  color: #1e40af;
-  padding: 4px 12px;
-  border-radius: 8px;
-  margin-top: 15px;
-  margin-bottom: 10px;
-  font-weight: 800;
-  border-right: 4px solid #3b82f6;
-}
-
-/* 3. تحويل الأسطر العادية إلى بطاقات صغيرة مريحة للعين */
-#grammarModalContent p, 
-#grammarModalContent ul li {
-  background: #f8fafc;
-  padding: 12px 18px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #f1f5f9;
-  transition: all 0.2s ease;
-}
-
-#grammarModalContent ul li:hover {
-  background: #ffffff;
-  border-color: #cbd5e1;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-/* 4. عزل الكلمات الألمانية وإبرازها */
-#grammarModalContent b, 
-#grammarModalContent i {
-  color: #0f172a;
-  font-weight: bold;
-  direction: ltr;
-  display: inline-block;
-  padding: 0 4px;
-}
-
-/* 5. تنسيق الجداول لتكون عريضة وواضحة */
-#grammarModalContent table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 25px 0;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  border: 1px solid #e2e8f0;
-}
-
-#grammarModalContent th {
-  background: #1e3a8a; /* أزرق داكن */
-  color: #ffffff;
-  padding: 16px;
-  font-weight: bold;
-  text-align: center;
-}
-
-#grammarModalContent td {
-  padding: 14px;
-  border: 1px solid #e2e8f0;
-  text-align: center;
-  background: #ffffff;
-}
-
-/* تلوين العمود الأول (الضمائر) ليكون مميزاً */
-#grammarModalContent td:first-child,
-#grammarModalContent th:first-child {
-  background: #f1f5f9;
-  font-weight: bold;
-  color: #0f172a;
-}
-
-/* تلوين الصفوف الزوجية لسهولة القراءة */
-#grammarModalContent tr:nth-child(even) td:not(:first-child) {
-  background: #f8fafc;
-}
-/* ============================================================
-   🎨 محرك الألوان الذكي الشامل (الوضع النهاري والليلي)
-   ============================================================ */
-
-/* 1. تعريف الألوان النهارية */
-:root {
-  --table-bg: #ffffff;
-  --table-text: #1e293b;
-  --table-border: #e2e8f0;
-  --table-th-bg: #1e3a8a;
-  --table-th-text: #ffffff;
-  --table-first-col-bg: #f1f5f9;
-  --table-even-bg: #f8fafc;
-  
-  --code-bg: #eff6ff;
-  --code-text: #1e40af;
-  --box-bg: #f8fafc;
-  --box-border: #f1f5f9;
-}
-
-/* 2. تعريف الألوان الليلية (تتغير تلقائياً) */
-body.dark-mode {
-  --table-bg: #0f172a;
-  --table-text: #f1f5f9;
-  --table-border: #334155;
-  --table-th-bg: #1e3a8a;
-  --table-th-text: #ffffff;
-  --table-first-col-bg: #1e293b;
-  --table-even-bg: #1e293b;
-  
-  --code-bg: #334155;
-  --code-text: #93c5fd;
-  --box-bg: #0f172a;
-  --box-border: #334155;
-}
-
-/* 3. تطبيق الألوان على جميع الجداول في الموقع (القديمة والجديدة) */
-table, .grammar-content table, #grammarModalContent table {
-  background: var(--table-bg) !important;
-  border-color: var(--table-border) !important;
-  color: var(--table-text) !important;
-}
-
-th, .grammar-content th, #grammarModalContent th {
-  background: var(--table-th-bg) !important;
-  color: var(--table-th-text) !important;
-  border-color: var(--table-border) !important;
-}
-
-td, .grammar-content td, #grammarModalContent td {
-  background: var(--table-bg) !important;
-  color: var(--table-text) !important;
-  border-color: var(--table-border) !important;
-}
-
-/* تلوين العمود الأول والصفوف الزوجية */
-td:first-child, .grammar-content td:first-child, #grammarModalContent td:first-child,
-th:first-child, .grammar-content th:first-child, #grammarModalContent th:first-child {
-  background: var(--table-first-col-bg) !important;
-  color: var(--table-text) !important;
-}
-
-tr:nth-child(even) td:not(:first-child), 
-.grammar-content tr:nth-child(even) td:not(:first-child),
-#grammarModalContent tr:nth-child(even) td:not(:first-child) {
-  background: var(--table-even-bg) !important;
-  color: var(--table-text) !important;
-}
-
-/* 4. إصلاح الصناديق والبطاقات والنصوص البرمجية (Code) */
-.grammar-content code, #grammarModalContent code, .rule-content code {
-  background: var(--code-bg) !important;
-  color: var(--code-text) !important;
-}
-
-#grammarModalContent p, 
-#grammarModalContent ul li,
-.grammar-content p,
-.grammar-content ul li {
-  background: var(--box-bg) !important;
-  border-color: var(--box-border) !important;
-  color: var(--table-text) !important;
-}
-
-/* إجبار النصوص العادية على أن تكون واضحة في الوضع الليلي */
-body.dark-mode .grammar-content,
-body.dark-mode .rule-content,
-body.dark-mode #grammarModalContent {
-  color: var(--table-text) !important;
-}
-
-/* إصلاح عناوين القواعد (h4, strong) */
-body.dark-mode #grammarModalContent h4,
-body.dark-mode #grammarModalContent strong,
-body.dark-mode .grammar-content h4,
-body.dark-mode .grammar-content strong,
-body.dark-mode .rule-content strong {
-  background: #1e3a8a !important;
-  color: #93c5fd !important;
-}
-function buildTopicFilters(tabName) {
-  const container = document.getElementById('topicFilters');
-  if (!container) return;
-  
-  // إذا كان هناك موضوع مختار، لا نعرض البطاقات
-  if (currentTopic !== "all") {
-    container.style.display = 'none';
-    return;
+  /* جعل المواضيع أفقية (Flexbox) */
+  .topic-grid {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: wrap !important;
+      gap: 15px !important;
+      justify-content: center !important;
   }
 
-  let sourceData = [];
-  if (tabName === 'verbs') sourceData = (contentLanguage === 'en' && typeof VERBS_EN !== 'undefined') ? VERBS_EN : (typeof VERBS !== 'undefined' ? VERBS : []);
-  else if (tabName === 'nouns') sourceData = (contentLanguage === 'en' && typeof NOUNS_EN !== 'undefined') ? NOUNS_EN : (typeof NOUNS !== 'undefined' ? NOUNS : []);
-  else if (tabName === 'adjectives') sourceData = (typeof ADJECTIVES !== 'undefined' ? ADJECTIVES : []);
-  else { container.style.display = 'none'; return; }
+  .topic-card {
+      flex: 1 1 150px;
+      max-width: 220px;
+      margin: 0 !important;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+  .topic-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      border-color: var(--primary);
+  }
+  .topic-card .topic-icon { font-size: 36px; margin-bottom: 10px; }
+  .topic-card .topic-name { font-size: 18px; font-weight: 800; color: var(--primary-dark); margin-bottom: 5px; }
+  .topic-card .topic-count { font-size: 13px; color: var(--text-muted); font-weight: 600; background: #f1f5f9; padding: 4px 10px; border-radius: 12px; display: inline-block; }
 
-  // تجميع المواضيع وعدد الكلمات في كل موضوع
-  const topics = {};
-  sourceData.forEach(item => {
-    const t = item.topic || 'عام';
-    if (!topics[t]) topics[t] = 0;
-    topics[t]++;
-  });
-
-  if (Object.keys(topics).length === 0) { container.style.display = 'none'; return; }
-
-  container.style.display = 'block';
-  
-  // رموز تعبيرية للمواضيع
-  const icons = {
-    'عائلة': '👨‍👩‍👧', 'مهن': '💼', 'طعام': '🍔', 'حياة': '🌱', 'رياضة': '⚽', 
-    'لغة': '📚', 'دراسة': '🎓', 'حركة': '🏃', 'تواصل': '💬', 'سفر': '✈️', 
-    'تسوق': '🛒', 'فن': '🎨', 'منزل': '🏠', 'صفات': '✨', 'ظروف': '🕒',
-    'سكن': '🏡', 'أثاث': '🛋️', 'حروف جر': '🔗', 'مشاعر': '❤️', 'علاقات': '🤝',
-    'مناسبات': '🎉', 'وقت': '⏱️', 'أماكن': '📍', 'طبيعة': '🌳', 'جغرافيا': '🗺️',
-    'عمل': '💼', 'ألوان': '🎨', 'طقس': '🌤️'
-  };
-
-  let html = '<div class="topic-grid">';
-  Object.keys(topics).forEach(t => {
-    const icon = icons[t] || '📁';
-    html += `
-      <div class="topic-card" onclick="switchTopic('${t}')">
-        <div class="topic-icon">${icon}</div>
-        <div class="topic-name">${t}</div>
-        <div class="topic-count">${topics[t]} كلمة</div>
-      </div>
-    `;
-  });
-  html += '</div>';
-  
-  container.innerHTML = html;
-}
-            /* =========================================
-           التعديلات الجديدة (الماوس + الوضع الليلي)
-           ========================================= */
-
-        /* 1. تغيير شكل الماوس ليكون يد عند الوقوف على البطاقات */
-        .topic-card, 
-        .sidebar-menu-item, 
-        button, 
-        a {
-            cursor: pointer;
-        }
-
-        /* 2. تأثير حركي جميل عند الوقوف على بطاقة الموضوع (اختياري) */
-        .topic-card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .topic-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        /* 3. إصلاح الوضع الليلي (Dark Mode) */
-        /* استبدل .dark-mode بالكلاس الذي تستخدمه إذا كان مختلفاً */
-        body.dark-mode .topic-card {
-            background-color: #2d3748 !important; /* لون خلفية البطاقة في الوضع الليلي */
-            border: 1px solid #4a5568 !important;
-        }
-
-        body.dark-mode .topic-card .topic-name,
-        body.dark-mode .topic-card .topic-count,
-        body.dark-mode .topic-card .topic-icon {
-            color: #ffffff !important; /* جعل النص والأيقونة بيضاء لتظهر بوضوح */
-        }
-        
-        /* إصلاح أي نصوص أخرى قد تختفي في الوضع الليلي */
-        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 {
-            color: #ffffff !important;
-        }
-    /* جعل المواضيع أفقية بدلاً من رأسية */
-#topics-container, 
-.topics-grid { /* استخدم اسم الكلاس أو الـ ID الخاص بحاوية المواضيع عندك */
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    gap: 15px !important; /* المسافة بين البطاقات */
-    justify-content: center !important; /* توسيط البطاقات */
-}
-
-/* تحديد عرض البطاقة حتى لا تكون ضخمة */
-.topic-card {
-    flex: 1 1 150px; /* العرض الأدنى 150 بكسل وتتمدد */
-    max-width: 200px; /* أقصى عرض للبطاقة */
-    margin: 0 !important;
-}
+  /* إصلاح الوضع الليلي للبطاقات */
+  body.dark-mode .topic-card {
+      background-color: #1e293b !important;
+      border-color: #334155 !important;
+  }
+  body.dark-mode .topic-card .topic-name { color: #a5b4fc !important; }
+  body.dark-mode .topic-card .topic-count { background-color: #0f172a !important; color: #94a3b8 !important; }
 </style>
 </head>
 <body>
 <header>
   <div class="lang-buttons">
-    <!-- ✅ Language Dropdown (جديد) -->
     <div class="lang-dropdown-wrap">
       <button class="lang-dropdown-btn" onclick="toggleLangDropdown(event)" id="langDropdownBtn">
         <span id="langDropdownLabel">🌐 Deutsch</span>
@@ -1306,11 +583,9 @@ function buildTopicFilters(tabName) {
         </button>
       </div>
     </div>
-    <!-- الأزرار القديمة (مخفية للتوافق مع i18n.js) -->
     <button id="langSwitchBtn" style="display:none" onclick="switchLanguage()">Deutsch 🇩🇪</button>
     <button id="contentLangBtn" style="display:none" onclick="toggleContentLanguage()">🇬🇧 English</button>
     <span id="currentLangLabel" style="display:none"></span>
-    <!-- الأزرار الأصلية (كما هي) -->
     <button id="darkModeBtn" class="lang-btn" onclick="toggleDarkMode()" title="الوضع الليلي">🌙</button>
     <button id="translationToggleBtn" class="lang-btn" onclick="toggleTranslation()">إخفاء الترجمة 👁️‍🗨️</button>
   </div>
@@ -1319,15 +594,10 @@ function buildTopicFilters(tabName) {
 </header>
 
 <div class="container">
-
-  <!-- ✅ زر ☰ للموبايل + Overlay -->
   <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="القائمة">☰</button>
   <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
-  <!-- ✅ Layout: Sidebar + Content -->
   <div class="app-layout">
-
-    <!-- ✅ Sidebar (جديد) -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-group">
         <div class="sidebar-group-title">📚 تعلّم</div>
@@ -1365,10 +635,7 @@ function buildTopicFilters(tabName) {
       </div>
     </aside>
 
-    <!-- ✅ منطقة المحتوى (تضم كل tab-* كما هي) -->
     <main class="content-area">
-
-      <!-- شريط التبويبات القديم: نخفيه بـ CSS، لا نحذفه للتوافق -->
       <div class="tabs" id="mainTabs">
         <button class="tab active" data-tab="verbs">🔤 الأفعال</button>
         <button class="tab" data-tab="nouns">📦 الأسماء</button>
@@ -1477,10 +744,10 @@ function buildTopicFilters(tabName) {
       <div id="tab-review" class="hidden"><div id="reviewContent"></div></div>
       <div id="tab-reading" class="hidden"><div id="readingContent"></div></div>
      <div id="tab-lessons" class="hidden">
-  <div id="lessonSubTabs"></div>
-  <div id="lessonsContent"></div>
-  <div id="singleLessonContent" class="hidden"></div>
-</div>
+        <div id="lessonSubTabs"></div>
+        <div id="lessonsContent"></div>
+        <div id="singleLessonContent" class="hidden"></div>
+      </div>
       <div id="tab-pronunciation" class="hidden"><div id="pronunciationContent"></div></div>
       <div id="tab-rules" class="hidden"><div class="rules-container" id="rulesContent"></div></div>
       <div id="tab-grammar-a1" class="hidden"><div id="grammarA1Content"></div></div>
@@ -1491,9 +758,9 @@ function buildTopicFilters(tabName) {
         </div>
       </div>
 
-    </main><!-- /.content-area -->
-  </div><!-- /.app-layout -->
-</div><!-- /.container -->
+    </main>
+  </div>
+</div>
 
 <div class="modal" id="modal"><div class="modal-content" id="modalContent"></div></div>
 
@@ -1513,7 +780,6 @@ function buildTopicFilters(tabName) {
 <script src="basics.js"></script>
 <script src="lessons.js"></script>
 <script src="pronunciation.js"></script>
-  
 
 <script>
 /* ==================== الحالة ==================== */
@@ -1576,7 +842,6 @@ function buildTopicFilters(tabName) {
   const container = document.getElementById('topicFilters');
   if (!container) return;
   
-  // إذا كان هناك موضوع مختار، لا نعرض البطاقات
   if (currentTopic !== "all") {
     container.style.display = 'none';
     return;
@@ -1588,7 +853,6 @@ function buildTopicFilters(tabName) {
   else if (tabName === 'adjectives') sourceData = (typeof ADJECTIVES !== 'undefined' ? ADJECTIVES : []);
   else { container.style.display = 'none'; return; }
 
-  // تجميع المواضيع وعدد الكلمات في كل موضوع
   const topics = {};
   sourceData.forEach(item => {
     const t = item.topic || 'عام';
@@ -1600,14 +864,13 @@ function buildTopicFilters(tabName) {
 
   container.style.display = 'block';
   
-  // رموز تعبيرية للمواضيع
   const icons = {
     'عائلة': '👨‍👩‍👧', 'مهن': '💼', 'طعام': '🍔', 'حياة': '🌱', 'رياضة': '⚽', 
     'لغة': '📚', 'دراسة': '🎓', 'حركة': '🏃', 'تواصل': '💬', 'سفر': '✈️', 
     'تسوق': '🛒', 'فن': '🎨', 'منزل': '🏠', 'صفات': '✨', 'ظروف': '🕒',
     'سكن': '🏡', 'أثاث': '🛋️', 'حروف جر': '🔗', 'مشاعر': '❤️', 'علاقات': '🤝',
     'مناسبات': '🎉', 'وقت': '⏱️', 'أماكن': '📍', 'طبيعة': '🌳', 'جغرافيا': '🗺️',
-    'عمل': '💼', 'ألوان': '🎨', 'طقس': '🌤️'
+    'عمل': '💼', 'ألوان': '🎨', 'طقس': '🌤️', 'عام': '📁'
   };
 
   let html = '<div class="topic-grid">';
@@ -1628,7 +891,6 @@ function buildTopicFilters(tabName) {
 function switchTopic(topic) {
   currentTopic = topic;
   
-  // إذا اخترنا موضوعاً، نعرض زر "العودة للمواضيع"
   const container = document.getElementById('topicFilters');
   if (topic !== "all") {
     container.style.display = 'block';
@@ -1652,6 +914,7 @@ function switchTopic(topic) {
 function renderVerbs() {
   const f = currentSearch.trim().toLowerCase();
   const sourceData = contentLanguage === 'en' ? (typeof VERBS_EN !== 'undefined' ? VERBS_EN : []) : (typeof VERBS !== 'undefined' ? VERBS : []);
+  const list = document.getElementById("verbList");
   const filtered = sourceData.filter(v => {
     const word = contentLanguage === 'en' ? v.en : v.de;
     const matchSearch = word.toLowerCase().includes(f) || v.ar.includes(currentSearch.trim());
@@ -1663,8 +926,7 @@ function renderVerbs() {
     const matchTopic = (currentTopic === "all") || (v.topic === currentTopic);
     return matchSearch && matchFilter && matchTopic;
   });
-  if (currentTopic === "all") { list.innerHTML = ''; return; }
-  const list = document.getElementById("verbList");
+  
   if (!filtered.length) { list.innerHTML = '<p style="text-align:center;color:#64748b;grid-column:1/-1;">لا توجد نتائج</p>'; return; }
   list.innerHTML = filtered.map(v => {
     const word = contentLanguage === 'en' ? v.en : v.de;
@@ -1712,13 +974,13 @@ function openVerb(index) {
 function renderNouns() {
   const f = currentSearch.trim().toLowerCase();
   const sourceData = contentLanguage === 'en' ? (typeof NOUNS_EN !== 'undefined' ? NOUNS_EN : []) : (typeof NOUNS !== 'undefined' ? NOUNS : []);
+  const list = document.getElementById("nounList");
   const filtered = sourceData.filter(n => {
     const word = contentLanguage === 'en' ? n.en : n.de;
     const matchSearch = word.toLowerCase().includes(f) || n.ar.includes(currentSearch.trim());
     const matchTopic = (currentTopic === "all") || (n.topic === currentTopic);
     return matchSearch && matchTopic;
   });
-  const list = document.getElementById("nounList");
   if (!filtered.length) { list.innerHTML = '<p style="text-align:center;color:#64748b;grid-column:1/-1;">لا توجد نتائج</p>'; return; }
   list.innerHTML = filtered.map(n => {
     const word = contentLanguage === 'en' ? n.en : n.de;
@@ -1760,11 +1022,13 @@ function openNoun(index) {
 function renderAdjectives() {
   const f = currentSearch.trim().toLowerCase();
   const sourceData = contentLanguage === 'en' ? (typeof ADJECTIVES_EN !== 'undefined' ? ADJECTIVES_EN : []) : (typeof ADJECTIVES !== 'undefined' ? ADJECTIVES : []);
+  const list = document.getElementById("adjList");
   const filtered = sourceData.filter(a => {
     const word = contentLanguage === 'en' ? a.en : a.de;
-    return word.toLowerCase().includes(f) || a.ar.includes(currentSearch.trim());
+    const matchSearch = word.toLowerCase().includes(f) || a.ar.includes(currentSearch.trim());
+    const matchTopic = (currentTopic === "all") || (a.topic === currentTopic);
+    return matchSearch && matchTopic;
   });
-  const list = document.getElementById("adjList");
   if (!filtered.length) { list.innerHTML = '<p style="text-align:center;color:#64748b;grid-column:1/-1;">لا توجد نتائج</p>'; return; }
   list.innerHTML = filtered.map(a => {
     const word = contentLanguage === 'en' ? a.en : a.de;
@@ -1850,7 +1114,7 @@ function switchTab(name) {
   if (search) search.style.display = (name === "verbs" || name === "nouns" || name === "adjectives") ? "block" : "none";
 
   currentTopic = 'all';
-  if (name === 'verbs' || name === 'nouns') buildTopicFilters(name);
+  if (name === 'verbs' || name === 'nouns' || name === 'adjectives') buildTopicFilters(name);
   else { const tf = document.getElementById('topicFilters'); if (tf) tf.style.display = 'none'; }
 
   try {
@@ -1870,7 +1134,7 @@ function switchTab(name) {
     else if (name === "lessons") { if (typeof initLessonsTab === 'function') initLessonsTab(); }
     else if (name === "pronunciation") { if (typeof initPronunciationTab === 'function') initPronunciationTab(); }
     else if (name === "rules") { if (typeof renderRules === 'function') renderRules(); else { const rc = document.getElementById("rulesContent"); if (rc) rc.innerHTML = (contentLanguage === 'en' && typeof RULES_HTML_EN !== 'undefined') ? RULES_HTML_EN : (typeof RULES_HTML !== 'undefined' ? RULES_HTML : ''); } }
-      else if (name === "grammar-a1") { if (typeof initGrammarA1Tab === 'function') initGrammarA1Tab(); }
+    else if (name === "grammar-a1") { if (typeof initGrammarA1Tab === 'function') initGrammarA1Tab(); }
     else if (name === "resources") { if (typeof renderResources === 'function') renderResources(); }
     else if (name === "review") { if (typeof initReviewTab === 'function') initReviewTab(); }
   } catch(e) { console.error('switchTab(' + name + '):', e); }
@@ -1993,10 +1257,8 @@ document.getElementById("search").addEventListener("input", e => {
 
 /* ============================================================
    ✅ إضافات جديدة: Sidebar + Language Dropdown
-   (لا تعدّل أي دالة أعلاه)
    ============================================================ */
 
-/* --- فتح/إغلاق Sidebar (موبايل) --- */
 function toggleSidebar() {
   const sb = document.getElementById('sidebar');
   const ov = document.getElementById('sidebarOverlay');
@@ -2005,7 +1267,6 @@ function toggleSidebar() {
   if (ov) ov.classList.toggle('active');
 }
 
-/* --- ربط عناصر Sidebar بـ switchTab الموجودة --- */
 document.querySelectorAll('.sidebar-item[data-tab]').forEach(btn => {
   btn.addEventListener('click', () => {
     if (btn.classList.contains('disabled')) return;
@@ -2015,7 +1276,6 @@ document.querySelectorAll('.sidebar-item[data-tab]').forEach(btn => {
   });
 });
 
-/* --- Dropdown اللغة --- */
 function toggleLangDropdown(ev) {
   if (ev) ev.stopPropagation();
   const menu = document.getElementById('langDropdownMenu');
@@ -2024,19 +1284,15 @@ function toggleLangDropdown(ev) {
 
 function setLanguage(lang, ev) {
   if (ev) ev.stopPropagation();
-  // 1) لغة المحتوى
   if (typeof contentLanguage !== 'undefined' && contentLanguage !== lang) {
     if (typeof toggleContentLanguage === 'function') toggleContentLanguage();
   }
-  // 2) لغة الواجهة عبر i18n.js إن كانت موجودة
   try {
     if (typeof switchLanguage === 'function' && typeof currentLang !== 'undefined' && currentLang !== lang) {
       switchLanguage();
     }
-  } catch(e) { /* تجاهل */ }
-  // 3) تحديث الواجهة
+  } catch(e) { }
   updateLangDropdownUI(lang);
-  // 4) إغلاق القائمة
   const menu = document.getElementById('langDropdownMenu');
   if (menu) menu.classList.remove('open');
 }
@@ -2053,7 +1309,6 @@ function updateLangDropdownUI(lang) {
   });
 }
 
-/* --- إغلاق القائمة عند النقر خارجها --- */
 document.addEventListener('click', (e) => {
   const wrap = document.querySelector('.lang-dropdown-wrap');
   if (wrap && !wrap.contains(e.target)) {
@@ -2062,7 +1317,6 @@ document.addEventListener('click', (e) => {
   }
 });
 
-/* --- تهيئة أولية --- */
 (function initSidebarLang() {
   const lang = (typeof contentLanguage !== 'undefined') ? contentLanguage : 'de';
   updateLangDropdownUI(lang);
@@ -2085,16 +1339,13 @@ document.addEventListener('click', (e) => {
 })();
 </script>
 
-<!-- ==================== كود النافذة المنبثقة للقواعد ==================== -->
-
-<!-- 1. نافذة HTML -->
 <div id="grammarModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15, 23, 42, 0.85); z-index:9999; backdrop-filter:blur(5px); overflow-y:auto;">
   <div style="background:#fff; margin: 30px auto; width:96%; max-width:1400px; border-radius:16px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.5); position:relative; min-height: 80vh;">
     <button onclick="closeGrammarModal()" style="position:absolute; top:15px; left:15px; background:#ef4444; color:#fff; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-weight:bold; font-size:16px; z-index:10; box-shadow:0 4px 6px rgba(0,0,0,0.1);">✖ إغلاق</button>
     <div id="grammarModalContent" style="padding:40px; direction:rtl; overflow-x:auto;"></div>
   </div>
 </div>
-<!-- 2. سكربت التشغيل -->
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   window.closeGrammarModal = function() {
@@ -2106,7 +1357,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const modalContent = document.getElementById('grammarModalContent');
     modalContent.innerHTML = htmlContent;
     
-    // إصلاح اتجاه النصوص المختلطة (عربي + ألماني)
     modalContent.style.direction = 'rtl';
     modalContent.style.textAlign = 'right';
     
@@ -2114,10 +1364,8 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.style.overflow = 'hidden'; 
   };
 
-  // ننتظر 1.5 ثانية لضمان تحميل القواعد من الملفات الخارجية
   setTimeout(() => {
     document.body.addEventListener('click', function(e) {
-      // البحث عن رأس القاعدة الذي تم النقر عليه
       const header = e.target.closest('.grammar-card-header, .rule-section h3');
       
       if (header) {
@@ -2126,23 +1374,16 @@ document.addEventListener("DOMContentLoaded", function() {
         
         let contentDiv = null;
         
-        // في قواعد A1
         if (header.classList.contains('grammar-card-header')) {
           contentDiv = header.parentElement.querySelector('.grammar-content');
         } 
-        // في القواعد القديمة
         else if (header.tagName === 'H3') {
           contentDiv = header.parentElement.querySelector('.rule-content');
         }
 
         if (contentDiv) {
-          // نقوم بنسخ المحتوى (cloneNode) حتى لا يختفي من الصفحة الأصلية
           const clone = contentDiv.cloneNode(true);
-          
-          // نجبره على الظهور في النافذة
           clone.style.display = 'block'; 
-          
-          // نرسل الكود الداخلي للنافذة
           window.openGrammarModal(clone.innerHTML);
         }
       }
@@ -2150,6 +1391,8 @@ document.addEventListener("DOMContentLoaded", function() {
   }, 1500);
 });
 </script>
+
+<!-- ✅ السكربت المُعدل لفرز الكلمات وربطها بالمواضيع بذكاء -->
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     setTimeout(() => {
@@ -2157,23 +1400,43 @@ document.addEventListener("DOMContentLoaded", function() {
         LESSONS.forEach(lesson => {
           if (lesson.newWords) {
             lesson.newWords.forEach(word => {
+              // التأكد من إضافة خاصية topic للكلمات التي لا تمتلكها
+              const topicName = word.topic || (lesson.title ? "درس: " + lesson.title : "كلمات جديدة");
+              
+              // 1. إذا كان الكلمة فعل (لها type)
               if (word.type) {
-                if (!VERBS.find(v => v.de === word.de)) VERBS.push(word);
-              } else {
-                if (!NOUNS.find(n => n.de === word.de)) NOUNS.push(word);
+                if (!VERBS.find(v => v.de === word.de)) {
+                   word.topic = topicName;
+                   VERBS.push(word);
+                }
+              } 
+              // 2. إذا كانت الكلمة اسم (تبدأ بـ der, die, das)
+              else if (word.de.startsWith("der ") || word.de.startsWith("die ") || word.de.startsWith("das ")) {
+                if (!NOUNS.find(n => n.de === word.de)) {
+                   word.topic = topicName;
+                   NOUNS.push(word);
+                }
+              } 
+              // 3. الباقي يعتبر صفة (إذا كان ملف الصفات موجوداً)
+              else {
+                if (typeof ADJECTIVES !== 'undefined' && !ADJECTIVES.find(a => a.de === word.de)) {
+                   word.topic = topicName;
+                   ADJECTIVES.push(word);
+                }
               }
             });
           }
         });
-        console.log("✅ تمت إضافة مفردات الدروس إلى قسم المفردات تلقائياً!");
+        console.log("✅ تم فرز الكلمات وإضافتها للمواضيع بنجاح!");
+        
+        // تحديث الشاشة إذا كنا في قسم المفردات
+        if (typeof currentTab !== 'undefined' && ['verbs', 'nouns', 'adjectives'].includes(currentTab)) {
+           if (typeof buildTopicFilters === 'function') buildTopicFilters(currentTab);
+           if (typeof renderCurrent === 'function') renderCurrent();
+        }
       }
     }, 1500); 
   });
 </script>
 </body>
 </html>
-
-  
-
-
- 
