@@ -1268,6 +1268,22 @@ function buildTopicFilters(tabName) {
         body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 {
             color: #ffffff !important;
         }
+    /* جعل المواضيع أفقية بدلاً من رأسية */
+#topics-container, 
+.topics-grid { /* استخدم اسم الكلاس أو الـ ID الخاص بحاوية المواضيع عندك */
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important; /* المسافة بين البطاقات */
+    justify-content: center !important; /* توسيط البطاقات */
+}
+
+/* تحديد عرض البطاقة حتى لا تكون ضخمة */
+.topic-card {
+    flex: 1 1 150px; /* العرض الأدنى 150 بكسل وتتمدد */
+    max-width: 200px; /* أقصى عرض للبطاقة */
+    margin: 0 !important;
+}
 </style>
 </head>
 <body>
