@@ -605,6 +605,7 @@
         <button class="sidebar-item" data-tab="basics"><span class="emoji">📚</span> الأساسيات</button>
         <button class="sidebar-item" data-tab="rules"><span class="emoji">📖</span> القواعد</button>
         <button class="sidebar-item" data-tab="grammar-a1"><span class="emoji">📖</span> قواعد A1 (شاملة)</button>
+        <button class="sidebar-item" data-tab="grammar-a2"><span class="emoji">📘</span> قواعد A2 (شاملة)</button>
         <button class="sidebar-item" data-tab="pronunciation"><span class="emoji">🗣️</span> النطق</button>
       </div>
       <div class="sidebar-group">
@@ -766,7 +767,8 @@
 
 <script src="verbs.js"></script>
 <script src="rules.js"></script>
-<script src="grammar_a1.js"></script>
+<script src="grammar_a1.js"></script> 
+<script src="grammar_a2.js"></script>
 <script src="speaking.js"></script>
 <script src="exercises.js"></script>
 <script src="review.js"></script>
@@ -1139,12 +1141,44 @@ function switchTab(name) {
     else if (name === "pronunciation") { if (typeof initPronunciationTab === 'function') initPronunciationTab(); }
     else if (name === "rules") { if (typeof renderRules === 'function') renderRules(); else { const rc = document.getElementById("rulesContent"); if (rc) rc.innerHTML = (contentLanguage === 'en' && typeof RULES_HTML_EN !== 'undefined') ? RULES_HTML_EN : (typeof RULES_HTML !== 'undefined' ? RULES_HTML : ''); } }
     else if (name === "grammar-a1") { if (typeof initGrammarA1Tab === 'function') initGrammarA1Tab(); }
+    else if (name === "grammar-a2") { if (typeof initGrammarA2Tab === 'function') initGrammarA2Tab(); }
     else if (name === "resources") { if (typeof renderResources === 'function') renderResources(); }
     else if (name === "review") { if (typeof initReviewTab === 'function') initReviewTab(); }
   } catch(e) { console.error('switchTab(' + name + '):', e); }
   applyTranslationVisibility();
 }
+function initGrammarA2Tab() {
+    const container = document.getElementById('grammarA2Content');
+    if (!container) return;
+    
+    if (typeof GRAMMAR_A2 === 'undefined') {
+        container.innerHTML = '<p style="text-align:center;color:red;">⚠️ ملف grammar_a2.js غير محمّل أو فارغ.</p>';
+        return;
+    }
 
+    let html = '<div class="grammar-a1-grid">';
+    GRAMMAR_A2.forEach((rule, index) => {
+        html += `
+            <div class="grammar-card cat-${rule.category === 'الأفعال' ? 'grammar' : 'basics'}">
+                <div class="grammar-card-header" onclick="this.parentElement.classList.toggle('open')">
+                    <span class="grammar-num">${index + 1}</span>
+                    <span class="grammar-icon">📖</span>
+                    <div class="grammar-titles">
+                        <div class="grammar-title-de">${rule.title}</div>
+                        <div class="grammar-title-ar">${rule.titleAr}</div>
+                    </div>
+                    <span class="grammar-level">A2</span>
+                    <span class="grammar-arrow">▼</span>
+                </div>
+                <div class="grammar-content" style="display: none;">
+                    ${rule.content}
+                </div>
+            </div>
+        `;
+    });
+    html += '</div>';
+    container.innerHTML = html;
+}
 function renderCurrent() {
   if (currentTab === "verbs") renderVerbs();
   else if (currentTab === "nouns") renderNouns();
