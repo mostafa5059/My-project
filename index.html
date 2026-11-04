@@ -1609,6 +1609,7 @@ function renderVerbs() {
     const matchTopic = (currentTopic === "all") || (v.topic === currentTopic);
     return matchSearch && matchFilter && matchTopic;
   });
+  if (currentTopic === "all") { list.innerHTML = ''; return; }
   const list = document.getElementById("verbList");
   if (!filtered.length) { list.innerHTML = '<p style="text-align:center;color:#64748b;grid-column:1/-1;">لا توجد نتائج</p>'; return; }
   list.innerHTML = filtered.map(v => {
