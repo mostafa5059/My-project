@@ -2000,7 +2000,26 @@ document.addEventListener("DOMContentLoaded", function() {
   }, 1500);
 });
 </script>
-
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(() => {
+      if (typeof LESSONS !== 'undefined' && typeof NOUNS !== 'undefined' && typeof VERBS !== 'undefined') {
+        LESSONS.forEach(lesson => {
+          if (lesson.newWords) {
+            lesson.newWords.forEach(word => {
+              if (word.type) {
+                if (!VERBS.find(v => v.de === word.de)) VERBS.push(word);
+              } else {
+                if (!NOUNS.find(n => n.de === word.de)) NOUNS.push(word);
+              }
+            });
+          }
+        });
+        console.log("✅ تمت إضافة مفردات الدروس إلى قسم المفردات تلقائياً!");
+      }
+    }, 1500); 
+  });
+</script>
 </body>
 </html>
 
