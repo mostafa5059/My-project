@@ -190,8 +190,142 @@ const LESSONS = [
       mc("Welches Nomen bedeutet 'التسجيل'؟", ["die Anmeldung", "der Anmelder", "das Anmelden", "die Anmeldheit"], 0, "الحدث من anmelden هو die Anmeldung."),
       mc("Ich möchte einen Kurs buchen. Ich brauche eine ___.", ["Beratung", "Berater", "Beraten", "Berat"], 0, "تحتاج إلى استشارة (Beratung).")
     ]
-  }
+  },
+   // ==========================================
+// Lektion 4: Was darf es sein?
+// ==========================================
+{
+  id: "lektion-4",
+  level: "A2.1",
+  title: "Was darf es sein?",
+  titleAr: "ماذا تأخذ/تريد؟ (التسوق)",
+  topic: "تسوق",
+  desc: "في هذا الدرس نتعلم كيف نتسوق، نطلب الطعام، نعبّر عن الكميات (أوزان وعبوات)، وكيف نصف الأشياء عند الشراء.",
+  
+  // ----------------------------------------------------
+  // القاعدة النحوية (Grammar)
+  // ----------------------------------------------------
+  grammarTitle: "Adjektivdeklination nach indefinitem Artikel (تصريف الصفات بعد أدوات النكرة)",
+  grammar: `
+    <h4>💡 الفكرة ببساطة:</h4>
+    <p>عندما تصف اسماً باستخدام صفة (مثل: <b>حليب بارد</b>)، فإن الصفة تأخذ حرفاً إضافياً في نهايتها (e أو en). هذا الحرف يتغير حسب 3 أشياء:</p>
+    <ul>
+      <li>1. الحالة الإعرابية (Nominativ, Akkusativ, Dativ).</li>
+      <li>2. جنس الاسم (مذكر، مؤنث، محايد).</li>
+      <li>3. أداة التعريف التي قبله (ein/eine أو der/die/das).</li>
+    </ul>
+
+    <h4>🔹 القاعدة الأساسية (مع أداة النكرة ein/eine):</h4>
+    <p>إذا كان الاسم يأخذ أداة نكرة <code>ein</code> أو <code>eine</code>، فإن الصفة تأخذ النهاية <code>-er</code> للمذكر و <code>-es</code> للمحايد، و <code>-e</code> للمؤنث (في حالة الرفع Nominativ).</p>
+    <ul>
+      <li>مذكر (Nominativ): ein mager<b>er</b> Schinken (لحم خنزير قليل الدسم).</li>
+      <li>محايد (Nominativ): ein hell<b>es</b> Brot (خبز فاتح).</li>
+      <li>مؤنث (Nominativ): eine grün<b>e</b> Paprika (فلفل أخضر).</li>
+    </ul>
+
+    <h4>🔹 في حالة النصب (Akkusativ) - عند الشراء والطلب:</h4>
+    <p>عندما نقول "أريد شراء..." (Ich hätte gern...)، نستخدم حالة Akkusativ. هنا المذكر فقط هو الذي يتغير (تصبح الصفة <code>-en</code>)، بينما المحايد والمؤنث يبقيان كما هما.</p>
+    <table>
+      <tr><th>الجنس</th><th>Nominativ (الرفع)</th><th>Akkusativ (النصب)</th></tr>
+      <tr><td>مذكر</td><td>ein mager<b>er</b> Schinken</td><td>einen mager<b>en</b> Schinken</td></tr>
+      <tr><td>محايد</td><td>ein hell<b>es</b> Brot</td><td>ein hell<b>es</b> Brot</td></tr>
+      <tr><td>مؤنث</td><td>eine grün<b>e</b> Paprika</td><td>eine grün<b>e</b> Paprika</td></tr>
+    </table>
+
+    <h4>🔹 في حالة الجر (Dativ) - عند استخدام "مع" (mit):</h4>
+    <p>في حالة Dativ، <b>كل</b> الصفات تأخذ النهاية <code>-en</code> بغض النظر عن الجنس.</p>
+    <ul>
+      <li>mit ein<b>em</b> kalt<b>en</b> Wasser (مع ماء بارد - محايد).</li>
+      <li>mit ein<b>er</b> frisch<b>en</b> Milch (مع حليب طازج - مؤنث).</li>
+      <li>mit ein<b>em</b> frisch<b>en</b> Fisch (مع سمك طازج - مذكر).</li>
+    </ul>
+
+    <h4>🔹 كلمات مهمة للكميات والعبوات:</h4>
+    <p>للتحدث عن الكميات نستخدم: <code>ein Kilo</code> (كيلو)، <code>ein Pfund</code> (نصف كيلو/باوند)، <code>ein Liter</code> (لتر)، <code>eine Flasche</code> (زجاجة)، <code>eine Dose</code> (علبة معدنية)، <code>eine Packung</code> (عبوة/باكيت)، <code>ein Glas</code> (برطمان/كأس)، <code>eine Tüte</code> (كيس).</p>
+  `,
+
+  // ----------------------------------------------------
+  // التمارين التفاعلية (MCQs)
+  // ----------------------------------------------------
+  exercises: [
+    mc("Ich hätte gern einen kalt___ Saft.", ["kalt", "kalte", "kalten", "kalter"], 2, "كلمة Saft مذكر (der Saft)، وفي حالة Akkusativ نضيف -en للصفة."),
+    mc("Ich möchte ein frisch___ Brot kaufen.", ["frisch", "frische", "frisches", "frischen"], 2, "كلمة Brot محايدة (das Brot)، وفي حالة Akkusativ تبقى الصفة -es."),
+    mc("Ich nehme eine grün___ Paprika.", ["grün", "grüne", "grünes", "grünen"], 1, "كلمة Paprika مؤنث (die Paprika)، وفي حالة Akkusativ تبقى الصفة -e."),
+    mc("Was darf es sein? - Ich hätte gern ___ Schinken.", ["einen mageren", "ein magerer", "eine magere", "ein mageres"], 0, "عند الطلب (Akkusativ)، المذكر يأخذ einen + الصفة -en."),
+    mc("Wie viel kostet das? - 500 Gramm ____.", ["Wurst", "Würste", "Wursts"], 0, "الوزن (Gramm) يأتي بعده الاسم في حالة مفرد غالباً في سياق الشراء."),
+    mc("Ich möchte 2 Flaschen ____ kaufen.", ["Milch", "Milchs", "Milche"], 0, "بعد الكمية والعبوة (Flaschen) يأتي الاسم كما هو."),
+    mc("Ich esse morgens ein gekocht___ Ei.", ["gekocht", "gekochtes", "gekochte", "gekochten"], 1, "Ei محايد (das Ei)، حالة Akkusativ، تأخذ الصفة -es."),
+    mc("Möchten Sie einen heiß___ Tee?", ["heiß", "heiße", "heißen", "heißer"], 2, "Tee مذكر (der Tee)، حالة Akkusativ، الصفة تأخذ -en."),
+  ],
+
+  // ----------------------------------------------------
+  // المفردات (Vocabulary)
+  // ----------------------------------------------------
+  newWords: [
+    // الأفعال (Verbs)
+    v("einkaufen", "يتسوق", "تسوق", "kaufte ein", "eingekauft"),
+    v("kaufen", "يشتري", "تسوق", "kaufte", "gekauft"),
+    v("nehmen", "يأخذ", "تسوق", "nahm", "genommen"),
+    v("kosten", "يكلف", "تسوق", "kostete", "gekostet"),
+    v("möchten", "يرغب/يريد", "تسوق", "wollte", "gewollt"),
+    v("funktionieren", "يعمل (جهاز)", "حياة", "funktionierte", "funktioniert"),
+    v("anrufen", "يتصل هاتفياً", "تواصل", "rief an", "angerufen"),
+    v("essen", "يأكل", "طعام", "aß", "gegessen"),
+    
+    // الأسماء (Nouns)
+    w("der Einkaufszettel", "قائمة المشتريات", "تسوق"),
+    w("der Supermarkt", "سوبر ماركت", "تسوق"),
+    w("die Kasse", "الكاشير/الصندوق", "تسوق"),
+    w("der Kunde", "العميل/الزبون", "تسوق"),
+    w("die Kundin", "العميلة/الزبونة", "تسوق"),
+    w("der Verkäufer", "البائع", "تسوق"),
+    w("die Verkäuferin", "البائعة", "تسوق"),
+    w("die Tüte", "كيس", "تسوق"),
+    w("die Dose", "علبة (معدنية)", "تسوق"),
+    w("die Flasche", "زجاجة", "تسوق"),
+    w("das Glas", "برطمان / كوب", "تسوق"),
+    w("die Packung", "عبوة / باكيت", "تسوق"),
+    w("das Kilo", "كيلوغرام", "تسوق"),
+    w("das Gramm", "غرام", "تسوق"),
+    w("das Pfund", "باوند (نصف كيلو)", "تسوق"),
+    w("der Liter", "لتر", "تسوق"),
+    w("der Schinken", "لحم خنزير (هام)", "طعام"),
+    w("der Käse", "جبن", "طعام"),
+    w("die Wurst", "نقانق / سجق", "طعام"),
+    w("der Fisch", "سمك", "طعام"),
+    w("das Fleisch", "لحم", "طعام"),
+    w("das Brot", "خبز", "طعام"),
+    w("das Brötchen", "خبز صغير (كيزر)", "طعام"),
+    w("die Milch", "حليب", "طعام"),
+    w("die Butter", "زبدة", "طعام"),
+    w("die Marmelade", "مربى", "طعام"),
+    w("das Ei", "بيضة", "طعام"),
+    w("der Apfel", "تفاحة", "طعام"),
+    w("die Banane", "موزة", "طعام"),
+    w("die Paprika", "فلفل (أخضر/أحمر)", "طعام"),
+    w("der Knoblauch", "ثوم", "طعام"),
+    w("die Zwiebel", "بصل", "طعام"),
+    w("der Saft", "عصير", "طعام"),
+    w("der Tee", "شاي", "طعام"),
+    w("der Kaffee", "قهوة", "طعام"),
+    
+    // الصفات (Adjectives) - تستخدم مع القاعدة النحوية
+    w("mager", "قليل الدسم", "صفات"),
+    w("fettarm", "قليل الدهون", "صفات"),
+    w("weich", "طري / لين", "صفات"),
+    w("hart", "صلب / قاسي", "صفات"),
+    w("hell", "فاتح", "صفات"),
+    w("dunkel", "غامق / داكن", "صفات"),
+    w("lecker", "لذيذ", "صفات"),
+    w("teuer", "غالي", "صفات"),
+    w("günstig", "رخيص / مناسب", "صفات"),
+    w("frisch", "طازج", "صفات"),
+    w("gekocht", "مسلوق / مطبوخ", "صفات"),
+    w("roh", "نيء", "صفات")
+  ]
+}
   ];
+
 /* ========== الدوال المساعدة ========== */
 function getWordData(word) {
   const clean = word.replace(/^(der|die|das) /, '').trim();
