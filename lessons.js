@@ -330,25 +330,46 @@ const LESSONS = [
 
 /* ========== الدوال المساعدة ========== */
 function getWordData(word) {
-  const clean = word.replace(/^(der|die|das) /, '').trim();
-  if (typeof NOUNS !== 'undefined') {
-    const n = NOUNS.find(x => x.de === word || x.de.replace(/^(der|die|das) /, '') === clean);
-    if (n) return { ...n, source: 'NOUNS', kind: 'noun' };
+  // 1. إذا كانت الكلمة عبارة عن كائن (Object) - وهذا هو الحال في دروسنا الجديدة
+  if (typeof word === 'object' && word !== null) {
+    return {
+      kind: word.kind || word.type || 'other', // نوع الكلمة
+      plural: word.plural || '',
+      präteritum: word.präteritum || '',
+      perfekt: word.perfekt || ''
+    };
   }
+
+  // 2. إذا كانت الكلمة مجرد نص (String) - الطريقة القديمة
+  if (typeof word !== 'string') return { kind: 'other' };
+  
+  const w = word.trim();
+  const lower = w.toLowerCase();
+  
+  // البحث في الأفعال
   if (typeof VERBS !== 'undefined') {
-    const v = VERBS.find(x => x.de === word || x.de.replace(/ \(.*\)/, '') === clean);
-    if (v) return { ...v, source: 'VERBS', kind: 'verb' };
+    const verb = VERBS.find(v => v.de && v.de.toLowerCase() === lower);
+    if (verb) return { kind: 'verb', präteritum: verb.präteritum || '', perfekt: verb.perfekt || '' };
   }
+  
+  // البحث في الأسماء
+  if (typeof NOUNS !== 'undefined') {
+    const noun = NOUNS.find(n => n.de && n.de.toLowerCase() === lower);
+    if (noun) return { kind: 'noun', plural: noun.plural || '' };
+  }
+  
+  // البحث في الصفات
   if (typeof ADJECTIVES !== 'undefined') {
-    const a = ADJECTIVES.find(x => x.de === word);
-    if (a) return { ...a, source: 'ADJECTIVES', kind: 'adj' };
+    const adj = ADJECTIVES.find(a => a.de && a.de.toLowerCase() === lower);
+    if (adj) return { kind: 'adj' };
   }
-  for (const lesson of LESSONS) {
-    if (!lesson.newWords) continue;
-    const nw = lesson.newWords.find(x => x.de === word);
-    if (nw) return { ...nw, source: 'LESSON', kind: nw.type ? 'verb' : 'noun' };
+  
+  // إذا كانت تبدأ بـ der/die/das فهي اسم
+  if (/^(der|die|das)\s/i.test(w)) {
+    return { kind: 'noun', plural: '' };
   }
-  return { de: word, ar: '—', source: 'UNKNOWN' };
+  
+  return { kind: 'other' };
 }
 
 function renderLessonSubTabs() {
