@@ -325,6 +325,120 @@ const LESSONS = [
     w("gekocht", "مسلوق / مطبوخ", "صفات"),
     w("roh", "نيء", "صفات")
   ]
+},
+   // ==========================================
+// Lektion 5: Schaut mal, der schöne Dom!
+// ==========================================
+{
+  id: "lektion-5",
+  level: "A2.1",
+  title: "Schaut mal, der schöne Dom!",
+  titleAr: "انظروا، الكاتدرائية الجميلة! (السياحة)",
+  topic: "سفر", // هذا الموضوع موجود في بطاقاتك الملونة
+  description: "في هذا الدرس نتعلم كيف نتحدث عن السياحة، نخطط لعطلة نهاية الأسبوع، نكتب بطاقة بريدية، وكيف نصف الأشياء باستخدام أدوات التعريف.",
+  image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80", // صورة كولونيا/الكاتدرائية
+  
+  // ----------------------------------------------------
+  // قطعة الدرس (Lesetext) - تم استخراجها من الصورة 3
+  // ----------------------------------------------------
+  text: `
+    <p><b>Mein lieber Paul,</b></p>
+    <p>nun sind wir also in schönen Köln angekommen. Der berühmte Dom ist wirklich sehenswert. Wir haben eine Führung gemacht. Sogar Charlotte hat mitgemacht und dem netten Reiseführer ein Loch in den Bauch gefragt. Das bunte Richter-Fenster hat mir nicht so gut gefallen. Es ist mir zu abstrakt. Besonders gut haben mir das Römisch-Germanische Museum und das Museum Ludwig gefallen. Du siehst: Wir haben schon viele Sehenswürdigkeiten besichtigt. Aber der Höhepunkt wartet noch auf uns: eine Schifffahrt auf dem Rhein! Das wird bestimmt toll. Denn du weißt ja: Eine Rheinfahrt, die ist lustig, eine Rheinfahrt, die ist schön...</p>
+    <p><b>Liebe Grüße</b><br>Deine Jutta</p>
+  `,
+  
+  // ----------------------------------------------------
+  // القاعدة النحوية (Grammar) - تصريف الصفات مع أدوات التعريف
+  // ----------------------------------------------------
+  grammarTitle: "Adjektivdeklination nach definitem Artikel (تصريف الصفات مع أدوات التعريف)",
+  grammar: `
+    <h4>💡 الفكرة ببساطة:</h4>
+    <p>عندما نستخدم أداة التعريف (der, die, das)، فإن الصفة تأخذ نهاية مختلفة عن أداة النكرة (ein/eine). القاعدة هنا تعتمد على الحالة الإعرابية (Nominativ, Akkusativ, Dativ).</p>
+
+    <h4>🔹 1. حالة الرفع (Nominativ):</h4>
+    <p>الصفة تأخذ دائماً النهاية <code>-e</code> بغض النظر عن الجنس.</p>
+    <ul>
+      <li>der berühmt<b>e</b> Dom (الكاتدرائية الشهيرة - مذكر)</li>
+      <li>das bunt<b>e</b> Fenster (النافذة الملونة - محايد)</li>
+      <li>die neu<b>e</b> Kamera (الكاميرا الجديدة - مؤنث)</li>
+    </ul>
+
+    <h4>🔹 2. حالة النصب (Akkusativ):</h4>
+    <p>المذكر فقط هو الذي يتغير (تأخذ الصفة <code>-en</code>)، بينما المؤنث والمحايد يبقيان <code>-e</code>.</p>
+    <table>
+      <tr><th>الجنس</th><th>Nominativ</th><th>Akkusativ</th></tr>
+      <tr><td>مذكر</td><td>der berühmt<b>e</b> Dom</td><td>den berühmt<b>en</b> Dom</td></tr>
+      <tr><td>محايد</td><td>das bunt<b>e</b> Fenster</td><td>das bunt<b>e</b> Fenster</td></tr>
+      <tr><td>مؤنث</td><td>die neu<b>e</b> Kamera</td><td>die neu<b>e</b> Kamera</td></tr>
+    </table>
+
+    <h4>🔹 3. حالة الجر (Dativ):</h4>
+    <p>في حالة Dativ، <b>كل</b> الصفات تأخذ النهاية <code>-en</code>.</p>
+    <ul>
+      <li>mit dem nett<b>en</b> Reiseführer (مع المرشد السياحي اللطيف)</li>
+      <li>mit dem bunt<b>en</b> Fenster</li>
+      <li>mit der neu<b>en</b> Kamera</li>
+    </ul>
+  `,
+
+  // ----------------------------------------------------
+  // التمارين (Exercises)
+  // ----------------------------------------------------
+  exercises: [
+    mc("Ich finde den berühmt___ Dom sehr schön.", ["berühmt", "berühmte", "berühmten", "berühmter"], 2, "كلمة Dom مذكر، حالة Akkusativ، الصفة تأخذ -en."),
+    mc("Das ist ein bunt___ Fenster.", ["bunt", "bunte", "buntes", "bunten"], 2, "كلمة Fenster محايد، حالة Nominativ (أو Akkusativ)، الصفة تأخذ -es."),
+    mc("Mit dem nett___ Reiseführer macht die Tour Spaß.", ["nett", "nette", "netten", "netter"], 2, "حالة Dativ (mit dem)، الصفة تأخذ -en."),
+    mc("Die neu___ Kamera ist sehr teuer.", ["neu", "neue", "neues", "neuen"], 1, "كلمة Kamera مؤنث، حالة Nominativ، الصفة تأخذ -e."),
+    mc("Ich besichtige die alt___ Kirche.", ["alt", "alte", "altes", "alten"], 1, "كلمة Kirche مؤنث، حالة Akkusativ (die)، الصفة تأخذ -e."),
+    mc("Welche Sehenswürdigkeit ist wirklich sehenswert? - Der berühmt___ Dom.", ["berühmt", "berühmte", "berühmten"], 1, "كلمة Dom مذكر، حالة Nominativ، الصفة تأخذ -e."),
+  ],
+
+  // ----------------------------------------------------
+  // المفردات (Vocabulary)
+  // ----------------------------------------------------
+  newWords: [
+    // الأفعال
+    v("besichtigen", "يزور/يتفقد (معالم)", "سفر", "besichtigte", "besichtigt"),
+    v("gefallen", "يعجب", "تسوق", "gefiel", "gefallen"),
+    v("buchen", "يحجز", "سفر", "buchte", "gebucht"),
+    v("mitmachen", "يشارك", "سفر", "machte mit", "mitgemacht"),
+    v("überlegen", "يفكر/يتدبر", "حياة", "überlegte", "überlegt"),
+    v("empfehlen", "ينصح/يوصي", "تواصل", "empfahl", "empfohlen"),
+    v("aussteigen", "ينزل من (مركبة)", "حركة", "stieg aus", "ausgestiegen"),
+    v("schreiben", "يكتب", "تواصل", "schrieb", "geschrieben"),
+    v("sich ärgern", "يغضب/ينزعج", "مشاعر", "ärgerte sich", "geärgert"),
+    v("besichtigen", "يزور", "سفر", "besichtigte", "besichtigt"),
+
+    // الأسماء
+    w("der Dom", "الكاتدرائية", "سفر"),
+    w("der Reiseführer", "المرشد السياحي / دليل السفر", "سفر"),
+    w("die Sehenswürdigkeit", "المعلم السياحي / الأثر", "سفر"),
+    w("die Führung", "الجولة الإرشادية", "سفر"),
+    w("die Schifffahrt", "رحلة بالقارب", "سفر"),
+    w("der Rhein", "نهر الراين", "جغرافيا"),
+    w("die Kamera", "الكاميرا", "حياة"),
+    w("das Fenster", "النافذة", "منزل"),
+    w("der Brief", "الخطاب/الرسالة", "تواصل"),
+    w("die Postkarte", "البطاقة البريدية", "تواصل"),
+    w("die E-Mail", "البريد الإلكتروني", "تواصل"),
+    w("die Nachricht", "الرسالة (القصيرة)", "تواصل"),
+    w("der Tourist", "السائح", "سفر"),
+    w("die Unterkunft", "مكان الإقامة", "سفر"),
+    w("das Trinkgeld", "البقشيش (إكرامية)", "سفر"),
+    w("der Höhepunkt", "ذروة/أهم حدث", "سفر"),
+    w("die Ausstellung", "المعرض", "فن"),
+    w("das Wochenende", "عطلة نهاية الأسبوع", "وقت"),
+
+    // الصفات
+    w("berühmt", "شهير", "صفات"),
+    w("bunt", "ملون", "صفات"),
+    w("sehenswert", "يستحق المشاهدة", "صفات"),
+    w("beeindruckend", "مثير للإعجاب", "صفات"),
+    w("langweilig", "ممل", "صفات"),
+    w("interessant", "مثير للاهتمام", "صفات"),
+    w("toll", "رائع", "صفات"),
+    w("schick", "أنيق", "صفات")
+  ]
 }
   ];
 
