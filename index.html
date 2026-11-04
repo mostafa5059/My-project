@@ -1396,46 +1396,58 @@ document.addEventListener("DOMContentLoaded", function() {
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     setTimeout(() => {
-      if (typeof LESSONS !== 'undefined' && typeof NOUNS !== 'undefined' && typeof VERBS !== 'undefined') {
-        LESSONS.forEach(lesson => {
-          if (lesson.newWords) {
-            lesson.newWords.forEach(word => {
-              // التأكد من إضافة خاصية topic للكلمات التي لا تمتلكها
-              const topicName = word.topic || (lesson.title ? "درس: " + lesson.title : "كلمات جديدة");
-              
-              // 1. إذا كان الكلمة فعل (لها type)
-              if (word.type) {
-                if (!VERBS.find(v => v.de === word.de)) {
-                   word.topic = topicName;
-                   VERBS.push(word);
+      try {
+        if (typeof LESSONS !== 'undefined' && Array.isArray(LESSONS)) {
+          
+          // تأمين المصفوفات في حال لم تكن معرّفة
+          if (typeof VERBS === 'undefined') window.VERBS = [];
+          if (typeof NOUNS === 'undefined') window.NOUNS = [];
+          if (typeof ADJECTIVES === 'undefined') window.ADJECTIVES = [];
+
+          LESSONS.forEach(lesson => {
+            if (lesson.newWords && Array.isArray(lesson.newWords)) {
+              lesson.newWords.forEach(word => {
+                if (!word || !word.de) return; // تخطي أي كلمة فارغة
+                
+                const topicName = word.topic || "مفردات الدروس";
+                const cleanDe = word.de.toLowerCase().trim();
+
+                // 1. فرز الأفعال
+                if (word.type || (word.präsens && word.präsens.length > 0)) {
+                  if (!VERBS.find(v => v.de.toLowerCase().trim() === cleanDe)) {
+                    word.topic = topicName;
+                    VERBS.push(word);
+                  }
+                } 
+                // 2. فرز الأسماء (يبدأ بـ der, die, das)
+                else if (cleanDe.startsWith("der ") || cleanDe.startsWith("die ") || cleanDe.startsWith("das ")) {
+                  if (!NOUNS.find(n => n.de.toLowerCase().trim() === cleanDe)) {
+                    word.topic = topicName;
+                    NOUNS.push(word);
+                  }
+                } 
+                // 3. فرز الصفات (الباقي)
+                else {
+                  if (!ADJECTIVES.find(a => a.de.toLowerCase().trim() === cleanDe)) {
+                    word.topic = topicName;
+                    ADJECTIVES.push(word);
+                  }
                 }
-              } 
-              // 2. إذا كانت الكلمة اسم (تبدأ بـ der, die, das)
-              else if (word.de.startsWith("der ") || word.de.startsWith("die ") || word.de.startsWith("das ")) {
-                if (!NOUNS.find(n => n.de === word.de)) {
-                   word.topic = topicName;
-                   NOUNS.push(word);
-                }
-              } 
-              // 3. الباقي يعتبر صفة (إذا كان ملف الصفات موجوداً)
-              else {
-                if (typeof ADJECTIVES !== 'undefined' && !ADJECTIVES.find(a => a.de === word.de)) {
-                   word.topic = topicName;
-                   ADJECTIVES.push(word);
-                }
-              }
-            });
-          }
-        });
-        console.log("✅ تم فرز الكلمات وإضافتها للمواضيع بنجاح!");
-        
-        // تحديث الشاشة إذا كنا في قسم المفردات
-        if (typeof currentTab !== 'undefined' && ['verbs', 'nouns', 'adjectives'].includes(currentTab)) {
-           if (typeof buildTopicFilters === 'function') buildTopicFilters(currentTab);
-           if (typeof renderCurrent === 'function') renderCurrent();
+              });
+            }
+          });
+          console.log("✅ تمت إضافة مفردات الدروس بنجاح!");
         }
+      } catch (e) {
+        console.error("حدث خطأ في ملف lessons.js:", e);
       }
-    }, 1500); 
+
+      // تحديث الشاشة
+      if (typeof currentTab !== 'undefined' && ['verbs', 'nouns', 'adjectives'].includes(currentTab)) {
+         if (typeof buildTopicFilters === 'function') buildTopicFilters(currentTab);
+         if (typeof renderCurrent === 'function') renderCurrent();
+      }
+    }, 1000); 
   });
 </script>
 </body>
