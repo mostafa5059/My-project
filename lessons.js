@@ -498,7 +498,13 @@ history.pushState({ lessonId: id }, "", "#lesson-" + id);
     container.innerHTML = `
      <button class="filter-btn" onclick="closeSingleLesson()" style="margin-bottom:20px;">← العودة للدروس</button>
       <h2 style="color:var(--primary-dark);font-size:28px;margin-bottom:5px;">${lesson.title}</h2>
-      <h3 style="color:var(--text-muted);font-size:20px;margin-bottom:25px;">${lesson.titleAr || ''}</h3>
+      <h3 style="color:var(--text-muted);font-size:20px;margin-bottom:15px;">${lesson.titleAr || ''}</h3>
+${(lesson.description || lesson.desc) ? `
+  <div class="example-box" style="margin-bottom: 25px; border-right: 5px solid var(--primary); background: var(--card-bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); border-left: 1px solid var(--border-color);">
+    <strong>💡 نبذة عن الدرس:</strong><br>
+    <span style="font-size: 16px; line-height: 1.8; color: var(--text-main);">${lesson.description || lesson.desc}</span>
+  </div>
+` : ''}
       
       ${allWords.length ? `
         <div class="section-title" style="font-size:22px;">📖 المفردات</div>
