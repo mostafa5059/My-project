@@ -1450,5 +1450,26 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 1000); 
   });
 </script>
+ <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 1. التحقق من وجود رقم درس في الرابط (لفتح الدرس مباشرة إذا تم نسخ رابطه)
+    if (window.location.hash.startsWith('#lesson-')) {
+        const lessonId = window.location.hash.replace('#lesson-', '');
+        setTimeout(() => {
+            if (typeof openLesson === 'function') openLesson(lessonId);
+        }, 1000); // ننتظر تحميل ملف الدروس
+    }
+
+    // 2. دعم زر الرجوع في المتصفح
+    window.addEventListener('popstate', function(event) {
+      const singleLesson = document.getElementById('singleLessonContent');
+      if (singleLesson && !singleLesson.classList.contains('hidden')) {
+        if (typeof closeSingleLesson === 'function') {
+          closeSingleLesson();
+        }
+      }
+    });
+  });
+</script>
 </body>
 </html>
