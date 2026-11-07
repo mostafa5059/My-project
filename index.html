@@ -1756,8 +1756,10 @@ document.addEventListener("DOMContentLoaded", function() {
         if (typeof switchTab === 'function') switchTab(tab);
         
         // إغلاق القائمة فوراً
-        document.getElementById('sidebar').classList.remove('open');
-        document.getElementById('sidebarOverlay').classList.remove('active');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        if (sidebar) sidebar.classList.remove('open');
+        if (overlay) overlay.classList.remove('active');
       });
     });
 
