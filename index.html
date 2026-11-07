@@ -1207,7 +1207,41 @@ function openAdjective(index) {
   openModal(content);
   applyTranslationVisibility();
 }
+// دالة لفتح تفاصيل الكلمة من داخل الدرس
+function openWordDetails(wordString) {
+  // 1. البحث في الأفعال
+  let sourceData = contentLanguage === 'en' ? (typeof VERBS_EN !== 'undefined' ? VERBS_EN : []) : (typeof VERBS !== 'undefined' ? VERBS : []);
+  let idx = sourceData.findIndex(item => item.de === wordString || item.en === wordString);
+  if (idx !== -1) {
+    openVerb(idx);
+    return;
+  }
 
+  // 2. البحث في الأسماء
+  sourceData = contentLanguage === 'en' ? (typeof NOUNS_EN !== 'undefined' ? NOUNS_EN : []) : (typeof NOUNS !== 'undefined' ? NOUNS : []);
+  idx = sourceData.findIndex(item => item.de === wordString || item.en === wordString);
+  if (idx !== -1) {
+    openNoun(idx);
+    return;
+  }
+
+  // 3. البحث في الصفات
+  sourceData = contentLanguage === 'en' ? (typeof ADJECTIVES_EN !== 'undefined' ? ADJECTIVES_EN : []) : (typeof ADJECTIVES !== 'undefined' ? ADJECTIVES : []);
+  idx = sourceData.findIndex(item => item.de === wordString || item.en === wordString);
+  if (idx !== -1) {
+    openAdjective(idx);
+    return;
+  }
+
+  // 4. إذا لم يتم العثور على الكلمة (احتياطي)
+  openModal(`
+    <button class="close-btn" onclick="closeModal()">✕</button>
+    <div style="text-align:center; padding: 20px;">
+      <h2 style="color:var(--primary-dark);">${wordString}</h2>
+      <p style="color:var(--text-muted); margin-top: 15px;">لا توجد تفاصيل إضافية مسجلة لهذه الكلمة في قاعدة البيانات.</p>
+    </div>
+  `);
+}
 /* ==================== المفضلة ==================== */
 function renderFavorites() {
   const favs = getFavorites();
