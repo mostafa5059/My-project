@@ -1270,7 +1270,13 @@ function renderFavorites() {
 
 /* ==================== التبويبات ==================== */
 function switchTab(name) {
-    // تسجيل التبويب في تاريخ المتصفح لدعم زر الرجوع
+    // 1. إغلاق القائمة الجانبية فوراً (قبل أي شيء آخر)
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    if (sidebar) sidebar.classList.remove('open');
+    if (overlay) overlay.classList.remove('active');
+
+    // 2. تسجيل التبويب في تاريخ المتصفح لدعم زر الرجوع
   if (!history.state || history.state.tab !== name) {
     history.pushState({ tab: name }, "", "#" + name);
   }
@@ -1743,26 +1749,6 @@ document.addEventListener("DOMContentLoaded", function() {
         if (typeof switchTab === 'function') switchTab('verbs');
       }
     });
-  });
-</script>
-<script>
-  // إغلاق القائمة الجانبية عند النقر على أي تبويب في الهاتف
-  document.querySelectorAll('.sidebar-item[data-tab]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (btn.classList.contains('disabled')) return;
-      const tab = btn.dataset.tab;
-      if (typeof switchTab === 'function') switchTab(tab);
-      
-      // إغلاق القائمة فوراً (بدون شرط)
-      document.getElementById('sidebar').classList.remove('open');
-      document.getElementById('sidebarOverlay').classList.remove('active');
-    });
-  });
-
-  // إغلاق القائمة عند النقر على الطبقة الشفافة
-  document.getElementById('sidebarOverlay').addEventListener('click', () => {
-      document.getElementById('sidebar').classList.remove('open');
-      document.getElementById('sidebarOverlay').classList.remove('active');
   });
 </script>
 </body>
