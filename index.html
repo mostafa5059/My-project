@@ -685,62 +685,62 @@ body.dark-mode .exercise-explanation {
     color: #fcd34d;
     border-right-color: #f59e0b;
 }
-  /* تحسينات الهاتف */
+
+/* ============================================================ */
+/* 🔥 التعديل الجديد: إصلاح الجداول والخطوط للهاتف */
+/* ============================================================ */
 @media (max-width: 768px) {
-  /* منع القائمة من تغطية الشاشة بالكامل */
-  .sidebar { width: 260px; max-width: 80vw; }
-  
-  /* جعل الجداول قابلة للتمرير أفقياً بدلاً من كسر التصميم */
-  table { display: block; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
-  
-  /* ضبط حجم الخط ليكون مناسباً */
-  body { font-size: 14px; }
-  h1 { font-size: 20px; }
-  h2 { font-size: 18px; }
-  .card .de { font-size: 16px; }
-  .card .ar { font-size: 13px; }
-  
-  /* إخفاء عناصر قد تكون مزعجة */
-  .lang-buttons { flex-wrap: wrap; justify-content: center; }
+    body { font-size: 14px !important; }
+    h1 { font-size: 20px !important; }
+    h2 { font-size: 18px !important; }
+    h3 { font-size: 16px !important; }
+    p, li, span, div { font-size: 14px !important; line-height: 1.6 !important; }
+    
+    img { max-width: 100% !important; height: auto !important; }
+
+    /* تحويل الجدول إلى بطاقات لكي لا يكسر الشاشة */
+    table, thead, tbody, th, td, tr { 
+        display: block !important; 
+        width: 100% !important; 
+    }
+    thead tr { position: absolute; top: -9999px; left: -9999px; }
+    tr { 
+        border: 1px solid var(--border-color) !important; 
+        margin-bottom: 15px !important; 
+        border-radius: 12px !important; 
+        background: var(--card-bg) !important;
+        overflow: hidden;
+    }
+    td { 
+        border: none !important; 
+        border-bottom: 1px dashed var(--border-color) !important; 
+        position: relative;
+        padding: 12px 100px 12px 12px !important; 
+        text-align: right !important;
+        white-space: normal !important; 
+    }
+    td:last-child { border-bottom: none !important; }
+    td:before { 
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 80px;
+        font-weight: bold;
+        color: var(--primary-dark);
+    }
+    td:nth-of-type(1):before { content: "الكلمة"; }
+    td:nth-of-type(2):before { content: "المعنى"; }
+    td:nth-of-type(3):before { content: "معلومات"; }
+
+    .card .de { font-size: 16px !important; }
+    .card .ar { font-size: 13px !important; }
+    .grammar-title-de { font-size: 14px !important; }
+    .grammar-title-ar { font-size: 12px !important; }
+    .grammar-content { font-size: 14px !important; }
+    .grammar-content h4 { font-size: 15px !important; }
+    .sidebar-item { font-size: 13px !important; padding: 8px 12px !important; }
+    .sidebar-group-title { font-size: 11px !important; }
 }
-
-/* دعم الوضع الليلي للجداول */
-body.dark-mode table { background: #1e293b; color: #f1f5f9; }
-body.dark-mode td, body.dark-mode th { border-color: #334155; }
-    /* ============================================================ */
-  /* 🔥 التعديل الجديد: ضبط أحجام الخطوط والجداول للهاتف */
-  /* ============================================================ */
-   /* ============================================================ */
-  /* 🔥 التعديل الجديد: إصلاح الجداول والخطوط للهاتف */
-  /* ============================================================ */
-  @media (max-width: 768px) {
-      body { font-size: 14px !important; }
-      h1 { font-size: 20px !important; }
-      h2 { font-size: 18px !important; }
-      h3 { font-size: 16px !important; }
-      p, li, span, div { font-size: 14px !important; line-height: 1.6 !important; }
-      
-      /* إصلاح الصور */
-      img { max-width: 100% !important; height: auto !important; }
-
-      /* إصلاح الجداول (إجباري لكي لا تختفي الدروس) */
-      table { 
-          display: block !important; 
-          width: 100% !important; 
-          overflow-x: auto !important; 
-          -webkit-overflow-scrolling: touch; 
-      }
-      
-      .card .de { font-size: 16px !important; }
-      .card .ar { font-size: 13px !important; }
-      .grammar-title-de { font-size: 14px !important; }
-      .grammar-title-ar { font-size: 12px !important; }
-      .grammar-content { font-size: 14px !important; }
-      .grammar-content h4 { font-size: 15px !important; }
-      .sidebar-item { font-size: 13px !important; padding: 8px 12px !important; }
-      .sidebar-group-title { font-size: 11px !important; }
-  }
-  
 </style>
 </head>
 <body>
@@ -777,8 +777,8 @@ body.dark-mode td, body.dark-mode th { border-color: #334155; }
   <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
   <div class="app-layout">
+    <!-- ✅ هنا يوجد السطر الذي كنت تبحث عنه -->
     <aside class="sidebar" id="sidebar">
-      <button onclick="toggleSidebar()" style="position:absolute; top:10px; left:10px; background:#ef4444; color:#fff; border:none; border-radius:5px; padding:5px 10px; cursor:pointer; font-weight:bold; z-index:100;">✖ إغلاق</button>
       <div class="sidebar-group">
         <div class="sidebar-group-title">📚 تعلّم</div>
         <button class="sidebar-item" data-tab="lessons"><span class="emoji">🎓</span> الدروس</button>
@@ -1487,7 +1487,7 @@ function renderResources() {
   if (!source || !source.length) { container.innerHTML = '<p style="text-align:center;color:#dc2626;">⚠️ ملف المصادر غير محمّل.</p>'; return; }
   container.innerHTML = source.map(r => `<a href="${r.url}" target="_blank" rel="noopener" style="text-decoration:none;"><div style="background:var(--card-bg);padding:22px;border-radius:14px;border-right:5px solid #4f46e5;height:100%;display:flex;flex-direction:column;"><h3 style="color:var(--primary-dark);font-size:18px;margin-bottom:10px;font-weight:700;">${r.icon} ${r.title}</h3><p style="color:var(--text-muted);font-size:14px;line-height:1.6;flex-grow:1;">${r.description}</p><span style="color:#4f46e5;font-weight:700;font-size:14px;margin-top:12px;">زيارة المصدر ↗️</span></div></a>`).join('');
   const titleEl = container.parentElement.querySelector('h2');
-  if (titleEl) titleEl.textContent = isEn ? '📚 مصادر رسمية موثوقة لتعلم الإنجليزية' : '📚 مصادر رسمية موثوقة لتعلم الألمانية';
+  if (titleEl) titleEl.textContent = isEn ? '📚 مصادر رسمية موثوقة لتعليم الإنجليزية' : '📚 مصادر رسمية موثوقة لتعليم الألمانية';
 }
 
 /* ==================== اللغة والترجمة ==================== */
