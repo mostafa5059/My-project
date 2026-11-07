@@ -1467,6 +1467,7 @@ ${(lesson.description || lesson.desc) ? `
           <thead><tr style="background:var(--primary-dark);color:#fff;"><th style="padding:12px;">الكلمة</th><th style="padding:12px;">المعنى</th><th style="padding:12px;">معلومات إضافية</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
+         </div>
       ` : ''}
       
       ${grammarHTML}
