@@ -1461,8 +1461,9 @@ ${(lesson.description || lesson.desc) ? `
 ` : ''}
       
       ${allWords.length ? `
-        <div class="section-title" style="font-size:22px;">📖 المفردات</div>
-        <table style="width:100%;border-collapse:collapse;margin-top:15px;background:var(--card-bg);border-radius:12px;overflow:hidden;">
+               <div class="section-title" style="font-size:22px;">📖 المفردات</div>
+        <div style="overflow-x: auto; width: 100%; padding-bottom: 10px;">
+          <table style="width:100%; min-width: 500px; border-collapse:collapse; margin-top:15px; background:var(--card-bg); border-radius:12px; overflow:hidden;">
           <thead><tr style="background:var(--primary-dark);color:#fff;"><th style="padding:12px;">الكلمة</th><th style="padding:12px;">المعنى</th><th style="padding:12px;">معلومات إضافية</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
