@@ -1395,8 +1395,8 @@ history.pushState({ lessonId: id }, "", "#lesson-" + id);
 
         return `
       <tr>
-                <td data-label="الكلمة" style="font-weight:700;color:var(--primary-dark);direction:ltr;text-align:right;padding:12px;">
-          <span style="cursor:pointer; text-decoration:underline; color:var(--primary);" onclick="openWordDetails('${clean.replace(/'/g, "\\'")}', '${d.kind}')">${wordText}</span>
+                        <td data-label="الكلمة" style="font-weight:700;color:var(--primary-dark);direction:ltr;text-align:right;padding:12px;">
+          <span style="cursor:pointer; text-decoration:underline; color:var(--primary);" onclick="openWordDetails('${wordText.replace(/'/g, "\\'")}')">${wordText}</span>
           <button class="audio-btn" style="position:static;display:inline-flex;width:30px;height:30px;font-size:14px;margin-right:8px;" onclick="speak('${clean.replace(/'/g, "\\'")}')">🔊</button>
         </td>
                 <td data-label="المعنى" style="padding:12px;">${translation}</td>
