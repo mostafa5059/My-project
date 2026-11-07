@@ -710,6 +710,80 @@ body.dark-mode .exercise-explanation {
       .grammar-content { font-size: 14px !important; }
       .sidebar-item { font-size: 13px !important; padding: 8px 12px !important; }
   }
+  /* ============ بطاقات المفردات (بدل الجدول) ============ */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+  margin: 15px 0;
+  width: 100%;
+}
+.vocab-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-right: 4px solid var(--primary);
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  transition: transform .15s, box-shadow .15s;
+}
+.vocab-card:active { transform: scale(.97); }
+.vocab-card:hover { box-shadow: 0 4px 12px rgba(79,70,229,.15); }
+.vocab-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.vocab-card-de {
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--primary-dark);
+  direction: ltr;
+  word-break: break-word;
+}
+.vocab-card-ar { font-size: 13px; color: var(--text-muted); }
+.vocab-card-extra {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--border-color);
+}
+.vocab-card-type {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-top: 6px;
+  background: #eff6ff;
+  color: #1e40af;
+}
+body.dark-mode .vocab-card-type { background: #1e3a8a; color: #93c5fd; }
+
+/* كلمات الدرس القابلة للنقر */
+.lesson-word {
+  cursor: pointer;
+  color: #4f46e5;
+  border-bottom: 2px dotted #818cf8;
+  padding: 0 1px;
+  border-radius: 3px;
+  transition: background .15s;
+}
+.lesson-word:hover { background: #eef2ff; color: #3730a3; }
+body.dark-mode .lesson-word { color: #a5b4fc; border-bottom-color: #6366f1; }
+body.dark-mode .lesson-word:hover { background: #312e81; }
+
+@media (max-width: 600px) {
+  .vocab-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vocab-card { padding: 8px 10px; }
+}
+@media (max-width: 360px) {
+  .vocab-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
