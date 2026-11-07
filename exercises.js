@@ -105,7 +105,7 @@ function nextExercise() {
   currentExercise = (currentExercise + 1) % EXERCISES.length;
   if (currentExercise === 0) exerciseScore = 0;
   loadExercise();
-},
+}
     // ==========================================
     // 📚 حزمة تمارين المفردات والقواعد (A2.1) - مدمجة
     // ==========================================
