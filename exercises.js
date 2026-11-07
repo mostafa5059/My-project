@@ -1,4 +1,5 @@
 const EXERCISES = [
+  // --- التمارين الأصلية ---
   { question: "Ich helfe ___ Mann.", questionAr: "أساعد الرجل.", options: ["den", "dem", "der", "das"], answer: 1, explanation: "helfen يأخذ Dativ. Mann مذكر → dem." },
   { question: "Ich danke ___ Frau.", questionAr: "أشكر المرأة.", options: ["die", "der", "den", "dem"], answer: 1, explanation: "danken يأخذ Dativ. Frau مؤنث → der." },
   { question: "Das Buch gehört ___ Kind.", questionAr: "الكتاب ينتمي للطفل.", options: ["das", "dem", "den", "der"], answer: 1, explanation: "gehören يأخذ Dativ. Kind محايد → dem." },
@@ -38,9 +39,56 @@ const EXERCISES = [
   { question: "___ kommst du?", questionAr: "من أين أنت؟", options: ["Wo", "Woher", "Wohin", "Wann"], answer: 1, explanation: "Woher = من أين." },
   { question: "___ wohnst du?", questionAr: "أين تسكن؟", options: ["Wo", "Woher", "Wohin", "Wann"], answer: 0, explanation: "Wo = أين." },
   { question: "___ alt bist du?", questionAr: "كم عمرك؟", options: ["Wie", "Was", "Wo", "Wer"], answer: 0, explanation: "Wie alt = كم العمر." },
-  { question: "___ kostet das?", questionAr: "كم يكلف هذا؟", options: ["Wie viel", "Wann", "Wo", "Wer"], answer: 0, explanation: "Wie viel kostet = كم يكلف." }
+  { question: "___ kostet das?", questionAr: "كم يكلف هذا؟", options: ["Wie viel", "Wann", "Wo", "Wer"], answer: 0, explanation: "Wie viel kostet = كم يكلف." },
+
+  // ==========================================
+  // 📚 حزمة تمارين المفردات والقواعد (A2.1) - مدمجة
+  // ==========================================
+
+  // --- تمارين المفردات (الأثاث والمنزل) ---
+  { question: "ما معنى كلمة 'der Schrank'؟", options: ["الطاولة", "الخزانة (للملابس)", "السرير", "الكرسي"], answer: 1, explanation: "der Schrank = الخزانة (للملابس). بينما die Kommode = خزانة الأدراج." },
+  { question: "ما معنى كلمة 'das Regal'؟", options: ["الرفوف", "السجادة", "المصباح", "الصورة"], answer: 0, explanation: "das Regal = الرفوف (تُجمع على die Regale)." },
+  { question: "ما معنى كلمة 'gemütlich'؟", options: ["غالي", "مريح / دافئ", "قديم", "مظلم"], answer: 1, explanation: "gemütlich = مريح أو دافئ (تُستخدم لوصف الأجواء في المنزل)." },
+
+  // --- تمارين المفردات (الطعام والتسوق) ---
+  { question: "ما معنى كلمة 'die Zwiebel'؟", options: ["الثوم", "البصل", "الفلفل", "الجزر"], answer: 1, explanation: "die Zwiebel = البصل. بينما der Knoblauch = الثوم." },
+  { question: "ما معنى كلمة 'die Tüte'؟", options: ["العلبة", "الزجاجة", "الكيس", "البرطمان"], answer: 2, explanation: "die Tüte = الكيس (الذي نضع فيه المشتريات)." },
+  { question: "ماذا نسمي 'لحم الخنزير' باللغة الألمانية؟", options: ["das Fleisch", "der Schinken", "die Wurst", "der Fisch"], answer: 1, explanation: "der Schinken = لحم الخنزير (الهام)." },
+
+  // --- تمارين المفردات (الصحة) ---
+  { question: "ما معنى كلمة 'der Krankenwagen'؟", options: ["المستشفى", "سيارة الإسعاف", "طبيب الأسنان", "الحمى"], answer: 1, explanation: "der Krankenwagen = سيارة الإسعاف." },
+  { question: "ما معنى كلمة 'die Schmerzen'؟", options: ["الآلام", "العلاج", "المرض", "الجرح"], answer: 0, explanation: "die Schmerzen = الآلام (جمع كلمة der Schmerz)." },
+
+  // --- تمارين القواعد (Wechselpräpositionen) ---
+  { question: "Ich stelle die Kommode ___ Schlafzimmer. (Wohin?)", options: ["im", "ins", "in der", "in dem"], answer: 1, explanation: "السؤال Wohin (إلى أين) -> Akkusativ -> in + das = ins." },
+  { question: "Die Kommode steht ___ Schlafzimmer. (Wo?)", options: ["im", "ins", "in die", "in den"], answer: 0, explanation: "السؤال Wo (أين) -> Dativ -> in + dem = im." },
+  { question: "Ich hänge das Bild ___ Wand. (Wohin?)", options: ["an der", "an die", "auf die", "in die"], answer: 1, explanation: "Wohin -> Akkusativ. die Wand (مؤنث) -> an die Wand." },
+  { question: "Das Bild hängt ___ Wand. (Wo?)", options: ["an der", "an die", "auf der", "in der"], answer: 0, explanation: "Wo -> Dativ. die Wand (مؤنث) -> an der Wand." },
+
+  // --- تمارين القواعد (Adjektivdeklination) ---
+  { question: "Ich hätte gern einen kalt___ Saft.", options: ["kalt", "kalte", "kalten", "kalter"], answer: 2, explanation: "كلمة Saft مذكر (der Saft)، وفي حالة Akkusativ نضيف -en للصفة." },
+  { question: "Das ist ein bunt___ Fenster.", options: ["bunt", "bunte", "buntes", "bunten"], answer: 2, explanation: "كلمة Fenster محايد (das Fenster)، مع أداة النكرة (ein) في حالة Nominativ تأخذ الصفة -es." },
+  { question: "Mit dem nett___ Reiseführer macht die Tour Spaß.", options: ["nett", "nette", "netten", "netter"], answer: 2, explanation: "حالة Dativ (mit dem)، وكل الصفات في حالة Dativ تأخذ -en." },
+
+  // --- تمارين القواعد (Temporale Präpositionen) ---
+  { question: "Ich lerne Deutsch ___ einem Jahr.", options: ["von", "seit", "ab", "an"], answer: 1, explanation: "هنا نعبر عن شيء بدأ في الماضي (منذ سنة) ومستمر، نستخدم seit." },
+  { question: "Das Festival findet ___ 8. ___ 10. Juli statt.", options: ["von / bis zum", "ab / bis", "seit / bis", "an / an"], answer: 0, explanation: "للتعبير عن فترة من...إلى، نستخدم von... bis zum." },
+
+  // --- تمارين القواعد (Konjunktiv II & Reflexive Verben) ---
+  { question: "___ wir am Wochenende zusammen schwimmen? (اقتراح)", options: ["Können", "Könnten", "Sollen", "Müssen"], answer: 1, explanation: "للاقتراح اللطيف نستخدم Konjunktiv II من الفعل können -> könnten." },
+  { question: "Ich freue ___ auf den Urlaub.", options: ["mich", "dich", "sich", "uns"], answer: 0, explanation: "الفعل sich freuen مع الضمير ich يأخذ الضمير الانعكاسي mich." },
+  { question: "Er ärgert ___ über seinen Chef.", options: ["mich", "dich", "sich", "uns"], answer: 2, explanation: "الفعل sich ärgern مع الضمير er (هو) يأخذ الضمير الانعكاسي sich." },
+
+  // --- تمارين القواعد (Nebensätze) ---
+  { question: "Ich kann nicht kommen, ___ ich krank bin.", options: ["weil", "deshalb", "dass", "wenn"], answer: 0, explanation: "الأداة weil تشرح السبب، والفعل (bin) يذهب للنهاية." },
+  { question: "Ich habe Zahnschmerzen, ___ gehe ich zum Zahnarzt.", options: ["weil", "deshalb", "dass", "wenn"], answer: 1, explanation: "الأداة deshalb تعبر عن النتيجة، ويأتي الفعل (gehe) بعدها مباشرة." },
+  { question: "Ich hoffe, ___ du gut geschlafen hast.", options: ["weil", "deshalb", "dass", "wenn"], answer: 2, explanation: "نستخدم dass للتعبير عن الأمل (أنا آمل أن...)." },
+  { question: "___ es warm ist, essen wir meist Salat.", options: ["Weil", "Wenn", "Dass", "Deshalb"], answer: 1, explanation: "نستخدم wenn للتعبير عن الشرط (عندما/إذا)." }
 ];
 
+// ==========================================
+// دوال تشغيل التمارين
+// ==========================================
 let currentExercise = 0;
 let exerciseAnswered = false;
 let exerciseScore = 0;
@@ -56,7 +104,7 @@ function loadExercise() {
   const ex = EXERCISES[currentExercise];
   document.getElementById("exerciseProgress").innerText = 'السؤال ' + (currentExercise + 1) + ' من ' + EXERCISES.length + ' (النتيجة: ' + exerciseScore + ')';
   document.getElementById("exerciseQuestion").innerText = ex.question;
-  document.getElementById("exerciseQuestionAr").innerText = ex.questionAr;
+  document.getElementById("exerciseQuestionAr").innerText = ex.questionAr || '';
   
   const optsBox = document.getElementById("exerciseOptions");
   optsBox.innerHTML = '';
@@ -106,167 +154,3 @@ function nextExercise() {
   if (currentExercise === 0) exerciseScore = 0;
   loadExercise();
 }
-    // ==========================================
-    // 📚 حزمة تمارين المفردات والقواعد (A2.1) - مدمجة
-    // ==========================================
-
-    // --- تمارين المفردات (الأثاث والمنزل) ---
-    {
-        question: "ما معنى كلمة 'der Schrank'؟",
-        options: ["الطاولة", "الخزانة (للملابس)", "السرير", "الكرسي"],
-        answer: 1,
-        explanation: "der Schrank = الخزانة (للملابس). بينما die Kommode = خزانة الأدراج."
-    },
-    {
-        question: "ما معنى كلمة 'das Regal'؟",
-        options: ["الرفوف", "السجادة", "المصباح", "الصورة"],
-        answer: 0,
-        explanation: "das Regal = الرفوف (تُجمع على die Regale)."
-    },
-    {
-        question: "ما معنى كلمة 'gemütlich'؟",
-        options: ["غالي", "مريح / دافئ", "قديم", "مظلم"],
-        answer: 1,
-        explanation: "gemütlich = مريح أو دافئ (تُستخدم لوصف الأجواء في المنزل)."
-    },
-
-    // --- تمارين المفردات (الطعام والتسوق) ---
-    {
-        question: "ما معنى كلمة 'die Zwiebel'؟",
-        options: ["الثوم", "البصل", "الفلفل", "الجزر"],
-        answer: 1,
-        explanation: "die Zwiebel = البصل. بينما der Knoblauch = الثوم."
-    },
-    {
-        question: "ما معنى كلمة 'die Tüte'؟",
-        options: ["العلبة", "الزجاجة", "الكيس", "البرطمان"],
-        answer: 2,
-        explanation: "die Tüte = الكيس (الذي نضع فيه المشتريات)."
-    },
-    {
-        question: "ماذا نسمي 'لحم الخنزير' باللغة الألمانية؟",
-        options: ["das Fleisch", "der Schinken", "die Wurst", "der Fisch"],
-        answer: 1,
-        explanation: "der Schinken = لحم الخنزير (الهام)."
-    },
-
-    // --- تمارين المفردات (الصحة) ---
-    {
-        question: "ما معنى كلمة 'der Krankenwagen'؟",
-        options: ["المستشفى", "سيارة الإسعاف", "طبيب الأسنان", "الحمى"],
-        answer: 1,
-        explanation: "der Krankenwagen = سيارة الإسعاف."
-    },
-    {
-        question: "ما معنى كلمة 'die Schmerzen'؟",
-        options: ["الآلام", "العلاج", "المرض", "الجرح"],
-        answer: 0,
-        explanation: "die Schmerzen = الآلام (جمع كلمة der Schmerz)."
-    },
-
-    // --- تمارين القواعد (Wechselpräpositionen) ---
-    {
-        question: "Ich stelle die Kommode ___ Schlafzimmer. (Wohin?)",
-        options: ["im", "ins", "in der", "in dem"],
-        answer: 1,
-        explanation: "السؤال Wohin (إلى أين) -> Akkusativ -> in + das = ins."
-    },
-    {
-        question: "Die Kommode steht ___ Schlafzimmer. (Wo?)",
-        options: ["im", "ins", "in die", "in den"],
-        answer: 0,
-        explanation: "السؤال Wo (أين) -> Dativ -> in + dem = im."
-    },
-    {
-        question: "Ich hänge das Bild ___ Wand. (Wohin?)",
-        options: ["an der", "an die", "auf die", "in die"],
-        answer: 1,
-        explanation: "Wohin -> Akkusativ. die Wand (مؤنث) -> an die Wand."
-    },
-    {
-        question: "Das Bild hängt ___ Wand. (Wo?)",
-        options: ["an der", "an die", "auf der", "in der"],
-        answer: 0,
-        explanation: "Wo -> Dativ. die Wand (مؤنث) -> an der Wand."
-    },
-
-    // --- تمارين القواعد (Adjektivdeklination) ---
-    {
-        question: "Ich hätte gern einen kalt___ Saft.",
-        options: ["kalt", "kalte", "kalten", "kalter"],
-        answer: 2,
-        explanation: "كلمة Saft مذكر (der Saft)، وفي حالة Akkusativ نضيف -en للصفة."
-    },
-    {
-        question: "Das ist ein bunt___ Fenster.",
-        options: ["bunt", "bunte", "buntes", "bunten"],
-        answer: 2,
-        explanation: "كلمة Fenster محايد (das Fenster)، مع أداة النكرة (ein) في حالة Nominativ تأخذ الصفة -es."
-    },
-    {
-        question: "Mit dem nett___ Reiseführer macht die Tour Spaß.",
-        options: ["nett", "nette", "netten", "netter"],
-        answer: 2,
-        explanation: "حالة Dativ (mit dem)، وكل الصفات في حالة Dativ تأخذ -en."
-    },
-
-    // --- تمارين القواعد (Temporale Präpositionen) ---
-    {
-        question: "Ich lerne Deutsch ___ einem Jahr.",
-        options: ["von", "seit", "ab", "an"],
-        answer: 1,
-        explanation: "هنا نعبر عن شيء بدأ في الماضي (منذ سنة) ومستمر، نستخدم seit."
-    },
-    {
-        question: "Das Festival findet ___ 8. ___ 10. Juli statt.",
-        options: ["von / bis zum", "ab / bis", "seit / bis", "an / an"],
-        answer: 0,
-        explanation: "للتعبير عن فترة من...إلى، نستخدم von... bis zum."
-    },
-
-    // --- تمارين القواعد (Konjunktiv II & Reflexive Verben) ---
-    {
-        question: "___ wir am Wochenende zusammen schwimmen? (اقتراح)",
-        options: ["Können", "Könnten", "Sollen", "Müssen"],
-        answer: 1,
-        explanation: "للاقتراح اللطيف نستخدم Konjunktiv II من الفعل können -> könnten."
-    },
-    {
-        question: "Ich freue ___ auf den Urlaub.",
-        options: ["mich", "dich", "sich", "uns"],
-        answer: 0,
-        explanation: "الفعل sich freuen مع الضمير ich يأخذ الضمير الانعكاسي mich."
-    },
-    {
-        question: "Er ärgert ___ über seinen Chef.",
-        options: ["mich", "dich", "sich", "uns"],
-        answer: 2,
-        explanation: "الفعل sich ärgern مع الضمير er (هو) يأخذ الضمير الانعكاسي sich."
-    },
-
-    // --- تمارين القواعد (Nebensätze) ---
-    {
-        question: "Ich kann nicht kommen, ___ ich krank bin.",
-        options: ["weil", "deshalb", "dass", "wenn"],
-        answer: 0,
-        explanation: "الأداة weil تشرح السبب، والفعل (bin) يذهب للنهاية."
-    },
-    {
-        question: "Ich habe Zahnschmerzen, ___ gehe ich zum Zahnarzt.",
-        options: ["weil", "deshalb", "dass", "wenn"],
-        answer: 1,
-        explanation: "الأداة deshalb تعبر عن النتيجة، ويأتي الفعل (gehe) بعدها مباشرة."
-    },
-    {
-        question: "Ich hoffe, ___ du gut geschlafen hast.",
-        options: ["weil", "deshalb", "dass", "wenn"],
-        answer: 2,
-        explanation: "نستخدم dass للتعبير عن الأمل (أنا آمل أن...)."
-    },
-    {
-        question: "___ es warm ist, essen wir meist Salat.",
-        options: ["Weil", "Wenn", "Dass", "Deshalb"],
-        answer: 1,
-        explanation: "نستخدم wenn للتعبير عن الشرط (عندما/إذا)."
-    }
-];
