@@ -1269,12 +1269,12 @@ function renderFavorites() {
 
 /* ==================== التبويبات ==================== */
 function switchTab(name) {
-    // 👇 الكود الجديد الذي يغلق القائمة فوراً
+  // إغلاق القائمة الجانبية فوراً عند تغيير أي تبويب
   const sidebar = document.getElementById('sidebar');
   const overlay = document.getElementById('sidebarOverlay');
   if (sidebar) sidebar.classList.remove('open');
   if (overlay) overlay.classList.remove('active');
-  // 👆 نهاية الكود الجديد
+
   if (!history.state || history.state.tab !== name) {
     history.pushState({ tab: name }, "", "#" + name);
   }
@@ -1747,8 +1747,26 @@ document.addEventListener("DOMContentLoaded", function() {
         if (typeof switchTab === 'function') switchTab('verbs');
       }
     });
+
+    // 3. إغلاق القائمة الجانبية عند النقر على أي تبويب في الهاتف
+    document.querySelectorAll('.sidebar-item[data-tab]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.classList.contains('disabled')) return;
+        const tab = btn.dataset.tab;
+        if (typeof switchTab === 'function') switchTab(tab);
+        
+        // إغلاق القائمة فوراً
+        document.getElementById('sidebar').classList.remove('open');
+        document.getElementById('sidebarOverlay').classList.remove('active');
+      });
+    });
+
+    // إغلاق القائمة عند النقر على الطبقة الشفافة
+    document.getElementById('sidebarOverlay').addEventListener('click', () => {
+        document.getElementById('sidebar').classList.remove('open');
+        document.getElementById('sidebarOverlay').classList.remove('active');
+    });
   });
-      
 </script>
 </body>
 </html>
