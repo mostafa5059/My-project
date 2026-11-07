@@ -1465,20 +1465,27 @@ function openLesson(id) {
       </div>`;
   }
 
-  // بناء التمارين
+   // بناء التمارين
   const exercisesHTML = (lesson.exercises && lesson.exercises.length) ? `
     <div class="section-title" style="margin-top:30px;font-size:22px;">📝 التمارين (${lesson.exercises.length})</div>
     <div style="display:flex;flex-direction:column;gap:15px;margin-top:15px;">
-      ${lesson.exercises.map((ex, i) => `
-        <div style="background:var(--card-bg);padding:20px;border-radius:12px;border:1px solid var(--border-color);">
-          <p style="font-weight:700;margin-bottom:10px;">${i+1}. ${ex.question || ex.q || ''}</p>
+      ${lesson.exercises.map((ex, i) => {
+        const qText = ex.question || ex.q || '';
+        const opts = ex.options || [];
+        const correctIdx = ex.correct !== undefined ? ex.correct : ex.answer;
+        
+        return `
+        <div class="lesson-exercise-box" style="background:var(--card-bg);padding:20px;border-radius:12px;border:1px solid var(--border-color);">
+          <p style="font-weight:700;margin-bottom:10px;font-size:16px;">${i+1}. ${qText}</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            ${(ex.options || []).map((opt, oi) => `
-              <button class="filter-btn" onclick="checkLessonExercise(this, ${oi}, ${ex.correct !== undefined ? ex.correct : ex.answer})">${opt}</button>
+            ${opts.map((opt, oi) => `
+              <button class="filter-btn" onclick="checkLessonExercise(this, ${oi}, ${correctIdx})" style="margin:0;">${opt}</button>
             `).join('')}
           </div>
+          ${ex.explanation ? `<div class="lesson-feedback" style="display:none; margin-top:15px; padding:12px; background:#fffbeb; border-right:4px solid #f59e0b; border-radius:8px; font-size:14px; color:#92400e; font-weight:600;">💡 ${ex.explanation}</div>` : ''}
         </div>
-      `).join('')}
+        `;
+      }).join('')}
     </div>
   ` : '';
 
@@ -1512,16 +1519,43 @@ function openLesson(id) {
   }
 }
 
-// دالة مساعدة للتحقق من إجابات تمارين الدروس
+// دالة التحقق من إجابات تمارين الدروس (النسخة الذكية)
 function checkLessonExercise(btn, selected, correct) {
+  // منع الضغط المتكرر
+  const parent = btn.closest('.lesson-exercise-box');
+  if (!parent || parent.dataset.answered === 'true') return;
+  parent.dataset.answered = 'true';
+
+  const buttons = parent.querySelectorAll('button');
+  
+  // تعطيل جميع الأزرار
+  buttons.forEach(b => {
+    b.disabled = true;
+    b.style.cursor = 'not-allowed';
+  });
+
+  // تلوين الإجابة
   if (selected === correct) {
-    btn.style.background = '#10b981';
+    btn.style.background = '#10b981'; // أخضر
     btn.style.color = '#fff';
     btn.style.borderColor = '#10b981';
   } else {
-    btn.style.background = '#ef4444';
+    btn.style.background = '#ef4444'; // أحمر
     btn.style.color = '#fff';
     btn.style.borderColor = '#ef4444';
+    
+    // إظهار الإجابة الصحيحة باللون الأخضر
+    if (buttons[correct]) {
+      buttons[correct].style.background = '#10b981';
+      buttons[correct].style.color = '#fff';
+      buttons[correct].style.borderColor = '#10b981';
+    }
+  }
+  
+  // إظهار صندوق الشرح (Explanation) إذا كان موجوداً
+  const feedback = parent.querySelector('.lesson-feedback');
+  if (feedback) {
+    feedback.style.display = 'block';
   }
 }
 
