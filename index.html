@@ -1209,38 +1209,122 @@ function openAdjective(index) {
 }
 // دالة لفتح تفاصيل الكلمة من داخل الدرس
 function openWordDetails(wordString) {
-  // 1. البحث في الأفعال
-  let sourceData = contentLanguage === 'en' ? (typeof VERBS_EN !== 'undefined' ? VERBS_EN : []) : (typeof VERBS !== 'undefined' ? VERBS : []);
-  let idx = sourceData.findIndex(item => item.de === wordString || item.en === wordString);
-  if (idx !== -1) {
-    openVerb(idx);
-    return;
+  if (!wordString) return;
+  const raw = String(wordString).trim();
+  if (!raw) return;
+
+  // أدوات مساعدة للمطابقة الذكية
+  const lower = raw.toLowerCase();
+  const stripArticle = (s) => s.replace(/^(der|die|das|ein|eine|einen|einem|einer)\s+/i, '').trim();
+  const stripParens  = (s) => s.replace(/\s*\([^)]*\)\s*/g, '').trim();
+  const cleanNoArt   = stripArticle(lower);
+  const cleanNoPar   = stripParens(lower);
+  const cleanFull    = stripParens(stripArticle(lower));
+
+  // دالة بحث متعددة الاستراتيجيات
+  const findByWord = (arr) => {
+    if (!Array.isArray(arr) || !arr.length) return -1;
+
+    // 1) تطابق تام
+    let idx = arr.findIndex(it =>
+      (it.de || '').toLowerCase().trim() === lower ||
+      (it.en || '').toLowerCase().trim() === lower
+    );
+    if (idx !== -1) return idx;
+
+    // 2) بدون أداة تعريف
+    idx = arr.findIndex(it =>
+      stripArticle((it.de || '').toLowerCase().trim()) === cleanNoArt ||
+      (it.en || '').toLowerCase().trim() === cleanNoArt
+    );
+    if (idx !== -1) return idx;
+
+    // 3) بدون أقواس (مثل "aufstehen (ist)")
+    idx = arr.findIndex(it =>
+      stripParens((it.de || '').toLowerCase().trim()) === cleanNoPar ||
+      (it.en || '').toLowerCase().trim() === cleanNoPar
+    );
+    if (idx !== -1) return idx;
+
+    // 4) بدون الأداة والأقواس معاً
+    idx = arr.findIndex(it =>
+      stripParens(stripArticle((it.de || '').toLowerCase().trim())) === cleanFull ||
+      stripParens((it.en || '').toLowerCase().trim()) === cleanFull
+    );
+    if (idx !== -1) return idx;
+
+    // 5) مطابقة الجذر (للأفعال المصرّفة: "geht" → "gehen")
+    idx = arr.findIndex(it => {
+      const base = stripParens(stripArticle((it.de || '').toLowerCase().trim()));
+      if (base.length < 4) return false;
+      const stem = base.replace(/(en|ern|eln)$/i, '');
+      if (stem.length < 2) return false;
+      // إذا كانت الكلمة تبدأ بجذر الفعل
+      return cleanFull.startsWith(stem) && cleanFull.length <= base.length + 4;
+    });
+    if (idx !== -1) return idx;
+
+    // 6) مطابقة جزئية (احتياط)
+    idx = arr.findIndex(it => {
+      const de = (it.de || '').toLowerCase().trim();
+      return cleanFull.length >= 4 && (de.includes(cleanFull) || cleanFull.includes(de));
+    });
+    return idx;
+  };
+
+  // البحث في الأفعال
+  let sourceData = (contentLanguage === 'en' && typeof VERBS_EN !== 'undefined' && Array.isArray(VERBS_EN))
+    ? VERBS_EN
+    : (typeof VERBS !== 'undefined' && Array.isArray(VERBS) ? VERBS : []);
+  let idx = findByWord(sourceData);
+  if (idx !== -1) { openVerb(idx); return; }
+
+  // البحث في الأسماء
+  sourceData = (contentLanguage === 'en' && typeof NOUNS_EN !== 'undefined' && Array.isArray(NOUNS_EN))
+    ? NOUNS_EN
+    : (typeof NOUNS !== 'undefined' && Array.isArray(NOUNS) ? NOUNS : []);
+  idx = findByWord(sourceData);
+  if (idx !== -1) { openNoun(idx); return; }
+
+  // البحث في الصفات
+  sourceData = (contentLanguage === 'en' && typeof ADJECTIVES_EN !== 'undefined' && Array.isArray(ADJECTIVES_EN))
+    ? ADJECTIVES_EN
+    : (typeof ADJECTIVES !== 'undefined' && Array.isArray(ADJECTIVES) ? ADJECTIVES : []);
+  idx = findByWord(sourceData);
+  if (idx !== -1) { openAdjective(idx); return; }
+
+  // ===== احتياطي: لم توجد الكلمة =====
+  // إن كانت تبدو كفعل (تنتهي بـ -en / -ern / -eln) نولّد تصريفاً تقديرياً
+  const looksLikeVerb = /(en|ern|eln)$/i.test(cleanFull) && cleanFull.length > 3;
+  let fallback = `<button class="close-btn" onclick="closeModal()">✕</button>
+    <div style="text-align:center;padding:10px 0 20px;">
+      <h2 style="color:var(--primary-dark);font-size:30px;direction:ltr;">${raw}</h2>
+      <button class="audio-btn" style="position:static;display:inline-flex;vertical-align:middle;width:42px;height:42px;font-size:20px;margin-top:8px;" onclick="speak('${raw.replace(/'/g, "\\'")}')">🔊</button>
+    </div>`;
+
+  if (looksLikeVerb) {
+    const stem = cleanFull.replace(/(en|ern|eln)$/i, '');
+    const e = /[aeiouäöü]/i.test(stem.slice(-1)) ? '' : 'e';
+    fallback += `
+      <div class="rule-hint">⚠️ الكلمة غير مسجّلة في قاعدة البيانات. هذا تصريف تقديري لفعل منتظم (Regular Verb).</div>
+      <div class="section-title">📘 Präsens (تصريف تقديري)</div>
+      <div class="conj-grid">
+        <div class="conj-item"><span class="pron">ich</span><span>${stem}${e}e</span></div>
+        <div class="conj-item"><span class="pron">du</span><span>${stem}${e}st</span></div>
+        <div class="conj-item"><span class="pron">er/sie/es</span><span>${stem}${e}t</span></div>
+        <div class="conj-item"><span class="pron">wir</span><span>${stem}en</span></div>
+        <div class="conj-item"><span class="pron">ihr</span><span>${stem}${e}t</span></div>
+        <div class="conj-item"><span class="pron">sie/Sie</span><span>${stem}en</span></div>
+      </div>
+      <div class="section-title">✅ Partizip II (تقديري)</div>
+      <div class="conj-item"><span>ge${stem}${e}t</span></div>
+    `;
+  } else {
+    fallback += `<p style="color:var(--text-muted);text-align:center;margin-top:10px;">لا توجد تفاصيل مسجلة لهذه الكلمة في قاعدة البيانات بعد.</p>`;
   }
 
-  // 2. البحث في الأسماء
-  sourceData = contentLanguage === 'en' ? (typeof NOUNS_EN !== 'undefined' ? NOUNS_EN : []) : (typeof NOUNS !== 'undefined' ? NOUNS : []);
-  idx = sourceData.findIndex(item => item.de === wordString || item.en === wordString);
-  if (idx !== -1) {
-    openNoun(idx);
-    return;
-  }
-
-  // 3. البحث في الصفات
-  sourceData = contentLanguage === 'en' ? (typeof ADJECTIVES_EN !== 'undefined' ? ADJECTIVES_EN : []) : (typeof ADJECTIVES !== 'undefined' ? ADJECTIVES : []);
-  idx = sourceData.findIndex(item => item.de === wordString || item.en === wordString);
-  if (idx !== -1) {
-    openAdjective(idx);
-    return;
-  }
-
-  // 4. إذا لم يتم العثور على الكلمة (احتياطي)
-  openModal(`
-    <button class="close-btn" onclick="closeModal()">✕</button>
-    <div style="text-align:center; padding: 20px;">
-      <h2 style="color:var(--primary-dark);">${wordString}</h2>
-      <p style="color:var(--text-muted); margin-top: 15px;">لا توجد تفاصيل إضافية مسجلة لهذه الكلمة في قاعدة البيانات.</p>
-    </div>
-  `);
+  openModal(fallback);
+  applyTranslationVisibility();
 }
 /* ==================== المفضلة ==================== */
 function renderFavorites() {
