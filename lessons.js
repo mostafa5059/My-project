@@ -1401,69 +1401,80 @@ function renderLessonsTab() {
 function openLesson(id) {
   const lesson = LESSONS.find(l => l.id === id);
   if (!lesson) return;
-  // إضافة حالة للمتصفح لدعم زر الرجوع
-history.pushState({ lessonId: id }, "", "#lesson-" + id);
-  // تأمين المصفوفات في حال كانت فارغة
-  const allWords = [...(lesson.words || []), ...(lesson.newWords || [])];
-  const rows = allWords.map(w => {
-    if (!w) return ''; // تخطي الكلمات الفارغة
-    
-    // استخراج الكلمة بذكاء (إذا كانت نصاً أو كائناً)
-    const wordText = typeof w === 'string' ? w : (w.de || w.word || '');
-    const translation = typeof w === 'string' ? '' : (w.ar || w.translation || w.arabic || '');
-    
-    const d = typeof getWordData === 'function' ? getWordData(w) : { kind: 'other' };
-    const clean = wordText.replace(/^(der|die|das) /, '');
-    
-    let extra = '';
-    if (d.kind === 'noun' && d.plural) extra = ` | الجمع: ${d.plural}`;
-    else if (d.kind === 'verb' && d.präteritum) extra = ` | الماضي: ${d.präteritum} | التام: ${d.perfekt}`;
+  currentLessonId = id;
+  history.pushState({ lessonId: id }, "", "#lesson-" + id);
 
-        return `
-      <tr>
-                        <td data-label="الكلمة" style="font-weight:700;color:var(--primary-dark);direction:ltr;text-align:right;padding:12px;">
-          <span style="cursor:pointer; text-decoration:underline; color:var(--primary);" onclick="openWordDetails('${wordText.replace(/'/g, "\\'")}')">${wordText}</span>
-          <button class="audio-btn" style="position:static;display:inline-flex;width:30px;height:30px;font-size:14px;margin-right:8px;" onclick="speak('${clean.replace(/'/g, "\\'")}')">🔊</button>
-        </td>
-                <td data-label="المعنى" style="padding:12px;">${translation}</td>
-        <td data-label="معلومات" style="font-size:13px;color:var(--text-muted);padding:12px;">${extra}</td>
-      </tr>`;
+  const allWords = [...(lesson.newWords || [])]; // حذفنا lesson.words القديمة
+  
+  // بناء بطاقات المفردات (بدل الجدول) — يحل مشكلة الهاتف
+  const wordCards = allWords.map(w => {
+    if (!w) return '';
+    const wordText  = typeof w === 'string' ? w : (w.de || '');
+    const translation = typeof w === 'string' ? '' : (w.ar || '');
+    const plural    = typeof w === 'object' ? (w.plural || '') : '';
+    const prät      = typeof w === 'object' ? (w.präteritum || '') : '';
+    const perf      = typeof w === 'object' ? (w.perfekt || '') : '';
+    const type      = typeof w === 'object' ? (w.type || '') : '';
+    const clean     = wordText.replace(/^(der|die|das)\s+/, '');
+    const safe      = wordText.replace(/'/g, "\\'");
+    const cleanSafe = clean.replace(/'/g, "\\'");
+
+    let extra = '';
+    if (plural) extra = `الجمع: ${plural}`;
+    else if (prät) extra = `الماضي: ${prät} • التام: ${perf}`;
+
+    return `
+      <div class="vocab-card" onclick="openWordDetails('${safe}')">
+        <div class="vocab-card-head">
+          <span class="vocab-card-de">${wordText}</span>
+          <button class="audio-btn" style="position:static;width:30px;height:30px;font-size:14px;" 
+                  onclick="event.stopPropagation(); speak('${cleanSafe}')">🔊</button>
+        </div>
+        ${translation ? `<div class="vocab-card-ar">${translation}</div>` : ''}
+        ${extra ? `<div class="vocab-card-extra">${extra}</div>` : ''}
+        ${type ? `<span class="vocab-card-type">${type}</span>` : ''}
+      </div>`;
   }).join('');
 
-  // التعامل مع القواعد (يدعم الطريقتين القديمة والجديدة)
-  let grammarHTML = '';
-  if (lesson.grammar) {
-    const gTitle = lesson.grammar.title || lesson.grammarTitle || 'قاعدة الدرس';
-    const gTitleAr = lesson.grammar.titleAr || '';
-    const gContent = lesson.grammar.explanation || lesson.grammar || '';
-    
-    grammarHTML = `
-      <div class="section-title" style="margin-top:30px; font-size: 22px;">📘 القاعدة: ${gTitle}</div>
-      ${gTitleAr ? `<div class="rule-hint" style="font-size:16px; margin-bottom:20px;">${gTitleAr}</div>` : ''}
-      <div class="grammar-content" style="display:block;padding:30px;background:var(--card-bg);border-radius:16px;border-right:6px solid var(--primary);">
-        ${gContent}
-      </div>
-    `;
-  }
-    // 👇 إضافة قسم قطعة الدرس (Lesetext)
+  // بناء القطعة النصية + ربط الكلمات
   let lessonTextHTML = '';
   if (lesson.text || lesson.lesetext) {
+    const rawText = lesson.text || lesson.lesetext;
+    const clickable = (typeof makeWordsClickable === 'function')
+      ? makeWordsClickable(rawText, lesson.newWords || [])
+      : rawText;
     lessonTextHTML = `
-      <div class="section-title" style="margin-top:30px; font-size: 22px;">📖 قطعة الدرس (Lesetext)</div>
-      <div class="example-box" style="margin-top:15px; font-size: 18px; line-height: 2; direction: ltr; text-align: left; padding: 25px; background: var(--card-bg); border-right: 6px solid var(--accent);">
-        ${lesson.text || lesson.lesetext}
-      </div>
-    `;
+      <div class="section-title" style="margin-top:30px;font-size:22px;">📖 قطعة الدرس (Lesetext)</div>
+      <div class="lesson-text-box" style="margin-top:15px;font-size:18px;line-height:2;direction:ltr;text-align:left;padding:25px;background:var(--card-bg);border-radius:16px;border-right:6px solid var(--accent);">
+        ${clickable}
+      </div>`;
   }
+
+  // بناء القواعد (يدعم النظامين)
+  let grammarHTML = '';
+  if (lesson.grammar) {
+    const isObj = typeof lesson.grammar === 'object';
+    const gTitle   = isObj ? (lesson.grammar.title || '') : (lesson.grammarTitle || 'قاعدة الدرس');
+    const gTitleAr = isObj ? (lesson.grammar.titleAr || '') : (lesson.grammarTitleAr || '');
+    const gContent = isObj ? (lesson.grammar.explanation || '') : String(lesson.grammar);
+    grammarHTML = `
+      <div class="section-title" style="margin-top:30px;font-size:22px;">📘 القاعدة: ${gTitle}</div>
+      ${gTitleAr ? `<div class="rule-hint" style="font-size:16px;margin-bottom:20px;">${gTitleAr}</div>` : ''}
+      <div class="grammar-content" style="display:block;padding:30px;background:var(--card-bg);border-radius:16px;border-right:6px solid var(--primary);">
+        ${gContent}
+      </div>`;
+  }
+
+  // بناء التمارين
   const exercisesHTML = (lesson.exercises && lesson.exercises.length) ? `
-    <div class="section-title" style="margin-top:30px; font-size: 22px;">📝 التمارين (${lesson.exercises.length})</div>
+    <div class="section-title" style="margin-top:30px;font-size:22px;">📝 التمارين (${lesson.exercises.length})</div>
     <div style="display:flex;flex-direction:column;gap:15px;margin-top:15px;">
       ${lesson.exercises.map((ex, i) => `
         <div style="background:var(--card-bg);padding:20px;border-radius:12px;border:1px solid var(--border-color);">
-          <p style="font-weight:700;margin-bottom:10px;">${i+1}. ${ex.q || ex.question}</p>
+          <p style="font-weight:700;margin-bottom:10px;">${i+1}. ${ex.question || ex.q || ''}</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            ${(ex.options || ex.opts || []).map((opt, optIdx) => `
-              <button class="filter-btn" onclick="checkLessonExercise(this, ${optIdx}, ${ex.answer !== undefined ? ex.answer : ex.correct})">${opt}</button>
+            ${(ex.options || []).map((opt, oi) => `
+              <button class="filter-btn" onclick="checkLessonExercise(this, ${oi}, ${ex.correct !== undefined ? ex.correct : ex.answer})">${opt}</button>
             `).join('')}
           </div>
         </div>
@@ -1471,29 +1482,25 @@ history.pushState({ lessonId: id }, "", "#lesson-" + id);
     </div>
   ` : '';
 
-  // عرض المحتوى في الشاشة (تأكد من وجود هذا العنصر في الـ HTML)
+  // التجميع النهائي — لاحظ إدراج lessonTextHTML الآن!
   const container = document.getElementById('singleLessonContent');
   if (container) {
     container.innerHTML = `
-     <button class="filter-btn" onclick="closeSingleLesson()" style="margin-bottom:20px;">← العودة للدروس</button>
-            <h2 style="color:var(--primary-dark);margin-bottom:5px;">${lesson.title}</h2>
+      <button class="filter-btn" onclick="closeSingleLesson()" style="margin-bottom:20px;">← العودة للدروس</button>
+      <h2 style="color:var(--primary-dark);margin-bottom:5px;">${lesson.title}</h2>
       <h3 style="color:var(--text-muted);margin-bottom:15px;">${lesson.titleAr || ''}</h3>
-              ${lesson.image ? `<div style="text-align:center; margin-bottom: 20px;"><img src="${lesson.image}" alt="${lesson.title}" style="width:100%; max-width:400px; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.1); object-fit:cover;"></div>` : ''}
-${(lesson.description || lesson.desc) ? `
-  <div class="example-box" style="margin-bottom: 25px; border-right: 5px solid var(--primary); background: var(--card-bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); border-left: 1px solid var(--border-color);">
-    <strong>💡 نبذة عن الدرس:</strong><br>
-    <span style="font-size: 16px; line-height: 1.8; color: var(--text-main);">${lesson.description || lesson.desc}</span>
-  </div>
-` : ''}
+      ${lesson.image ? `<div style="text-align:center;margin-bottom:20px;"><img src="${lesson.image}" alt="${lesson.title}" style="width:100%;max-width:400px;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,0.1);object-fit:cover;"></div>` : ''}
+      ${(lesson.description || lesson.desc) ? `
+        <div class="example-box" style="margin-bottom:25px;border-right:5px solid var(--primary);background:var(--card-bg);">
+          <strong>💡 نبذة عن الدرس:</strong><br>
+          <span style="font-size:16px;line-height:1.8;">${lesson.description || lesson.desc}</span>
+        </div>` : ''}
       
-        ${allWords.length ? `
-        <div class="section-title" style="font-size:22px;">📖 المفردات</div>
-        <div style="overflow-x: auto; width: 100%; padding-bottom: 10px;">
-          <table class="mobile-card-table" style="width:100%; border-collapse:collapse; margin-top:15px; background:var(--card-bg); border-radius:12px; overflow:hidden;">
-            <thead><tr style="background:var(--primary-dark);color:#fff;"><th style="padding:12px;">الكلمة</th><th style="padding:12px;">المعنى</th><th style="padding:12px;">معلومات إضافية</th></tr></thead>
-            <tbody>${rows}</tbody>
-          </table>
-        </div>
+      ${lessonTextHTML}
+      
+      ${allWords.length ? `
+        <div class="section-title" style="font-size:22px;">📖 المفردات (${allWords.length})</div>
+        <div class="vocab-grid">${wordCards}</div>
       ` : ''}
       
       ${grammarHTML}
@@ -1571,4 +1578,38 @@ function closeSingleLesson() {
   
   // مسح الهاش من الرابط
   history.pushState({}, "", window.location.pathname + window.location.search);
+}
+
+
+/* ================================================================
+   ✅ الكود الجديد: جعل كلمات القطعة النصية قابلة للنقر
+   ================================================================ */
+function makeWordsClickable(htmlText, wordList) {
+  if (!htmlText || !wordList || !wordList.length) return htmlText;
+
+  const words = wordList
+    .map(w => {
+      if (typeof w === 'string') return w.replace(/\s*\(.*\)\s*$/, '').trim();
+      if (w && w.de) return String(w.de).replace(/\s*\(.*\)\s*$/, '').trim();
+      return '';
+    })
+    .filter(w => w && w.length >= 3)
+    .sort((a, b) => b.length - a.length);
+
+  if (!words.length) return htmlText;
+
+  const escaped = words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  const pattern = new RegExp(
+    '(?<![\\wÄÖÜäöüß])(' + escaped.join('|') + ')(?![\\wÄÖÜäöüß])',
+    'gi'
+  );
+
+  const parts = String(htmlText).split(/(<[^>]+>)/g);
+  return parts.map(part => {
+    if (!part || part.startsWith('<')) return part;
+    return part.replace(pattern, (match) => {
+      const safe = match.replace(/'/g, "\\'");
+      return `<span class="lesson-word" onclick="event.stopPropagation(); openWordDetails('${safe}')" title="اضغط لعرض التصريفات">${match}</span>`;
+    });
+  }).join('');
 }
