@@ -1,5 +1,5 @@
 /* ============================================================
-   lessons.js — دروس Menschen A2.1
+   lessons.js — دروس Menschen A2.1 (النسخة النظيفة والمستقرة)
    ============================================================ */
 
 /* ========== محرك توليد البيانات (لتقصير الكود) ========== */
@@ -227,7 +227,7 @@ const LESSONS = [
   titleAr: "ماذا تأخذ/تريد؟ (التسوق)",
   topic: "تسوق",
    description: "في هذا الدرس نتعلم كيف نتسوق، نطلب الطعام، نعبّر عن الكميات (أوزان وعبوات)، وكيف نصف الأشياء عند الشراء.",
-  image: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", // صورة افتراضية للسوبر ماركت
+  image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80", // صورة افتراضية للسوبر ماركت
   imageAlt: "Supermarkt",
   
   // ----------------------------------------------------
@@ -360,7 +360,7 @@ const LESSONS = [
   level: "A2.1",
   title: "Schaut mal, der schöne Dom!",
   titleAr: "انظروا، الكاتدرائية الجميلة! (السياحة)",
-  topic: "سفر", // هذا الموضوع موجود في بطاقاتك الملونة
+  topic: "سفر", 
   description: "في هذا الدرس نتعلم كيف نتحدث عن السياحة، نخطط لعطلة نهاية الأسبوع، نكتب بطاقة بريدية، وكيف نصف الأشياء باستخدام أدوات التعريف.",
   image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80", // صورة كولونيا/الكاتدرائية
   
@@ -1296,49 +1296,38 @@ const LESSONS = [
     w("empfohlen", "موصى به", "صفات")
   ]
 }
-  ];
+];
 
 /* ========== الدوال المساعدة ========== */
 function getWordData(word) {
-  // 1. إذا كانت الكلمة عبارة عن كائن (Object) - وهذا هو الحال في دروسنا الجديدة
   if (typeof word === 'object' && word !== null) {
     return {
-      kind: word.kind || word.type || 'other', // نوع الكلمة
+      kind: word.kind || word.type || 'other', 
       plural: word.plural || '',
       präteritum: word.präteritum || '',
       perfekt: word.perfekt || ''
     };
   }
-
-  // 2. إذا كانت الكلمة مجرد نص (String) - الطريقة القديمة
   if (typeof word !== 'string') return { kind: 'other' };
   
   const w = word.trim();
   const lower = w.toLowerCase();
   
-  // البحث في الأفعال
   if (typeof VERBS !== 'undefined') {
     const verb = VERBS.find(v => v.de && v.de.toLowerCase() === lower);
     if (verb) return { kind: 'verb', präteritum: verb.präteritum || '', perfekt: verb.perfekt || '' };
   }
-  
-  // البحث في الأسماء
   if (typeof NOUNS !== 'undefined') {
     const noun = NOUNS.find(n => n.de && n.de.toLowerCase() === lower);
     if (noun) return { kind: 'noun', plural: noun.plural || '' };
   }
-  
-  // البحث في الصفات
   if (typeof ADJECTIVES !== 'undefined') {
     const adj = ADJECTIVES.find(a => a.de && a.de.toLowerCase() === lower);
     if (adj) return { kind: 'adj' };
   }
-  
-  // إذا كانت تبدأ بـ der/die/das فهي اسم
   if (/^(der|die|das)\s/i.test(w)) {
     return { kind: 'noun', plural: '' };
   }
-  
   return { kind: 'other' };
 }
 
@@ -1399,12 +1388,19 @@ function renderLessonsTab() {
 }
 
 function openLesson(id) {
+  // إغلاق القائمة الجانبية فوراً عند فتح الدرس (للهاتف)
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  if (sidebar) sidebar.classList.remove('open');
+  if (overlay) overlay.classList.remove('active');
+
   const lesson = LESSONS.find(l => l.id === id);
   if (!lesson) return;
   currentLessonId = id;
   history.pushState({ lessonId: id }, "", "#lesson-" + id);
 
-  const allWords = [...(lesson.newWords || [])]; // حذفنا lesson.words القديمة
+  // حذفنا lesson.words القديمة لعدم تكرار الكلمات بدون ترجمة
+  const allWords = [...(lesson.newWords || [])];
   
   // بناء بطاقات المفردات (بدل الجدول) — يحل مشكلة الهاتف
   const wordCards = allWords.map(w => {
@@ -1465,7 +1461,7 @@ function openLesson(id) {
       </div>`;
   }
 
-   // بناء التمارين
+  // بناء التمارين
   const exercisesHTML = (lesson.exercises && lesson.exercises.length) ? `
     <div class="section-title" style="margin-top:30px;font-size:22px;">📝 التمارين (${lesson.exercises.length})</div>
     <div style="display:flex;flex-direction:column;gap:15px;margin-top:15px;">
@@ -1519,7 +1515,7 @@ function openLesson(id) {
   }
 }
 
-// دالة التحقق من إجابات تمارين الدروس (النسخة الذكية)
+// دالة التحقق من إجابات تمارين الدروس (النسخة الذكية الوحيدة)
 function checkLessonExercise(btn, selected, correct) {
   // منع الضغط المتكرر
   const parent = btn.closest('.lesson-exercise-box');
@@ -1534,8 +1530,8 @@ function checkLessonExercise(btn, selected, correct) {
     b.style.cursor = 'not-allowed';
   });
 
-  // تلوين الإجابة
-  if (selected === correct) {
+  // تلوين الإجابة (تحويل القيم إلى أرقام لضمان المقارنة الصحيحة)
+  if (Number(selected) === Number(correct)) {
     btn.style.background = '#10b981'; // أخضر
     btn.style.color = '#fff';
     btn.style.borderColor = '#10b981';
@@ -1559,52 +1555,7 @@ function checkLessonExercise(btn, selected, correct) {
   }
 }
 
-function renderLessonExercises(exercises) {
-  const container = document.getElementById('lessonExercises');
-  if (!container) return;
-  container.innerHTML = exercises.map((ex, idx) => `
-    <div class="lesson-exercise" data-idx="${idx}" style="background:var(--card-bg);padding:20px;border-radius:12px;border:1px solid var(--border-color);margin-bottom:10px;">
-      <div style="font-weight:700;color:var(--primary-dark);margin-bottom:15px;font-size:18px;">${idx + 1}. ${ex.question}</div>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        ${ex.options.map((opt, i) => `
-          <button class="lesson-exercise-opt" data-idx="${idx}" data-opt="${i}"
-                  style="padding:14px 18px;background:#f8fafc;border:2px solid var(--border-color);border-radius:10px;cursor:pointer;font-size:16px;font-weight:600;text-align:right;direction:ltr;transition:all 0.3s;"
-                  onclick="checkLessonExercise(${idx}, ${i})">${opt}</button>
-        `).join('')}
-      </div>
-      <div id="lessonFeedback-${idx}" style="display:none;margin-top:15px;padding:15px;border-radius:10px;font-weight:600;"></div>
-    </div>
-  `).join('');
-}
-  
-function closeSingleLesson() {
-  document.getElementById('singleLessonContent').classList.add('hidden');
-  document.getElementById('lessonsContent').classList.remove('hidden');
-  document.getElementById('lessonSubTabs').classList.remove('hidden');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function checkLessonExercise(exIdx, optIdx) {
-  const lesson = LESSONS.find(l => l.id === currentLessonId);
-  if (!lesson || !lesson.exercises) return;
-  const ex = lesson.exercises[exIdx];
-  if (!ex) return;
-  const isCorrect = optIdx === ex.correct;
-  const btns = document.querySelectorAll(`.lesson-exercise-opt[data-idx="${exIdx}"]`);
-  btns.forEach(b => {
-    b.disabled = true;
-    if (+b.dataset.opt === ex.correct) b.style.background = '#dcfce7', b.style.borderColor = '#10b981';
-    else if (+b.dataset.opt === optIdx && !isCorrect) b.style.background = '#fee2e2', b.style.borderColor = '#ef4444';
-  });
-  const fb = document.getElementById('lessonFeedback-' + exIdx);
-  if (fb) {
-    fb.style.display = 'block';
-    fb.style.background = isCorrect ? '#dcfce7' : '#fee2e2';
-    fb.style.color = isCorrect ? '#166534' : '#991b1b';
-    fb.innerHTML = (isCorrect ? '✅ صحيح! ' : '❌ خطأ. ') + ex.explanation;
-  }
-}
-// دالة إغلاق الدرس المفرد والعودة للقائمة
+// دالة إغلاق الدرس المفرد والعودة للقائمة (مرة واحدة فقط)
 function closeSingleLesson() {
   document.getElementById('singleLessonContent').classList.add('hidden');
   document.getElementById('lessonsContent').classList.remove('hidden');
@@ -1612,11 +1563,11 @@ function closeSingleLesson() {
   
   // مسح الهاش من الرابط
   history.pushState({}, "", window.location.pathname + window.location.search);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-
 /* ================================================================
-   ✅ الكود الجديد: جعل كلمات القطعة النصية قابلة للنقر
+   ✅ جعل كلمات القطعة النصية قابلة للنقر
    ================================================================ */
 function makeWordsClickable(htmlText, wordList) {
   if (!htmlText || !wordList || !wordList.length) return htmlText;
