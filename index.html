@@ -687,8 +687,6 @@ body.dark-mode .exercise-explanation {
 }
 
 /* ============================================================ */
-/* 🔥 التعديل الجديد: إصلاح الجداول والخطوط للهاتف */
-/* ============================================================ */
   /* ============================================================ */
   /* 🔥 الحل النهائي القاطع: تحويل جدول المفردات إلى بطاقات للهاتف */
   /* ============================================================ */
@@ -700,7 +698,7 @@ body.dark-mode .exercise-explanation {
       p, li, span, div { font-size: 14px !important; line-height: 1.6 !important; }
       img { max-width: 100% !important; height: auto !important; }
 
-      /* هذا الكود يخص جدول المفردات في الدروس فقط (لن يؤثر على باقي الموقع) */
+      /* هذا الكود يخص جدول المفردات في الدروس فقط */
       .mobile-card-table { display: block !important; width: 100% !important; }
       .mobile-card-table thead { display: none !important; }
       .mobile-card-table tbody { display: flex !important; flex-direction: column !important; gap: 10px !important; width: 100% !important; }
@@ -711,29 +709,7 @@ body.dark-mode .exercise-explanation {
 
       .grammar-content { font-size: 14px !important; }
       .sidebar-item { font-size: 13px !important; padding: 8px 12px !important; }
-  }س
-    td:last-child { border-bottom: none !important; }
-    td:before { 
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        width: 80px;
-        font-weight: bold;
-        color: var(--primary-dark);
-    }
-    td:nth-of-type(1):before { content: "الكلمة"; }
-    td:nth-of-type(2):before { content: "المعنى"; }
-    td:nth-of-type(3):before { content: "معلومات"; }
-
-    .card .de { font-size: 16px !important; }
-    .card .ar { font-size: 13px !important; }
-    .grammar-title-de { font-size: 14px !important; }
-    .grammar-title-ar { font-size: 12px !important; }
-    .grammar-content { font-size: 14px !important; }
-    .grammar-content h4 { font-size: 15px !important; }
-    .sidebar-item { font-size: 13px !important; padding: 8px 12px !important; }
-    .sidebar-group-title { font-size: 11px !important; }
-}
+  }
 </style>
 </head>
 <body>
