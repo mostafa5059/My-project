@@ -1450,8 +1450,8 @@ history.pushState({ lessonId: id }, "", "#lesson-" + id);
   if (container) {
     container.innerHTML = `
      <button class="filter-btn" onclick="closeSingleLesson()" style="margin-bottom:20px;">← العودة للدروس</button>
-      <h2 style="color:var(--primary-dark);font-size:28px;margin-bottom:5px;">${lesson.title}</h2>
-      <h3 style="color:var(--text-muted);font-size:20px;margin-bottom:15px;">${lesson.titleAr || ''}</h3>
+            <h2 style="color:var(--primary-dark);margin-bottom:5px;">${lesson.title}</h2>
+      <h3 style="color:var(--text-muted);margin-bottom:15px;">${lesson.titleAr || ''}</h3>
               ${lesson.image ? `<div style="text-align:center; margin-bottom: 20px;"><img src="${lesson.image}" alt="${lesson.title}" style="width:100%; max-width:400px; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.1); object-fit:cover;"></div>` : ''}
 ${(lesson.description || lesson.desc) ? `
   <div class="example-box" style="margin-bottom: 25px; border-right: 5px solid var(--primary); background: var(--card-bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); border-left: 1px solid var(--border-color);">
@@ -1460,14 +1460,14 @@ ${(lesson.description || lesson.desc) ? `
   </div>
 ` : ''}
       
-      ${allWords.length ? `
-               <div class="section-title" style="font-size:22px;">📖 المفردات</div>
+        ${allWords.length ? `
+        <div class="section-title" style="font-size:22px;">📖 المفردات</div>
         <div style="overflow-x: auto; width: 100%; padding-bottom: 10px;">
-          <table style="width:100%; min-width: 500px; border-collapse:collapse; margin-top:15px; background:var(--card-bg); border-radius:12px; overflow:hidden;">
-          <thead><tr style="background:var(--primary-dark);color:#fff;"><th style="padding:12px;">الكلمة</th><th style="padding:12px;">المعنى</th><th style="padding:12px;">معلومات إضافية</th></tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-         </div>
+          <table class="mobile-card-table" style="width:100%; border-collapse:collapse; margin-top:15px; background:var(--card-bg); border-radius:12px; overflow:hidden;">
+            <thead><tr style="background:var(--primary-dark);color:#fff;"><th style="padding:12px;">الكلمة</th><th style="padding:12px;">المعنى</th><th style="padding:12px;">معلومات إضافية</th></tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
       ` : ''}
       
       ${grammarHTML}
