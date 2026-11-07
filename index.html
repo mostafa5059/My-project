@@ -685,6 +685,28 @@ body.dark-mode .exercise-explanation {
     color: #fcd34d;
     border-right-color: #f59e0b;
 }
+  /* تحسينات الهاتف */
+@media (max-width: 768px) {
+  /* منع القائمة من تغطية الشاشة بالكامل */
+  .sidebar { width: 260px; max-width: 80vw; }
+  
+  /* جعل الجداول قابلة للتمرير أفقياً بدلاً من كسر التصميم */
+  table { display: block; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+  
+  /* ضبط حجم الخط ليكون مناسباً */
+  body { font-size: 14px; }
+  h1 { font-size: 20px; }
+  h2 { font-size: 18px; }
+  .card .de { font-size: 16px; }
+  .card .ar { font-size: 13px; }
+  
+  /* إخفاء عناصر قد تكون مزعجة */
+  .lang-buttons { flex-wrap: wrap; justify-content: center; }
+}
+
+/* دعم الوضع الليلي للجداول */
+body.dark-mode table { background: #1e293b; color: #f1f5f9; }
+body.dark-mode td, body.dark-mode th { border-color: #334155; }
 </style>
 </head>
 <body>
@@ -1485,12 +1507,17 @@ function toggleSidebar() {
   if (ov) ov.classList.toggle('active');
 }
 
+// إغلاق القائمة تلقائياً عند النقر على أي تبويب في الهاتف
 document.querySelectorAll('.sidebar-item[data-tab]').forEach(btn => {
   btn.addEventListener('click', () => {
     if (btn.classList.contains('disabled')) return;
     const tab = btn.dataset.tab;
     if (typeof switchTab === 'function') switchTab(tab);
-    if (window.innerWidth <= 900) toggleSidebar();
+    // إغلاق القائمة إذا كنا على شاشة صغيرة
+    if (window.innerWidth <= 900) {
+      document.getElementById('sidebar').classList.remove('open');
+      document.getElementById('sidebarOverlay').classList.remove('active');
+    }
   });
 });
 
@@ -1701,6 +1728,25 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   });
+      // إغلاق القائمة الجانبية تلقائياً عند النقر على أي تبويب في الهاتف
+    document.querySelectorAll('.sidebar-item[data-tab]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.classList.contains('disabled')) return;
+        const tab = btn.dataset.tab;
+        if (typeof switchTab === 'function') switchTab(tab);
+        // إغلاق القائمة إذا كنا على شاشة صغيرة
+        if (window.innerWidth <= 900) {
+          document.getElementById('sidebar').classList.remove('open');
+          document.getElementById('sidebarOverlay').classList.remove('active');
+        }
+      });
+    });
+
+    // إغلاق القائمة عند النقر على الطبقة الشفافة (Overlay)
+    document.getElementById('sidebarOverlay').addEventListener('click', () => {
+        document.getElementById('sidebar').classList.remove('open');
+        document.getElementById('sidebarOverlay').classList.remove('active');
+    });
 </script>
 </body>
 </html>
