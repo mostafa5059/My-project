@@ -269,3 +269,4 @@ function nextExercise() {
         answer: 1,
         explanation: "نستخدم wenn للتعبير عن الشرط (عندما/إذا)."
     }
+];
