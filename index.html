@@ -689,36 +689,29 @@ body.dark-mode .exercise-explanation {
 /* ============================================================ */
 /* 🔥 التعديل الجديد: إصلاح الجداول والخطوط للهاتف */
 /* ============================================================ */
-@media (max-width: 768px) {
-    body { font-size: 14px !important; }
-    h1 { font-size: 20px !important; }
-    h2 { font-size: 18px !important; }
-    h3 { font-size: 16px !important; }
-    p, li, span, div { font-size: 14px !important; line-height: 1.6 !important; }
-    
-    img { max-width: 100% !important; height: auto !important; }
+  /* ============================================================ */
+  /* 🔥 الحل النهائي القاطع: تحويل جدول المفردات إلى بطاقات للهاتف */
+  /* ============================================================ */
+  @media (max-width: 768px) {
+      body { font-size: 14px !important; }
+      h1 { font-size: 20px !important; }
+      h2 { font-size: 18px !important; }
+      h3 { font-size: 16px !important; }
+      p, li, span, div { font-size: 14px !important; line-height: 1.6 !important; }
+      img { max-width: 100% !important; height: auto !important; }
 
-    /* تحويل الجدول إلى بطاقات لكي لا يكسر الشاشة */
-    table, thead, tbody, th, td, tr { 
-        display: block !important; 
-        width: 100% !important; 
-    }
-    thead tr { position: absolute; top: -9999px; left: -9999px; }
-    tr { 
-        border: 1px solid var(--border-color) !important; 
-        margin-bottom: 15px !important; 
-        border-radius: 12px !important; 
-        background: var(--card-bg) !important;
-        overflow: hidden;
-    }
-    td { 
-        border: none !important; 
-        border-bottom: 1px dashed var(--border-color) !important; 
-        position: relative;
-        padding: 12px 100px 12px 12px !important; 
-        text-align: right !important;
-        white-space: normal !important; 
-    }
+      /* هذا الكود يخص جدول المفردات في الدروس فقط (لن يؤثر على باقي الموقع) */
+      .mobile-card-table { display: block !important; width: 100% !important; }
+      .mobile-card-table thead { display: none !important; }
+      .mobile-card-table tbody { display: flex !important; flex-direction: column !important; gap: 10px !important; width: 100% !important; }
+      .mobile-card-table tr { display: flex !important; flex-direction: column !important; width: 100% !important; border: 1px solid var(--border-color) !important; border-radius: 10px !important; background: var(--card-bg) !important; padding: 10px !important; box-sizing: border-box !important; margin-bottom: 10px; }
+      .mobile-card-table td { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100% !important; border: none !important; border-bottom: 1px dashed var(--border-color) !important; padding: 10px 0 !important; text-align: right !important; }
+      .mobile-card-table td:last-child { border-bottom: none !important; }
+      .mobile-card-table td::before { content: attr(data-label) !important; font-weight: bold !important; color: var(--primary) !important; margin-left: 10px !important; flex-shrink: 0 !important; }
+
+      .grammar-content { font-size: 14px !important; }
+      .sidebar-item { font-size: 13px !important; padding: 8px 12px !important; }
+  }س
     td:last-child { border-bottom: none !important; }
     td:before { 
         position: absolute;
