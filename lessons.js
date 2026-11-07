@@ -1393,14 +1393,14 @@ history.pushState({ lessonId: id }, "", "#lesson-" + id);
     if (d.kind === 'noun' && d.plural) extra = ` | الجمع: ${d.plural}`;
     else if (d.kind === 'verb' && d.präteritum) extra = ` | الماضي: ${d.präteritum} | التام: ${d.perfekt}`;
 
-    return `
+        return `
       <tr>
-        <td style="font-weight:700;color:var(--primary-dark);direction:ltr;text-align:right;padding:12px;">
+        <td data-label="الكلمة" style="font-weight:700;color:var(--primary-dark);direction:ltr;text-align:right;padding:12px;">
           ${wordText}
           <button class="audio-btn" style="position:static;display:inline-flex;width:30px;height:30px;font-size:14px;margin-right:8px;" onclick="speak('${clean.replace(/'/g, "\\'")}')">🔊</button>
         </td>
-        <td style="padding:12px;">${translation}</td>
-        <td style="font-size:13px;color:var(--text-muted);padding:12px;">${extra}</td>
+                <td data-label="المعنى" style="padding:12px;">${translation}</td>
+        <td data-label="معلومات" style="font-size:13px;color:var(--text-muted);padding:12px;">${extra}</td>
       </tr>`;
   }).join('');
 
