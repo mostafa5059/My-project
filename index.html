@@ -710,6 +710,9 @@ body.dark-mode td, body.dark-mode th { border-color: #334155; }
     /* ============================================================ */
   /* 🔥 التعديل الجديد: ضبط أحجام الخطوط والجداول للهاتف */
   /* ============================================================ */
+   /* ============================================================ */
+  /* 🔥 التعديل الجديد: إصلاح الجداول والخطوط للهاتف */
+  /* ============================================================ */
   @media (max-width: 768px) {
       body { font-size: 14px !important; }
       h1 { font-size: 20px !important; }
@@ -717,10 +720,19 @@ body.dark-mode td, body.dark-mode th { border-color: #334155; }
       h3 { font-size: 16px !important; }
       p, li, span, div { font-size: 14px !important; line-height: 1.6 !important; }
       
-      /* تصغير خطوط البطاقات والجداول */
+      /* إصلاح الصور */
+      img { max-width: 100% !important; height: auto !important; }
+
+      /* إصلاح الجداول (إجباري لكي لا تختفي الدروس) */
+      table { 
+          display: block !important; 
+          width: 100% !important; 
+          overflow-x: auto !important; 
+          -webkit-overflow-scrolling: touch; 
+      }
+      
       .card .de { font-size: 16px !important; }
       .card .ar { font-size: 13px !important; }
-      table, th, td { font-size: 13px !important; padding: 8px 5px !important; }
       .grammar-title-de { font-size: 14px !important; }
       .grammar-title-ar { font-size: 12px !important; }
       .grammar-content { font-size: 14px !important; }
@@ -728,6 +740,7 @@ body.dark-mode td, body.dark-mode th { border-color: #334155; }
       .sidebar-item { font-size: 13px !important; padding: 8px 12px !important; }
       .sidebar-group-title { font-size: 11px !important; }
   }
+  
 </style>
 </head>
 <body>
