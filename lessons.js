@@ -21,8 +21,34 @@ function w(word, ar, topic) {
   return { de: word, ar: ar, plural: plural, akk: akk, dat: dat, topic: topic };
 }
 
-function v(verb, ar, präsens, präteritum, perfekt, topic, type="regular") {
-  return { de: verb, ar: ar, type: type, präsens: präsens, präteritum: präteritum, perfekt: perfekt, partizip: perfekt.split(' ').pop(), topic: topic };
+function v(verb, ar, p3, p4, p5, p6, type="regular") {
+  let präsens = [];
+  let topic = "";
+  let präteritum = "";
+  let perfekt = "";
+  let finalType = type;
+
+  // إذا كان المعامل الثالث مصفوفة (النظام القديم)
+  if (Array.isArray(p3)) {
+    präsens = p3;
+    präteritum = p4;
+    perfekt = p5;
+    topic = p6 || "";
+  } else {
+    // إذا كان المعامل الثالث نصاً (النظام الجديد Lektion 4+)
+    topic = p3;
+    präteritum = p4;
+    perfekt = p5;
+    if (p6) finalType = p6;
+    
+    // توليد تصريفات تلقائية بسيطة (لتجنب انهيار الموقع)
+    let stem = verb.endsWith("en") ? verb.slice(0, -2) : verb;
+    if (verb.endsWith("eln")) stem = verb.slice(0, -3) + "el";
+    if (verb.endsWith("ern")) stem = verb.slice(0, -3) + "er";
+    präsens = [stem + "e", stem + "st", stem + "t", verb, stem + "t", verb];
+  }
+
+  return { de: verb, ar: ar, type: finalType, präsens: präsens, präteritum: präteritum, perfekt: perfekt, partizip: perfekt.split(' ').pop(), topic: topic };
 }
 
 function mc(question, options, correctIndex, explanation) {
