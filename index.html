@@ -271,21 +271,22 @@
     background: rgba(15,23,42,.5);
     z-index: 40;
   }
-  @media (max-width: 900px) {
+   @media (max-width: 900px) {
     .sidebar-toggle { display: flex; }
     .sidebar {
       position: fixed;
       top: 0;
-      right: 0;
+      right: -100%; /* 👈 إخفاء القائمة لليمين بطريقة صحيحة */
       height: 100vh;
       max-height: 100vh;
       width: 280px;
       border-radius: 0;
-      transform: translateX(100%);
+      transition: right 0.3s ease-in-out; /* 👈 حركة انسيابية */
       box-shadow: -4px 0 20px rgba(0,0,0,.2);
+      z-index: 1000;
     }
-    .sidebar.open { transform: translateX(0); }
-    .sidebar-overlay.active { display: block; }
+    .sidebar.open { right: 0; } /* 👈 تظهر عند إضافة كلاس open */
+    .sidebar-overlay { z-index: 999; }
     .app-layout { gap: 0; }
   }
 
@@ -691,24 +692,35 @@ body.dark-mode .exercise-explanation {
   /* 🔥 الحل النهائي القاطع: تحويل جدول المفردات إلى بطاقات للهاتف */
   /* ============================================================ */
   @media (max-width: 768px) {
-      body { font-size: 14px !important; }
-      h1 { font-size: 20px !important; }
-      h2 { font-size: 18px !important; }
-      h3 { font-size: 16px !important; }
-      p, li, span, div { font-size: 14px !important; line-height: 1.6 !important; }
-      img { max-width: 100% !important; height: auto !important; }
+    body { font-size: 14px !important; }
+    h1 { font-size: 20px !important; }
+    h2 { font-size: 18px !important; }
+    h3 { font-size: 16px !important; }
+    img { max-width: 100% !important; height: auto !important; }
 
-      /* هذا الكود يخص جدول المفردات في الدروس فقط */
-      .mobile-card-table { display: block !important; width: 100% !important; }
-      .mobile-card-table thead { display: none !important; }
-      .mobile-card-table tbody { display: flex !important; flex-direction: column !important; gap: 10px !important; width: 100% !important; }
-      .mobile-card-table tr { display: flex !important; flex-direction: column !important; width: 100% !important; border: 1px solid var(--border-color) !important; border-radius: 10px !important; background: var(--card-bg) !important; padding: 10px !important; box-sizing: border-box !important; margin-bottom: 10px; }
-      .mobile-card-table td { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100% !important; border: none !important; border-bottom: 1px dashed var(--border-color) !important; padding: 10px 0 !important; text-align: right !important; }
-      .mobile-card-table td:last-child { border-bottom: none !important; }
-      .mobile-card-table td::before { content: attr(data-label) !important; font-weight: bold !important; color: var(--primary) !important; margin-left: 10px !important; flex-shrink: 0 !important; }
+    .grammar-content { font-size: 14px !important; }
+    .sidebar-item { font-size: 13px !important; padding: 8px 12px !important; }
 
-      .grammar-content { font-size: 14px !important; }
-      .sidebar-item { font-size: 13px !important; padding: 8px 12px !important; }
+    /* تنسيقات البطاقات للموبايل (عمودين) */
+    .vocab-grid {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 10px !important;
+      width: 100% !important;
+    }
+    .vocab-card {
+      padding: 10px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+    }
+    .vocab-card-de { font-size: 14px !important; }
+    .vocab-card-ar { font-size: 12px !important; }
+    .vocab-card-extra { font-size: 10px !important; }
+  }
+
+  @media (max-width: 360px) {
+    .vocab-grid { grid-template-columns: 1fr !important; }
   }
   /* ============ بطاقات المفردات (بدل الجدول) ============ */
 .vocab-grid {
