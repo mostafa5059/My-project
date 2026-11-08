@@ -28,20 +28,17 @@ function v(verb, ar, p3, p4, p5, p6, type="regular") {
   let perfekt = "";
   let finalType = type;
 
-  // إذا كان المعامل الثالث مصفوفة (النظام القديم)
   if (Array.isArray(p3)) {
     präsens = p3;
     präteritum = p4;
     perfekt = p5;
     topic = p6 || "";
   } else {
-    // إذا كان المعامل الثالث نصاً (النظام الجديد Lektion 4+)
     topic = p3;
     präteritum = p4;
     perfekt = p5;
     if (p6) finalType = p6;
     
-    // توليد تصريفات تلقائية بسيطة (لتجنب انهيار الموقع)
     let stem = verb.endsWith("en") ? verb.slice(0, -2) : verb;
     if (verb.endsWith("eln")) stem = verb.slice(0, -3) + "el";
     if (verb.endsWith("ern")) stem = verb.slice(0, -3) + "er";
@@ -1296,7 +1293,7 @@ const LESSONS = [
     w("empfohlen", "موصى به", "صفات")
   ]
 },
-     // ==========================================
+  // ==========================================
   // Lektion 13 (A2.2): Meine erste "Deutschlehrerin"
   // ==========================================
   {
@@ -1377,7 +1374,6 @@ const LESSONS = [
       w("wichtig", "مهم", "صفات")
     ]
   },
-     ,
   // ==========================================
   // Lektion 14 (A2.2): Weihnachten im Schuhkarton
   // ==========================================
@@ -1456,7 +1452,6 @@ const LESSONS = [
       w("zufrieden", "راضٍ", "صفات")
     ]
   },
-     ,
   // ==========================================
   // Lektion 15 (A2.2): Gleich geht's los!
   // ==========================================
@@ -1538,7 +1533,6 @@ const LESSONS = [
       w("aktuell", "حديث / حالي", "صفات")
     ]
   },
-     ,
   // ==========================================
   // Lektion 16 (A2.2): Darf ich fragen, ob ...?
   // ==========================================
