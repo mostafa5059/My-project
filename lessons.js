@@ -57,7 +57,7 @@ function mc(question, options, correctIndex, explanation) {
 
 const LESSON_LEVELS = [
   { id: "A2.1", label: "📚 Menschen A2.1", available: true },
-  { id: "A2.2", label: "📚 Menschen A2.2", available: false },
+  { id: "A2.2", label: "📚 Menschen A2.2", available: true },
   { id: "B1", label: "📚 Menschen B1", available: false }
 ];
 
@@ -1295,7 +1295,329 @@ const LESSONS = [
     w("lecker", "لذيذ", "صفات"),
     w("empfohlen", "موصى به", "صفات")
   ]
-}
+},
+     // ==========================================
+  // Lektion 13 (A2.2): Meine erste "Deutschlehrerin"
+  // ==========================================
+  {
+    id: "lektion-13",
+    level: "A2.2",
+    title: "Meine erste \"Deutschlehrerin\"",
+    titleAr: "أول معلمة لغة ألمانية لي",
+    topic: "لغة", 
+    description: "في هذا الدرس نتعلم كيف نتحدث عن تجارب تعلم اللغات، ونستخدم أداة الربط (als) للتعبير عن حدث واحد في الماضي.",
+    image: "https://images.unsplash.com/photo-1543165365-07232e5b2c62?auto=format&fit=crop&w=800&q=80",
+    text: `
+      <h4>Pauls Geschichte</h4>
+      <p>Paul ist Amerikaner. Er wollte schon immer in Berlin studieren. <b>Als</b> er in den USA war, arbeitete er in einer Bar. Dort traf er Marie. Er dachte, sie ist Deutsche, weil sie so gut Deutsch sprach. Aber sie war auch Amerikanerin. Sie hat ihm geholfen, Deutsch zu lernen. Sein erstes deutsches Wort war "Bratwurst", weil er es auf einem Schild in Berlin gesehen hat. <b>Als</b> er nach Berlin zog, sprach er schon ein bisschen Deutsch. Marie war seine erste "Deutschlehrerin".</p>
+    `,
+    grammarTitle: "Temporalsätze mit „als“ (الجمل الزمنية باستخدام als)",
+    grammar: `
+      <h4>💡 الفكرة ببساطة:</h4>
+      <p>نستخدم أداة الربط <code>als</code> (عندما / حينما) للتحدث عن <b>حدث واحد فقط</b> وقع في <b>الماضي</b>.</p>
+      
+      <h4>🔹 متى نستخدم als ومتى نستخدم wenn؟</h4>
+      <table>
+        <tr><th>الأداة</th><th>الاستخدام</th><th>مثال</th></tr>
+        <tr><td><b>als</b></td><td>حدث واحد في الماضي.</td><td><b>Als</b> ich klein war, habe ich in Berlin gelebt. (عندما كنت صغيراً، عشت في برلين).</td></tr>
+        <tr><td><b>wenn</b></td><td>حدث متكرر (في الماضي أو المضارع) أو حدث في المستقبل.</td><td>Immer <b>wenn</b> ich in Berlin war, habe ich Brezeln gegessen. (كلما كنت في برلين، كنت آكل البريتزل).</td></tr>
+      </table>
+
+      <h4>🔹 1. ترتيب الكلمات مع als:</h4>
+      <p>عندما تبدأ الجملة بـ <code>als</code>، يذهب الفعل المُصرّف إلى <b>نهاية الجملة الثانوية</b>، ثم يأتي الفعل الرئيسي مباشرة بعد الفاصلة.</p>
+      <ul>
+        <li><b>Als</b> ich in Wien <b>war</b>, <b>habe</b> ich viel Deutsch gesprochen.</li>
+      </ul>
+
+      <h4>🔹 2. إذا جاءت als في المنتصف:</h4>
+      <p>يأتي الفعل المُصرّف في نهاية الجملة الثانوية كالمعتاد.</p>
+      <ul>
+        <li>Ich habe viel Deutsch gesprochen, <b>als</b> ich in Wien <b>war</b>.</li>
+      </ul>
+      <div class="grammar-tip">💡 تذكر: <b>als</b> = حدث واحد في الماضي. <b>wenn</b> = حدث متكرر أو في المستقبل.</div>
+    `,
+    exercises: [
+      mc("___ ich in Berlin war, habe ich viel Deutsch gesprochen.", ["Als", "Wenn", "Wann", "Ob"], 0, "حدث واحد في الماضي (عندما كنت في برلين) -> نستخدم als."),
+      mc("Immer ___ ich in den Ferien war, habe ich Deutsch gelernt.", ["wenn", "als", "wann", "dass"], 0, "حدث متكرر في الماضي (كلما كنت في العطلة) -> نستخدم wenn."),
+      mc("___ ich klein war, habe ich in New York gelebt.", ["Als", "Wenn", "Wann", "Weil"], 0, "مرحلة واحدة في الماضي (عندما كنت صغيراً) -> نستخدم als."),
+      mc("Ich rufe dich an, ___ ich in Deutschland ankomme.", ["wenn", "als", "wann", "ob"], 0, "حدث في المستقبل (عندما أصل) -> نستخدم wenn."),
+      mc("Was war Pauls erstes deutsches Wort?", ["Bratwurst", "Brezel", "Berlin", "Buch"], 0, "حسب النص، أول كلمة ألمانية تعلمها بول كانت Bratwurst."),
+      mc("Wo hat Paul Marie getroffen?", ["In den USA", "In Berlin", "In Wien", "In der Schweiz"], 0, "حسب النص، التقيا في البار في الولايات المتحدة الأمريكية.")
+    ],
+    newWords: [
+      v("auswandern", "يهاجر (إلى الخارج)", "سفر", "wanderte aus", "ausgewandert", "trennbar"),
+      v("lernen", "يتعلم", "دراسة", "lernte", "gelernt"),
+      v("üben", "يتدرب / يمارس", "دراسة", "übte", "geübt"),
+      v("vergleichen", "يقارن", "تواصل", "verglich", "verglichen", "unregelmäßig"),
+      v("merken", "يلاحظ / يتذكر", "حياة", "merkte", "gemerkt"),
+      v("klingen", "يبدو (صوته)", "تواصل", "klang", "geklungen", "unregelmäßig"),
+      v("verstehen", "يفهم", "تواصل", "verstand", "verstanden", "unregelmäßig"),
+      v("verbessern", "يحسن", "دراسة", "verbesserte", "verbessert"),
+      
+      w("der Ausländer", "الأجنبي", "حياة"),
+      w("die Muttersprache", "اللغة الأم", "لغة"),
+      w("der Sprachkurs", "دورة اللغة", "دراسة"),
+      w("die Aussprache", "النطق", "لغة"),
+      w("das Wort", "الكلمة", "لغة"),
+      w("der Satz", "الجملة", "لغة"),
+      w("die Erfahrung", "الخبرة", "حياة"),
+      w("der Tipp", "النصيحة", "تواصل"),
+      w("die Grammatik", "القواعد", "لغة"),
+      w("das Erlebnis", "التجربة / الحدث", "حياة"),
+      w("das Ausland", "الخارج", "سفر"),
+      w("der Akzent", "اللكنة", "لغة"),
+      w("die Sprache", "اللغة", "لغة"),
+      
+      w("melodisch", "رنان / عذب", "صفات"),
+      w("weich", "ناعم / رقيق", "صفات"),
+      w("hart", "قاسي / صلب", "صفات"),
+      w("schnell", "سريع", "صفات"),
+      w("langsam", "بطيء", "صفات"),
+      w("freundlich", "ودود", "صفات"),
+      w("wichtig", "مهم", "صفات")
+    ]
+  },
+     ,
+  // ==========================================
+  // Lektion 14 (A2.2): Weihnachten im Schuhkarton
+  // ==========================================
+  {
+    id: "lektion-14",
+    level: "A2.2",
+    title: "Weihnachten im Schuhkarton",
+    titleAr: "عيد الميلاد في صندوق الأحذية",
+    topic: "مجتمع", 
+    description: "في هذا الدرس نتعلم كيف نتحدث عن الهدايا والأعمال التطوعية، ونستخدم صيغة المبني للمجهول (Passiv) مع الأفعال المساعدة.",
+    image: "https://images.unsplash.com/photo-1512474936994-380d959e3ec8?auto=format&fit=crop&w=800&q=80",
+    text: `
+      <h4>Es werden fleißig Päckchen gepackt</h4>
+      <p>Weihnachten im Schuhkarton – eine schöne Idee! Was schenken wir unseren Liebsten zu Weihnachten? Viele Kinder in Deutschland bekommen zu Weihnachten viele Geschenke. Aber es gibt auch Kinder, denen es nicht so gut geht. Für sie ist das Projekt "Weihnachten im Schuhkarton" gedacht. Dabei werden Schuhkartons mit Geschenken gefüllt.</p>
+      <p>Die Kartons <b>müssen</b> mit verschiedenen Dingen <b>gepackt werden</b>. Zum Beispiel: Süßigkeiten, Spielzeug, Schulsachen, Zahnbürsten oder warme Kleidung. Das kann jedes Kind gut <b>gebrauchen</b>. Die Geschenke <b>sollen</b> dann an arme Kinder in Osteuropa verteilt <b>werden</b>. Die Kinder <b>werden</b> sehr glücklich <b>sein</b>, wenn sie die Päckchen öffnen. Es ist eine tolle Aktion, bei der viele Menschen helfen.</p>
+    `,
+    grammarTitle: "Passiv mit Modalverben (المبني للمجهول مع الأفعال المساعدة)",
+    grammar: `
+      <h4>💡 الفكرة ببساطة:</h4>
+      <p>في الدرس السابق تعلمنا أن المبني للمجهول (Passiv) يتكون من <code>werden + Partizip II</code>. لكن ماذا لو أردنا استخدام فعل مساعد (مثل: يجب، يمكن، ينبغي)؟</p>
+      
+      <h4>🔹 القاعدة الذهبية:</h4>
+      <p>التركيبة تكون كالتالي: <code>Modalverb + Partizip II + werden</code></p>
+      <p>الفعل المساعد (Modalverb) يأتي في المركز الثاني (حسب تصريفه)، وكلمة <code>werden</code> تأتي في <b>نهاية الجملة</b> كفعل مصدر.</p>
+
+      <h4>📝 أمثلة من الدرس:</h4>
+      <div class="example-box">
+        <p>Die Päckchen <b>müssen</b> gepackt <b>werden</b>. (يجب تغليف الحقائب).</p>
+        <p>Die Geschenke <b>sollen</b> verteilt <b>werden</b>. (يُفترض أن تُوزع الهدايا).</p>
+        <p>Das <b>kann</b> gut gebraucht <b>werden</b>. (هذا يمكن استخدامه بشكل جيد).</p>
+      </div>
+
+      <h4>📊 مقارنة بين Aktiv و Passiv:</h4>
+      <table>
+        <tr><th>الفاعل (Aktiv)</th><th>المبني للمجهول (Passiv)</th></tr>
+        <tr><td>Man <b>muss</b> die Kartons packen.</td><td>Die Kartons <b>müssen</b> gepackt <b>werden</b>.</td></tr>
+        <tr><td>Man <b>kann</b> die Kleidung gebrauchen.</td><td>Die Kleidung <b>kann</b> gebraucht <b>werden</b>.</td></tr>
+      </table>
+    `,
+    exercises: [
+      mc("Die Schuhkartons ___ mit Geschenken gefüllt werden.", ["müssen", "muss", "müsst", "müssen werden"], 0, "Kartons جمع، لذا نستخدم müssen. (müssen ... gefüllt werden)."),
+      mc("Das Spielzeug kann gut ___ werden.", ["gebraucht", "gebrauchen", "gebrachte", "gebracht"], 0, "الفعل gebrauchen في صيغة Partizip II يصبح gebraucht."),
+      mc("Die Kleidung ___ an die Kinder verteilt werden.", ["soll", "sollen", "sollt", "sollte"], 0, "كلمة Kleidung مفرد مؤنث، لذا نستخدم soll."),
+      mc("Welche Dinge kann man in den Karton packen?", ["Süßigkeiten und Spielzeug", "Nur Kleidung", "Nur Schuhe", "Nur Bücher"], 0, "حسب النص، يمكن وضع الحلويات والألعاب والملابس وغيرها."),
+      mc("Wohin werden die Päckchen geschickt?", ["In arme Länder (z.B. Osteuropa)", "Nur nach Deutschland", "Nach Amerika", "Nach Asien"], 0, "حسب النص، يتم إرسالها للأطفال الفقراء في أوروبا الشرقية."),
+      mc("Die Kinder ___ sehr glücklich sein.", ["werden", "wird", "werdet", "werdest"], 0, "كلمة Kinder جمع، والفعل werden في المضارع يصبح werden.")
+    ],
+    newWords: [
+      v("packen", "يحزم / يغلف", "مجتمع", "packte", "gepackt"),
+      v("einpacken", "يغلف (هدية)", "مجتمع", "packte ein", "eingepackt", "trennbar"),
+      v("schenken", "يهدي", "مجتمع", "schenkte", "geschenkt"),
+      v("gebrauchen", "يستخدم", "مجتمع", "gebrauchte", "gebraucht"),
+      v("verteilen", "يوزع", "مجتمع", "verteilte", "verteilt"),
+      v("besorgen", "يوفر / يحضر", "مجتمع", "besorgte", "besorgt"),
+      v("sich freuen", "يفرح", "مشاعر", "freute sich", "sich gefreut", "reflexiv"),
+      
+      w("das Geschenk", "الهدية", "مجتمع"),
+      w("der Schuhkarton", "صندوق الأحذية", "مجتمع"),
+      w("die Organisation", "المؤسسة / التنظيم", "مجتمع"),
+      w("der Empfänger", "المستلم", "مجتمع"),
+      w("die Armut", "الفقر", "مجتمع"),
+      w("die Freude", "الفرح / السعادة", "مشاعر"),
+      w("der Stift", "القلم", "دراسة"),
+      w("die Mütze", "القبعة (الصوفية)", "ملابس"),
+      w("die Puppe", "الدمية", "حياة"),
+      w("das Auto", "السيارة (لعبة)", "حياة"),
+      w("die Kleidung", "الملابس", "ملابس"),
+      w("die Süßigkeit", "الحلوى", "طعام"),
+      w("das Spielzeug", "اللعبة", "حياة"),
+      w("die Schulsache", "الأدوات المدرسية", "دراسة"),
+      
+      w("fleißig", "مجتهد / نشيط", "صفات"),
+      w("arm", "فقير", "صفات"),
+      w("reich", "غني", "صفات"),
+      w("glücklich", "سعيد", "صفات"),
+      w("zufrieden", "راضٍ", "صفات")
+    ]
+  },
+     ,
+  // ==========================================
+  // Lektion 15 (A2.2): Gleich geht's los!
+  // ==========================================
+  {
+    id: "lektion-15",
+    level: "A2.2",
+    title: "Gleich geht's los!",
+    titleAr: "هيا نبدأ! (التلفزيون والأفلام)",
+    topic: "إعلام", 
+    description: "في هذا الدرس نتعلم مفردات التلفزيون والأفلام، وكيف نستخدم الأفعال التي تأخذ مفعولاً به في حالة الـ Dativ ومفعولاً آخر في حالة الـ Akkusativ.",
+    image: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=800&q=80",
+    text: `
+      <h4>Der Tatort</h4>
+      <p>Der <b>Tatort</b> ist eine der erfolgreichsten Krimiserien im deutschen Fernsehen. Jeden Sonntag um 20:15 Uhr schauen Millionen von <b>Zuschauern</b> die neuen <b>Folgen</b>. In der aktuellen Folge geht es um einen mysteriösen <b>Mord</b>. Ein Kommissar muss den Fall aufklären. Er findet <b>Spuren</b> und befragt <b>Zeugen</b>. Er <b>zeigt</b> seinen Kollegen (Dativ) die Beweise (Akkusativ) und <b>erklärt</b> ihnen (Dativ) den Fall (Akkusativ). Die Zuschauer fiebern mit, um herauszufinden, wer der <b>Täter</b> ist. Der Tatort <b>bringt</b> den Menschen (Dativ) Spannung (Akkusativ) für den Sonntagabend.</p>
+    `,
+    grammarTitle: "Verben mit Dativ und Akkusativ (أفعال تأخذ مفعولين)",
+    grammar: `
+      <h4>💡 الفكرة ببساطة:</h4>
+      <p>بعض الأفعال في اللغة الألمانية لا تكتفي بمفعول به واحد، بل تحتاج إلى مفعولين: <b>شخص</b> (في حالة الـ Dativ) و<b>شيء</b> (في حالة الـ Akkusativ).</p>
+      
+      <h4>🔹 القاعدة الذهبية:</h4>
+      <p>الترتيب المعتاد في الجملة هو: <code>الفعل + الشخص (Dativ) + الشيء (Akkusativ)</code>.</p>
+
+      <h4>📊 جدول توضيحي:</h4>
+      <table>
+        <tr><th>Wer? (Nominativ)</th><th>Wem? (Dativ - الشخص)</th><th>Was? (Akkusativ - الشيء)</th></tr>
+        <tr><td>Ich</td><td>meinem Bruder</td><td>ein Buch</td></tr>
+        <tr><td>Der Kommissar</td><td>den Zeugen</td><td>die Spuren</td></tr>
+      </table>
+
+      <h4>📝 أشهر الأفعال في الدرس:</h4>
+      <ul>
+        <li><b>geben</b> (يعطي): Ich gebe <b>dir</b> (Dat) <b>das Geld</b> (Akk).</li>
+        <li><b>schenken</b> (يهدي): Er schenkt <b>seiner Mutter</b> (Dat) <b>Blumen</b> (Akk).</li>
+        <li><b>zeigen</b> (يُظهر/يري): Sie zeigt <b>uns</b> (Dat) <b>das Foto</b> (Akk).</li>
+        <li><b>erklären</b> (يشرح): Der Lehrer erklärt <b>den Schülern</b> (Dat) <b>die Grammatik</b> (Akk).</li>
+        <li><b>leihen</b> (يعير/يستعير): Ich leihe <b>ihm</b> (Dat) <b>mein Auto</b> (Akk).</li>
+      </ul>
+      
+      <div class="grammar-tip">💡 ضمائر الـ Dativ: mir, dir, ihm, ihr, ihm, uns, euch, ihnen, Ihnen.</div>
+    `,
+    exercises: [
+      mc("Ich schenke ___ (mein Bruder) ein Buch.", ["meinen Bruder", "meinem Bruder", "mein Bruder", "meines Bruders"], 1, "الفعل schenken يأخذ Dativ للشخص. mein Bruder (مذكر) في حالة Dativ يصبح meinem Bruder."),
+      mc("Kannst du ___ (ich) bitte helfen?", ["mich", "mir", "mein", "meiner"], 1, "الفعل helfen يأخذ Dativ دائماً. ich في حالة Dativ تصبح mir."),
+      mc("Der Lehrer erklärt ___ (die Schüler) die Regel.", ["die Schüler", "der Schüler", "den Schülern", "dem Schüler"], 2, "die Schüler جمع، وفي حالة Dativ نضيف -n لتصبح den Schülern."),
+      mc("Ich leihe ___ (du) mein Fahrrad.", ["dich", "dir", "dein", "deine"], 1, "الفعل leihen يأخذ Dativ للشخص. du في حالة Dativ تصبح dir."),
+      mc("Was ist der Tatort?", ["Ein Krimi", "Ein Liebesfilm", "Eine Dokumentation", "Eine Komödie"], 0, "حسب النص والصور، Tatort هو مسلسل بوليسي (Krimiserie)."),
+      mc("Wann schauen die Deutschen Tatort?", ["Am Montag", "Am Sonntagabend", "Am Samstagmorgen", "Jeden Tag"], 1, "حسب النص، يُعرض يوم الأحد الساعة 20:15."),
+      mc("Der Kommissar zeigt ___ (die Zuschauer) die Spuren.", ["die Zuschauer", "den Zuschauern", "der Zuschauer", "dem Zuschauer"], 1, "كلمة Zuschauer جمع، وفي حالة Dativ تصبح den Zuschauern.")
+    ],
+    newWords: [
+      v("zeigen", "يُظهر / يري", "إعلام", "zeigte", "gezeigt"),
+      v("erklären", "يشرح", "إعلام", "erklärte", "erklärt"),
+      v("leihen", "يعير / يستعير", "إعلام", "lieh", "geliehen", "unregelmäßig"),
+      v("schenken", "يهدي", "مجتمع", "schenkte", "geschenkt"),
+      v("bringen", "يحضر / يجلب", "إعلام", "brachte", "gebracht", "unregelmäßig"),
+      v("ausstrahlen", "يبث (برنامج)", "إعلام", "strahlte aus", "ausgestrahlt", "trennbar"),
+      v("aufklären", "يحل (لغز)", "إعلام", "klärte auf", "aufgeklärt", "trennbar"),
+      v("befragen", "يستجوب", "إعلام", "befragte", "befragt"),
+      
+      w("der Tatort", "مسرح الجريمة (مسلسل)", "إعلام"),
+      w("der Krimi", "الفيلم البوليسي / الجريمة", "إعلام"),
+      w("der Zuschauer", "المشاهد", "إعلام"),
+      w("die Folge", "الحلقة", "إعلام"),
+      w("die Sendung", "البرنامج", "إعلام"),
+      w("das Fernsehen", "التلفزيون", "إعلام"),
+      w("der Mord", "جريمة القتل", "إعلام"),
+      w("der Täter", "الجاني", "إعلام"),
+      w("die Spur", "الأثر / الدليل", "إعلام"),
+      w("der Zeuge", "الشاهد", "إعلام"),
+      w("der Kommissar", "المحقق", "إعلام"),
+      w("die Spannung", "التشويق", "إعلام"),
+      w("der Beweis", "الدليل", "إعلام"),
+      w("die Medien", "وسائل الإعلام", "إعلام"),
+      
+      w("spannend", "مشوق", "صفات"),
+      w("erfolgreich", "ناجح", "صفات"),
+      w("mysteriös", "غامض", "صفات"),
+      w("aktuell", "حديث / حالي", "صفات")
+    ]
+  },
+     ,
+  // ==========================================
+  // Lektion 16 (A2.2): Darf ich fragen, ob ...?
+  // ==========================================
+  {
+    id: "lektion-16",
+    level: "A2.2",
+    title: "Darf ich fragen, ob ...?",
+    titleAr: "هل يمكنني أن أسأل، ما إذا كان ...؟ (في الفندق)",
+    topic: "سفر", 
+    description: "في هذا الدرس نتعلم كيف نحجز غرفة في فندق، ونسأل عن المعلومات بأسئلة غير مباشرة مؤدبة، وكيف نصف الطريق باستخدام حروف الجر المكانية.",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+    text: `
+      <h4>An der Rezeption</h4>
+      <p><b>Gast:</b> Guten Tag! Ich würde gern wissen, <b>ob</b> Sie noch ein Zimmer frei haben.</p>
+      <p><b>Rezeptionist:</b> Guten Tag. Darf ich fragen, <b>wie lange</b> Sie bei uns bleiben möchten?</p>
+      <p><b>Gast:</b> Für zwei Nächte, bitte. Ich brauche ein Einzelzimmer mit Frühstück.</p>
+      <p><b>Rezeptionist:</b> Wir haben noch ein Zimmer im ersten Stock. Hier ist Ihr Schlüssel. Ich wünsche Ihnen einen angenehmen Aufenthalt!</p>
+      <p><b>Gast:</b> Vielen Dank! Können Sie mir noch sagen, <b>wo</b> die Sauna ist?</p>
+      <p><b>Rezeptionist:</b> Natürlich. Gehen Sie hier <b>durch</b> die Glastür, dann <b>an der</b> Bar <b>vorbei</b>. Die Sauna liegt <b>gegenüber von</b> dem Schwimmbad.</p>
+    `,
+    grammarTitle: "Indirekte Fragen & Lokale Präpositionen (الأسئلة غير المباشرة وحروف الجر المكانية)",
+    grammar: `
+      <h4>💡 1. الأسئلة غير المباشرة (Indirekte Fragen):</h4>
+      <p>نستخدمها عندما نريد أن نكون مؤدبين. الفعل المُصرّف يذهب إلى <b>نهاية الجملة</b>.</p>
+      <ul>
+        <li><b>أسئلة نعم/لا:</b> نستخدم <code>ob</code> (هل). <br>مثال: <b>Ich würde gern wissen, ob</b> Sie noch ein Zimmer frei <b>haben</b>. (أود أن أعرف إن كان لديكم غرفة شاغرة).</li>
+        <li><b>أسئلة الاستفهام (W-Fragen):</b> نستخدم أداة الاستفهام. <br>مثال: <b>Darf ich fragen, wie lange</b> Sie bleiben <b>möchten</b>? (هل يمكنني أن أسأل، كم من الوقت تريدون البقاء؟).</li>
+        <li>تعبيرات مفيدة: <i>Können Sie mir sagen...? / Wissen Sie...?</i></li>
+      </ul>
+
+      <h4>💡 2. حروف الجر المكانية (Lokale Präpositionen):</h4>
+      <p>تستخدم لوصف الطريق والأماكن:</p>
+      <table>
+        <tr><th>حرف الجر</th><th>المعنى</th><th>الحالة</th><th>مثال</th></tr>
+        <tr><td><b>gegenüber von</b></td><td>مقابل</td><td><b>Dativ</b></td><td><b>gegenüber von dem</b> (vom) Schwimmbad</td></tr>
+        <tr><td><b>an ... vorbei</b></td><td>ماراً بـ</td><td><b>Dativ</b></td><td><b>an der</b> Bar <b>vorbei</b></td></tr>
+        <tr><td><b>durch</b></td><td>عبر / من خلال</td><td><b>Akkusativ</b></td><td><b>durch die</b> Glastür</td></tr>
+      </table>
+      
+      <div class="grammar-tip">💡 تذكر: في حالة الـ Dativ: aus <b>dem</b> (vom), في حالة الـ Akkusativ: <b>die</b> Glastür.</div>
+    `,
+    exercises: [
+      mc("Können Sie mir sagen, ___ das Restaurant noch geöffnet ist?", ["ob", "dass", "wie", "wann"], 0, "السؤال الأصلي هو سؤال نعم/لا (Ist das Restaurant...) لذا نستخدم ob."),
+      mc("Ich weiß nicht, ___ der Zug abfährt.", ["ob", "wann", "dass", "wie"], 1, "نسأل عن الوقت، لذا نستخدم wann."),
+      mc("Die Sauna liegt ___ dem Schwimmbad. (مقابل)", ["gegenüber von", "durch", "an", "vorbei"], 0, "كلمة gegenüber von تعني (مقابل) وتأخذ Dativ."),
+      mc("Gehen Sie ___ die Glastür. (عبر)", ["durch", "gegenüber", "vorbei", "an"], 0, "كلمة durch تعني (عبر/من خلال) وتأخذ Akkusativ (die Glastür)."),
+      mc("Gehen Sie ___ der Bar ___. (ماراً بـ)", ["an ... vorbei", "durch ... vorbei", "gegenüber ... vorbei", "an ... durch"], 0, "التعبير an ... vorbei يعني (ماراً بـ) ويأخذ Dativ (der Bar)."),
+      mc("Wo ist die Rezeption?", ["Im Erdgeschoss", "Im ersten Stock", "Im Keller", "Draußen"], 0, "حسب النص، الغرفة في الطابق الأول (ersten Stock) والريسبشن عادة في الطابق الأرضي.")
+    ],
+    newWords: [
+      v("buchen", "يحجز", "سفر", "buchte", "gebucht"),
+      v("beschreiben", "يصف", "سفر", "beschrieb", "beschrieben", "unregelmäßig"),
+      v("verlassen", "يغادر / يترك", "سفر", "verließ", "verlassen", "unregelmäßig"),
+      v("besichtigen", "يزور (معالم)", "سفر", "besichtigte", "besichtigt"),
+      v("sich erkundigen", "يستفسر", "تواصل", "erkundigte sich", "erkundigt", "reflexiv"),
+      v("übrig sein", "يكون متبقياً", "حياة", "war übrig", "übrig gewesen", "unregelmäßig"),
+      v("hoffen", "يأمل", "مشاعر", "hoffte", "gehofft"),
+      
+      w("das Zimmer", "الغرفة", "سفر"),
+      w("die Rezeption", "مكتب الاستقبال", "سفر"),
+      w("der Gast", "الضيف", "سفر"),
+      w("der Schlüssel", "المفتاح", "سفر"),
+      w("die Glastür", "الباب الزجاجي", "منزل"),
+      w("der Frühstücksraum", "غرفة الإفطار", "سفر"),
+      w("das Schwimmbad", "حمام السباحة", "رياضة"),
+      w("die Sauna", "الساونا", "رياضة"),
+      w("der Aufzug", "المصعد", "منزل"),
+      w("die Treppe", "الدرج", "منزل"),
+      w("der Gang", "الممر", "منزل"),
+      w("die Öffnungszeiten", "ساعات العمل", "عمل"),
+      
+      w("gegenüber", "مقابل", "حروف جر"),
+      w("vorbei", "ماراً بـ", "حروف جر"),
+      w("durch", "عبر / من خلال", "حروف جر"),
+      w("geradeaus", "مستقيم", "ظروف"),
+      w("links", "يساراً", "ظروف"),
+      w("rechts", "يميناً", "ظروف")
+    ]
+  }
 ];
 
 /* ========== الدوال المساعدة ========== */
