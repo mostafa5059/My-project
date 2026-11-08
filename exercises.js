@@ -173,18 +173,96 @@ const EXERCISES = [
   // ==========================================
   // الاختبار الشامل (Lektion 9 - 15)
   // ==========================================
+    // ==========================================
+  // الاختبار الشامل (Lektion 9 - 16)
+  // ==========================================
   {
-    id: "final-exam-9-15",
-    title: "Prüfung Lektion 9-15 (امتحان شامل)",
+    id: "final-exam-9-16",
+    title: "Prüfung Lektion 9-16 (امتحان شامل)",
     level: "A2.2",
     questions: [
+      // --- 1. اختيار من متعدد (قواعد) ---
       {
         type: "mcq",
-        question: "___ ich gestern im Kino war, habe ich einen tollen Film gesehen.",
-        options: ["Wenn", "Als", "Wann", "Dass"],
+        question: "Ich trinke morgens gern ___ Kaffee. (بدون أداة)",
+        options: ["kalt", "kalter", "kalte", "kalten"],
         correct: 1,
-        explanation: "نستخدم als لحدث واحد في الماضي (Lektion 13)."
+        explanation: "كلمة Kaffee مذكر (der Kaffee)، وفي حالة Akkusativ بدون أداة تأخذ الصفة النهاية -er (Lektion 9)."
       },
+      {
+        type: "mcq",
+        question: "Ich glaube, ___ er heute nicht kommt.",
+        options: ["weil", "dass", "deshalb", "wenn"],
+        correct: 1,
+        explanation: "نستخدم dass للتعبير عن الاعتقاد (أعتقد أن...)، والفعل يذهب للنهاية (Lektion 10)."
+      },
+      {
+        type: "mcq",
+        question: "___ es morgen regnet, bleiben wir zu Hause.",
+        options: ["Als", "Wenn", "Dass", "Weil"],
+        correct: 1,
+        explanation: "نستخدم wenn للتعبير عن شرط في المستقبل (إذا أمطرت غداً) (Lektion 12)."
+      },
+      {
+        type: "mcq",
+        question: "___ ich in Berlin war, habe ich viel Deutsch gesprochen.",
+        options: ["Als", "Wenn", "Wann", "Ob"],
+        correct: 0,
+        explanation: "نستخدم als لحدث واحد فقط في الماضي (عندما كنت في برلين) (Lektion 13)."
+      },
+      {
+        type: "mcq",
+        question: "Die Hausaufgaben ___ bis morgen gemacht werden.",
+        options: ["muss", "müssen", "müsst", "müssen werden"],
+        correct: 1,
+        explanation: "كلمة Hausaufgaben جمع، لذا نستخدم müssen مع صيغة الـ Passiv (gemacht werden) (Lektion 14)."
+      },
+      {
+        type: "mcq",
+        question: "Der Lehrer erklärt ___ (die Schüler) die Grammatik.",
+        options: ["die Schüler", "der Schüler", "den Schülern", "dem Schüler"],
+        correct: 2,
+        explanation: "الفعل erklären يأخذ Dativ للشخص. die Schüler جمع، وفي حالة Dativ تصبح den Schülern (Lektion 15)."
+      },
+      {
+        type: "mcq",
+        question: "Können Sie mir sagen, ___ das Restaurant noch geöffnet ist?",
+        options: ["ob", "dass", "wie", "wann"],
+        correct: 0,
+        explanation: "السؤال الأصلي هو سؤال نعم/لا (Ist das Restaurant...)، لذا نستخدم ob في السؤال غير المباشر (Lektion 16)."
+      },
+
+      // --- 2. اختيار من متعدد (مفردات) ---
+      {
+        type: "mcq",
+        question: "ما معنى كلمة 'der Lohn'؟",
+        options: ["البيئة", "الأجر / الراتب", "المشاهد", "الفاتورة"],
+        correct: 1,
+        explanation: "der Lohn = الأجر أو الراتب (Lektion 9)."
+      },
+      {
+        type: "mcq",
+        question: "ما معنى الفعل 'sich ärgern'؟",
+        options: ["يفرح", "يتذكر", "يغضب / ينزعج", "يعتذر"],
+        correct: 2,
+        explanation: "sich ärgern = يغضب أو ينزعج (Lektion 11)."
+      },
+      {
+        type: "mcq",
+        question: "ما معنى كلمة 'die Umwelt'؟",
+        options: ["القمامة", "البيئة", "التغذية", "الحلقة"],
+        correct: 1,
+        explanation: "die Umwelt = البيئة (Lektion 14)."
+      },
+      {
+        type: "mcq",
+        question: "ما معنى كلمة 'der Zuschauer'؟",
+        options: ["الشاهد", "الجاني", "المشاهد", "المحقق"],
+        correct: 2,
+        explanation: "der Zuschauer = المشاهد (Lektion 15)."
+      },
+
+      // --- 3. ترتيب الجمل (Order) ---
       {
         type: "order",
         question: "رتب الكلمات لتكوين جملة صحيحة (Lektion 10):",
@@ -192,6 +270,22 @@ const EXERCISES = [
         answer: "ich hoffe dass du mir hilfst",
         explanation: "بعد dass يذهب الفعل المُصرّف (hilfst) إلى النهاية."
       },
+      {
+        type: "order",
+        question: "رتب الكلمات (Lektion 14):",
+        words: ["die", "Batterien", "müssen", "gesammelt", "werden"],
+        answer: "die batterien müssen gesammelt werden",
+        explanation: "صيغة Passiv مع Modalverb: Modalverb + Partizip II + werden."
+      },
+      {
+        type: "order",
+        question: "رتب الكلمات (Lektion 16):",
+        words: ["ich", "würde", "gern", "wissen", "ob", "sie", "ein", "zimmer", "haben"],
+        answer: "ich würde gern wissen ob sie ein zimmer haben",
+        explanation: "سؤال غير مباشر: جملة رئيسية + ob + فاعل + ... + فعل في النهاية."
+      },
+
+      // --- 4. توصيل (Match) ---
       {
         type: "match",
         question: "صل الكلمة الألمانية بمعناها العربي (Lektion 9 - 12):",
@@ -203,41 +297,37 @@ const EXERCISES = [
         ]
       },
       {
-        type: "text",
-        question: "أكمل الفراغ (Lektion 15): Ich schenke _______ (أخي) ein Buch.",
-        answer: "meinem Bruder",
-        explanation: "الفعل schenken يأخذ مفعولين. الشخص (Bruder) يأخذ حالة Dativ -> meinem Bruder."
-      },
-      {
-        type: "mcq",
-        question: "Die Hausaufgaben ___ morgen gemacht werden.",
-        options: ["muss", "müssen", "müsst", "müssen werden"],
-        correct: 1,
-        explanation: "كلمة Hausaufgaben جمع، لذا نستخدم müssen (Lektion 14)."
-      },
-      {
-        type: "order",
-        question: "رتب الكلمات (Lektion 14):",
-        words: ["die", "Batterien", "müssen", "gesammelt", "werden"],
-        answer: "die Batterien müssen gesammelt werden",
-        explanation: "صيغة Passiv مع Modalverb: Modalverb + Partizip II + werden."
-      },
-      {
         type: "match",
-        question: "صل الكلمة بمعناها (Lektion 14 - 15):",
+        question: "صل الكلمة بمعناها (Lektion 13 - 16):",
         pairs: [
+          { left: "die Muttersprache", right: "اللغة الأم" },
           { left: "der Müll", right: "القمامة" },
-          { left: "die Umwelt", right: "البيئة" },
           { left: "der Zuschauer", right: "المشاهد" },
-          { left: "die Sendung", right: "البرنامج التلفزيوني" }
+          { left: "der Schlüssel", right: "المفتاح" }
         ]
       },
+
+      // --- 5. ملء الفراغ (Text) ---
       {
         type: "text",
         question: "أكمل (Lektion 11): Er freut _______ auf den Urlaub.",
         answer: "sich",
         explanation: "الفعل sich freuen مع الضمير (er) يأخذ الضمير الانعكاسي sich."
       },
+      {
+        type: "text",
+        question: "أكمل الفراغ (Lektion 15): Ich schenke _______ (أخي) ein Buch.",
+        answer: "meinem Bruder",
+        explanation: "الفعل schenken يأخذ مفعولين. الشخص (Bruder) يأخذ حالة Dativ -> meinem Bruder."
+      },
+      {
+        type: "text",
+        question: "أكمل (Lektion 16): Gehen Sie _______ die Glastür. (عبر)",
+        answer: "durch",
+        explanation: "حرف الجر durch يعني (عبر / من خلال) ويأخذ Akkusativ."
+      },
+
+      // --- 6. الإيميل (Email) ---
       {
         type: "email",
         question: "اكتب إيميل قصير (Lektion 10):",
@@ -246,11 +336,11 @@ const EXERCISES = [
         explanation: "استخدم تعبيرات مثل: Entschuldigung, das Essen ist kalt. Könnten Sie es warm machen? Und die Rechnung bitte."
       },
       {
-        type: "mcq",
-        question: "Ich trinke gern ___ Kaffee. (بدون أداة)",
-        options: ["kalt", "kalter", "kalte", "kalten"],
-        correct: 1,
-        explanation: "كلمة Kaffee مذكر، وفي حالة Akkusativ بدون أداة نضيف -er (Lektion 9)."
+        type: "email",
+        question: "أكمل حجز الفندق (Lektion 16):",
+        prompt: "أكمل الفراغ بالكلمة المناسبة: Ich möchte ein _______ für zwei Nächte buchen.",
+        answer: "Zimmer",
+        explanation: "نحجز غرفة (Zimmer) في الفندق. Ich möchte ein Zimmer buchen."
       }
     ]
   }
