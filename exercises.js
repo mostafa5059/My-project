@@ -174,11 +174,11 @@ const EXERCISES = [
   // الاختبار الشامل (Lektion 9 - 15)
   // ==========================================
     // ==========================================
-  // الاختبار الشامل (Lektion 9 - 16)
+  // الاختبار الشامل (Lektion 9 - 15)
   // ==========================================
   {
-    id: "final-exam-9-16",
-    title: "Prüfung Lektion 9-16 (امتحان شامل)",
+    id: "final-exam-9-15",
+    title: "Prüfung Lektion 9-15 (امتحان شامل)",
     level: "A2.2",
     questions: [
       // --- 1. اختيار من متعدد (قواعد) ---
@@ -223,13 +223,6 @@ const EXERCISES = [
         options: ["die Schüler", "der Schüler", "den Schülern", "dem Schüler"],
         correct: 2,
         explanation: "الفعل erklären يأخذ Dativ للشخص. die Schüler جمع، وفي حالة Dativ تصبح den Schülern (Lektion 15)."
-      },
-      {
-        type: "mcq",
-        question: "Können Sie mir sagen, ___ das Restaurant noch geöffnet ist?",
-        options: ["ob", "dass", "wie", "wann"],
-        correct: 0,
-        explanation: "السؤال الأصلي هو سؤال نعم/لا (Ist das Restaurant...)، لذا نستخدم ob في السؤال غير المباشر (Lektion 16)."
       },
 
       // --- 2. اختيار من متعدد (مفردات) ---
@@ -279,10 +272,10 @@ const EXERCISES = [
       },
       {
         type: "order",
-        question: "رتب الكلمات (Lektion 16):",
-        words: ["ich", "würde", "gern", "wissen", "ob", "sie", "ein", "zimmer", "haben"],
-        answer: "ich würde gern wissen ob sie ein zimmer haben",
-        explanation: "سؤال غير مباشر: جملة رئيسية + ob + فاعل + ... + فعل في النهاية."
+        question: "رتب الكلمات (Lektion 15):",
+        words: ["er", "zeigt", "uns", "die", "fotos"],
+        answer: "er zeigt uns die fotos",
+        explanation: "الأفعال التي تأخذ مفعولين: الشخص (uns - Dativ) يأتي قبل الشيء (die Fotos - Akkusativ)."
       },
 
       // --- 4. توصيل (Match) ---
@@ -298,12 +291,12 @@ const EXERCISES = [
       },
       {
         type: "match",
-        question: "صل الكلمة بمعناها (Lektion 13 - 16):",
+        question: "صل الكلمة بمعناها (Lektion 13 - 15):",
         pairs: [
           { left: "die Muttersprache", right: "اللغة الأم" },
           { left: "der Müll", right: "القمامة" },
           { left: "der Zuschauer", right: "المشاهد" },
-          { left: "der Schlüssel", right: "المفتاح" }
+          { left: "die Sendung", right: "البرنامج التلفزيوني" }
         ]
       },
 
@@ -320,12 +313,6 @@ const EXERCISES = [
         answer: "meinem Bruder",
         explanation: "الفعل schenken يأخذ مفعولين. الشخص (Bruder) يأخذ حالة Dativ -> meinem Bruder."
       },
-      {
-        type: "text",
-        question: "أكمل (Lektion 16): Gehen Sie _______ die Glastür. (عبر)",
-        answer: "durch",
-        explanation: "حرف الجر durch يعني (عبر / من خلال) ويأخذ Akkusativ."
-      },
 
       // --- 6. الإيميل (Email) ---
       {
@@ -334,13 +321,6 @@ const EXERCISES = [
         prompt: "أنت في مطعم والطعام بارد جداً. اكتب شكوى قصيرة للنادل واطلب إعادة تسخين الطعام، ثم اطلب الفاتورة.",
         keywords: ["kalt", "Entschuldigung", "Rechnung", "warm machen", "bitte"],
         explanation: "استخدم تعبيرات مثل: Entschuldigung, das Essen ist kalt. Könnten Sie es warm machen? Und die Rechnung bitte."
-      },
-      {
-        type: "email",
-        question: "أكمل حجز الفندق (Lektion 16):",
-        prompt: "أكمل الفراغ بالكلمة المناسبة: Ich möchte ein _______ für zwei Nächte buchen.",
-        answer: "Zimmer",
-        explanation: "نحجز غرفة (Zimmer) في الفندق. Ich möchte ein Zimmer buchen."
       }
     ]
   }
