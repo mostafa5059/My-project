@@ -1757,7 +1757,7 @@ function openLesson(id) {
       : rawText;
     lessonTextHTML = `
       <div class="section-title" style="margin-top:30px;font-size:22px;">📖 قطعة الدرس (Lesetext)</div>
-      <div class="lesson-text-box" style="margin-top:15px;font-size:18px;line-height:2;direction:ltr;text-align:left;padding:25px;background:var(--card-bg);border-radius:16px;border-right:6px solid var(--accent);">
+      <div class="lesson-text-box" style="margin-top:15px;font-size:18px;line-height:2;direction:ltr;text-align:left;padding:25px;background:var(--card-bg);border-radius:16px;border-right:6px solid var(--accent);word-break:break-word;overflow-wrap:anywhere;box-sizing:border-box;max-width:100%;">
         ${clickable}
       </div>`;
   }
