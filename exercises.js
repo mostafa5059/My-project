@@ -169,7 +169,8 @@ const EXERCISES = [
     answer: "Grüßen",
     explanation: "الخاتمة الرسمية هي Mit freundlichen Grüßen (مع أطيب التحيات)."
   },
-    // ==========================================
+
+  // ==========================================
   // الاختبار الشامل (Lektion 9 - 15)
   // ==========================================
   {
@@ -177,7 +178,6 @@ const EXERCISES = [
     title: "Prüfung Lektion 9-15 (امتحان شامل)",
     level: "A2.2",
     questions: [
-      // 1. اختيار من متعدد (MCQ) - قواعد
       {
         type: "mcq",
         question: "___ ich gestern im Kino war, habe ich einen tollen Film gesehen.",
@@ -185,8 +185,6 @@ const EXERCISES = [
         correct: 1,
         explanation: "نستخدم als لحدث واحد في الماضي (Lektion 13)."
       },
-      
-      // 2. ترتيب الجمل (Order) - القواعد (dass)
       {
         type: "order",
         question: "رتب الكلمات لتكوين جملة صحيحة (Lektion 10):",
@@ -194,8 +192,6 @@ const EXERCISES = [
         answer: "ich hoffe dass du mir hilfst",
         explanation: "بعد dass يذهب الفعل المُصرّف (hilfst) إلى النهاية."
       },
-
-      // 3. توصيل (Match) - المفردات (Lektion 9 & 12)
       {
         type: "match",
         question: "صل الكلمة الألمانية بمعناها العربي (Lektion 9 - 12):",
@@ -206,16 +202,12 @@ const EXERCISES = [
           { left: "die Rechnung", right: "الفاتورة" }
         ]
       },
-
-      // 4. ملء الفراغ (Text) - القواعد (Dativ & Akkusativ)
       {
         type: "text",
         question: "أكمل الفراغ (Lektion 15): Ich schenke _______ (أخي) ein Buch.",
         answer: "meinem Bruder",
         explanation: "الفعل schenken يأخذ مفعولين. الشخص (Bruder) يأخذ حالة Dativ -> meinem Bruder."
       },
-
-      // 5. اختيار من متعدد (MCQ) - القواعد (Passiv)
       {
         type: "mcq",
         question: "Die Hausaufgaben ___ morgen gemacht werden.",
@@ -223,8 +215,6 @@ const EXERCISES = [
         correct: 1,
         explanation: "كلمة Hausaufgaben جمع، لذا نستخدم müssen (Lektion 14)."
       },
-
-      // 6. ترتيب الجمل (Order) - القواعد (Passiv & Modalverben)
       {
         type: "order",
         question: "رتب الكلمات (Lektion 14):",
@@ -232,8 +222,6 @@ const EXERCISES = [
         answer: "die Batterien müssen gesammelt werden",
         explanation: "صيغة Passiv مع Modalverb: Modalverb + Partizip II + werden."
       },
-
-      // 7. توصيل (Match) - المفردات (Lektion 14 & 15)
       {
         type: "match",
         question: "صل الكلمة بمعناها (Lektion 14 - 15):",
@@ -244,16 +232,12 @@ const EXERCISES = [
           { left: "die Sendung", right: "البرنامج التلفزيوني" }
         ]
       },
-
-      // 8. ملء الفراغ (Text) - القواعد (Reflexive Verben)
       {
         type: "text",
         question: "أكمل (Lektion 11): Er freut _______ auf den Urlaub.",
         answer: "sich",
         explanation: "الفعل sich freuen مع الضمير (er) يأخذ الضمير الانعكاسي sich."
       },
-
-      // 9. إيميل (Email) - الكتابة (Lektion 10 أو 16)
       {
         type: "email",
         question: "اكتب إيميل قصير (Lektion 10):",
@@ -261,8 +245,6 @@ const EXERCISES = [
         keywords: ["kalt", "Entschuldigung", "Rechnung", "warm machen", "bitte"],
         explanation: "استخدم تعبيرات مثل: Entschuldigung, das Essen ist kalt. Könnten Sie es warm machen? Und die Rechnung bitte."
       },
-      
-      // 10. اختيار من متعدد (MCQ) - القواعد (Adjektive)
       {
         type: "mcq",
         question: "Ich trinke gern ___ Kaffee. (بدون أداة)",
@@ -274,7 +256,6 @@ const EXERCISES = [
   }
 ];
 
-
 // ==========================================
 // 2. دوال التشغيل (Logic)
 // ==========================================
@@ -282,22 +263,62 @@ let currentExercise = 0;
 let exerciseAnswered = false;
 let exerciseScore = 0;
 
+// متغير جديد: يحمل الأسئلة الحالية (سواء العادية أو الاختبار الشامل)
+let currentQuestions = []; 
+
 // متغيرات لتمارين الترتيب والتوصيل
 let selectedWords = [];
 let matchSelectedLeft = null;
 let matchSelectedRight = null;
 let matchPairsMatched = 0;
 
+// 1. دالة بدء التمارين العادية
 function startExercises() {
+  // فلترة الأسئلة لاستبعاد الاختبار الشامل (الذي يحتوي على questions)
+  currentQuestions = EXERCISES.filter(ex => !ex.questions);
   currentExercise = 0;
   exerciseScore = 0;
   exerciseAnswered = false;
   loadExercise();
 }
 
+// 2. دالة بدء الاختبار الشامل (التي سيفعلها الزر)
+function startFinalExam() {
+  const exam = EXERCISES.find(ex => ex.id === "final-exam-9-15");
+  if (!exam) return alert('لم يتم العثور على بيانات الاختبار الشامل!');
+
+  // إعادة تنسيق الأسئلة لتتوافق مع محرك التمارين
+  currentQuestions = exam.questions.map(q => {
+    let item = { ...q };
+    
+    if (item.type === 'mcq' || !item.type) {
+      item.answer = item.correct; 
+    } 
+    else if (item.type === 'order') {
+      item.correct = item.answer; 
+    } 
+    else if (item.type === 'match' && item.pairs) {
+      item.pairs = item.pairs.map(p => ({ de: p.left, ar: p.right })); 
+    }
+    else if (item.type === 'email') {
+      item.type = 'text';
+      item.text = "Entschuldigung, das Essen ist kalt. Die _______ bitte!";
+      item.answer = "Rechnung";
+    }
+    return item;
+  });
+
+  currentExercise = 0;
+  exerciseScore = 0;
+  exerciseAnswered = false;
+  loadExercise();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// 3. دالة تحميل السؤال
 function loadExercise() {
-  const ex = EXERCISES[currentExercise];
-  document.getElementById("exerciseProgress").innerText = 'السؤال ' + (currentExercise + 1) + ' من ' + EXERCISES.length + ' (النتيجة: ' + exerciseScore + ')';
+  const ex = currentQuestions[currentExercise];
+  document.getElementById("exerciseProgress").innerText = 'السؤال ' + (currentExercise + 1) + ' من ' + currentQuestions.length + ' (النتيجة: ' + exerciseScore + ')';
   document.getElementById("exerciseQuestion").innerText = ex.question;
   document.getElementById("exerciseQuestionAr").innerText = ex.questionAr || '';
   
@@ -307,7 +328,7 @@ function loadExercise() {
   document.getElementById("exerciseNextBtn").style.display = 'none';
   exerciseAnswered = false;
 
-  // 1. تمارين الاختيار من متعدد (MCQ) - الافتراضي
+  // 1. تمارين الاختيار من متعدد (MCQ)
   if (!ex.type || ex.type === 'mcq') {
     ex.options.forEach((opt, idx) => {
       const btn = document.createElement('button');
@@ -434,9 +455,7 @@ function loadExercise() {
     checkBtn.onclick = () => checkTextExercise(ex.answer);
     
     input.addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') {
-        checkTextExercise(ex.answer);
-      }
+      if (e.key === 'Enter') checkTextExercise(ex.answer);
     });
     
     inputWrapper.appendChild(input);
@@ -455,27 +474,22 @@ function checkTextExercise(correctAnswer) {
   const input = document.getElementById('textInputAnswer');
   const userAnswer = input.value.trim().toLowerCase();
   const cleanCorrect = correctAnswer.trim().toLowerCase();
-  
   const feedback = document.getElementById("exerciseFeedback");
   
   if (userAnswer === cleanCorrect) {
-    input.style.borderColor = '#16a34a';
-    input.style.background = '#dcfce7';
-    input.disabled = true;
+    input.style.borderColor = '#16a34a'; input.style.background = '#dcfce7'; input.disabled = true;
     exerciseScore++;
-    feedback.innerHTML = '✅ <strong>إجابة صحيحة!</strong><br><span style="font-size:14px;">' + EXERCISES[currentExercise].explanation + '</span>';
+    feedback.innerHTML = '✅ <strong>إجابة صحيحة!</strong><br><span style="font-size:14px;">' + currentQuestions[currentExercise].explanation + '</span>';
     feedback.style.background = '#f0fdf4'; feedback.style.borderRight = '4px solid #16a34a'; feedback.style.color = '#166534';
   } else {
-    input.style.borderColor = '#dc2626';
-    input.style.background = '#fee2e2';
-    input.disabled = true;
-    feedback.innerHTML = '❌ <strong>إجابة خاطئة.</strong> الإجابة الصحيحة: <strong style="direction:ltr; display:inline-block;">' + correctAnswer + '</strong><br><span style="font-size:14px;">' + EXERCISES[currentExercise].explanation + '</span>';
+    input.style.borderColor = '#dc2626'; input.style.background = '#fee2e2'; input.disabled = true;
+    feedback.innerHTML = '❌ <strong>إجابة خاطئة.</strong> الإجابة الصحيحة: <strong style="direction:ltr; display:inline-block;">' + correctAnswer + '</strong><br><span style="font-size:14px;">' + currentQuestions[currentExercise].explanation + '</span>';
     feedback.style.background = '#fef2f2'; feedback.style.borderRight = '4px solid #dc2626'; feedback.style.color = '#991b1b';
   }
   
   feedback.style.display = 'block';
   document.getElementById("exerciseNextBtn").style.display = 'inline-block';
-  document.getElementById("exerciseNextBtn").innerText = (currentExercise === EXERCISES.length - 1) ? 'إعادة من البداية 🔄' : 'السؤال التالي ➡️';
+  document.getElementById("exerciseNextBtn").innerText = (currentExercise === currentQuestions.length - 1) ? 'إعادة من البداية 🔄' : 'السؤال التالي ➡️';
 }
 
 // التحقق من ترتيب الجملة
@@ -495,7 +509,7 @@ function checkOrderExercise(correctSentence) {
   }
   feedback.style.display = 'block';
   document.getElementById("exerciseNextBtn").style.display = 'inline-block';
-  document.getElementById("exerciseNextBtn").innerText = (currentExercise === EXERCISES.length - 1) ? 'إعادة من البداية 🔄' : 'السؤال التالي ➡️';
+  document.getElementById("exerciseNextBtn").innerText = (currentExercise === currentQuestions.length - 1) ? 'إعادة من البداية 🔄' : 'السؤال التالي ➡️';
 }
 
 // التعامل مع النقر في تمارين التوصيل
@@ -517,41 +531,30 @@ function handleMatchClick(btn, side) {
     const rightId = matchSelectedRight.dataset.id;
     
     if (leftId === rightId) {
-      matchSelectedLeft.style.background = '#dcfce7';
-      matchSelectedLeft.style.borderColor = '#16a34a';
-      matchSelectedRight.style.background = '#dcfce7';
-      matchSelectedRight.style.borderColor = '#16a34a';
-      matchSelectedLeft.disabled = true;
-      matchSelectedRight.disabled = true;
+      matchSelectedLeft.style.background = '#dcfce7'; matchSelectedLeft.style.borderColor = '#16a34a'; matchSelectedLeft.disabled = true;
+      matchSelectedRight.style.background = '#dcfce7'; matchSelectedRight.style.borderColor = '#16a34a'; matchSelectedRight.disabled = true;
       matchPairsMatched++;
       
-      if (matchPairsMatched === (EXERCISES[currentExercise].pairs.length)) {
+      if (matchPairsMatched === currentQuestions[currentExercise].pairs.length) {
         exerciseAnswered = true;
         exerciseScore++;
         const feedback = document.getElementById("exerciseFeedback");
         feedback.innerHTML = '✅ <strong>ممتاز! لقد وصلت جميع الكلمات بشكل صحيح.</strong>';
-        feedback.style.background = '#f0fdf4'; feedback.style.borderRight = '4px solid #16a34a'; feedback.style.color = '#166534';
-        feedback.style.display = 'block';
+        feedback.style.background = '#f0fdf4'; feedback.style.borderRight = '4px solid #16a34a'; feedback.style.color = '#166534'; feedback.style.display = 'block';
         document.getElementById("exerciseNextBtn").style.display = 'inline-block';
-        document.getElementById("exerciseNextBtn").innerText = (currentExercise === EXERCISES.length - 1) ? 'إعادة من البداية 🔄' : 'السؤال التالي ➡️';
+        document.getElementById("exerciseNextBtn").innerText = (currentExercise === currentQuestions.length - 1) ? 'إعادة من البداية 🔄' : 'السؤال التالي ➡️';
       }
     } else {
-      matchSelectedLeft.style.background = '#fee2e2';
-      matchSelectedLeft.style.borderColor = '#dc2626';
-      matchSelectedRight.style.background = '#fee2e2';
-      matchSelectedRight.style.borderColor = '#dc2626';
+      matchSelectedLeft.style.background = '#fee2e2'; matchSelectedLeft.style.borderColor = '#dc2626';
+      matchSelectedRight.style.background = '#fee2e2'; matchSelectedRight.style.borderColor = '#dc2626';
       
-      const leftTemp = matchSelectedLeft;
-      const rightTemp = matchSelectedRight;
+      const leftTemp = matchSelectedLeft; const rightTemp = matchSelectedRight;
       setTimeout(() => {
-        leftTemp.style.background = '#fff';
-        leftTemp.style.borderColor = '#cbd5e1';
-        rightTemp.style.background = '#fff';
-        rightTemp.style.borderColor = '#cbd5e1';
+        leftTemp.style.background = '#fff'; leftTemp.style.borderColor = '#cbd5e1';
+        rightTemp.style.background = '#fff'; rightTemp.style.borderColor = '#cbd5e1';
       }, 800);
     }
-    matchSelectedLeft = null;
-    matchSelectedRight = null;
+    matchSelectedLeft = null; matchSelectedRight = null;
   }
 }
 
@@ -561,7 +564,7 @@ function checkExercise(selectedIdx, btnEl) {
   exerciseAnswered = true;
   if (typeof trackActivity === 'function') trackActivity('exercises', 1);
   
-  const ex = EXERCISES[currentExercise];
+  const ex = currentQuestions[currentExercise];
   const allBtns = document.getElementById("exerciseOptions").querySelectorAll('button');
   const feedback = document.getElementById("exerciseFeedback");
   
@@ -581,11 +584,11 @@ function checkExercise(selectedIdx, btnEl) {
   
   feedback.style.display = 'block';
   document.getElementById("exerciseNextBtn").style.display = 'inline-block';
-  document.getElementById("exerciseNextBtn").innerText = (currentExercise === EXERCISES.length - 1) ? 'إعادة من البداية 🔄' : 'السؤال التالي ➡️';
+  document.getElementById("exerciseNextBtn").innerText = (currentExercise === currentQuestions.length - 1) ? 'إعادة من البداية 🔄' : 'السؤال التالي ➡️';
 }
 
 function nextExercise() {
-  currentExercise = (currentExercise + 1) % EXERCISES.length;
+  currentExercise = (currentExercise + 1) % currentQuestions.length;
   if (currentExercise === 0) exerciseScore = 0;
   loadExercise();
 }
