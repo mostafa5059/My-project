@@ -168,6 +168,109 @@ const EXERCISES = [
     text: "Sehr geehrter Herr Schmidt,<br><br>anbei sende ich Ihnen den Bericht.<br><br>Mit freundlichen ___<br>Anna",
     answer: "Grüßen",
     explanation: "الخاتمة الرسمية هي Mit freundlichen Grüßen (مع أطيب التحيات)."
+  },
+    // ==========================================
+  // الاختبار الشامل (Lektion 9 - 15)
+  // ==========================================
+  {
+    id: "final-exam-9-15",
+    title: "Prüfung Lektion 9-15 (امتحان شامل)",
+    level: "A2.2",
+    questions: [
+      // 1. اختيار من متعدد (MCQ) - قواعد
+      {
+        type: "mcq",
+        question: "___ ich gestern im Kino war, habe ich einen tollen Film gesehen.",
+        options: ["Wenn", "Als", "Wann", "Dass"],
+        correct: 1,
+        explanation: "نستخدم als لحدث واحد في الماضي (Lektion 13)."
+      },
+      
+      // 2. ترتيب الجمل (Order) - القواعد (dass)
+      {
+        type: "order",
+        question: "رتب الكلمات لتكوين جملة صحيحة (Lektion 10):",
+        words: ["ich", "hoffe", "dass", "du", "mir", "hilfst"],
+        answer: "ich hoffe dass du mir hilfst",
+        explanation: "بعد dass يذهب الفعل المُصرّف (hilfst) إلى النهاية."
+      },
+
+      // 3. توصيل (Match) - المفردات (Lektion 9 & 12)
+      {
+        type: "match",
+        question: "صل الكلمة الألمانية بمعناها العربي (Lektion 9 - 12):",
+        pairs: [
+          { left: "der Lohn", right: "الأجر / الراتب" },
+          { left: "die Ernährung", right: "التغذية" },
+          { left: "sich ärgern", right: "يغضب / ينزعج" },
+          { left: "die Rechnung", right: "الفاتورة" }
+        ]
+      },
+
+      // 4. ملء الفراغ (Text) - القواعد (Dativ & Akkusativ)
+      {
+        type: "text",
+        question: "أكمل الفراغ (Lektion 15): Ich schenke _______ (أخي) ein Buch.",
+        answer: "meinem Bruder",
+        explanation: "الفعل schenken يأخذ مفعولين. الشخص (Bruder) يأخذ حالة Dativ -> meinem Bruder."
+      },
+
+      // 5. اختيار من متعدد (MCQ) - القواعد (Passiv)
+      {
+        type: "mcq",
+        question: "Die Hausaufgaben ___ morgen gemacht werden.",
+        options: ["muss", "müssen", "müsst", "müssen werden"],
+        correct: 1,
+        explanation: "كلمة Hausaufgaben جمع، لذا نستخدم müssen (Lektion 14)."
+      },
+
+      // 6. ترتيب الجمل (Order) - القواعد (Passiv & Modalverben)
+      {
+        type: "order",
+        question: "رتب الكلمات (Lektion 14):",
+        words: ["die", "Batterien", "müssen", "gesammelt", "werden"],
+        answer: "die Batterien müssen gesammelt werden",
+        explanation: "صيغة Passiv مع Modalverb: Modalverb + Partizip II + werden."
+      },
+
+      // 7. توصيل (Match) - المفردات (Lektion 14 & 15)
+      {
+        type: "match",
+        question: "صل الكلمة بمعناها (Lektion 14 - 15):",
+        pairs: [
+          { left: "der Müll", right: "القمامة" },
+          { left: "die Umwelt", right: "البيئة" },
+          { left: "der Zuschauer", right: "المشاهد" },
+          { left: "die Sendung", right: "البرنامج التلفزيوني" }
+        ]
+      },
+
+      // 8. ملء الفراغ (Text) - القواعد (Reflexive Verben)
+      {
+        type: "text",
+        question: "أكمل (Lektion 11): Er freut _______ auf den Urlaub.",
+        answer: "sich",
+        explanation: "الفعل sich freuen مع الضمير (er) يأخذ الضمير الانعكاسي sich."
+      },
+
+      // 9. إيميل (Email) - الكتابة (Lektion 10 أو 16)
+      {
+        type: "email",
+        question: "اكتب إيميل قصير (Lektion 10):",
+        prompt: "أنت في مطعم والطعام بارد جداً. اكتب شكوى قصيرة للنادل واطلب إعادة تسخين الطعام، ثم اطلب الفاتورة.",
+        keywords: ["kalt", "Entschuldigung", "Rechnung", "warm machen", "bitte"],
+        explanation: "استخدم تعبيرات مثل: Entschuldigung, das Essen ist kalt. Könnten Sie es warm machen? Und die Rechnung bitte."
+      },
+      
+      // 10. اختيار من متعدد (MCQ) - القواعد (Adjektive)
+      {
+        type: "mcq",
+        question: "Ich trinke gern ___ Kaffee. (بدون أداة)",
+        options: ["kalt", "kalter", "kalte", "kalten"],
+        correct: 1,
+        explanation: "كلمة Kaffee مذكر، وفي حالة Akkusativ بدون أداة نضيف -er (Lektion 9)."
+      }
+    ]
   }
 ];
 
