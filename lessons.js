@@ -2,7 +2,6 @@
    lessons.js — دروس Menschen A2.1 & A2.2 (النسخة الشاملة والمصححة)
    ============================================================ */
 
-/* ========== محرك توليد البيانات (لتقصير الكود) ========== */
 function w(word, ar, topic) {
   let plural = "—", akk = word, dat = word;
   if (word.startsWith("der ")) {
@@ -1579,10 +1578,8 @@ function openLesson(id) {
   currentLessonId = id;
   history.pushState({ lessonId: id }, "", "#lesson-" + id);
 
-  // حذفنا lesson.words القديمة لعدم تكرار الكلمات بدون ترجمة
   const allWords = [...(lesson.newWords || [])];
   
-  // بناء بطاقات المفردات (بدل الجدول) — يحل مشكلة الهاتف
   const wordCards = allWords.map(w => {
     if (!w) return '';
     const wordText  = typeof w === 'string' ? w : (w.de || '');
@@ -1599,7 +1596,7 @@ function openLesson(id) {
     if (plural) extra = `الجمع: ${plural}`;
     else if (prät) extra = `الماضي: ${prät} • التام: ${perf}`;
 
-        return `
+    return `
       <div class="vocab-card" dir="ltr" onclick="openWordDetails('${safe}')">
         <div class="vocab-card-head">
           <span class="vocab-card-de">${wordText}</span>
@@ -1614,8 +1611,6 @@ function openLesson(id) {
       </div>`;
   }).join('');
 
-  // بناء القطعة النصية + ربط الكلمات
-   // بناء القطعة النصية + ربط الكلمات
   let lessonTextHTML = '';
   if (lesson.text || lesson.lesetext) {
     const rawText = lesson.text || lesson.lesetext;
@@ -1630,7 +1625,6 @@ function openLesson(id) {
       </div>`;
   }
 
-  // بناء القواعد (يدعم النظامين)
   let grammarHTML = '';
   if (lesson.grammar) {
     const isObj = typeof lesson.grammar === 'object';
@@ -1645,8 +1639,6 @@ function openLesson(id) {
       </div>`;
   }
 
-  // بناء التمارين
-    // بناء التمارين
   const exercisesHTML = (lesson.exercises && lesson.exercises.length) ? `
     <div class="section-title" style="margin-top:30px;font-size:22px;">📝 التمارين (${lesson.exercises.length})</div>
     <div style="display:flex;flex-direction:column;gap:15px;margin-top:15px;">
@@ -1669,14 +1661,7 @@ function openLesson(id) {
       }).join('')}
     </div>
   ` : '';
-          ${ex.explanation ? `<div class="lesson-feedback" style="display:none; margin-top:15px; padding:12px; background:#fffbeb; border-right:4px solid #f59e0b; border-radius:8px; font-size:14px; color:#92400e; font-weight:600;">💡 ${ex.explanation}</div>` : ''}
-        </div>
-        `;
-      }).join('')}
-    </div>
-  ` : '';
 
-  // التجميع النهائي — لاحظ إدراج lessonTextHTML الآن!
   const container = document.getElementById('singleLessonContent');
   if (container) {
     container.innerHTML = `
@@ -1706,32 +1691,27 @@ function openLesson(id) {
   }
 }
 
-// دالة التحقق من إجابات تمارين الدروس (النسخة الذكية الوحيدة)
 function checkLessonExercise(btn, selected, correct) {
-  // منع الضغط المتكرر
   const parent = btn.closest('.lesson-exercise-box');
   if (!parent || parent.dataset.answered === 'true') return;
   parent.dataset.answered = 'true';
 
   const buttons = parent.querySelectorAll('button');
   
-  // تعطيل جميع الأزرار
   buttons.forEach(b => {
     b.disabled = true;
     b.style.cursor = 'not-allowed';
   });
 
-  // تلوين الإجابة (تحويل القيم إلى أرقام لضمان المقارنة الصحيحة)
   if (Number(selected) === Number(correct)) {
-    btn.style.background = '#10b981'; // أخضر
+    btn.style.background = '#10b981';
     btn.style.color = '#fff';
     btn.style.borderColor = '#10b981';
   } else {
-    btn.style.background = '#ef4444'; // أحمر
+    btn.style.background = '#ef4444';
     btn.style.color = '#fff';
     btn.style.borderColor = '#ef4444';
     
-    // إظهار الإجابة الصحيحة باللون الأخضر
     if (buttons[correct]) {
       buttons[correct].style.background = '#10b981';
       buttons[correct].style.color = '#fff';
@@ -1739,27 +1719,21 @@ function checkLessonExercise(btn, selected, correct) {
     }
   }
   
-  // إظهار صندوق الشرح (Explanation) إذا كان موجوداً
   const feedback = parent.querySelector('.lesson-feedback');
   if (feedback) {
     feedback.style.display = 'block';
   }
 }
 
-// دالة إغلاق الدرس المفرد والعودة للقائمة (مرة واحدة فقط)
 function closeSingleLesson() {
   document.getElementById('singleLessonContent').classList.add('hidden');
   document.getElementById('lessonsContent').classList.remove('hidden');
   document.getElementById('lessonSubTabs').classList.remove('hidden');
   
-  // مسح الهاش من الرابط
   history.pushState({}, "", window.location.pathname + window.location.search);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-/* ================================================================
-   ✅ جعل كلمات القطعة النصية قابلة للنقر
-   ================================================================ */
 function makeWordsClickable(htmlText, wordList) {
   if (!htmlText || !wordList || !wordList.length) return htmlText;
 
