@@ -1599,29 +1599,33 @@ function openLesson(id) {
     if (plural) extra = `الجمع: ${plural}`;
     else if (prät) extra = `الماضي: ${prät} • التام: ${perf}`;
 
-    return `
-      <div class="vocab-card" onclick="openWordDetails('${safe}')">
+        return `
+      <div class="vocab-card" dir="ltr" onclick="openWordDetails('${safe}')">
         <div class="vocab-card-head">
           <span class="vocab-card-de">${wordText}</span>
           <button class="audio-btn" style="position:static;width:30px;height:30px;font-size:14px;" 
                   onclick="event.stopPropagation(); speak('${cleanSafe}')">🔊</button>
         </div>
-        ${translation ? `<div class="vocab-card-ar">${translation}</div>` : ''}
-        ${extra ? `<div class="vocab-card-extra">${extra}</div>` : ''}
-        ${type ? `<span class="vocab-card-type">${type}</span>` : ''}
+        <div dir="rtl">
+          ${translation ? `<div class="vocab-card-ar">${translation}</div>` : ''}
+          ${extra ? `<div class="vocab-card-extra">${extra}</div>` : ''}
+          ${type ? `<span class="vocab-card-type">${type}</span>` : ''}
+        </div>
       </div>`;
   }).join('');
 
   // بناء القطعة النصية + ربط الكلمات
+   // بناء القطعة النصية + ربط الكلمات
   let lessonTextHTML = '';
   if (lesson.text || lesson.lesetext) {
     const rawText = lesson.text || lesson.lesetext;
     const clickable = (typeof makeWordsClickable === 'function')
       ? makeWordsClickable(rawText, lesson.newWords || [])
       : rawText;
+    
     lessonTextHTML = `
       <div class="section-title" style="margin-top:30px;font-size:22px;">📖 قطعة الدرس (Lesetext)</div>
-      <div class="lesson-text-box" style="margin-top:15px;font-size:18px;line-height:2;direction:ltr;text-align:left;padding:25px;background:var(--card-bg);border-radius:16px;border-right:6px solid var(--accent);word-break:break-word;overflow-wrap:anywhere;box-sizing:border-box;max-width:100%;">
+      <div class="lesson-text-box" dir="ltr" style="margin-top:15px;font-size:18px;line-height:2;text-align:left;padding:25px;background:var(--card-bg);border-radius:16px;border-right:6px solid var(--accent);word-break:break-word;overflow-wrap:anywhere;box-sizing:border-box;max-width:100%;">
         ${clickable}
       </div>`;
   }
@@ -1642,6 +1646,7 @@ function openLesson(id) {
   }
 
   // بناء التمارين
+    // بناء التمارين
   const exercisesHTML = (lesson.exercises && lesson.exercises.length) ? `
     <div class="section-title" style="margin-top:30px;font-size:22px;">📝 التمارين (${lesson.exercises.length})</div>
     <div style="display:flex;flex-direction:column;gap:15px;margin-top:15px;">
@@ -1655,9 +1660,15 @@ function openLesson(id) {
           <p style="font-weight:700;margin-bottom:10px;font-size:16px;">${i+1}. ${qText}</p>
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
             ${opts.map((opt, oi) => `
-              <button class="filter-btn" onclick="checkLessonExercise(this, ${oi}, ${correctIdx})" style="margin:0;">${opt}</button>
+              <button class="filter-btn" dir="ltr" onclick="checkLessonExercise(this, ${oi}, ${correctIdx})" style="margin:0;">${opt}</button>
             `).join('')}
           </div>
+          ${ex.explanation ? `<div class="lesson-feedback" style="display:none; margin-top:15px; padding:12px; background:#fffbeb; border-right:4px solid #f59e0b; border-radius:8px; font-size:14px; color:#92400e; font-weight:600;">💡 ${ex.explanation}</div>` : ''}
+        </div>
+        `;
+      }).join('')}
+    </div>
+  ` : '';
           ${ex.explanation ? `<div class="lesson-feedback" style="display:none; margin-top:15px; padding:12px; background:#fffbeb; border-right:4px solid #f59e0b; border-radius:8px; font-size:14px; color:#92400e; font-weight:600;">💡 ${ex.explanation}</div>` : ''}
         </div>
         `;
