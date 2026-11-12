@@ -32,13 +32,13 @@
   .card:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(79,70,229,.15)}
   .card.noun{border-right-color:var(--accent)}
   .card.adj{border-right-color:#f59e0b}
-  .card .de{font-weight:800;font-size:22px;color:var(--primary-dark);margin-bottom:6px;direction:ltr;text-align:right;padding-left:40px}
+   .card .de{font-weight:800;font-size:22px;color:var(--primary-dark);margin-bottom:6px;direction:ltr;text-align:left;padding-right:80px;padding-left:0;}
   .card .ar{font-size:15px;color:var(--text-muted);font-weight:600}
   .card.noun .de{color:#047857}
   .card.adj .de{color:#b45309}
-  .audio-btn{position:absolute;top:16px;left:16px;background:#f1f5f9;border:none;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;color:var(--primary);transition:var(--transition)}
+    .audio-btn{position:absolute;top:16px;right:16px;left:auto;background:#f1f5f9;border:none;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;color:var(--primary);transition:var(--transition)}
   .audio-btn:hover{background:#e0e7ff}
-  .fav-btn{position:absolute;top:16px;left:60px;background:#fef3c7;border:none;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;color:#d97706;transition:var(--transition)}
+   .fav-btn{position:absolute;top:16px;right:60px;left:auto;background:#fef3c7;border:none;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;color:#d97706;transition:var(--transition)}
   .fav-btn:hover{background:#fde68a}
   .hidden{display:none!important}
   .modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,.6);z-index:100;padding:20px;overflow-y:auto}
@@ -160,7 +160,7 @@
     .modal-content{padding:20px 15px;border-radius:16px}
     .modal-content h2{font-size:24px}
     .info-block{grid-template-columns:1fr}
-    .fav-btn{left:60px}
+  .fav-btn{right:60px}
   }
 
   /* ============================================================
