@@ -835,6 +835,13 @@ body.dark-mode .lesson-word:hover { background: #312e81; }
     max-width: 100% !important;
     box-sizing: border-box !important;
   }
+    /* إجبار اللغة الألمانية على الترتيب من اليسار لليمين */
+  .lesson-word, 
+  .vocab-card-de,
+  .conj-item span:not(.pron),
+  .grammar-content table {
+    direction: ltr !important;
+  }
 </style>
 </head>
 <body>
